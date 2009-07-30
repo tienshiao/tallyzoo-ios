@@ -273,7 +273,7 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>13</integer>
+									<integer>17</integer>
 									<integer>1</integer>
 									<integer>0</integer>
 								</array>
@@ -298,7 +298,7 @@
 							<real>186</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>296 172 911 590 0 0 1280 778 </string>
+						<string>296 173 911 590 0 0 1280 778 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -316,7 +316,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>MatrixButton.m</string>
+								<string>MatrixViewController.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -324,11 +324,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>MatrixButton.m</string>
+										<string>MatrixViewController.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>615CC93210221E7700BD6BB2</string>
+										<string>615CC99F10224A1000BD6BB2</string>
 										<key>history</key>
 										<array>
 											<string>615CC866101FF17600BD6BB2</string>
@@ -344,11 +344,11 @@
 											<string>615CC91710221DD400BD6BB2</string>
 											<string>615CC91810221DD400BD6BB2</string>
 											<string>615CC91910221DD400BD6BB2</string>
-											<string>615CC91A10221DD400BD6BB2</string>
-											<string>615CC91B10221DD400BD6BB2</string>
-											<string>615CC91C10221DD400BD6BB2</string>
 											<string>615CC92C10221E7700BD6BB2</string>
-											<string>615CC92D10221E7700BD6BB2</string>
+											<string>615CC9391022428100BD6BB2</string>
+											<string>615CC986102248B600BD6BB2</string>
+											<string>615CC9921022495B00BD6BB2</string>
+											<string>615CC9931022495B00BD6BB2</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -470,6 +470,15 @@
 											<string>615CC92F10221E7700BD6BB2</string>
 											<string>615CC93010221E7700BD6BB2</string>
 											<string>615CC93110221E7700BD6BB2</string>
+											<string>615CC93D1022428100BD6BB2</string>
+											<string>615CC93E1022428100BD6BB2</string>
+											<string>615CC93F1022428100BD6BB2</string>
+											<string>615CC9401022428100BD6BB2</string>
+											<string>615CC9821022487F00BD6BB2</string>
+											<string>615CC988102248B600BD6BB2</string>
+											<string>615CC989102248B600BD6BB2</string>
+											<string>615CC98A102248B600BD6BB2</string>
+											<string>615CC9941022495B00BD6BB2</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -483,7 +492,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {703, 544}}</string>
 								<key>RubberWindowFrame</key>
-								<string>296 172 911 590 0 0 1280 778 </string>
+								<string>296 173 911 590 0 0 1280 778 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
@@ -503,7 +512,7 @@
 								<key>Frame</key>
 								<string>{{0, 549}, {703, 0}}</string>
 								<key>RubberWindowFrame</key>
-								<string>296 172 911 590 0 0 1280 778 </string>
+								<string>296 173 911 590 0 0 1280 778 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
@@ -671,7 +680,7 @@
 		<string>/Users/tsm/ari/TallyZoo/TallyZoo.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>296 172 911 590 0 0 1280 778 </string>
+	<string>296 173 911 590 0 0 1280 778 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>

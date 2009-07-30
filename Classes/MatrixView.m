@@ -15,7 +15,7 @@
 - (id)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
         // Initialization code
-		self.backgroundColor = [UIColor blackColor];
+		self.backgroundColor = [UIColor blueColor];
 		
 		MatrixButton *button = [[MatrixButton alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
 		button.title = @"test";

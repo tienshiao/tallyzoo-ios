@@ -11,6 +11,8 @@
 
 @interface MatrixViewController : UIViewController {
 	MatrixView * _matrices[1];
+	
+	UIPageControl *_pageControl;
 }
 
 - (void)addItem:(id)sender;

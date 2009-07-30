@@ -46,8 +46,26 @@
 
 // Implement loadView to create a view hierarchy programmatically, without using a nib.
 - (void)loadView {
-	MatrixView *view = [[MatrixView alloc] init];
-	[self setView:view];
+	UIView *containerView = [[UIView alloc] init];
+	containerView.backgroundColor = [UIColor blackColor];
+	
+	MatrixView *view = [[MatrixView alloc] initWithFrame:CGRectMake(0, 0, 320, 342)];
+//	view.backgroundColor = [UIColor blueColor];
+	[containerView addSubview:view];
+	
+	_pageControl = [[UIPageControl alloc] init];
+	_pageControl.numberOfPages = 3;
+	_pageControl.backgroundColor = [UIColor blackColor];
+	_pageControl.frame = CGRectMake(0, 300, 0, 20);
+	[containerView addSubview:_pageControl];
+	[_pageControl sizeToFit];
+	CGRect frame = _pageControl.frame;
+	frame.size.height = 20;
+	frame.origin.y = 365 - frame.size.height;
+	_pageControl.frame = frame;
+	[_pageControl addTarget:self action:@selector(pageChanged:) forControlEvents:UIControlEventValueChanged];
+	
+	[self setView:containerView];
 }
 
 
@@ -72,6 +90,8 @@
 - (void)editButtons:(id)sender {
 }
 
+- (void)pageChanged:(id)sender {
+}
 
 - (void)didReceiveMemoryWarning {
 	// Releases the view if it doesn't have a superview.
@@ -88,6 +108,8 @@
 
 - (void)dealloc {
     [super dealloc];
+	
+	[_pageControl release];
 }
 
 
