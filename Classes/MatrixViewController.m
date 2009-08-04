@@ -85,6 +85,20 @@
 */
 
 - (void)addItem:(id)sender {
+	TZItem *newItem = [[TZItem alloc] initWithKey:0];
+	EditItemViewController *eivc = [[EditItemViewController alloc] initWithItem:newItem];
+	eivc.delegate = self;
+	UINavigationController *addNavigationController =[[UINavigationController alloc] initWithRootViewController:eivc];
+	
+	[[self navigationController] presentModalViewController:addNavigationController animated:YES];
+	
+	[addNavigationController release];
+	[eivc release];	
+}
+
+- (void)addItemDone:(EditItemViewController *)controller new:(BOOL)new {
+	[self.navigationController dismissModalViewControllerAnimated:YES];
+	// TODO update matrices if new
 }
 
 - (void)editButtons:(id)sender {
