@@ -1,24 +1,23 @@
 //
-//  EditTextfieldViewController.m
+//  EditTextViewViewController.m
 //  TallyZoo
 //
 //  Created by Tienshiao Ma on 8/4/09.
 //  Copyright 2009 __MyCompanyName__. All rights reserved.
 //
 
-#import "EditTextFieldViewController.h"
+#import "EditTextViewViewController.h"
 
 
-@implementation EditTextFieldViewController
+@implementation EditTextViewViewController
 
 @synthesize textValue;
 @synthesize editedObject;
 @synthesize editedFieldKey;
-@synthesize numberEditing;
 
 - (id)init {
 	if (self = [super init]) {
-
+		
 		UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
 																					   target:self 
 																					   action:@selector(save:)];
@@ -52,13 +51,14 @@
 	containerView.backgroundColor = [UIColor groupTableViewBackgroundColor];
 	
 	// TODO pretty up background
-	textField = [[UITextField alloc] initWithFrame:CGRectMake(10, 60, 300, 30)];
-	textField.borderStyle = UITextBorderStyleBezel;
-	textField.backgroundColor = [UIColor whiteColor];
-	[containerView addSubview:textField];
+	textView = [[UITextView alloc] initWithFrame:CGRectMake(10, 40, 300, 100)];
+	textView.backgroundColor = [UIColor whiteColor];
+	textView.font = [UIFont systemFontOfSize:16];
+	[containerView addSubview:textView];
 	
-	[self setView:containerView];
+	[self setView:containerView];	
 }
+
 
 
 /*
@@ -69,14 +69,8 @@
 */
 
 - (void)viewWillAppear:(BOOL)animated {
-	if (numberEditing) {
-		textField.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
-	} else {
-		textField.keyboardType = UIKeyboardTypeDefault;
-	}
-	textField.text = textValue;
-	
-	[textField becomeFirstResponder];
+	textView.text = textValue;
+	[textView becomeFirstResponder];
 }
 
 /*
@@ -86,20 +80,14 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 */
-
 - (void)save:(id)sender {
-	if (numberEditing) {
-		[editedObject setValue:[NSNumber numberWithDouble:textField.text.doubleValue] forKey:editedFieldKey];
-	} else {
-		[editedObject setValue:textField.text forKey:editedFieldKey];
-	}
+	[editedObject setValue:textView.text forKey:editedFieldKey];
 	[self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)cancel:(id)sender {
 	[self.navigationController popViewControllerAnimated:YES];
 }
-
 
 - (void)didReceiveMemoryWarning {
 	// Releases the view if it doesn't have a superview.
@@ -117,7 +105,7 @@
 - (void)dealloc {
     [super dealloc];
 	
-	[textField release];
+	[textView release];
 }
 
 

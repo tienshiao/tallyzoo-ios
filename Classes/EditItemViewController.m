@@ -8,6 +8,7 @@
 
 #import "EditItemViewController.h"
 #import "EditTextFieldViewController.h"
+#import "EditTextViewViewController.h"
 
 @implementation EditItemViewController
 
@@ -162,19 +163,19 @@
 		case 6:
 			// initial value
 			cell.textLabel.text = @"Initial Value";
-			cell.detailTextLabel.text = [NSString stringWithFormat:@"%F", item.initial_value];
+			cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", [NSNumber numberWithDouble:item.initial_value]];
 			cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 			break;
 		case 7:
 			// goal
 			cell.textLabel.text = @"Goal";
-			cell.detailTextLabel.text = [NSString stringWithFormat:@"%F", item.goal];
+			cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", [NSNumber numberWithDouble:item.goal]];
 			cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 			break;
 		case 8:
 			// default_step
 			cell.textLabel.text = @"Default Increment";
-			cell.detailTextLabel.text = [NSString stringWithFormat:@"%F", item.default_step];
+			cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", [NSNumber numberWithDouble:item.default_step]];
 			cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 			break;
 		case 9:
@@ -217,14 +218,28 @@
 			[etfvc release];
 			break;
 		}
-		case 1:
+		case 1: {
 			// default_note
-			// TODO text box
+			EditTextViewViewController *etvvc = [[EditTextViewViewController alloc] init];
+			etvvc.editedObject = item;
+			etvvc.textValue = item.default_note;
+			etvvc.editedFieldKey = @"default_note";
+			etvvc.title = @"Default Note";
+			[self.navigationController pushViewController:etvvc animated:YES];
+			[etvvc release];			
 			break;
-		case 2:
+		}
+		case 2: {
 			// default tags
-			// TODO text box
+			EditTextViewViewController *etvvc = [[EditTextViewViewController alloc] init];
+			etvvc.editedObject = item;
+			etvvc.textValue = item.default_tags;
+			etvvc.editedFieldKey = @"default_tags";
+			etvvc.title = @"Default Tags";
+			[self.navigationController pushViewController:etvvc animated:YES];
+			[etvvc release];						
 			break;
+		}
 		case 3:
 			// color
 			// TODO custom color picker
@@ -239,10 +254,9 @@
 			break;
 		case 6: {
 			// initial value
-			// TODO text edit
 			EditTextFieldViewController *etfvc = [[EditTextFieldViewController alloc] init];
 			etfvc.editedObject = item;
-			etfvc.textValue = [NSString stringWithFormat:@"%F", item.initial_value];
+			etfvc.textValue = [NSString stringWithFormat:@"%@", [NSNumber numberWithDouble:item.initial_value]];
 			etfvc.editedFieldKey = @"initial_value";
 			etfvc.title = @"Initial Value";
 			etfvc.numberEditing = YES;
@@ -250,14 +264,30 @@
 			[etfvc release];			
 			break;
 		}
-		case 7:
+		case 7: {
 			// goal
-			// TODO text edit
+			EditTextFieldViewController *etfvc = [[EditTextFieldViewController alloc] init];
+			etfvc.editedObject = item;
+			etfvc.textValue = [NSString stringWithFormat:@"%@", [NSNumber numberWithDouble:item.goal]];
+			etfvc.editedFieldKey = @"goal";
+			etfvc.title = @"Goal";
+			etfvc.numberEditing = YES;
+			[self.navigationController pushViewController:etfvc animated:YES];
+			[etfvc release];				
 			break;
-		case 8:
+		}
+		case 8: {
 			// default_step
-			// TODO text edit
+			EditTextFieldViewController *etfvc = [[EditTextFieldViewController alloc] init];
+			etfvc.editedObject = item;
+			etfvc.textValue = [NSString stringWithFormat:@"%@", [NSNumber numberWithDouble:item.default_step]];
+			etfvc.editedFieldKey = @"default_step";
+			etfvc.title = @"Default Step";
+			etfvc.numberEditing = YES;
+			[self.navigationController pushViewController:etfvc animated:YES];
+			[etfvc release];							
 			break;
+		}
 		case 9:
 			// count_updown
 			// TODO choose list
