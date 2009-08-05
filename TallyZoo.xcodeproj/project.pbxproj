@@ -27,8 +27,8 @@
 		615CC9031020413600BD6BB2 /* TZCount.m in Sources */ = {isa = PBXBuildFile; fileRef = 615CC9021020413600BD6BB2 /* TZCount.m */; };
 		615CC90D102218ED00BD6BB2 /* tallyzoo.db in Resources */ = {isa = PBXBuildFile; fileRef = 615CC90C102218ED00BD6BB2 /* tallyzoo.db */; };
 		615CCA361022E97600BD6BB2 /* EditItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 615CCA351022E97600BD6BB2 /* EditItemViewController.m */; };
-		615CCAE910283E3900BD6BB2 /* EditTextFieldViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 615CCAE810283E3900BD6BB2 /* EditTextFieldViewController.m */; };
-		615CCB8210291F3100BD6BB2 /* EditTextViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 615CCB8110291F3100BD6BB2 /* EditTextViewViewController.m */; };
+		615CCC10102A183400BD6BB2 /* EditTextFieldViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 615CCC0F102A183400BD6BB2 /* EditTextFieldViewController.m */; };
+		615CCC5B102A1EAF00BD6BB2 /* EditTextViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 615CCC5A102A1EAF00BD6BB2 /* EditTextViewViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,10 +67,10 @@
 		615CC90C102218ED00BD6BB2 /* tallyzoo.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = tallyzoo.db; sourceTree = "<group>"; };
 		615CCA341022E97600BD6BB2 /* EditItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditItemViewController.h; sourceTree = "<group>"; };
 		615CCA351022E97600BD6BB2 /* EditItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditItemViewController.m; sourceTree = "<group>"; };
-		615CCAE710283E3900BD6BB2 /* EditTextFieldViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditTextFieldViewController.h; sourceTree = "<group>"; };
-		615CCAE810283E3900BD6BB2 /* EditTextFieldViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditTextFieldViewController.m; sourceTree = "<group>"; };
-		615CCB8010291F3100BD6BB2 /* EditTextViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditTextViewViewController.h; sourceTree = "<group>"; };
-		615CCB8110291F3100BD6BB2 /* EditTextViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditTextViewViewController.m; sourceTree = "<group>"; };
+		615CCC0E102A183400BD6BB2 /* EditTextFieldViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditTextFieldViewController.h; sourceTree = "<group>"; };
+		615CCC0F102A183400BD6BB2 /* EditTextFieldViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditTextFieldViewController.m; sourceTree = "<group>"; };
+		615CCC59102A1EAF00BD6BB2 /* EditTextViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditTextViewViewController.h; sourceTree = "<group>"; };
+		615CCC5A102A1EAF00BD6BB2 /* EditTextViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditTextViewViewController.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* TallyZoo-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "TallyZoo-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -192,10 +192,10 @@
 		615CCAEA10283E4700BD6BB2 /* Editors */ = {
 			isa = PBXGroup;
 			children = (
-				615CCAE710283E3900BD6BB2 /* EditTextFieldViewController.h */,
-				615CCAE810283E3900BD6BB2 /* EditTextFieldViewController.m */,
-				615CCB8010291F3100BD6BB2 /* EditTextViewViewController.h */,
-				615CCB8110291F3100BD6BB2 /* EditTextViewViewController.m */,
+				615CCC0E102A183400BD6BB2 /* EditTextFieldViewController.h */,
+				615CCC0F102A183400BD6BB2 /* EditTextFieldViewController.m */,
+				615CCC59102A1EAF00BD6BB2 /* EditTextViewViewController.h */,
+				615CCC5A102A1EAF00BD6BB2 /* EditTextViewViewController.m */,
 			);
 			name = Editors;
 			sourceTree = "<group>";
@@ -268,8 +268,8 @@
 				615CC9001020412600BD6BB2 /* TZItem.m in Sources */,
 				615CC9031020413600BD6BB2 /* TZCount.m in Sources */,
 				615CCA361022E97600BD6BB2 /* EditItemViewController.m in Sources */,
-				615CCAE910283E3900BD6BB2 /* EditTextFieldViewController.m in Sources */,
-				615CCB8210291F3100BD6BB2 /* EditTextViewViewController.m in Sources */,
+				615CCC10102A183400BD6BB2 /* EditTextFieldViewController.m in Sources */,
+				615CCC5B102A1EAF00BD6BB2 /* EditTextViewViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

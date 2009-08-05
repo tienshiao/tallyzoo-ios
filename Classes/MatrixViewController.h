@@ -7,10 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "EditItemViewController.h"
 #import "MatrixView.h"
 
-@interface MatrixViewController : UIViewController<EditItemDelegate> {
+@interface MatrixViewController : UIViewController {
 	MatrixView * _matrices[1];
 	
 	UIPageControl *_pageControl;

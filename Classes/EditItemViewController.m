@@ -13,7 +13,6 @@
 @implementation EditItemViewController
 
 @synthesize item;
-@synthesize delegate;
 
 - (id)initWithItem:(TZItem *)i {
 	if (self = [super initWithStyle:UITableViewStyleGrouped]) {
@@ -340,15 +339,11 @@
 */
 
 - (void)cancel:(id)sender {
-	if (delegate && [delegate respondsToSelector:@selector(editItemDone:new:)]) { 
-		[delegate editItemDone:self new:NO];
-    }		
+	[self.navigationController dismissModalViewControllerAnimated:YES];
 }
 
 - (void)save:(id)sender {
-	if (delegate && [delegate respondsToSelector:@selector(editItemDone:new:)]) { 
-		[delegate editItemDone:self new:YES];
-    }	
+	[self.navigationController dismissModalViewControllerAnimated:YES];
 }
 
 

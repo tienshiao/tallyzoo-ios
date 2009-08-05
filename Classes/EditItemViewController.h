@@ -11,20 +11,11 @@
 
 @class EditItemViewController;
 
-@protocol EditItemDelegate <NSObject>
-@optional
--(void)editItemDone:(EditItemViewController *)controller new:(BOOL)new;
-@end
-
-
 @interface EditItemViewController : UITableViewController {
 	TZItem *item;
-	
-	id<EditItemDelegate> delegate;
 }
 
 @property(nonatomic, retain) TZItem *item;
-@property(assign, nonatomic) id delegate;
 
 - (id)initWithItem:(TZItem *)i;
 

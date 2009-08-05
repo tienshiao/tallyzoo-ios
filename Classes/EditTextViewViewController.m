@@ -2,7 +2,7 @@
 //  EditTextViewViewController.m
 //  TallyZoo
 //
-//  Created by Tienshiao Ma on 8/4/09.
+//  Created by Tienshiao Ma on 8/5/09.
 //  Copyright 2009 __MyCompanyName__. All rights reserved.
 //
 
@@ -16,7 +16,7 @@
 @synthesize editedFieldKey;
 
 - (id)init {
-	if (self = [super init]) {
+	if (self = [super initWithStyle:UITableViewStyleGrouped]) {
 		
 		UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
 																					   target:self 
@@ -30,48 +30,52 @@
 		self.navigationItem.leftBarButtonItem = barButtonItem;
 		[barButtonItem release];
 		
+		textView = [[UITextView alloc] initWithFrame:CGRectMake(20, 10, 280, 160)];
+		textView.font = [UIFont systemFontOfSize:16];
+		
+		self.tableView.rowHeight = 180;
 	}
 	return self;
 }
 
 /*
- // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
-        // Custom initialization
+- (id)initWithStyle:(UITableViewStyle)style {
+    // Override initWithStyle: if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
+    if (self = [super initWithStyle:style]) {
     }
     return self;
 }
 */
 
-
-// Implement loadView to create a view hierarchy programmatically, without using a nib.
-- (void)loadView {
-	UIView *containerView = [[UIView alloc] init];
-	containerView.backgroundColor = [UIColor groupTableViewBackgroundColor];
-	
-	// TODO pretty up background
-	textView = [[UITextView alloc] initWithFrame:CGRectMake(10, 40, 300, 100)];
-	textView.backgroundColor = [UIColor whiteColor];
-	textView.font = [UIFont systemFontOfSize:16];
-	[containerView addSubview:textView];
-	
-	[self setView:containerView];	
-}
-
-
-
 /*
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 */
 
 - (void)viewWillAppear:(BOOL)animated {
+	[super viewWillAppear:animated];
 	textView.text = textValue;
 	[textView becomeFirstResponder];
 }
+/*
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+}
+*/
+/*
+- (void)viewWillDisappear:(BOOL)animated {
+	[super viewWillDisappear:animated];
+}
+*/
+/*
+- (void)viewDidDisappear:(BOOL)animated {
+	[super viewDidDisappear:animated];
+}
+*/
 
 /*
 // Override to allow orientations other than the default portrait orientation.
@@ -80,14 +84,6 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 */
-- (void)save:(id)sender {
-	[editedObject setValue:textView.text forKey:editedFieldKey];
-	[self.navigationController popViewControllerAnimated:YES];
-}
-
-- (void)cancel:(id)sender {
-	[self.navigationController popViewControllerAnimated:YES];
-}
 
 - (void)didReceiveMemoryWarning {
 	// Releases the view if it doesn't have a superview.
@@ -102,11 +98,98 @@
 }
 
 
+#pragma mark Table view methods
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+
+// Customize the number of rows in the table view.
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 1;
+}
+
+
+// Customize the appearance of table view cells.
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    static NSString *CellIdentifier = @"Cell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+    }
+    
+    // Set up the cell...
+	[cell addSubview:textView];
+	cell.selectionStyle = UITableViewCellSelectionStyleNone;
+	
+    return cell;
+}
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Navigation logic may go here. Create and push another view controller.
+	// AnotherViewController *anotherViewController = [[AnotherViewController alloc] initWithNibName:@"AnotherView" bundle:nil];
+	// [self.navigationController pushViewController:anotherViewController];
+	// [anotherViewController release];
+}
+
+
+/*
+// Override to support conditional editing of the table view.
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Return NO if you do not want the specified item to be editable.
+    return YES;
+}
+*/
+
+
+/*
+// Override to support editing the table view.
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        // Delete the row from the data source
+        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:YES];
+    }   
+    else if (editingStyle == UITableViewCellEditingStyleInsert) {
+        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+    }   
+}
+*/
+
+
+/*
+// Override to support rearranging the table view.
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
+}
+*/
+
+
+/*
+// Override to support conditional rearranging of the table view.
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Return NO if you do not want the item to be re-orderable.
+    return YES;
+}
+*/
+
+- (void)save:(id)sender {
+	[editedObject setValue:textView.text forKey:editedFieldKey];
+	[self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)cancel:(id)sender {
+	[self.navigationController popViewControllerAnimated:YES];
+}
+
 - (void)dealloc {
     [super dealloc];
-	
 	[textView release];
 }
 
 
 @end
+

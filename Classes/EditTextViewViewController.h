@@ -2,14 +2,14 @@
 //  EditTextViewViewController.h
 //  TallyZoo
 //
-//  Created by Tienshiao Ma on 8/4/09.
+//  Created by Tienshiao Ma on 8/5/09.
 //  Copyright 2009 __MyCompanyName__. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
 
-@interface EditTextViewViewController : UIViewController {
+@interface EditTextViewViewController : UITableViewController {
 	UITextView *textView;
 	NSString *textValue;
 	id editedObject;
