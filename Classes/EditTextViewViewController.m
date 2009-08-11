@@ -30,10 +30,12 @@
 		self.navigationItem.leftBarButtonItem = barButtonItem;
 		[barButtonItem release];
 		
-		textView = [[UITextView alloc] initWithFrame:CGRectMake(20, 10, 280, 160)];
+		textView = [[UITextView alloc] initWithFrame:CGRectMake(15, 5, 290, 170)];
 		textView.font = [UIFont systemFontOfSize:16];
 		
 		self.tableView.rowHeight = 180;
+		
+		self.tableView.scrollEnabled = NO;
 	}
 	return self;
 }
@@ -188,6 +190,9 @@
 - (void)dealloc {
     [super dealloc];
 	[textView release];
+	
+	[textValue release];
+	[editedFieldKey release];
 }
 
 

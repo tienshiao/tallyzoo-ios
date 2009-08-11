@@ -23,8 +23,7 @@
 		self.navigationItem.rightBarButtonItem = barButtonItem;
 		[barButtonItem release];
 		
-		barButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Edit"
-														 style:UIBarButtonItemStylePlain
+		barButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit
 														target:self 
 														action:@selector(editButtons:)];
 		self.navigationItem.leftBarButtonItem = barButtonItem;
@@ -76,6 +75,11 @@
     [super viewDidLoad];
 }
 */
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+//	[self.tableView reloadData];
+}
 
 /*
 // Override to allow orientations other than the default portrait orientation.

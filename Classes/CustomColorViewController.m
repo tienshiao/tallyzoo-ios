@@ -1,20 +1,19 @@
 //
-//  EditTextFieldViewController.m
+//  CustomColorViewController.m
 //  TallyZoo
 //
-//  Created by Tienshiao Ma on 8/5/09.
+//  Created by Tienshiao Ma on 8/11/09.
 //  Copyright 2009 __MyCompanyName__. All rights reserved.
 //
 
-#import "EditTextFieldViewController.h"
+#import "CustomColorViewController.h"
+#import "UIColor-Expanded.h"
 
+@implementation CustomColorViewController
 
-@implementation EditTextFieldViewController
-
-@synthesize textValue;
+@synthesize colorValue;
 @synthesize editedObject;
 @synthesize editedFieldKey;
-@synthesize numberEditing;
 
 - (id)init {
 	if (self = [super initWithStyle:UITableViewStyleGrouped]) {
@@ -31,13 +30,20 @@
 		self.navigationItem.leftBarButtonItem = barButtonItem;
 		[barButtonItem release];
 		
-		textField = [[UITextField alloc] initWithFrame:CGRectMake(20, 10, 280, 60)];
+		redSlider = [[UISlider alloc] initWithFrame:CGRectMake(0, 0, 200, 20)];
+		redSlider.maximumValue = 1.0;
+		redSlider.minimumValue = 0.0;
+		[redSlider addTarget:self action:@selector(updateColor:) forControlEvents:UIControlEventValueChanged]; 
 		
-		UIView *header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 60)];
-		self.tableView.tableHeaderView = header;
-		[header release];
+		greenSlider = [[UISlider alloc] initWithFrame:CGRectMake(0, 0, 200, 20)];
+		greenSlider.maximumValue = 1.0;
+		greenSlider.minimumValue = 0.0;
+		[greenSlider addTarget:self action:@selector(updateColor:) forControlEvents:UIControlEventValueChanged]; 
 		
-		self.tableView.scrollEnabled = NO;
+		blueSlider = [[UISlider alloc] initWithFrame:CGRectMake(0, 0, 200, 20)];
+		blueSlider.maximumValue = 1.0;
+		blueSlider.minimumValue = 0.0;
+		[blueSlider addTarget:self action:@selector(updateColor:) forControlEvents:UIControlEventValueChanged]; 
 	}
 	return self;
 }
@@ -60,19 +66,13 @@
 }
 */
 
-- (void)viewWillAppear:(BOOL)animated {
-	[super viewWillAppear:animated];
-	
-	if (numberEditing) {
-		textField.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
-	} else {
-		textField.keyboardType = UIKeyboardTypeDefault;
-	}
-	textField.text = textValue;
-	
-	[textField becomeFirstResponder];
-}
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+	redSlider.value = colorValue.red;
+	greenSlider.value = colorValue.green;
+	blueSlider.value = colorValue.blue;
+}
 
 /*
 - (void)viewDidAppear:(BOOL)animated {
@@ -114,31 +114,53 @@
 #pragma mark Table view methods
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return 2;
 }
 
 
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+	if (section == 0) {
+		return 1;
+	} else {
+		return 3;
+	}
 }
 
 
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    static NSString *CellIdentifier = @"Cell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-    }
-    
-    // Set up the cell...
-	[cell addSubview:textField];
-	cell.selectionStyle = UITableViewCellSelectionStyleNone;
-	
-    return cell;
+	if (indexPath.section == 0) {
+		static NSString *CellIdentifier = @"Color Cell";
+		
+		UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+		if (cell == nil) {
+			cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+			cell.backgroundColor = colorValue;
+		}
+		return cell;
+	} else {
+		static NSString *CellIdentifier = @"Slider Cell";
+		
+		UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+		if (cell == nil) {
+			cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+		}
+		
+		// Set up the cell...
+		if (indexPath.row == 0) {
+			cell.textLabel.text = @"Red";
+			cell.accessoryView = redSlider;
+		} else if (indexPath.row == 1) {
+			cell.textLabel.text = @"Green";
+			cell.accessoryView = greenSlider;
+		} else {
+			cell.textLabel.text = @"Blue";
+			cell.accessoryView = blueSlider;
+		}
+		
+		return cell;		
+	}
 }
 
 
@@ -190,11 +212,7 @@
 */
 
 - (void)save:(id)sender {
-	if (numberEditing) {
-		[editedObject setValue:[NSNumber numberWithDouble:textField.text.doubleValue] forKey:editedFieldKey];
-	} else {
-		[editedObject setValue:textField.text forKey:editedFieldKey];
-	}
+	[editedObject setValue:colorValue forKey:editedFieldKey];
 	[self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -202,12 +220,22 @@
 	[self.navigationController popViewControllerAnimated:YES];
 }
 
+- (void)updateColor:(id)sender {
+	NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+	UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+	
+	self.colorValue = [UIColor colorWithRed:redSlider.value green:greenSlider.value blue:blueSlider.value alpha:1.0];
+	cell.backgroundColor = self.colorValue;
+}
+
 - (void)dealloc {
     [super dealloc];
-	[textField release];
 	
-	[textValue release];
-	[editedFieldKey release];
+	[colorValue release];
+	
+	[redSlider release];
+	[greenSlider release];
+	[blueSlider release];
 }
 
 

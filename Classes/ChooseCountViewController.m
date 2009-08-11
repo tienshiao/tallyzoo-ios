@@ -1,20 +1,19 @@
 //
-//  EditTextFieldViewController.m
+//  ChooseCountViewController.m
 //  TallyZoo
 //
-//  Created by Tienshiao Ma on 8/5/09.
+//  Created by Tienshiao Ma on 8/7/09.
 //  Copyright 2009 __MyCompanyName__. All rights reserved.
 //
 
-#import "EditTextFieldViewController.h"
+#import "ChooseCountViewController.h"
 
 
-@implementation EditTextFieldViewController
+@implementation ChooseCountViewController
 
-@synthesize textValue;
+@synthesize selection;
 @synthesize editedObject;
 @synthesize editedFieldKey;
-@synthesize numberEditing;
 
 - (id)init {
 	if (self = [super initWithStyle:UITableViewStyleGrouped]) {
@@ -31,13 +30,9 @@
 		self.navigationItem.leftBarButtonItem = barButtonItem;
 		[barButtonItem release];
 		
-		textField = [[UITextField alloc] initWithFrame:CGRectMake(20, 10, 280, 60)];
+//		self.tableView.rowHeight = 180;
 		
-		UIView *header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 60)];
-		self.tableView.tableHeaderView = header;
-		[header release];
-		
-		self.tableView.scrollEnabled = NO;
+//		self.tableView.scrollEnabled = NO;
 	}
 	return self;
 }
@@ -60,20 +55,11 @@
 }
 */
 
+/*
 - (void)viewWillAppear:(BOOL)animated {
-	[super viewWillAppear:animated];
-	
-	if (numberEditing) {
-		textField.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
-	} else {
-		textField.keyboardType = UIKeyboardTypeDefault;
-	}
-	textField.text = textValue;
-	
-	[textField becomeFirstResponder];
+    [super viewWillAppear:animated];
 }
-
-
+*/
 /*
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
@@ -120,7 +106,7 @@
 
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+    return 2;
 }
 
 
@@ -132,11 +118,25 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+		cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     
     // Set up the cell...
-	[cell addSubview:textField];
-	cell.selectionStyle = UITableViewCellSelectionStyleNone;
+	if (indexPath.row == 0) {
+		cell.textLabel.text = @"Count Up";
+		if (selection > 0) {
+			cell.accessoryType = UITableViewCellAccessoryCheckmark;
+		} else {
+			cell.accessoryType = UITableViewCellAccessoryNone;
+		}
+	} else {
+		cell.textLabel.text = @"Count Down";
+		if (selection < 0) {
+			cell.accessoryType = UITableViewCellAccessoryCheckmark;
+		} else {
+			cell.accessoryType = UITableViewCellAccessoryNone;
+		}		
+	}
 	
     return cell;
 }
@@ -147,6 +147,29 @@
 	// AnotherViewController *anotherViewController = [[AnotherViewController alloc] initWithNibName:@"AnotherView" bundle:nil];
 	// [self.navigationController pushViewController:anotherViewController];
 	// [anotherViewController release];
+	
+	[tableView deselectRowAtIndexPath:indexPath animated:YES];
+	
+	int old_row;
+	
+	if (indexPath.row == 0 && selection == -1) {
+		selection = 1;
+		old_row = 1;
+	} else if (selection == 1) {
+		selection = -1;
+		old_row = 0;
+	}
+	
+	UITableViewCell *newCell = [tableView cellForRowAtIndexPath:indexPath];
+    if (newCell.accessoryType == UITableViewCellAccessoryNone) {
+        newCell.accessoryType = UITableViewCellAccessoryCheckmark;
+    }
+	
+	NSIndexPath *oldIndexPath = [NSIndexPath indexPathForRow:old_row inSection:0];
+    UITableViewCell *oldCell = [tableView cellForRowAtIndexPath:oldIndexPath];
+    if (oldCell.accessoryType == UITableViewCellAccessoryCheckmark) {
+        oldCell.accessoryType = UITableViewCellAccessoryNone;
+    }
 }
 
 
@@ -190,11 +213,7 @@
 */
 
 - (void)save:(id)sender {
-	if (numberEditing) {
-		[editedObject setValue:[NSNumber numberWithDouble:textField.text.doubleValue] forKey:editedFieldKey];
-	} else {
-		[editedObject setValue:textField.text forKey:editedFieldKey];
-	}
+	[editedObject setValue:[NSNumber numberWithInt:selection] forKey:editedFieldKey];
 	[self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -204,9 +223,7 @@
 
 - (void)dealloc {
     [super dealloc];
-	[textField release];
 	
-	[textValue release];
 	[editedFieldKey release];
 }
 

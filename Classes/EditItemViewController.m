@@ -7,6 +7,8 @@
 //
 
 #import "EditItemViewController.h"
+#import "ColorPickerViewController.h"
+#import "ChooseCountViewController.h"
 #import "EditTextFieldViewController.h"
 #import "EditTextViewViewController.h"
 
@@ -32,6 +34,12 @@
 		barButtonItem.enabled = NO;
 		self.navigationItem.rightBarButtonItem = barButtonItem;
 		[barButtonItem release];
+		
+		showPublicSwitch = [[UISwitch alloc] init];
+		showPublicSwitch.on = i.public;
+		
+		showCountSwitch = [[UISwitch alloc] init];
+		showCountSwitch.on = i.display_total;
 		
 		self.item = i;
 		
@@ -112,7 +120,7 @@
 
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 11;
+    return 9;
 }
 
 
@@ -126,6 +134,7 @@
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier] autorelease];
     }
 	cell.accessoryType = UITableViewCellAccessoryNone;
+	cell.accessoryView = nil;
     
     // Set up the cell...
 	switch (indexPath.row) {
@@ -149,15 +158,19 @@
 			break;
 		case 3:
 			// color
+			// TODO
 			cell.textLabel.text = @"Color";
+			cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 			break;
 		case 4:
 			// group - private/public
 			cell.textLabel.text = @"Public";
+			cell.accessoryView = showPublicSwitch;
 			break;
 		case 5:
 			// display_total
 			cell.textLabel.text = @"Show Count";
+			cell.accessoryView = showCountSwitch;
 			break;
 		case 6:
 			// initial value
@@ -166,18 +179,12 @@
 			cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 			break;
 		case 7:
-			// goal
-			cell.textLabel.text = @"Goal";
-			cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", [NSNumber numberWithDouble:item.goal]];
-			cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-			break;
-		case 8:
 			// default_step
 			cell.textLabel.text = @"Default Increment";
 			cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", [NSNumber numberWithDouble:item.default_step]];
 			cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 			break;
-		case 9:
+		case 8:
 			// count_updown
 			cell.textLabel.text = @"Count";
 			if (item.count_updown > 0) {
@@ -185,12 +192,6 @@
 			} else {
 				cell.detailTextLabel.text = @"count down";
 			}
-			cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;			
-			break;
-		case 10:
-			// created_on
-			cell.textLabel.text = @"Date";
-			cell.detailTextLabel.text = item.created_on;
 			cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;			
 			break;
 	}
@@ -239,10 +240,17 @@
 			[etvvc release];						
 			break;
 		}
-		case 3:
+		case 3: {
 			// color
-			// TODO custom color picker
+			ColorPickerViewController *cpvc = [[ColorPickerViewController alloc] init];
+			cpvc.editedObject = item;
+			cpvc.colorValue = item.color;
+			cpvc.editedFieldKey = @"color";
+			cpvc.title = @"Color";
+			[self.navigationController pushViewController:cpvc animated:YES];
+			[cpvc release];					
 			break;
+		}
 		case 4:
 			// group - private/public
 			// TODO choose list
@@ -264,18 +272,6 @@
 			break;
 		}
 		case 7: {
-			// goal
-			EditTextFieldViewController *etfvc = [[EditTextFieldViewController alloc] init];
-			etfvc.editedObject = item;
-			etfvc.textValue = [NSString stringWithFormat:@"%@", [NSNumber numberWithDouble:item.goal]];
-			etfvc.editedFieldKey = @"goal";
-			etfvc.title = @"Goal";
-			etfvc.numberEditing = YES;
-			[self.navigationController pushViewController:etfvc animated:YES];
-			[etfvc release];				
-			break;
-		}
-		case 8: {
 			// default_step
 			EditTextFieldViewController *etfvc = [[EditTextFieldViewController alloc] init];
 			etfvc.editedObject = item;
@@ -287,14 +283,17 @@
 			[etfvc release];							
 			break;
 		}
-		case 9:
+		case 8: {
 			// count_updown
-			// TODO choose list
+			ChooseCountViewController *ccvc = [[ChooseCountViewController alloc] init];
+			ccvc.editedObject = item;
+			ccvc.selection = item.count_updown;
+			ccvc.editedFieldKey = @"count_updown";
+			ccvc.title = @"Count";
+			[self.navigationController pushViewController:ccvc animated:YES];
+			[ccvc release];					
 			break;
-		case 10:
-			// created_on
-			// TODO date picker
-			break;
+		}
 	}
 }
 
@@ -343,6 +342,8 @@
 }
 
 - (void)save:(id)sender {
+	if (![item save]) {
+	}
 	[self.navigationController dismissModalViewControllerAnimated:YES];
 }
 
@@ -351,6 +352,7 @@
     [super dealloc];
 	
 	[item release];
+	[showCountSwitch release];
 }
 
 

@@ -29,6 +29,9 @@
 		615CCA361022E97600BD6BB2 /* EditItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 615CCA351022E97600BD6BB2 /* EditItemViewController.m */; };
 		615CCC10102A183400BD6BB2 /* EditTextFieldViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 615CCC0F102A183400BD6BB2 /* EditTextFieldViewController.m */; };
 		615CCC5B102A1EAF00BD6BB2 /* EditTextViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 615CCC5A102A1EAF00BD6BB2 /* EditTextViewViewController.m */; };
+		61E643E5102C2C9000E78174 /* ChooseCountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61E643E4102C2C9000E78174 /* ChooseCountViewController.m */; };
+		61E6444B102D1E1F00E78174 /* ColorPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61E6444A102D1E1F00E78174 /* ColorPickerViewController.m */; };
+		61E6455410315C3200E78174 /* CustomColorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61E6455310315C3200E78174 /* CustomColorViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -71,6 +74,12 @@
 		615CCC0F102A183400BD6BB2 /* EditTextFieldViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditTextFieldViewController.m; sourceTree = "<group>"; };
 		615CCC59102A1EAF00BD6BB2 /* EditTextViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditTextViewViewController.h; sourceTree = "<group>"; };
 		615CCC5A102A1EAF00BD6BB2 /* EditTextViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditTextViewViewController.m; sourceTree = "<group>"; };
+		61E643E3102C2C9000E78174 /* ChooseCountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseCountViewController.h; sourceTree = "<group>"; };
+		61E643E4102C2C9000E78174 /* ChooseCountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseCountViewController.m; sourceTree = "<group>"; };
+		61E64449102D1E1F00E78174 /* ColorPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorPickerViewController.h; sourceTree = "<group>"; };
+		61E6444A102D1E1F00E78174 /* ColorPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorPickerViewController.m; sourceTree = "<group>"; };
+		61E6455210315C3200E78174 /* CustomColorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomColorViewController.h; sourceTree = "<group>"; };
+		61E6455310315C3200E78174 /* CustomColorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomColorViewController.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* TallyZoo-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "TallyZoo-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -192,6 +201,12 @@
 		615CCAEA10283E4700BD6BB2 /* Editors */ = {
 			isa = PBXGroup;
 			children = (
+				61E643E3102C2C9000E78174 /* ChooseCountViewController.h */,
+				61E643E4102C2C9000E78174 /* ChooseCountViewController.m */,
+				61E64449102D1E1F00E78174 /* ColorPickerViewController.h */,
+				61E6444A102D1E1F00E78174 /* ColorPickerViewController.m */,
+				61E6455210315C3200E78174 /* CustomColorViewController.h */,
+				61E6455310315C3200E78174 /* CustomColorViewController.m */,
 				615CCC0E102A183400BD6BB2 /* EditTextFieldViewController.h */,
 				615CCC0F102A183400BD6BB2 /* EditTextFieldViewController.m */,
 				615CCC59102A1EAF00BD6BB2 /* EditTextViewViewController.h */,
@@ -270,6 +285,9 @@
 				615CCA361022E97600BD6BB2 /* EditItemViewController.m in Sources */,
 				615CCC10102A183400BD6BB2 /* EditTextFieldViewController.m in Sources */,
 				615CCC5B102A1EAF00BD6BB2 /* EditTextViewViewController.m in Sources */,
+				61E643E5102C2C9000E78174 /* ChooseCountViewController.m in Sources */,
+				61E6444B102D1E1F00E78174 /* ColorPickerViewController.m in Sources */,
+				61E6455410315C3200E78174 /* CustomColorViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -13,6 +13,9 @@
 
 @interface EditItemViewController : UITableViewController {
 	TZItem *item;
+	
+	UISwitch *showPublicSwitch;
+	UISwitch *showCountSwitch;
 }
 
 @property(nonatomic, retain) TZItem *item;

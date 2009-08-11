@@ -15,9 +15,9 @@
 	NSString *default_note;
 	NSString *default_tags;
 	double initial_value;
-	double goal;
 	double default_step;
-	NSString *color;
+	UIColor *color;
+	BOOL public;
 	int count_updown;
 	BOOL display_total;
 	int screen;
@@ -33,9 +33,9 @@
 @property(copy, nonatomic) NSString *default_note;
 @property(copy, nonatomic) NSString *default_tags;
 @property(assign, nonatomic) double initial_value;
-@property(assign, nonatomic) double goal;
 @property(assign, nonatomic) double default_step;
-@property(copy, nonatomic) NSString *color;
+@property(nonatomic, retain) UIColor *color;
+@property(assign, nonatomic) BOOL public;
 @property(assign, nonatomic) int count_updown;
 @property(assign, nonatomic) BOOL display_total;
 @property(assign, nonatomic) int screen;
