@@ -7,7 +7,8 @@
 //
 
 #import "ColorPickerViewController.h"
-#import "CustomColorViewController.h";
+#import "ColorCellView.h"
+#import "CustomColorViewController.h"
 #import "UIColor-Expanded.h"
 
 @implementation ColorPickerViewController
@@ -103,7 +104,9 @@
 			[self generateRandomCustomColor];
 		}
 	} else {
-		self.customColor = self.colorValue;
+		if (customColor == nil) {
+			self.customColor = self.colorValue;
+		}
 		old_row = 14;
 	}
 	
@@ -165,112 +168,104 @@
 
 
 #define COLOR_TAG 1
+#define LABEL_TAG 2
 
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	if (indexPath.section == 0) {    
 		static NSString *ColorCellIdentifier = @"Color Cell";
     
-		UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ColorCellIdentifier];
+		ColorCellView *cell = (ColorCellView *)[tableView dequeueReusableCellWithIdentifier:ColorCellIdentifier];
 		if (cell == nil) {
-			cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ColorCellIdentifier] autorelease];
-		
-			UIView *colorSample = [[UIView alloc] initWithFrame:CGRectMake(10, 1, 20, cell.frame.size.height - 1)];
-			colorSample.tag = COLOR_TAG;
-			[cell addSubview:colorSample];
-			[colorSample release];
-		
+			cell = [[[ColorCellView alloc] initWithFrame:CGRectZero reuseIdentifier:ColorCellIdentifier] autorelease];
+
 			cell.selectionStyle = UITableViewCellSelectionStyleNone;
 		}
 		// Set up the cell...
-	
-		CGRect r = cell.textLabel.frame;
-		r.origin.x = 50;
-		cell.textLabel.frame = r;
-		
 		switch (indexPath.row) {
 			case 0: {
-				cell.textLabel.text = @"Black";
-				[[cell viewWithTag:COLOR_TAG] setBackgroundColor:[UIColor blackColor]];
+				cell.label.text = @"Black";
+				cell.color = [UIColor blackColor];
 				break;
 			}
 			case 1: {
-				cell.textLabel.text = @"Blue";
-				[[cell viewWithTag:COLOR_TAG] setBackgroundColor:[UIColor blueColor]];
+				cell.label.text = @"Blue";
+				cell.color = [UIColor blueColor];
 				break;
 			}
 			case 2: {
-				cell.textLabel.text = @"Brown";
-				[[cell viewWithTag:COLOR_TAG] setBackgroundColor:[UIColor brownColor]];
+				cell.label.text = @"Brown";
+				cell.color = [UIColor brownColor];
 				break;
 			}
 			case 3: {
-				cell.textLabel.text = @"Cyan";
-				[[cell viewWithTag:COLOR_TAG] setBackgroundColor:[UIColor cyanColor]];
+				cell.label.text = @"Cyan";
+				cell.color = [UIColor cyanColor];
 				break;
 			}
 			case 4: {
-				cell.textLabel.text = @"Dark Gray";
-				[[cell viewWithTag:COLOR_TAG] setBackgroundColor:[UIColor darkGrayColor]];
+				cell.label.text = @"Dark Gray";
+				cell.color = [UIColor darkGrayColor];
 				break;
 			}
 			case 5: {
-				cell.textLabel.text = @"Gray";
-				[[cell viewWithTag:COLOR_TAG] setBackgroundColor:[UIColor grayColor]];
+				cell.label.text = @"Gray";
+				cell.color = [UIColor grayColor];
 				break;
 			}
 			case 6: {
-				cell.textLabel.text = @"Green";
-				[[cell viewWithTag:COLOR_TAG] setBackgroundColor:[UIColor greenColor]];
+				cell.label.text = @"Green";
+				cell.color = [UIColor greenColor];
 				break;
 			}
 			case 7: {
-				cell.textLabel.text = @"Light Gray";
-				[[cell viewWithTag:COLOR_TAG] setBackgroundColor:[UIColor lightGrayColor]];
+				cell.label.text = @"Light Gray";
+				cell.color = [UIColor lightGrayColor];
 				break;
 			}
 			case 8: {
-				cell.textLabel.text = @"Magenta";
-				[[cell viewWithTag:COLOR_TAG] setBackgroundColor:[UIColor magentaColor]];
+				cell.label.text = @"Magenta";
+				cell.color = [UIColor magentaColor];
 				break;
 			}
 			case 9: {
-				cell.textLabel.text = @"Orange";
-				[[cell viewWithTag:COLOR_TAG] setBackgroundColor:[UIColor orangeColor]];
+				cell.label.text = @"Orange";
+				cell.color = [UIColor orangeColor];
 				break;
 			}
 			case 10: {
-				cell.textLabel.text = @"Purple";
-				[[cell viewWithTag:COLOR_TAG] setBackgroundColor:[UIColor purpleColor]];
+				cell.label.text = @"Purple";
+				cell.color = [UIColor purpleColor];
 				break;
 			}
 			case 11: {
-				cell.textLabel.text = @"Red";
-				[[cell viewWithTag:COLOR_TAG] setBackgroundColor:[UIColor redColor]];
+				cell.label.text = @"Red";
+				cell.color = [UIColor redColor];
 				break;
 			}	
 			case 12: {
-				cell.textLabel.text = @"White";
-				[[cell viewWithTag:COLOR_TAG] setBackgroundColor:[UIColor whiteColor]];
+				cell.label.text = @"White";
+				cell.color = [UIColor whiteColor];
 				break;
 			}
 			case 13: {
-				cell.textLabel.text = @"Yellow";
-				[[cell viewWithTag:COLOR_TAG] setBackgroundColor:[UIColor yellowColor]];
+				cell.label.text = @"Yellow";
+				cell.color = [UIColor yellowColor];
 				break;
 			}
 			case 14: {
-				cell.textLabel.text = @"Custom";
-				[[cell viewWithTag:COLOR_TAG] setBackgroundColor:customColor];
+				cell.label.text = @"Custom";
+				cell.color = customColor;
 				break;
 			}				
 		}
 		
-		if ([[colorValue hexStringFromColor] isEqual:[[[cell viewWithTag:COLOR_TAG] backgroundColor] hexStringFromColor]]) {
+//		if ([[colorValue hexStringFromColor] isEqual:[cell.color hexStringFromColor]]) {
+		if (indexPath.section == 0 && indexPath.row == old_row) { 
 			cell.accessoryType = UITableViewCellAccessoryCheckmark;
-			if (old_row == -1) {
-				old_row = indexPath.row;
-			}
+//			if (old_row == -1) {
+//				old_row = indexPath.row;
+//			}
 		} else {
 			cell.accessoryType = UITableViewCellAccessoryNone;
 		}
@@ -306,18 +301,18 @@
 		}
 		
 		NSIndexPath *oldIndexPath = [NSIndexPath indexPathForRow:old_row inSection:0];
-		UITableViewCell *oldCell = [tableView cellForRowAtIndexPath:oldIndexPath];
+		ColorCellView *oldCell = (ColorCellView *)[tableView cellForRowAtIndexPath:oldIndexPath];
 		if (oldCell.accessoryType == UITableViewCellAccessoryCheckmark) {
 			oldCell.accessoryType = UITableViewCellAccessoryNone;
 		}	
 		
-		UITableViewCell *newCell = [tableView cellForRowAtIndexPath:indexPath];
+		ColorCellView *newCell = (ColorCellView *)[tableView cellForRowAtIndexPath:indexPath];
 		if (newCell.accessoryType == UITableViewCellAccessoryNone) {
 			newCell.accessoryType = UITableViewCellAccessoryCheckmark;
 		}
 		
 		old_row = indexPath.row;
-		self.colorValue = [[newCell viewWithTag:COLOR_TAG] backgroundColor];
+		self.colorValue = newCell.color;
 	} else {
 		CustomColorViewController *ccvc = [[CustomColorViewController alloc] init];
 		ccvc.editedObject = self;

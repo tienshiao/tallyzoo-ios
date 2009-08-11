@@ -8,11 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "TZItem.h"
+#import "ColorView.h"
 
 @class EditItemViewController;
 
 @interface EditItemViewController : UITableViewController {
 	TZItem *item;
+	
+	ColorView *colorView;
 	
 	UISwitch *showPublicSwitch;
 	UISwitch *showCountSwitch;

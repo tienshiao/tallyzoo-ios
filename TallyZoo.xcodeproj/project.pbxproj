@@ -32,6 +32,8 @@
 		61E643E5102C2C9000E78174 /* ChooseCountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61E643E4102C2C9000E78174 /* ChooseCountViewController.m */; };
 		61E6444B102D1E1F00E78174 /* ColorPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61E6444A102D1E1F00E78174 /* ColorPickerViewController.m */; };
 		61E6455410315C3200E78174 /* CustomColorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61E6455310315C3200E78174 /* CustomColorViewController.m */; };
+		61E645DB1031DF3800E78174 /* ColorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 61E645DA1031DF3800E78174 /* ColorView.m */; };
+		61E646301031E78500E78174 /* ColorCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 61E6462F1031E78500E78174 /* ColorCellView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,6 +82,10 @@
 		61E6444A102D1E1F00E78174 /* ColorPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorPickerViewController.m; sourceTree = "<group>"; };
 		61E6455210315C3200E78174 /* CustomColorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomColorViewController.h; sourceTree = "<group>"; };
 		61E6455310315C3200E78174 /* CustomColorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomColorViewController.m; sourceTree = "<group>"; };
+		61E645D91031DF3800E78174 /* ColorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorView.h; sourceTree = "<group>"; };
+		61E645DA1031DF3800E78174 /* ColorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorView.m; sourceTree = "<group>"; };
+		61E6462E1031E78500E78174 /* ColorCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorCellView.h; sourceTree = "<group>"; };
+		61E6462F1031E78500E78174 /* ColorCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorCellView.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* TallyZoo-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "TallyZoo-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -203,8 +209,12 @@
 			children = (
 				61E643E3102C2C9000E78174 /* ChooseCountViewController.h */,
 				61E643E4102C2C9000E78174 /* ChooseCountViewController.m */,
+				61E6462E1031E78500E78174 /* ColorCellView.h */,
+				61E6462F1031E78500E78174 /* ColorCellView.m */,
 				61E64449102D1E1F00E78174 /* ColorPickerViewController.h */,
 				61E6444A102D1E1F00E78174 /* ColorPickerViewController.m */,
+				61E645D91031DF3800E78174 /* ColorView.h */,
+				61E645DA1031DF3800E78174 /* ColorView.m */,
 				61E6455210315C3200E78174 /* CustomColorViewController.h */,
 				61E6455310315C3200E78174 /* CustomColorViewController.m */,
 				615CCC0E102A183400BD6BB2 /* EditTextFieldViewController.h */,
@@ -288,6 +298,8 @@
 				61E643E5102C2C9000E78174 /* ChooseCountViewController.m in Sources */,
 				61E6444B102D1E1F00E78174 /* ColorPickerViewController.m in Sources */,
 				61E6455410315C3200E78174 /* CustomColorViewController.m in Sources */,
+				61E645DB1031DF3800E78174 /* ColorView.m in Sources */,
+				61E646301031E78500E78174 /* ColorCellView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

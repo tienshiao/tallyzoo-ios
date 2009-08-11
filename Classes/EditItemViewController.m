@@ -16,9 +16,11 @@
 
 @synthesize item;
 
+#define COLOR_TAG 1
+
 - (id)initWithItem:(TZItem *)i {
 	if (self = [super initWithStyle:UITableViewStyleGrouped]) {
-		self.title = @"Item";
+		self.title = @"Activity";
 		
 		UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] 
 										  initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
@@ -40,6 +42,9 @@
 		
 		showCountSwitch = [[UISwitch alloc] init];
 		showCountSwitch.on = i.display_total;
+		
+		colorView = [[ColorView alloc] initWithFrame:CGRectMake(250, 8, 25, 25)];
+		colorView.tag = COLOR_TAG;
 		
 		self.item = i;
 		
@@ -158,9 +163,10 @@
 			break;
 		case 3:
 			// color
-			// TODO
 			cell.textLabel.text = @"Color";
 			cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+			colorView.color = item.color;
+			[cell.contentView addSubview:colorView];
 			break;
 		case 4:
 			// group - private/public
@@ -253,7 +259,7 @@
 		}
 		case 4:
 			// group - private/public
-			// TODO choose list
+			// nothing
 			break;
 		case 5:
 			// display_total
@@ -353,6 +359,7 @@
 	
 	[item release];
 	[showCountSwitch release];
+	[colorView release];
 }
 
 

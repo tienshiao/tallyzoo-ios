@@ -266,8 +266,6 @@
 								<string>29B97314FDCFA39411CA2CEA</string>
 								<string>080E96DDFE201D6D7F000001</string>
 								<string>615CCAEA10283E4700BD6BB2</string>
-								<string>615CC84C101FCB3C00BD6BB2</string>
-								<string>615CC865101FF15B00BD6BB2</string>
 								<string>29B97317FDCFA39411CA2CEA</string>
 								<string>29B97323FDCFA39411CA2CEA</string>
 								<string>1C37FABC05509CD000000102</string>
@@ -275,14 +273,13 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>6</integer>
-									<integer>2</integer>
+									<integer>20</integer>
 									<integer>1</integer>
 									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 0}, {253, 595}}</string>
+							<string>{{0, 34}, {253, 595}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -319,7 +316,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>ColorPickerViewController.m</string>
+								<string>EditItemViewController.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -327,11 +324,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>ColorPickerViewController.m</string>
+										<string>EditItemViewController.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>61E645D810317B6900E78174</string>
+										<string>61E6470E10320E4D00E78174</string>
 										<key>history</key>
 										<array>
 											<string>615CC8F4102037BB00BD6BB2</string>
@@ -356,18 +353,22 @@
 											<string>61E645081031082000E78174</string>
 											<string>61E645091031082000E78174</string>
 											<string>61E6450A1031082000E78174</string>
-											<string>61E6454910312BEE00E78174</string>
 											<string>61E6459F1031778700E78174</string>
-											<string>61E645A01031778700E78174</string>
-											<string>61E645A11031778700E78174</string>
-											<string>61E645A21031778700E78174</string>
-											<string>61E645A31031778700E78174</string>
-											<string>61E645A51031778700E78174</string>
-											<string>61E645A71031778700E78174</string>
-											<string>61E645D010317B6900E78174</string>
-											<string>61E645D110317B6900E78174</string>
-											<string>61E645D210317B6900E78174</string>
-											<string>61E645D310317B6900E78174</string>
+											<string>61E646391031EB6500E78174</string>
+											<string>61E646871031FBFF00E78174</string>
+											<string>61E6468D1031FBFF00E78174</string>
+											<string>61E646C91031FF2A00E78174</string>
+											<string>61E646CA1031FF2A00E78174</string>
+											<string>61E646DD103200B400E78174</string>
+											<string>61E646DE103200B400E78174</string>
+											<string>61E646DF103200B400E78174</string>
+											<string>61E6470210320E4D00E78174</string>
+											<string>61E6470310320E4D00E78174</string>
+											<string>61E6470410320E4D00E78174</string>
+											<string>61E6470510320E4D00E78174</string>
+											<string>61E6470610320E4D00E78174</string>
+											<string>61E6470710320E4D00E78174</string>
+											<string>61E646FA10320E1E00E78174</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -574,6 +575,101 @@
 											<string>61E645D510317B6900E78174</string>
 											<string>61E645D610317B6900E78174</string>
 											<string>61E645D710317B6900E78174</string>
+											<string>61E645E01031DF4400E78174</string>
+											<string>61E645E11031DF4400E78174</string>
+											<string>61E645E21031DF4400E78174</string>
+											<string>61E645FE1031E2C500E78174</string>
+											<string>61E645FF1031E2C500E78174</string>
+											<string>61E646001031E2C500E78174</string>
+											<string>61E646011031E2C500E78174</string>
+											<string>61E646021031E2C500E78174</string>
+											<string>61E646031031E2C500E78174</string>
+											<string>61E646041031E2C500E78174</string>
+											<string>61E646051031E2C500E78174</string>
+											<string>61E646061031E2C500E78174</string>
+											<string>61E646071031E2C500E78174</string>
+											<string>61E6460D1031E2EF00E78174</string>
+											<string>61E6460E1031E2EF00E78174</string>
+											<string>61E6460F1031E2EF00E78174</string>
+											<string>61E646281031E6D300E78174</string>
+											<string>61E646291031E6D300E78174</string>
+											<string>61E6462A1031E6D300E78174</string>
+											<string>61E6462B1031E6D300E78174</string>
+											<string>61E6462C1031E6D300E78174</string>
+											<string>61E646401031EB6500E78174</string>
+											<string>61E646411031EB6500E78174</string>
+											<string>61E646421031EB6500E78174</string>
+											<string>61E646431031EB6500E78174</string>
+											<string>61E646441031EB6500E78174</string>
+											<string>61E646451031EB6500E78174</string>
+											<string>61E646461031EB6500E78174</string>
+											<string>61E646471031EB6500E78174</string>
+											<string>61E646481031EB6500E78174</string>
+											<string>61E646491031EB6500E78174</string>
+											<string>61E6464A1031EB6500E78174</string>
+											<string>61E6464B1031EB6500E78174</string>
+											<string>61E6464C1031EB6500E78174</string>
+											<string>61E6464D1031EB6500E78174</string>
+											<string>61E6464E1031EB6500E78174</string>
+											<string>61E6464F1031EB6500E78174</string>
+											<string>61E646501031EB6500E78174</string>
+											<string>61E646511031EB6500E78174</string>
+											<string>61E646521031EB6500E78174</string>
+											<string>61E646531031EB6500E78174</string>
+											<string>61E646541031EB6500E78174</string>
+											<string>61E646551031EB6500E78174</string>
+											<string>61E646561031EB6500E78174</string>
+											<string>61E646571031EB6500E78174</string>
+											<string>61E6465C1031EBB300E78174</string>
+											<string>61E6465D1031EBB300E78174</string>
+											<string>61E646631031EBE600E78174</string>
+											<string>61E646641031EBE600E78174</string>
+											<string>61E646651031EBE600E78174</string>
+											<string>61E6468F1031FBFF00E78174</string>
+											<string>61E646901031FBFF00E78174</string>
+											<string>61E646911031FBFF00E78174</string>
+											<string>61E646921031FBFF00E78174</string>
+											<string>61E646931031FBFF00E78174</string>
+											<string>61E646941031FBFF00E78174</string>
+											<string>61E646951031FBFF00E78174</string>
+											<string>61E646961031FBFF00E78174</string>
+											<string>61E646971031FBFF00E78174</string>
+											<string>61E646981031FBFF00E78174</string>
+											<string>61E646991031FBFF00E78174</string>
+											<string>61E6469A1031FBFF00E78174</string>
+											<string>61E6469F1031FC4B00E78174</string>
+											<string>61E646A81031FCCA00E78174</string>
+											<string>61E646AF1031FD8D00E78174</string>
+											<string>61E646B61031FDD600E78174</string>
+											<string>61E646B71031FDD600E78174</string>
+											<string>61E646B81031FDD600E78174</string>
+											<string>61E646B91031FDD600E78174</string>
+											<string>61E646BE1031FE1300E78174</string>
+											<string>61E646C31031FE5800E78174</string>
+											<string>61E646C41031FE5800E78174</string>
+											<string>61E646CD1031FF2A00E78174</string>
+											<string>61E646CE1031FF2A00E78174</string>
+											<string>61E646CF1031FF2A00E78174</string>
+											<string>61E646D01031FF2A00E78174</string>
+											<string>61E646D11031FF2A00E78174</string>
+											<string>61E646D21031FF2A00E78174</string>
+											<string>61E646D31031FF2A00E78174</string>
+											<string>61E646D41031FF2A00E78174</string>
+											<string>61E646E1103200B400E78174</string>
+											<string>61E646E2103200B400E78174</string>
+											<string>61E646E3103200B400E78174</string>
+											<string>61E646E4103200B400E78174</string>
+											<string>61E646E5103200B400E78174</string>
+											<string>61E646FC10320E1F00E78174</string>
+											<string>61E646FD10320E1F00E78174</string>
+											<string>61E646FE10320E1F00E78174</string>
+											<string>61E646FF10320E1F00E78174</string>
+											<string>61E6470810320E4D00E78174</string>
+											<string>61E6470910320E4D00E78174</string>
+											<string>61E6470A10320E4D00E78174</string>
+											<string>61E6470B10320E4D00E78174</string>
+											<string>61E6470C10320E4D00E78174</string>
+											<string>61E6470D10320E4D00E78174</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
