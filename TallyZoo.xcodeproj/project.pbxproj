@@ -23,7 +23,7 @@
 		615CC8E6101FF24C00BD6BB2 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 615CC8E2101FF24C00BD6BB2 /* FMDatabaseAdditions.m */; };
 		615CC8E7101FF24C00BD6BB2 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 615CC8E4101FF24C00BD6BB2 /* FMResultSet.m */; };
 		615CC8E9101FF27F00BD6BB2 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 615CC8E8101FF27F00BD6BB2 /* libsqlite3.0.dylib */; };
-		615CC9001020412600BD6BB2 /* TZItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 615CC8FF1020412600BD6BB2 /* TZItem.m */; };
+		615CC9001020412600BD6BB2 /* TZActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 615CC8FF1020412600BD6BB2 /* TZActivity.m */; };
 		615CC9031020413600BD6BB2 /* TZCount.m in Sources */ = {isa = PBXBuildFile; fileRef = 615CC9021020413600BD6BB2 /* TZCount.m */; };
 		615CC90D102218ED00BD6BB2 /* tallyzoo.db in Resources */ = {isa = PBXBuildFile; fileRef = 615CC90C102218ED00BD6BB2 /* tallyzoo.db */; };
 		615CCA361022E97600BD6BB2 /* EditItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 615CCA351022E97600BD6BB2 /* EditItemViewController.m */; };
@@ -65,8 +65,8 @@
 		615CC8E3101FF24C00BD6BB2 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
 		615CC8E4101FF24C00BD6BB2 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
 		615CC8E8101FF27F00BD6BB2 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
-		615CC8FE1020412600BD6BB2 /* TZItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TZItem.h; sourceTree = "<group>"; };
-		615CC8FF1020412600BD6BB2 /* TZItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TZItem.m; sourceTree = "<group>"; };
+		615CC8FE1020412600BD6BB2 /* TZActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TZActivity.h; sourceTree = "<group>"; };
+		615CC8FF1020412600BD6BB2 /* TZActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TZActivity.m; sourceTree = "<group>"; };
 		615CC9011020413600BD6BB2 /* TZCount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TZCount.h; sourceTree = "<group>"; };
 		615CC9021020413600BD6BB2 /* TZCount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TZCount.m; sourceTree = "<group>"; };
 		615CC90C102218ED00BD6BB2 /* tallyzoo.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = tallyzoo.db; sourceTree = "<group>"; };
@@ -183,8 +183,8 @@
 			children = (
 				615CC9011020413600BD6BB2 /* TZCount.h */,
 				615CC9021020413600BD6BB2 /* TZCount.m */,
-				615CC8FE1020412600BD6BB2 /* TZItem.h */,
-				615CC8FF1020412600BD6BB2 /* TZItem.m */,
+				615CC8FE1020412600BD6BB2 /* TZActivity.h */,
+				615CC8FF1020412600BD6BB2 /* TZActivity.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -290,7 +290,7 @@
 				615CC8E5101FF24C00BD6BB2 /* FMDatabase.m in Sources */,
 				615CC8E6101FF24C00BD6BB2 /* FMDatabaseAdditions.m in Sources */,
 				615CC8E7101FF24C00BD6BB2 /* FMResultSet.m in Sources */,
-				615CC9001020412600BD6BB2 /* TZItem.m in Sources */,
+				615CC9001020412600BD6BB2 /* TZActivity.m in Sources */,
 				615CC9031020413600BD6BB2 /* TZCount.m in Sources */,
 				615CCA361022E97600BD6BB2 /* EditItemViewController.m in Sources */,
 				615CCC10102A183400BD6BB2 /* EditTextFieldViewController.m in Sources */,

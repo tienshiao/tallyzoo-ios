@@ -11,7 +11,11 @@
 
 
 @interface MatrixView : UIView {
-	MatrixButton *_buttons[9];
+	NSMutableArray *buttons;
+	int _page;
 }
+
+- (id)initWithFrame:(CGRect)frame andScreenNumber:(int)page;
+- (void)reloadData;
 
 @end

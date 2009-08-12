@@ -7,22 +7,24 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TZItem.h"
+#import "TZActivity.h"
 #import "ColorView.h"
 
 @class EditItemViewController;
 
 @interface EditItemViewController : UITableViewController {
-	TZItem *item;
+	TZActivity *item;
 	
 	ColorView *colorView;
 	
 	UISwitch *showPublicSwitch;
 	UISwitch *showCountSwitch;
+	
+	// TODO support a dirty flag for save button
 }
 
-@property(nonatomic, retain) TZItem *item;
+@property(nonatomic, retain) TZActivity *item;
 
-- (id)initWithItem:(TZItem *)i;
+- (id)initWithItem:(TZActivity *)i;
 
 @end

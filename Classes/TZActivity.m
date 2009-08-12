@@ -6,12 +6,12 @@
 //  Copyright 2009 __MyCompanyName__. All rights reserved.
 //
 
-#import "TZItem.h"
+#import "TZActivity.h"
 #import "TallyZooAppDelegate.h"
 #import "FMDatabase.h"
 #import "UIColor-Expanded.h"
 
-@implementation TZItem
+@implementation TZActivity
 
 @synthesize key;
 @synthesize name;
@@ -33,7 +33,7 @@
 		FMDatabase *dbh = UIAppDelegate.database;
 		key = k;
 		if (key) {
-			FMResultSet *rs = [dbh executeQuery:@"SELECT * FROM items WHERE id = ?", [NSNumber numberWithInt:key], nil];
+			FMResultSet *rs = [dbh executeQuery:@"SELECT * FROM activities WHERE id = ?", [NSNumber numberWithInt:key], nil];
 			if ([rs next]) {
 				self.name = [rs stringForColumn:@"name"];
 				self.default_note = [rs stringForColumn:@"default_note"];
@@ -74,7 +74,7 @@
 		return YES;
 	}
 	
-	FMResultSet *rs = [dbh executeQuery:@"SELECT count(*) AS c FROM items WHERE id <> ? AND screen = ? AND position = ? AND deleted = 0",
+	FMResultSet *rs = [dbh executeQuery:@"SELECT count(*) AS c FROM activities WHERE id <> ? AND screen = ? AND position = ? AND deleted = 0",
 							[NSNumber numberWithInt:key], [NSNumber numberWithInt:screen], [NSNumber numberWithInt:position]];
 	[rs next];
 	if ([rs intForColumn:@"c"] == 0) {
@@ -91,19 +91,21 @@
 	
 	while (YES) {
 		for (_p = 0; _p < 9; _p++) {
-			FMResultSet *rs = [dbh executeQuery:@"SELECT count(*) AS c FROM items WHERE screen = ? AND position = ? AND deleted = 0",
+			FMResultSet *rs = [dbh executeQuery:@"SELECT count(*) AS c FROM activities WHERE screen = ? AND position = ? AND deleted = 0",
 							   [NSNumber numberWithInt:_s], [NSNumber numberWithInt:_p]];
 			[rs next];
+			if ([dbh hadError]) {
+				NSLog(@"Err %d: %@", [dbh lastErrorCode], [dbh lastErrorMessage]);
+				return;
+			}
 			if ([rs intForColumn:@"c"] == 0) {
-				break;
+				screen = _s;
+				position = _p;
+				return;
 			}
 		}
 		_s++;
 	}
-	
-	screen = _s;
-	position = _p;
-	return;	
 }
 
 - (BOOL)save {
@@ -115,7 +117,7 @@
 	
 	if (key == 0) {
 		// INSERT
-		[dbh executeUpdate:@"INSERT into items (name, default_note, default_tags, initial_value, \
+		[dbh executeUpdate:@"INSERT into activities (name, default_note, default_tags, initial_value, \
 												default_step, color, count_updown, display_total, \
 											    screen, position, deleted, created_on, created_tz, \
 												modified_on, modified_tz) VALUES \
@@ -142,7 +144,7 @@
 		}
 	} else {
 		// UPDATE
-		[dbh executeUpdate:@"UPDATE items \
+		[dbh executeUpdate:@"UPDATE activities \
 								SET name = ?, \
 									default_note = ?, \
 									default_tags = ?, \

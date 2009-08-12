@@ -7,8 +7,10 @@
 //
 
 #import "MatrixViewController.h"
+#import "TallyZooAppDelegate.h"
+#import "FMDatabase.h"
 #import "EditItemViewController.h"
-#import "TZItem.h"
+#import "TZActivity.h"
 
 @implementation MatrixViewController
 
@@ -29,6 +31,11 @@
 		self.navigationItem.leftBarButtonItem = barButtonItem;
 		[barButtonItem release];
 		
+		matrices = [[NSMutableArray alloc] init];
+		for (int i = 0; i < [self getNumberOfScreens]; i++) {
+			[matrices addObject:[NSNull null]];
+		}
+		
 	}
 	return self;
 }
@@ -44,17 +51,64 @@
 */
 
 
+- (int)getNumberOfScreens {
+	FMDatabase *dbh = UIAppDelegate.database;
+	FMResultSet *rs = [dbh executeQuery:@"SELECT max(screen) AS max_screen FROM activities WHERE deleted = 0"];
+	[rs next];
+	return [rs intForColumn:@"max_screen"] + 1;
+}
+
+- (void)loadScrollViewWithPage:(int)page {
+	if (page < 0) return;
+	if (page >= [self getNumberOfScreens]) return;
+	
+	if (page >= [matrices count]) {
+		for (int i = [matrices count] - 1; i < page; i++) {
+			[matrices addObject:[NSNull null]];
+		}
+	}
+	
+	// replace the placeholder if necessary
+    MatrixView *matrix = [matrices objectAtIndex:page];
+    if ((NSNull *)matrix == [NSNull null]) {
+        matrix = [[MatrixView alloc] initWithFrame:_scrollView.bounds andScreenNumber:page];
+        [matrices replaceObjectAtIndex:page withObject:matrix];
+        [matrix release];
+    } else {
+		[matrix reloadData];
+	}
+	
+    if (nil == matrix.superview) {
+        CGRect frame = _scrollView.frame;
+        frame.origin.x = frame.size.width * page;
+        frame.origin.y = 0;
+        matrix.frame = frame;
+        [_scrollView addSubview:matrix];
+    }	
+}
+
 // Implement loadView to create a view hierarchy programmatically, without using a nib.
 - (void)loadView {
 	UIView *containerView = [[UIView alloc] init];
 	containerView.backgroundColor = [UIColor blackColor];
 	
-	MatrixView *view = [[MatrixView alloc] initWithFrame:CGRectMake(0, 0, 320, 342)];
-//	view.backgroundColor = [UIColor blueColor];
-	[containerView addSubview:view];
+	int screens = [self getNumberOfScreens];
+	
+	_scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, 342)];
+	_scrollView.pagingEnabled = YES;
+	_scrollView.contentSize = CGSizeMake(320 * screens, _scrollView.frame.size.height);
+	_scrollView.showsHorizontalScrollIndicator = NO;
+	_scrollView.showsVerticalScrollIndicator = NO;
+	_scrollView.scrollsToTop = NO;
+	_scrollView.delegate = self;
+	[containerView addSubview:_scrollView];
+	
+/*	for (int i = 0; i < screens; i++) {
+		[self loadScrollViewWithPage:i];
+	}*/
 	
 	_pageControl = [[UIPageControl alloc] init];
-	_pageControl.numberOfPages = 3;
+	_pageControl.numberOfPages = screens;
 	_pageControl.backgroundColor = [UIColor blackColor];
 	_pageControl.frame = CGRectMake(0, 300, 0, 20);
 	[containerView addSubview:_pageControl];
@@ -78,6 +132,15 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+
+	int screens = [self getNumberOfScreens];
+
+	_scrollView.contentSize = CGSizeMake(320 * screens, _scrollView.frame.size.height);
+	_pageControl.numberOfPages = screens;
+	
+	for (int i = 0; i < screens; i++) {
+		[self loadScrollViewWithPage:i];
+	}
 //	[self.tableView reloadData];
 }
 
@@ -89,8 +152,27 @@
 }
 */
 
+- (void)scrollViewDidScroll:(UIScrollView *)sender {
+    // We don't want a "feedback loop" between the UIPageControl and the scroll delegate in
+    // which a scroll event generated from the user hitting the page control triggers updates from
+    // the delegate method. We use a boolean to disable the delegate logic when the page control is used.
+    if (_pageControlUsed) {
+        // do nothing - the scroll was initiated from the page control, not the user dragging
+        return;
+    }
+    // Switch the indicator when more than 50% of the previous/next page is visible
+    CGFloat pageWidth = _scrollView.frame.size.width;
+    int page = floor((_scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
+    _pageControl.currentPage = page;
+}
+
+// At the end of scroll animation, reset the boolean used when scrolls originate from the UIPageControl
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    _pageControlUsed = NO;
+}
+
 - (void)addItem:(id)sender {
-	TZItem *newItem = [[TZItem alloc] initWithKey:0];
+	TZActivity *newItem = [[TZActivity alloc] initWithKey:0];
 	EditItemViewController *eivc = [[EditItemViewController alloc] initWithItem:newItem];
 	UINavigationController *addNavigationController =[[UINavigationController alloc] initWithRootViewController:eivc];
 	
@@ -105,6 +187,18 @@
 }
 
 - (void)pageChanged:(id)sender {
+	int page = _pageControl.currentPage;
+    // load the visible page and the page on either side of it (to avoid flashes when the user starts scrolling)
+    //[self loadScrollViewWithPage:page - 1];
+    //[self loadScrollViewWithPage:page];
+    //[self loadScrollViewWithPage:page + 1];
+    // update the scroll view to the appropriate page
+    CGRect frame = _scrollView.frame;
+    frame.origin.x = frame.size.width * page;
+    frame.origin.y = 0;
+    [_scrollView scrollRectToVisible:frame animated:YES];
+    // Set the boolean used when scrolls originate from the UIPageControl. See scrollViewDidScroll: above.
+    _pageControlUsed = YES;	
 }
 
 - (void)didReceiveMemoryWarning {
@@ -124,6 +218,8 @@
     [super dealloc];
 	
 	[_pageControl release];
+	[_scrollView release];
+	[matrices release];
 }
 
 

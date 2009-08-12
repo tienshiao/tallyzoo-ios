@@ -9,11 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "MatrixView.h"
 
-@interface MatrixViewController : UIViewController {
-	MatrixView * _matrices[1];
+@interface MatrixViewController : UIViewController<UIScrollViewDelegate> {
+	NSMutableArray *matrices;
 	
 	UIPageControl *_pageControl;
+	UIScrollView *_scrollView;
+	BOOL _pageControlUsed;
 }
+
+- (int)getNumberOfScreens;
 
 - (void)addItem:(id)sender;
 - (void)editButtons:(id)sender;

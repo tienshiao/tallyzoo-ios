@@ -11,14 +11,14 @@
 
 @implementation MatrixButton
 
-@synthesize title;
 @synthesize delegate;
 
-- (id)initWithFrame:(CGRect)frame {
-    if (self = [super initWithFrame:frame]) {
+- (id)initWithActivity:(TZActivity *)a {
+    if (self = [super init]) {
         // Initialization code
 		self.userInteractionEnabled = YES;
 		self.down = NO;
+		self.activity = a;
     }
     return self;
 }
@@ -26,13 +26,15 @@
 - (void)setBackgroundColor:(UIColor *)c {
 	[super setBackgroundColor:c];
 	
-	if (0.299 * c.red * 255 + 0.587 * c.green * 255 + 0.114 * c.blue * 255 > 7) {
+//	double test = 0.299 * c.red * 255.0 + 0.587 * c.green * 255.0 + 0.114 * c.blue * 255.0;
+//	NSLog(@"%f %f %f", c.red, c.green, c.blue);
+	
+	if (0.299 * c.red * 255 + 0.587 * c.green * 255 + 0.114 * c.blue * 255 > 100) {
 		black = YES;
 	} else {
 		black = NO;
 	}
 }
-
 
 - (void)drawRect:(CGRect)rect {
     // Drawing code
@@ -69,23 +71,23 @@
 		CGContextSetRGBFillColor(currentContext, 1, 1, 1, 1);
 	}
 	
-	CGSize s = [title sizeWithFont:[UIFont boldSystemFontOfSize:16] 
-						  forWidth:self.bounds.size.width 
-					 lineBreakMode:UILineBreakModeWordWrap];
+	CGSize s = [activity.name sizeWithFont:[UIFont boldSystemFontOfSize:16] 
+						          forWidth:self.bounds.size.width 
+							 lineBreakMode:UILineBreakModeWordWrap];
 	if (s.height < self.bounds.size.height) {
 		CGRect r = self.bounds;
 		r.origin.y = (r.size.height - s.height) / 2;
 		r.size.height = s.height;
 		
-		[title drawInRect:r 
-				 withFont:[UIFont boldSystemFontOfSize:16] 
-			lineBreakMode:UILineBreakModeWordWrap 
-				alignment:UITextAlignmentCenter];
+		[activity.name drawInRect:r 
+						 withFont:[UIFont boldSystemFontOfSize:16] 
+				    lineBreakMode:UILineBreakModeWordWrap 
+				        alignment:UITextAlignmentCenter];
 	} else {
-		[title drawInRect:self.bounds 
-				 withFont:[UIFont systemFontOfSize:16] 
-			lineBreakMode:UILineBreakModeWordWrap 
-				alignment:UITextAlignmentCenter];
+		[activity.name drawInRect:self.bounds 
+						 withFont:[UIFont systemFontOfSize:16] 
+					lineBreakMode:UILineBreakModeWordWrap 
+				        alignment:UITextAlignmentCenter];
 	}
 	
 	// TODO draw badge
@@ -132,8 +134,21 @@
 	}
 }
 
+- (TZActivity *)activity {
+	return activity;
+}
+
+- (void)setActivity:(TZActivity *)a {
+	[a retain];
+	[activity release];
+	activity = a;
+	[self setBackgroundColor:a.color];
+	[self setNeedsDisplay];
+}
+
 - (void)dealloc {
     [super dealloc];
+	[activity release];
 }
 
 

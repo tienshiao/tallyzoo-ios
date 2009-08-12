@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 
-@interface TZItem : NSObject {
+@interface TZActivity : NSObject {
 	NSInteger key;
 	NSString *name;
 	NSString *default_note;

@@ -33,7 +33,7 @@
 		}
 	}
 	
-	database = [FMDatabase databaseWithPath:writableDBPath];
+	database = [[FMDatabase databaseWithPath:writableDBPath] retain];
 	if (![database open]) {
 		NSAssert(0, @"Failed to open database.");
 	}

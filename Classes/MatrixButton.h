@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TZActivity.h"
 
 @class MatrixButton;
 
@@ -17,15 +18,18 @@
 @end
 
 @interface MatrixButton : UIView {
-	NSString *title;
 	BOOL black;
 	BOOL down;
 	
 	id<MatrixButtonDelegate> delegate;
+	
+	TZActivity *activity;
 }
 
-@property(copy, nonatomic) NSString *title;
 @property(assign, nonatomic) BOOL down;
 @property(assign, nonatomic) id<MatrixButtonDelegate> delegate;
+@property(nonatomic, retain) TZActivity *activity;
+
+- (id)initWithActivity:(TZActivity *)a;
 
 @end

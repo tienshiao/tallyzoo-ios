@@ -18,7 +18,7 @@
 
 #define COLOR_TAG 1
 
-- (id)initWithItem:(TZItem *)i {
+- (id)initWithItem:(TZActivity *)i {
 	if (self = [super initWithStyle:UITableViewStyleGrouped]) {
 		self.title = @"Activity";
 		
@@ -33,7 +33,7 @@
 						 initWithBarButtonSystemItem:UIBarButtonSystemItemSave
 						 target:self 
 						 action:@selector(save:)];
-		barButtonItem.enabled = NO;
+//		barButtonItem.enabled = NO;
 		self.navigationItem.rightBarButtonItem = barButtonItem;
 		[barButtonItem release];
 		
