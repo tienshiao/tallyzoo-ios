@@ -96,18 +96,24 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 
-	int temp = [self getColorRow];
-	if (temp >= 0) {
-		// found a match
-		old_row = temp;
-		if (customColor == nil) {
-			[self generateRandomCustomColor];
-		}
+	if (old_row == 14) {
+		// previously selected custom color and then changed it
+		self.colorValue = self.customColor;
 	} else {
-		if (customColor == nil) {
-			self.customColor = self.colorValue;
+		// first time displaying, possibly no custom color
+		int temp = [self getColorRow];
+		if (temp >= 0) {
+			// found a match
+			old_row = temp;
+			if (customColor == nil) {
+				[self generateRandomCustomColor];
+			}
+		} else {
+			if (customColor == nil) {
+				self.customColor = self.colorValue;
+			}
+			old_row = 14;
 		}
-		old_row = 14;
 	}
 	
 	[self.tableView reloadData];
