@@ -1,10 +1,10 @@
-create table items (
+create table activities (
 id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT, -- limited to a shorter number of characters
     default_note TEXT, -- limited to some short number of characters
     default_tags TEXT, -- delimited string
     initial_value REAL, -- starting value
-    goal REAL,
+--    goal REAL,
     default_step REAL, -- how much to increment by (1.0, 60, etc)
     color TEXT, -- TODO exact format and storage is undetermined
     count_updown INTEGER,  -- -1 or +1
