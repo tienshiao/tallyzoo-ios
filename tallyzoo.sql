@@ -20,12 +20,13 @@ id INTEGER PRIMARY KEY AUTOINCREMENT,
 
 create table counts (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    item_id INTEGER,
+    activity_id INTEGER,
     note TEXT,
     tags TEXT,
     amount REAL,
     latitude REAL,
     longitude REAL,
+    deleted INTEGER,
     created_on TEXT, -- datetime stored in localtime
     created_tz TEXT,
     modified_on TEXT, -- datetime stored in localtime

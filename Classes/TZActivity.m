@@ -10,6 +10,7 @@
 #import "TallyZooAppDelegate.h"
 #import "FMDatabase.h"
 #import "UIColor-Expanded.h"
+#import "TZCount.h"
 
 @implementation TZActivity
 
@@ -183,6 +184,12 @@
 }
 
 - (void)loadCounts {
+}
+
+- (void)simpleCount {
+	TZCount *count = [[TZCount alloc] initWithKey:0 andActivity:self];
+	[count save];
+	[count release];
 }
 
 - (void)dealloc {

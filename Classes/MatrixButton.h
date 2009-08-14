@@ -20,14 +20,15 @@
 @interface MatrixButton : UIView {
 	BOOL black;
 	BOOL down;
+	BOOL held;
 	
-	id<MatrixButtonDelegate> delegate;
+	id delegate;
 	
 	TZActivity *activity;
 }
 
 @property(assign, nonatomic) BOOL down;
-@property(assign, nonatomic) id<MatrixButtonDelegate> delegate;
+@property(assign, nonatomic) id delegate;
 @property(nonatomic, retain) TZActivity *activity;
 
 - (id)initWithActivity:(TZActivity *)a;

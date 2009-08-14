@@ -10,10 +10,10 @@
 #import "TZActivity.h"
 #import "ColorView.h"
 
-@class EditItemViewController;
+@class EditActivityViewController;
 
-@interface EditItemViewController : UITableViewController {
-	TZActivity *item;
+@interface EditActivityViewController : UITableViewController {
+	TZActivity *activity;
 	
 	ColorView *colorView;
 	
@@ -23,8 +23,8 @@
 	// TODO support a dirty flag for save button
 }
 
-@property(nonatomic, retain) TZActivity *item;
+@property(nonatomic, retain) TZActivity *activity;
 
-- (id)initWithItem:(TZActivity *)i;
+- (id)initWithActivity:(TZActivity *)a;
 
 @end

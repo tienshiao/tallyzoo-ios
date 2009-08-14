@@ -11,7 +11,7 @@
 
 @implementation MatrixButton
 
-@synthesize delegate;
+//@synthesize delegate;
 
 - (id)initWithActivity:(TZActivity *)a {
     if (self = [super init]) {
@@ -25,9 +25,6 @@
 
 - (void)setBackgroundColor:(UIColor *)c {
 	[super setBackgroundColor:c];
-	
-//	double test = 0.299 * c.red * 255.0 + 0.587 * c.green * 255.0 + 0.114 * c.blue * 255.0;
-//	NSLog(@"%f %f %f", c.red, c.green, c.blue);
 	
 	if (0.299 * c.red * 255 + 0.587 * c.green * 255 + 0.114 * c.blue * 255 > 100) {
 		black = YES;
@@ -96,31 +93,37 @@
 #define HOLD_THRESHOLD 2.0
 - (void)timeoutTouch {
 	if (delegate && [delegate respondsToSelector:@selector(matrixButtonHeld:)]) { 
-		[delegate maxtrixButtonHeld:self];
+		[delegate matrixButtonHeld:self];
 	}	
-	NSLog(@"hold event triggered");
 	self.down = NO;
+	held = YES;
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
 	// start timer
 	[self performSelector:@selector(timeoutTouch) withObject:nil afterDelay:HOLD_THRESHOLD];
 	self.down = YES;
+	held = NO;
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+	if (held) {
+		self.down = NO;
+		held = NO;
+		return;
+	}
 	// cancel timer
 	[NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(timeoutTouch) object:nil];
 	if (delegate && [delegate respondsToSelector:@selector(matrixButtonClicked:)]) { 
-		[delegate maxtrixButtonClicked:self];
+		[delegate matrixButtonClicked:self];
 	}		
-	NSLog(@"button even triggered");
 	self.down = NO;
 }
 
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
 	[NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(timeoutTouch) object:nil];
 	self.down = NO;
+	held = NO;
 }
 
 - (BOOL)down {
@@ -149,6 +152,14 @@
 - (void)dealloc {
     [super dealloc];
 	[activity release];
+}
+
+- (id)delegate {
+	return delegate;
+}
+
+- (void)setDelegate:(id)d {
+	delegate = d;
 }
 
 

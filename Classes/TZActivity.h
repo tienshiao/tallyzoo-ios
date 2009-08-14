@@ -46,5 +46,6 @@
 -(id)initWithKey:(NSInteger)k;
 -(BOOL)save;
 -(void)loadCounts;
+-(void)simpleCount;
 
 @end

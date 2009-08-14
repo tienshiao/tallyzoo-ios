@@ -26,7 +26,7 @@
 		615CC9001020412600BD6BB2 /* TZActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 615CC8FF1020412600BD6BB2 /* TZActivity.m */; };
 		615CC9031020413600BD6BB2 /* TZCount.m in Sources */ = {isa = PBXBuildFile; fileRef = 615CC9021020413600BD6BB2 /* TZCount.m */; };
 		615CC90D102218ED00BD6BB2 /* tallyzoo.db in Resources */ = {isa = PBXBuildFile; fileRef = 615CC90C102218ED00BD6BB2 /* tallyzoo.db */; };
-		615CCA361022E97600BD6BB2 /* EditItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 615CCA351022E97600BD6BB2 /* EditItemViewController.m */; };
+		615CCA361022E97600BD6BB2 /* EditActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 615CCA351022E97600BD6BB2 /* EditActivityViewController.m */; };
 		615CCC10102A183400BD6BB2 /* EditTextFieldViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 615CCC0F102A183400BD6BB2 /* EditTextFieldViewController.m */; };
 		615CCC5B102A1EAF00BD6BB2 /* EditTextViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 615CCC5A102A1EAF00BD6BB2 /* EditTextViewViewController.m */; };
 		61E643E5102C2C9000E78174 /* ChooseCountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61E643E4102C2C9000E78174 /* ChooseCountViewController.m */; };
@@ -34,6 +34,8 @@
 		61E6455410315C3200E78174 /* CustomColorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61E6455310315C3200E78174 /* CustomColorViewController.m */; };
 		61E645DB1031DF3800E78174 /* ColorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 61E645DA1031DF3800E78174 /* ColorView.m */; };
 		61E646301031E78500E78174 /* ColorCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 61E6462F1031E78500E78174 /* ColorCellView.m */; };
+		61E6490A1032C29600E78174 /* dist.plist in Resources */ = {isa = PBXBuildFile; fileRef = 61E649091032C29600E78174 /* dist.plist */; };
+		61E64A3B1035C61400E78174 /* EditCountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61E64A3A1035C61400E78174 /* EditCountViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,8 +72,8 @@
 		615CC9011020413600BD6BB2 /* TZCount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TZCount.h; sourceTree = "<group>"; };
 		615CC9021020413600BD6BB2 /* TZCount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TZCount.m; sourceTree = "<group>"; };
 		615CC90C102218ED00BD6BB2 /* tallyzoo.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = tallyzoo.db; sourceTree = "<group>"; };
-		615CCA341022E97600BD6BB2 /* EditItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditItemViewController.h; sourceTree = "<group>"; };
-		615CCA351022E97600BD6BB2 /* EditItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditItemViewController.m; sourceTree = "<group>"; };
+		615CCA341022E97600BD6BB2 /* EditActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditActivityViewController.h; sourceTree = "<group>"; };
+		615CCA351022E97600BD6BB2 /* EditActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditActivityViewController.m; sourceTree = "<group>"; };
 		615CCC0E102A183400BD6BB2 /* EditTextFieldViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditTextFieldViewController.h; sourceTree = "<group>"; };
 		615CCC0F102A183400BD6BB2 /* EditTextFieldViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditTextFieldViewController.m; sourceTree = "<group>"; };
 		615CCC59102A1EAF00BD6BB2 /* EditTextViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditTextViewViewController.h; sourceTree = "<group>"; };
@@ -86,6 +88,9 @@
 		61E645DA1031DF3800E78174 /* ColorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorView.m; sourceTree = "<group>"; };
 		61E6462E1031E78500E78174 /* ColorCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorCellView.h; sourceTree = "<group>"; };
 		61E6462F1031E78500E78174 /* ColorCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorCellView.m; sourceTree = "<group>"; };
+		61E649091032C29600E78174 /* dist.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = dist.plist; sourceTree = "<group>"; };
+		61E64A391035C61400E78174 /* EditCountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditCountViewController.h; sourceTree = "<group>"; };
+		61E64A3A1035C61400E78174 /* EditCountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditCountViewController.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* TallyZoo-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "TallyZoo-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -110,8 +115,10 @@
 				615CCAEA10283E4700BD6BB2 /* Editors */,
 				615CC84C101FCB3C00BD6BB2 /* Models */,
 				615CC865101FF15B00BD6BB2 /* Utilities */,
-				615CCA341022E97600BD6BB2 /* EditItemViewController.h */,
-				615CCA351022E97600BD6BB2 /* EditItemViewController.m */,
+				61E64A391035C61400E78174 /* EditCountViewController.h */,
+				61E64A3A1035C61400E78174 /* EditCountViewController.m */,
+				615CCA341022E97600BD6BB2 /* EditActivityViewController.h */,
+				615CCA351022E97600BD6BB2 /* EditActivityViewController.m */,
 				615CC821101D9F9100BD6BB2 /* DetailedCountViewController.h */,
 				615CC822101D9F9100BD6BB2 /* DetailedCountViewController.m */,
 				615CC81C101D9F0900BD6BB2 /* GraphViewController.h */,
@@ -160,6 +167,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				61E649091032C29600E78174 /* dist.plist */,
 				615CC90C102218ED00BD6BB2 /* tallyzoo.db */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* TallyZoo-Info.plist */,
@@ -269,6 +277,7 @@
 			files = (
 				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
 				615CC90D102218ED00BD6BB2 /* tallyzoo.db in Resources */,
+				61E6490A1032C29600E78174 /* dist.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,7 +301,7 @@
 				615CC8E7101FF24C00BD6BB2 /* FMResultSet.m in Sources */,
 				615CC9001020412600BD6BB2 /* TZActivity.m in Sources */,
 				615CC9031020413600BD6BB2 /* TZCount.m in Sources */,
-				615CCA361022E97600BD6BB2 /* EditItemViewController.m in Sources */,
+				615CCA361022E97600BD6BB2 /* EditActivityViewController.m in Sources */,
 				615CCC10102A183400BD6BB2 /* EditTextFieldViewController.m in Sources */,
 				615CCC5B102A1EAF00BD6BB2 /* EditTextViewViewController.m in Sources */,
 				61E643E5102C2C9000E78174 /* ChooseCountViewController.m in Sources */,
@@ -300,6 +309,7 @@
 				61E6455410315C3200E78174 /* CustomColorViewController.m in Sources */,
 				61E645DB1031DF3800E78174 /* ColorView.m in Sources */,
 				61E646301031E78500E78174 /* ColorCellView.m in Sources */,
+				61E64A3B1035C61400E78174 /* EditCountViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -331,6 +341,33 @@
 				PRODUCT_NAME = TallyZoo;
 			};
 			name = Release;
+		};
+		61E648F31032C0FF00E78174 /* Release Ad Hoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_ENTITLEMENTS = dist.plist;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Tienshiao Ma";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "5E96AB6C-9536-45AC-830A-FAAE36CD0657";
+				SDKROOT = iphoneos3.0;
+			};
+			name = "Release Ad Hoc";
+		};
+		61E648F41032C0FF00E78174 /* Release Ad Hoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = TallyZoo_Prefix.pch;
+				INFOPLIST_FILE = "TallyZoo-Info.plist";
+				PRODUCT_NAME = TallyZoo;
+			};
+			name = "Release Ad Hoc";
 		};
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -366,6 +403,7 @@
 			buildConfigurations = (
 				1D6058940D05DD3E006BFB54 /* Debug */,
 				1D6058950D05DD3E006BFB54 /* Release */,
+				61E648F41032C0FF00E78174 /* Release Ad Hoc */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -375,6 +413,7 @@
 			buildConfigurations = (
 				C01FCF4F08A954540054247B /* Debug */,
 				C01FCF5008A954540054247B /* Release */,
+				61E648F31032C0FF00E78174 /* Release Ad Hoc */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

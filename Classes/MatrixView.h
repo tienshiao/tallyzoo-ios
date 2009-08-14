@@ -10,12 +10,13 @@
 #import "MatrixButton.h"
 
 
-@interface MatrixView : UIView {
+@interface MatrixView : UIView<MatrixButtonDelegate> {
 	NSMutableArray *buttons;
 	int _page;
 }
 
+@property (assign,nonatomic) NSMutableArray *buttons;
+
 - (id)initWithFrame:(CGRect)frame andScreenNumber:(int)page;
-- (void)reloadData;
 
 @end

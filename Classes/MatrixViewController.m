@@ -9,8 +9,11 @@
 #import "MatrixViewController.h"
 #import "TallyZooAppDelegate.h"
 #import "FMDatabase.h"
-#import "EditItemViewController.h"
+#import "EditActivityViewController.h"
+#import "EditCountViewController.h"
 #import "TZActivity.h"
+#import "TZCount.h"
+#import "MatrixButton.h"
 
 @implementation MatrixViewController
 
@@ -58,6 +61,28 @@
 	return [rs intForColumn:@"max_screen"] + 1;
 }
 
+- (void)loadButtons:(MatrixView *)mv screen:(int)screen {
+	FMDatabase *dbh = UIAppDelegate.database;
+	FMResultSet *rs = [dbh executeQuery:@"SELECT id FROM activities WHERE deleted = 0 AND screen = ?",
+					   [NSNumber numberWithInt:screen]];
+	while ([rs next]) {
+		TZActivity *a = [[TZActivity alloc] initWithKey:[rs intForColumn:@"id"]];
+		MatrixButton *button = [[MatrixButton alloc] initWithActivity:a];
+		
+		// setup frame
+		CGRect r = CGRectMake(0, 0, mv.bounds.size.width/3, mv.bounds.size.height/3);
+		r.origin.x = (a.position % 3) * r.size.width;
+		r.origin.y = (a.position / 3) * r.size.height;
+		button.frame = r;
+		button.delegate = self;
+		
+		[mv.buttons replaceObjectAtIndex:a.position withObject:button];
+		[mv addSubview:button];
+		[a release];
+		[button release];
+	}	
+}
+
 - (void)loadScrollViewWithPage:(int)page {
 	if (page < 0) return;
 	if (page >= [self getNumberOfScreens]) return;
@@ -74,9 +99,9 @@
         matrix = [[MatrixView alloc] initWithFrame:_scrollView.bounds andScreenNumber:page];
         [matrices replaceObjectAtIndex:page withObject:matrix];
         [matrix release];
-    } else {
-		[matrix reloadData];
-	}
+    }
+	
+	[self loadButtons:matrix screen:page];
 	
     if (nil == matrix.superview) {
         CGRect frame = _scrollView.frame;
@@ -172,14 +197,14 @@
 }
 
 - (void)addItem:(id)sender {
-	TZActivity *newItem = [[TZActivity alloc] initWithKey:0];
-	EditItemViewController *eivc = [[EditItemViewController alloc] initWithItem:newItem];
-	UINavigationController *addNavigationController =[[UINavigationController alloc] initWithRootViewController:eivc];
+	TZActivity *newActivity = [[TZActivity alloc] initWithKey:0];
+	EditActivityViewController *eavc = [[EditActivityViewController alloc] initWithActivity:newActivity];
+	UINavigationController *addNavigationController =[[UINavigationController alloc] initWithRootViewController:eavc];
 	
 	[[self navigationController] presentModalViewController:addNavigationController animated:YES];
 	
 	[addNavigationController release];
-	[eivc release];	
+	[eavc release];	
 }
 
 
@@ -199,6 +224,25 @@
     [_scrollView scrollRectToVisible:frame animated:YES];
     // Set the boolean used when scrolls originate from the UIPageControl. See scrollViewDidScroll: above.
     _pageControlUsed = YES;	
+}
+
+- (void)matrixButtonClicked:(MatrixButton *)mb {
+	[mb.activity simpleCount];
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"clicked" message:nil
+												   delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+	[alert show];	
+	[alert release];
+}
+
+- (void)matrixButtonHeld:(MatrixButton *)mb {
+	TZCount *newCount = [[TZCount alloc] initWithKey:0 andActivity:mb.activity];
+	EditCountViewController *ecvc = [[EditCountViewController alloc] initWithCount:newCount];
+	UINavigationController *addNavigationController =[[UINavigationController alloc] initWithRootViewController:ecvc];
+	
+	[[self navigationController] presentModalViewController:addNavigationController animated:YES];
+	
+	[addNavigationController release];
+	[ecvc release];	
 }
 
 - (void)didReceiveMemoryWarning {
