@@ -85,24 +85,12 @@
 				        alignment:UITextAlignmentCenter];
 	}
 	
-	// TODO draw badge
 	if (activity.display_total) {
 		NSString *numString = [activity sum];
 		s = [numString sizeWithFont:[UIFont boldSystemFontOfSize:16]];
 		float radius = s.height / 2.0;
 		float padding = 10.0;
 		float width = s.width - 5.0;
-		
-		// shadow
-		CGRect r = CGRectMake(70, 13, s.width * 1.2, s.height * 1.2);
-/*		CGContextAddEllipseInRect(currentContext, r);
-		CGContextSetRGBFillColor(currentContext, 0, 0, 0, .5);
-		CGContextFillPath(currentContext);	
-		CGContextSetLineWidth(currentContext, 3.0);
-		CGContextSetRGBStrokeColor(currentContext, 0.0, 0.0, 0.0, .5);
-		CGContextAddEllipseInRect(currentContext, r);
-		CGContextStrokePath(currentContext);
-	*/	
 		
 		CGContextBeginPath(currentContext);
 		CGMutablePathRef path = CGPathCreateMutable();
@@ -125,15 +113,6 @@
 		CGContextSetLineWidth(currentContext, 2.0);
 		CGContextSetRGBStrokeColor(currentContext, 1.0, 1.0, 1.0, 1.0);
 		CGContextStrokePath(currentContext);
-				
-/*		r = CGRectMake(70, 10, s.width * 1.2, s.height * 1.2);
-		CGContextAddEllipseInRect(currentContext, r);
-		CGContextSetRGBFillColor(currentContext, 1, 0, 0, 1.0);
-		CGContextFillPath(currentContext);	
-		CGContextSetLineWidth(currentContext, 3.0);
-		CGContextSetRGBStrokeColor(currentContext, 1.0, 1.0, 1.0, 1.0);
-		CGContextAddEllipseInRect(currentContext, r);
-		CGContextStrokePath(currentContext);*/
 		
 		CGContextSetRGBFillColor(currentContext, 1, 1, 1, 1); 
 		[numString drawInRect:CGRectMake(self.bounds.size.width - padding - radius - (s.width - 2.5), padding, s.width, s.height) 
