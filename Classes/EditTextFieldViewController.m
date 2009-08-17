@@ -190,9 +190,22 @@
 }
 */
 
+- (int)calcSigDigits {
+	NSRange r = [textField.text rangeOfString:@"."];
+	
+	if (r.length == 0) {
+		return 0;
+	} else {
+		return [textField.text length] - r.location - 1;
+	}
+}
+
 - (void)save:(id)sender {
 	if (numberEditing) {
+		// TODO check number
 		[editedObject setValue:[NSNumber numberWithDouble:textField.text.doubleValue] forKey:editedFieldKey];
+		[editedObject setValue:[NSNumber numberWithInt:[self calcSigDigits]] forKey:sigFieldKey];
+
 	} else {
 		[editedObject setValue:textField.text forKey:editedFieldKey];
 	}
