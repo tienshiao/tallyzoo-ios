@@ -11,14 +11,12 @@
 
 @implementation MatrixButton
 
-//@synthesize delegate;
-
 - (id)initWithActivity:(TZActivity *)a {
     if (self = [super init]) {
         // Initialization code
 		self.userInteractionEnabled = YES;
 		self.down = NO;
-		self.activity = a;
+		self.activity = a;	
     }
     return self;
 }
@@ -88,6 +86,62 @@
 	}
 	
 	// TODO draw badge
+	if (activity.display_total) {
+		NSString *numString = [activity sum];
+		s = [numString sizeWithFont:[UIFont boldSystemFontOfSize:16]];
+		float radius = s.height / 2.0;
+		float padding = 10.0;
+		float width = s.width - 5.0;
+		
+		// shadow
+		CGRect r = CGRectMake(70, 13, s.width * 1.2, s.height * 1.2);
+/*		CGContextAddEllipseInRect(currentContext, r);
+		CGContextSetRGBFillColor(currentContext, 0, 0, 0, .5);
+		CGContextFillPath(currentContext);	
+		CGContextSetLineWidth(currentContext, 3.0);
+		CGContextSetRGBStrokeColor(currentContext, 0.0, 0.0, 0.0, .5);
+		CGContextAddEllipseInRect(currentContext, r);
+		CGContextStrokePath(currentContext);
+	*/	
+		
+		CGContextBeginPath(currentContext);
+		CGMutablePathRef path = CGPathCreateMutable();
+		CGPathMoveToPoint(path, NULL, self.bounds.size.width - padding - radius, 0 + padding + 2 * radius);
+		CGPathAddLineToPoint(path, NULL, self.bounds.size.width - padding - radius - width, 0 + padding + 2 * radius);
+		CGPathAddArc(path, NULL, self.bounds.size.width - padding - radius - width, 0 + padding + radius, radius, M_PI/2, M_PI * 1.5, 0);
+		CGPathAddLineToPoint(path, NULL, self.bounds.size.width - padding - radius, 0 + padding);
+		CGPathAddArc(path, NULL, self.bounds.size.width - padding - radius, 0 + padding + radius, radius, M_PI * 1.5, M_PI/2, 0);
+		
+		CGContextSaveGState(currentContext);
+		CGContextSetShadow(currentContext, CGSizeMake(0, -4), 3);
+		
+		CGContextAddPath(currentContext, path);
+		CGContextSetRGBFillColor(currentContext, 1, 0, 0, 1.0);
+		CGContextFillPath(currentContext);	
+		CGContextRestoreGState(currentContext);
+
+		
+		CGContextAddPath(currentContext, path);
+		CGContextSetLineWidth(currentContext, 2.0);
+		CGContextSetRGBStrokeColor(currentContext, 1.0, 1.0, 1.0, 1.0);
+		CGContextStrokePath(currentContext);
+				
+/*		r = CGRectMake(70, 10, s.width * 1.2, s.height * 1.2);
+		CGContextAddEllipseInRect(currentContext, r);
+		CGContextSetRGBFillColor(currentContext, 1, 0, 0, 1.0);
+		CGContextFillPath(currentContext);	
+		CGContextSetLineWidth(currentContext, 3.0);
+		CGContextSetRGBStrokeColor(currentContext, 1.0, 1.0, 1.0, 1.0);
+		CGContextAddEllipseInRect(currentContext, r);
+		CGContextStrokePath(currentContext);*/
+		
+		CGContextSetRGBFillColor(currentContext, 1, 1, 1, 1); 
+		[numString drawInRect:CGRectMake(self.bounds.size.width - padding - radius - (s.width - 2.5), padding, s.width, s.height) 
+					 withFont:[UIFont boldSystemFontOfSize:16] 
+				lineBreakMode:UILineBreakModeWordWrap 
+					alignment:UITextAlignmentCenter];
+	}
+	
 }
 
 #define HOLD_THRESHOLD 2.0
