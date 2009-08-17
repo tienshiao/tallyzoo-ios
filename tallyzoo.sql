@@ -4,8 +4,10 @@ id INTEGER PRIMARY KEY AUTOINCREMENT,
     default_note TEXT, -- limited to some short number of characters
     default_tags TEXT, -- delimited string
     initial_value REAL, -- starting value
+    init_sig INTEGER, -- significant digits for initial_value
 --    goal REAL,
     default_step REAL, -- how much to increment by (1.0, 60, etc)
+    step_sig INTEGER, -- significant digits for default_step
     color TEXT, -- TODO exact format and storage is undetermined
     count_updown INTEGER,  -- -1 or +1
     display_total INTEGER,  -- display number badge on button
@@ -24,6 +26,7 @@ create table counts (
     note TEXT,
     tags TEXT,
     amount REAL,
+    amount_sig INTEGER, -- significant digits for amount
     latitude REAL,
     longitude REAL,
     deleted INTEGER,

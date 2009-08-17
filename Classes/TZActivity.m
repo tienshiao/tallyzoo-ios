@@ -19,7 +19,9 @@
 @synthesize default_note;
 @synthesize default_tags;
 @synthesize initial_value;
+@synthesize init_sig;
 @synthesize default_step;
+@synthesize step_sig;
 @synthesize color;
 @synthesize public;
 @synthesize count_updown;
@@ -40,7 +42,9 @@
 				self.default_note = [rs stringForColumn:@"default_note"];
 				self.default_tags = [rs stringForColumn:@"default_tags"];
 				self.initial_value = [rs doubleForColumn:@"initial_value"];
+				self.init_sig = [rs intForColumn:@"init_sig"];
 				self.default_step = [rs doubleForColumn:@"default_step"];
+				self.step_sig = [rs intForColumn:@"step_sig"];
 				self.color = [UIColor colorWithHexString:[rs stringForColumn:@"color"]];
 				self.count_updown = [rs intForColumn:@"count_updown"];
 				self.display_total = [rs intForColumn:@"display_total"];
@@ -53,7 +57,9 @@
 		} else {
 			self.public = YES;
 			self.initial_value = 0;
+			self.init_sig = 0;
 			self.default_step = 1;
+			self.step_sig = 0;
 			self.count_updown = 1;
 			self.display_total = 1;
 			self.color = [UIColor whiteColor];
@@ -118,17 +124,19 @@
 	
 	if (key == 0) {
 		// INSERT
-		[dbh executeUpdate:@"INSERT into activities (name, default_note, default_tags, initial_value, \
-												default_step, color, count_updown, display_total, \
+		[dbh executeUpdate:@"INSERT into activities (name, default_note, default_tags, initial_value, init_sig,\
+												default_step, step_sig, color, count_updown, display_total, \
 											    screen, position, deleted, created_on, created_tz, \
 												modified_on, modified_tz) VALUES \
-												(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, \
+												(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, \
 												datetime('now', 'localtime'), ?, datetime('now', 'localtime'), ?)",
 			name,
 			default_note,
 			default_tags,
 			[NSNumber numberWithDouble:initial_value],
+			[NSNumber numberWithInt:init_sig],
 			[NSNumber numberWithDouble:default_step],
+			[NSNumber numberWithInt:step_sig],
 			[color hexStringFromColor],
 			[NSNumber numberWithInt:count_updown],
 			[NSNumber numberWithInt:display_total],
@@ -150,7 +158,9 @@
 									default_note = ?, \
 									default_tags = ?, \
 									initial_value = ?, \
+									init_sig = ?, \
 									default_step = ?, \
+									step_sig = ?, \
 									color = ?, \
 									count_updown = ?, \
 									display_total = ?, \
@@ -164,7 +174,9 @@
 		 default_note,
 		 default_tags,
 		 [NSNumber numberWithDouble:initial_value],
+		 [NSNumber numberWithInt:init_sig],
 		 [NSNumber numberWithDouble:default_step],
+		 [NSNumber numberWithInt:step_sig],
 		 [color hexStringFromColor],
 		 [NSNumber numberWithInt:count_updown],
 		 [NSNumber numberWithInt:display_total],
@@ -190,6 +202,26 @@
 	TZCount *count = [[TZCount alloc] initWithKey:0 andActivity:self];
 	[count save];
 	[count release];
+}
+
+-(NSString *)sum {
+	FMDatabase *dbh = UIAppDelegate.database;
+	FMResultSet *rs = [dbh executeQuery:@"SELECT SUM(amount) AS total, MAX(amount_sig) AS amount_sig FROM counts WHERE activity_id = ? AND deleted = 0",
+	   [NSNumber numberWithInt:key]];
+	[rs next];
+	
+	double total = [rs doubleForColumn:@"total"];
+	int sig = [rs intForColumn:@"amount_sig"];
+	
+	if (sig < init_sig) {
+		sig = init_sig;
+	}
+
+	
+	NSString *format = [NSString stringWithFormat:@"%%.%df", sig];
+	
+//	return initial_value + total * count_updown;
+	return [NSString stringWithFormat:format, total];
 }
 
 - (void)dealloc {

@@ -63,11 +63,11 @@
 }
 */
 
-/*
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+	[self.tableView reloadData];
 }
-*/
+
 /*
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
@@ -195,6 +195,7 @@
 			etfvc.editedObject = count;
 			etfvc.textValue = [NSString stringWithFormat:@"%@", [NSNumber numberWithDouble:count.amount]];
 			etfvc.editedFieldKey = @"amount";
+			etfvc.sigFieldKey = @"amount_sig";
 			etfvc.title = @"Amount";
 			etfvc.numberEditing = YES;
 			[self.navigationController pushViewController:etfvc animated:YES];

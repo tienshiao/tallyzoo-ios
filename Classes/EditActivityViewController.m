@@ -271,6 +271,7 @@
 			etfvc.editedObject = activity;
 			etfvc.textValue = [NSString stringWithFormat:@"%@", [NSNumber numberWithDouble:activity.initial_value]];
 			etfvc.editedFieldKey = @"initial_value";
+			etfvc.sigFieldKey = @"init_sig";
 			etfvc.title = @"Initial Value";
 			etfvc.numberEditing = YES;
 			[self.navigationController pushViewController:etfvc animated:YES];
@@ -283,6 +284,7 @@
 			etfvc.editedObject = activity;
 			etfvc.textValue = [NSString stringWithFormat:@"%@", [NSNumber numberWithDouble:activity.default_step]];
 			etfvc.editedFieldKey = @"default_step";
+			etfvc.sigFieldKey = @"step_sig";
 			etfvc.title = @"Default Step";
 			etfvc.numberEditing = YES;
 			[self.navigationController pushViewController:etfvc animated:YES];

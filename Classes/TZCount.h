@@ -16,8 +16,10 @@
 	NSString *note;
 	NSString *tags;
 	double amount;
+	int	amount_sig;
 	double latitude;
 	double longitude;
+	BOOL deleted;
 }
 
 @property(assign, nonatomic) TZActivity *activity;
@@ -25,8 +27,10 @@
 @property(copy, nonatomic) NSString *note;
 @property(copy, nonatomic) NSString *tags;
 @property(assign, nonatomic) double amount;
+@property(assign, nonatomic) int amount_sig;
 @property(assign, nonatomic) double latitude;
 @property(assign, nonatomic) double longitude;
+@property(assign, nonatomic) BOOL deleted;
 
 - (id)initWithKey:(int)key andActivity:(TZActivity *)key;
 - (BOOL)save;

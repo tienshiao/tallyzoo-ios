@@ -15,7 +15,9 @@
 	NSString *default_note;
 	NSString *default_tags;
 	double initial_value;
+	int init_sig;
 	double default_step;
+	int step_sig;
 	UIColor *color;
 	BOOL public;
 	int count_updown;
@@ -33,7 +35,9 @@
 @property(copy, nonatomic) NSString *default_note;
 @property(copy, nonatomic) NSString *default_tags;
 @property(assign, nonatomic) double initial_value;
+@property(assign, nonatomic) int init_sig;
 @property(assign, nonatomic) double default_step;
+@property(assign, nonatomic) int step_sig;
 @property(nonatomic, retain) UIColor *color;
 @property(assign, nonatomic) BOOL public;
 @property(assign, nonatomic) int count_updown;
@@ -47,5 +51,6 @@
 -(BOOL)save;
 -(void)loadCounts;
 -(void)simpleCount;
+-(NSString *)sum;
 
 @end

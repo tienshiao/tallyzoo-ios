@@ -16,11 +16,13 @@
 	NSString *editedFieldKey;
 	
 	BOOL numberEditing;
+	NSString *sigFieldKey;
 }
 
 @property (copy, nonatomic) NSString *textValue;
 @property (assign, nonatomic) id editedObject;
 @property (copy, nonatomic) NSString *editedFieldKey;
 @property (assign, nonatomic) BOOL numberEditing;
+@property (copy, nonatomic) NSString *sigFieldKey;
 
 @end

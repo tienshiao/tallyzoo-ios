@@ -15,6 +15,7 @@
 @synthesize editedObject;
 @synthesize editedFieldKey;
 @synthesize numberEditing;
+@synthesize sigFieldKey;
 
 - (id)init {
 	if (self = [super initWithStyle:UITableViewStyleGrouped]) {
@@ -208,6 +209,7 @@
 	
 	[textValue release];
 	[editedFieldKey release];
+	[sigFieldKey release];
 }
 
 

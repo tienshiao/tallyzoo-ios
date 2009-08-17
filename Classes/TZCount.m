@@ -18,8 +18,10 @@
 @synthesize note;
 @synthesize tags;
 @synthesize amount;
+@synthesize amount_sig;
 @synthesize latitude;
 @synthesize longitude;
+@synthesize deleted;
 
 - (id)initWithKey:(int)k andActivity:(TZActivity *)a {
 	if (self = [super init]) {
@@ -31,6 +33,7 @@
 				self.note = [rs stringForColumn:@"note"];
 				self.tags = [rs stringForColumn:@"tags"];
 				self.amount = [rs doubleForColumn:@"amount"];
+				self.amount_sig = [rs intForColumn:@"amount_sig"];
 				self.latitude = [rs doubleForColumn:@"latitude"];
 				self.longitude = [rs doubleForColumn:@"longitude"];
 			}
@@ -39,10 +42,13 @@
 			self.note = @"";
 			self.tags = a.default_tags;
 			self.amount = a.default_step;
+			self.amount_sig = a.step_sig;
 			
 			// TODO ask for permission to use location earlier
 			self.latitude = 0.0;
 			self.longitude = 0.0;
+			
+			self.deleted = NO;
 		}
 
 		activity = a;
@@ -62,15 +68,16 @@
 	
 	if (key == 0) {
 		// INSERT
-		[dbh executeUpdate:@"INSERT INTO counts (activity_id, note, tags, amount, \
-		 latitude, longitude, created_on, created_tz, \
+		[dbh executeUpdate:@"INSERT INTO counts (activity_id, note, tags, amount, amount_sig,\
+		 latitude, longitude, deleted, created_on, created_tz, \
 		 modified_on, modified_tz) VALUES \
-		 (?, ?, ?, ?, ?, ?, \
+		 (?, ?, ?, ?, ?, ?, ?, 0, \
 		 datetime('now', 'localtime'), ?, datetime('now', 'localtime'), ?)",
 		 [NSNumber numberWithInt:activity.key],
 		 note,
 		 tags,
 		 [NSNumber numberWithDouble:amount],
+		 [NSNumber numberWithInt:amount_sig],
 		 [NSNumber numberWithDouble:latitude],
  		 [NSNumber numberWithDouble:longitude],
 		 @"",
@@ -88,8 +95,10 @@
 				note = ?, \
 				tags = ?, \
 				amount = ?, \
+				amount_sig = ?, \
 				latitude = ?, \
 				longitude = ?, \
+				deleted = ?, \
 				modified_on = datetime('now', 'localtime'),\
 				modified_tz = ? \
 				WHERE id = ?",
@@ -97,8 +106,10 @@
 		 note,
 		 tags,
 		 [NSNumber numberWithDouble:amount],
+		 [NSNumber numberWithInt:amount_sig],
 		 [NSNumber numberWithDouble:latitude],
 		 [NSNumber numberWithDouble:longitude],
+		 [NSNumber numberWithBool:deleted],
 		 @"",
 		 key,
 		 nil];

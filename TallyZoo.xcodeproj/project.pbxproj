@@ -36,6 +36,7 @@
 		61E646301031E78500E78174 /* ColorCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 61E6462F1031E78500E78174 /* ColorCellView.m */; };
 		61E6490A1032C29600E78174 /* dist.plist in Resources */ = {isa = PBXBuildFile; fileRef = 61E649091032C29600E78174 /* dist.plist */; };
 		61E64A3B1035C61400E78174 /* EditCountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61E64A3A1035C61400E78174 /* EditCountViewController.m */; };
+		61E64B511036C11800E78174 /* icon2.png in Resources */ = {isa = PBXBuildFile; fileRef = 61E64B501036C11800E78174 /* icon2.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -91,6 +92,7 @@
 		61E649091032C29600E78174 /* dist.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = dist.plist; sourceTree = "<group>"; };
 		61E64A391035C61400E78174 /* EditCountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditCountViewController.h; sourceTree = "<group>"; };
 		61E64A3A1035C61400E78174 /* EditCountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditCountViewController.m; sourceTree = "<group>"; };
+		61E64B501036C11800E78174 /* icon2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon2.png; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* TallyZoo-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "TallyZoo-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -112,9 +114,9 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				615CC865101FF15B00BD6BB2 /* Utilities */,
 				615CCAEA10283E4700BD6BB2 /* Editors */,
 				615CC84C101FCB3C00BD6BB2 /* Models */,
-				615CC865101FF15B00BD6BB2 /* Utilities */,
 				61E64A391035C61400E78174 /* EditCountViewController.h */,
 				61E64A3A1035C61400E78174 /* EditCountViewController.m */,
 				615CCA341022E97600BD6BB2 /* EditActivityViewController.h */,
@@ -167,6 +169,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				61E64B501036C11800E78174 /* icon2.png */,
 				61E649091032C29600E78174 /* dist.plist */,
 				615CC90C102218ED00BD6BB2 /* tallyzoo.db */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
@@ -278,6 +281,7 @@
 				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
 				615CC90D102218ED00BD6BB2 /* tallyzoo.db in Resources */,
 				61E6490A1032C29600E78174 /* dist.plist in Resources */,
+				61E64B511036C11800E78174 /* icon2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -19,7 +19,7 @@
 
 -(id)init {
 	if (self = [super init]) {
-		self.title = @"Tally Zoo";
+		self.title = @"TallyZoo";
 		
 		UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] 
 										  initWithBarButtonSystemItem:UIBarButtonSystemItemAdd 
@@ -228,10 +228,7 @@
 
 - (void)matrixButtonClicked:(MatrixButton *)mb {
 	[mb.activity simpleCount];
-	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"clicked" message:nil
-												   delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-	[alert show];	
-	[alert release];
+	// TODO play a little sound
 }
 
 - (void)matrixButtonHeld:(MatrixButton *)mb {
