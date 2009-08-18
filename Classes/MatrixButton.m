@@ -17,6 +17,16 @@
 		self.userInteractionEnabled = YES;
 		self.down = NO;
 		self.activity = a;	
+		
+		clickDownURL = CFBundleCopyResourceURL(CFBundleGetMainBundle(),
+											   CFSTR("click_down"),
+											   CFSTR("wav"), NULL);
+		AudioServicesCreateSystemSoundID(clickDownURL, &clickDownID);
+		
+		clickUpURL = CFBundleCopyResourceURL(CFBundleGetMainBundle(),
+											 CFSTR("click_up"),
+											 CFSTR("wav"), NULL);
+		AudioServicesCreateSystemSoundID(clickUpURL, &clickUpID);		
     }
     return self;
 }
@@ -67,8 +77,8 @@
 	}
 	
 	CGSize s = [activity.name sizeWithFont:[UIFont boldSystemFontOfSize:16] 
-						          forWidth:self.bounds.size.width 
-							 lineBreakMode:UILineBreakModeWordWrap];
+						 constrainedToSize:CGSizeMake(self.bounds.size.width, 1000)
+				             lineBreakMode:UILineBreakModeWordWrap];
 	if (s.height < self.bounds.size.height) {
 		CGRect r = self.bounds;
 		r.origin.y = (r.size.height - s.height) / 2;
@@ -151,6 +161,7 @@
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
 	// start timer
 	[self performSelector:@selector(timeoutTouch) withObject:nil afterDelay:HOLD_THRESHOLD];
+	AudioServicesPlaySystemSound(clickDownID);
 	self.down = YES;
 	held = NO;
 }
@@ -163,6 +174,7 @@
 	}
 	// cancel timer
 	[NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(timeoutTouch) object:nil];
+	AudioServicesPlaySystemSound(clickUpID);
 	if (delegate && [delegate respondsToSelector:@selector(matrixButtonClicked:)]) { 
 		[delegate matrixButtonClicked:self];
 	}		
@@ -201,6 +213,12 @@
 - (void)dealloc {
     [super dealloc];
 	[activity release];
+	
+	
+	AudioServicesDisposeSystemSoundID(clickDownID);
+	CFRelease(clickDownURL);
+	AudioServicesDisposeSystemSoundID(clickUpID);
+	CFRelease(clickUpURL);	
 }
 
 - (id)delegate {

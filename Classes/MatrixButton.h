@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AudioToolbox/AudioToolbox.h>
 #import "TZActivity.h"
 
 @class MatrixButton;
@@ -25,6 +26,11 @@
 	id delegate;
 	
 	TZActivity *activity;
+	
+	CFURLRef clickDownURL;
+	SystemSoundID clickDownID;
+	CFURLRef clickUpURL;
+	SystemSoundID clickUpID;	
 }
 
 @property(assign, nonatomic) BOOL down;

@@ -38,7 +38,6 @@
 		for (int i = 0; i < [self getNumberOfScreens]; i++) {
 			[matrices addObject:[NSNull null]];
 		}
-		
 	}
 	return self;
 }

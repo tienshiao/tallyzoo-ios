@@ -1,9 +1,19 @@
+DONE
+Button Screen
+- multiline support
+- paging
+
 TODO
 Button Screen
-- paging
-- drag and rearrange
+- sounds for clicking
+- edit mode
+  - drag and rearrange
+  - click to edit activity
 - shake to undo
 Count Details Screen
 Graph
 Sync
 Configuration
+Preferences
+- click for advanced
+- hold length
