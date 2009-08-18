@@ -121,6 +121,22 @@
 					alignment:UITextAlignmentCenter];
 	}
 	
+	CGContextBeginPath(currentContext);
+	CGContextMoveToPoint(currentContext, 0, 0);
+	CGContextAddLineToPoint(currentContext, self.bounds.size.width, 0);
+	CGContextSetLineWidth(currentContext, 2.0);
+	CGContextSetRGBStrokeColor(currentContext, 1, 1, 1, .6);
+	CGContextStrokePath(currentContext);
+	
+	CGContextBeginPath(currentContext);
+	CGContextMoveToPoint(currentContext, 0, 0);
+	CGContextAddLineToPoint(currentContext, 0, self.bounds.size.height);
+	CGContextAddLineToPoint(currentContext, self.bounds.size.width, self.bounds.size.height);
+	CGContextAddLineToPoint(currentContext, self.bounds.size.width, 0);
+	CGContextSetLineWidth(currentContext, 2.0);
+	CGContextSetRGBStrokeColor(currentContext, 0, 0, 0, .6);
+	CGContextStrokePath(currentContext);
+	
 }
 
 #define HOLD_THRESHOLD 2.0
