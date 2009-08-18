@@ -216,12 +216,19 @@
 	if (sig < init_sig) {
 		sig = init_sig;
 	}
+	if (sig < step_sig) {
+		sig = step_sig;
+	}
 
+	NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+	[formatter setMaximumFractionDigits:sig];
+	[formatter setMinimumFractionDigits:sig];
+	[formatter setRoundingMode: NSNumberFormatterRoundHalfEven];
 	
-	NSString *format = [NSString stringWithFormat:@"%%.%df", sig];
-	
-//	return initial_value + total * count_updown;
-	return [NSString stringWithFormat:format, total];
+	NSString *numberString = [formatter stringFromNumber:[NSNumber numberWithDouble:initial_value + total * count_updown]];
+	[formatter release];
+
+	return numberString;
 }
 
 - (void)dealloc {
