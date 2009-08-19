@@ -60,6 +60,10 @@
     [window makeKeyAndVisible];
 }
 
+- (void)applicationWillTerminate:(UIApplication *)application {
+    // Close the database.
+	[database close];
+}
 
 - (void)dealloc {
     [window release];
