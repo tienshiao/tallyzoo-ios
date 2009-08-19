@@ -128,7 +128,7 @@
 												default_step, step_sig, color, count_updown, display_total, \
 											    screen, position, deleted, created_on, created_tz, \
 												modified_on, modified_tz) VALUES \
-												(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, \
+												(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0, \
 												datetime('now', 'localtime'), ?, datetime('now', 'localtime'), ?)",
 			name,
 			default_note,
@@ -139,10 +139,9 @@
 			[NSNumber numberWithInt:step_sig],
 			[color hexStringFromColor],
 			[NSNumber numberWithInt:count_updown],
-			[NSNumber numberWithInt:display_total],
+			[NSNumber numberWithBool:display_total],
 			[NSNumber numberWithInt:screen],
 			[NSNumber numberWithInt:position],
-			[NSNumber numberWithInt:deleted],
 			@"",
 			@"",
 			nil];
@@ -179,12 +178,12 @@
 		 [NSNumber numberWithInt:step_sig],
 		 [color hexStringFromColor],
 		 [NSNumber numberWithInt:count_updown],
-		 [NSNumber numberWithInt:display_total],
+		 [NSNumber numberWithBool:display_total],
 		 [NSNumber numberWithInt:screen],
 		 [NSNumber numberWithInt:position],
-		 [NSNumber numberWithInt:deleted],
+		 [NSNumber numberWithBool:deleted],
 		 @"",
-		 key,
+		 [NSNumber numberWithInt:key],
 		 nil];
 		
 		if ([dbh hadError]) {

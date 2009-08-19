@@ -111,7 +111,7 @@
 		 [NSNumber numberWithDouble:longitude],
 		 [NSNumber numberWithBool:deleted],
 		 @"",
-		 key,
+		 [NSNumber numberWithInt:key],
 		 nil];
 		
 		if ([dbh hadError]) {
