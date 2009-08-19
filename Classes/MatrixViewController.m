@@ -28,11 +28,15 @@
 		self.navigationItem.rightBarButtonItem = barButtonItem;
 		[barButtonItem release];
 		
-		barButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit
-														target:self 
-														action:@selector(editButtons:)];
-		self.navigationItem.leftBarButtonItem = barButtonItem;
-		[barButtonItem release];
+		editBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit
+																		  target:self 
+																		  action:@selector(editButtons:)];
+		self.navigationItem.leftBarButtonItem = editBarButtonItem;
+
+		doneBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+																		  target:self 
+																		  action:@selector(doneButtons:)];
+		editting = NO;
 		
 		matrices = [[NSMutableArray alloc] init];
 		for (int i = 0; i < [self getNumberOfScreens]; i++) {
@@ -208,6 +212,13 @@
 
 
 - (void)editButtons:(id)sender {
+	editting = YES;
+	self.navigationItem.leftBarButtonItem = doneBarButtonItem;
+}
+
+- (void)doneButtons:(id)sender {
+	editting = NO;
+	self.navigationItem.leftBarButtonItem = editBarButtonItem;
 }
 
 - (void)pageChanged:(id)sender {
@@ -226,19 +237,31 @@
 }
 
 - (void)matrixButtonClicked:(MatrixButton *)mb {
-	[mb.activity simpleCount];
-	// TODO play a little sound
+	if (editting) {
+		EditActivityViewController *eavc = [[EditActivityViewController alloc] initWithActivity:mb.activity];
+		UINavigationController *addNavigationController =[[UINavigationController alloc] initWithRootViewController:eavc];
+		
+		[[self navigationController] presentModalViewController:addNavigationController animated:YES];
+		
+		[addNavigationController release];
+		[eavc release];			
+	} else {
+		[mb.activity simpleCount];
+	}
 }
 
 - (void)matrixButtonHeld:(MatrixButton *)mb {
-	TZCount *newCount = [[TZCount alloc] initWithKey:0 andActivity:mb.activity];
-	EditCountViewController *ecvc = [[EditCountViewController alloc] initWithCount:newCount];
-	UINavigationController *addNavigationController =[[UINavigationController alloc] initWithRootViewController:ecvc];
+	if (editting) {
+	} else {
+		TZCount *newCount = [[TZCount alloc] initWithKey:0 andActivity:mb.activity];
+		EditCountViewController *ecvc = [[EditCountViewController alloc] initWithCount:newCount];
+		UINavigationController *addNavigationController =[[UINavigationController alloc] initWithRootViewController:ecvc];
 	
-	[[self navigationController] presentModalViewController:addNavigationController animated:YES];
+		[[self navigationController] presentModalViewController:addNavigationController animated:YES];
 	
-	[addNavigationController release];
-	[ecvc release];	
+		[addNavigationController release];
+		[ecvc release];	
+	}
 }
 
 - (void)didReceiveMemoryWarning {
@@ -260,6 +283,9 @@
 	[_pageControl release];
 	[_scrollView release];
 	[matrices release];
+	
+	[editBarButtonItem release];
+	[doneBarButtonItem release];
 }
 
 

@@ -78,7 +78,7 @@
 	
 	CGSize s = [activity.name sizeWithFont:[UIFont boldSystemFontOfSize:16] 
 						 constrainedToSize:CGSizeMake(self.bounds.size.width, 1000)
-				             lineBreakMode:UILineBreakModeWordWrap];
+					         lineBreakMode:UILineBreakModeWordWrap];
 	if (s.height < self.bounds.size.height) {
 		CGRect r = self.bounds;
 		r.origin.y = (r.size.height - s.height) / 2;

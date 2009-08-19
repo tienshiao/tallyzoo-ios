@@ -15,6 +15,10 @@
 	UIPageControl *_pageControl;
 	UIScrollView *_scrollView;
 	BOOL _pageControlUsed;
+	
+	UIBarButtonItem *editBarButtonItem;
+	UIBarButtonItem *doneBarButtonItem;
+	BOOL editting;
 }
 
 - (int)getNumberOfScreens;
