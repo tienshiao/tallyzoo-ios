@@ -32,6 +32,8 @@
 		61D0F272103B56D1002B78C5 /* click_down.wav in Resources */ = {isa = PBXBuildFile; fileRef = 61D0F270103B56D1002B78C5 /* click_down.wav */; };
 		61D0F273103B56D1002B78C5 /* click_up.wav in Resources */ = {isa = PBXBuildFile; fileRef = 61D0F271103B56D1002B78C5 /* click_up.wav */; };
 		61D0F289103B5965002B78C5 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61D0F288103B5965002B78C5 /* AudioToolbox.framework */; };
+		61D0F35A103BE1B7002B78C5 /* red_down.png in Resources */ = {isa = PBXBuildFile; fileRef = 61D0F358103BE1B7002B78C5 /* red_down.png */; };
+		61D0F35B103BE1B7002B78C5 /* red_up.png in Resources */ = {isa = PBXBuildFile; fileRef = 61D0F359103BE1B7002B78C5 /* red_up.png */; };
 		61E643E5102C2C9000E78174 /* ChooseCountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61E643E4102C2C9000E78174 /* ChooseCountViewController.m */; };
 		61E6444B102D1E1F00E78174 /* ColorPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61E6444A102D1E1F00E78174 /* ColorPickerViewController.m */; };
 		61E6455410315C3200E78174 /* CustomColorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61E6455310315C3200E78174 /* CustomColorViewController.m */; };
@@ -85,6 +87,8 @@
 		61D0F270103B56D1002B78C5 /* click_down.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = click_down.wav; sourceTree = "<group>"; };
 		61D0F271103B56D1002B78C5 /* click_up.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = click_up.wav; sourceTree = "<group>"; };
 		61D0F288103B5965002B78C5 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		61D0F358103BE1B7002B78C5 /* red_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red_down.png; sourceTree = "<group>"; };
+		61D0F359103BE1B7002B78C5 /* red_up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red_up.png; sourceTree = "<group>"; };
 		61E643E3102C2C9000E78174 /* ChooseCountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseCountViewController.h; sourceTree = "<group>"; };
 		61E643E4102C2C9000E78174 /* ChooseCountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseCountViewController.m; sourceTree = "<group>"; };
 		61E64449102D1E1F00E78174 /* ColorPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorPickerViewController.h; sourceTree = "<group>"; };
@@ -176,6 +180,8 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				61D0F358103BE1B7002B78C5 /* red_down.png */,
+				61D0F359103BE1B7002B78C5 /* red_up.png */,
 				61D0F270103B56D1002B78C5 /* click_down.wav */,
 				61D0F271103B56D1002B78C5 /* click_up.wav */,
 				61E64B501036C11800E78174 /* icon2.png */,
@@ -294,6 +300,8 @@
 				61E64B511036C11800E78174 /* icon2.png in Resources */,
 				61D0F272103B56D1002B78C5 /* click_down.wav in Resources */,
 				61D0F273103B56D1002B78C5 /* click_up.wav in Resources */,
+				61D0F35A103BE1B7002B78C5 /* red_down.png in Resources */,
+				61D0F35B103BE1B7002B78C5 /* red_up.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

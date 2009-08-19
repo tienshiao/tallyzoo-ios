@@ -12,7 +12,7 @@
 
 @class EditActivityViewController;
 
-@interface EditActivityViewController : UITableViewController {
+@interface EditActivityViewController : UITableViewController<UIActionSheetDelegate> {
 	TZActivity *activity;
 	
 	ColorView *colorView;
@@ -20,6 +20,7 @@
 	UISwitch *showPublicSwitch;
 	UISwitch *showCountSwitch;
 	
+	UIButton *deleteButton;
 	// TODO support a dirty flag for save button
 }
 

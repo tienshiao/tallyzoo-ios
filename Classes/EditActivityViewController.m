@@ -49,7 +49,24 @@
 		self.activity = a;
 		
 		if (activity.key) {
-			// TODO show delete option
+			deleteButton = [[UIButton buttonWithType:UIButtonTypeCustom] retain];
+			deleteButton.titleLabel.font = [UIFont boldSystemFontOfSize:[UIFont buttonFontSize]];
+			[deleteButton setTitleShadowColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.5] forState:UIControlStateNormal];
+			deleteButton.titleLabel.shadowOffset = CGSizeMake(0, -1);
+			[deleteButton setTitle:@"Delete Activity" forState:UIControlStateNormal];
+			
+			UIImage *image = [UIImage imageNamed:@"red_up.png"];
+			UIImage *newImage = [image stretchableImageWithLeftCapWidth:12.0 topCapHeight:0.0];
+			[deleteButton setBackgroundImage:newImage forState:UIControlStateNormal];
+			
+			UIImage *imagePressed = [UIImage imageNamed:@"red_down.png"];
+			UIImage *newPressedImage = [imagePressed stretchableImageWithLeftCapWidth:12.0 topCapHeight:0.0];
+			[deleteButton setBackgroundImage:newPressedImage forState:UIControlStateHighlighted];
+			
+			deleteButton.frame = CGRectMake(10, 20, 300, 40);
+			[deleteButton addTarget:self action:@selector(deleteActivity:) forControlEvents:UIControlEventTouchUpInside];
+			
+			self.tableView.tableFooterView = deleteButton;			
 		}
 	}
 	return self;
@@ -355,6 +372,27 @@
 	[self.navigationController dismissModalViewControllerAnimated:YES];
 }
 
+- (void)deleteActivity:(id)sender {
+	// open a dialog with an OK and cancel button
+	UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
+															 delegate:self 
+													cancelButtonTitle:@"Cancel" 
+											   destructiveButtonTitle:@"Delete Activity" 
+													otherButtonTitles:nil];
+	actionSheet.actionSheetStyle = UIActionSheetStyleDefault;
+	[actionSheet showInView:self.navigationController.view]; // show from our table view (pops up in the middle of the table)
+	[actionSheet release];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+	// the user clicked one of the OK/Cancel buttons
+	if (buttonIndex == 0) {
+		activity.deleted = YES;
+		[activity save];
+		[self.navigationController dismissModalViewControllerAnimated:YES];		
+	}
+}
+
 
 - (void)dealloc {
     [super dealloc];
@@ -362,6 +400,8 @@
 	[activity release];
 	[showCountSwitch release];
 	[colorView release];
+	
+	[deleteButton release];
 }
 
 

@@ -26,6 +26,20 @@
     return self;
 }
 
+- (void)clearButtons {
+	for (int i = 0; i < 9; i++) {
+		MatrixButton *button = [buttons objectAtIndex:i];
+		if ([button isKindOfClass:[UIView class]]) {
+			[button removeFromSuperview];
+		}
+	}		
+	[buttons release];
+	buttons = [[NSMutableArray alloc] init];
+	for (int i = 0; i < 9; i++) {
+		[buttons addObject:[NSNull null]];
+	}	
+}
+
 - (void)drawRect:(CGRect)rect {
     // Drawing code
 }

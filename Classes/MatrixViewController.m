@@ -65,6 +65,7 @@
 }
 
 - (void)loadButtons:(MatrixView *)mv screen:(int)screen {
+	[mv clearButtons];
 	FMDatabase *dbh = UIAppDelegate.database;
 	FMResultSet *rs = [dbh executeQuery:@"SELECT id FROM activities WHERE deleted = 0 AND screen = ?",
 					   [NSNumber numberWithInt:screen]];

@@ -18,5 +18,6 @@
 @property (assign,nonatomic) NSMutableArray *buttons;
 
 - (id)initWithFrame:(CGRect)frame andScreenNumber:(int)page;
+- (void)clearButtons;
 
 @end
