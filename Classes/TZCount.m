@@ -28,7 +28,7 @@
 		FMDatabase *dbh = UIAppDelegate.database;
 		key = k;
 		if (key) {
-			FMResultSet *rs = [dbh executeQuery:@"SELECT * FROM counts WHERE id = ?", [NSNumber numberWithInt:key], nil];
+			FMResultSet *rs = [dbh executeQuery:@"SELECT * FROM counts WHERE id = ? AND deleted = 0", [NSNumber numberWithInt:key], nil];
 			if ([rs next]) {
 				self.note = [rs stringForColumn:@"note"];
 				self.tags = [rs stringForColumn:@"tags"];
@@ -36,6 +36,7 @@
 				self.amount_sig = [rs intForColumn:@"amount_sig"];
 				self.latitude = [rs doubleForColumn:@"latitude"];
 				self.longitude = [rs doubleForColumn:@"longitude"];
+				self.deleted = [rs boolForColumn:@"deleted"];
 			}
 			[rs close];
 		} else {
