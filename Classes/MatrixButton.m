@@ -159,7 +159,6 @@
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
 	// start timer
 	[self performSelector:@selector(timeoutTouch) withObject:nil afterDelay:HOLD_THRESHOLD];
-	AudioServicesPlaySystemSound(clickDownID);
 	self.down = YES;
 	held = NO;
 }
@@ -172,7 +171,6 @@
 	}
 	// cancel timer
 	[NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(timeoutTouch) object:nil];
-	AudioServicesPlaySystemSound(clickUpID);
 	if (delegate && [delegate respondsToSelector:@selector(matrixButtonClicked:)]) { 
 		[delegate matrixButtonClicked:self];
 	}		
@@ -191,6 +189,11 @@
 
 - (void)setDown:(BOOL) d {
 	if (d != down) {
+		if (d) {
+			AudioServicesPlaySystemSound(clickDownID);
+		} else {
+			AudioServicesPlaySystemSound(clickUpID);
+		}
 		[self setNeedsDisplay];
 		down = d;
 	}
