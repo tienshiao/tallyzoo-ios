@@ -47,10 +47,10 @@
 				self.step_sig = [rs intForColumn:@"step_sig"];
 				self.color = [UIColor colorWithHexString:[rs stringForColumn:@"color"]];
 				self.count_updown = [rs intForColumn:@"count_updown"];
-				self.display_total = [rs intForColumn:@"display_total"];
+				self.display_total = [rs boolForColumn:@"display_total"];
 				self.screen = [rs intForColumn:@"screen"];
 				self.position = [rs intForColumn:@"position"];
-				self.deleted = [rs intForColumn:@"deleted"];
+				self.deleted = [rs boolForColumn:@"deleted"];
 				self.created_on = [rs stringForColumn:@"created_on"];
 			}
 			[rs close];
@@ -199,6 +199,7 @@
 
 - (void)simpleCount {
 	TZCount *count = [[TZCount alloc] initWithKey:0 andActivity:self];
+	count.amount = count_updown * default_step;
 	[count save];
 	[count release];
 }
@@ -224,7 +225,7 @@
 	[formatter setMinimumFractionDigits:sig];
 	[formatter setRoundingMode: NSNumberFormatterRoundHalfEven];
 	
-	NSString *numberString = [formatter stringFromNumber:[NSNumber numberWithDouble:initial_value + total * count_updown]];
+	NSString *numberString = [formatter stringFromNumber:[NSNumber numberWithDouble:initial_value + total]];
 	[formatter release];
 
 	return numberString;
