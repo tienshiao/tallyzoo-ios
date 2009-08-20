@@ -26,7 +26,7 @@
 		clickUpURL = CFBundleCopyResourceURL(CFBundleGetMainBundle(),
 											 CFSTR("click_up"),
 											 CFSTR("wav"), NULL);
-		AudioServicesCreateSystemSoundID(clickUpURL, &clickUpID);		
+		AudioServicesCreateSystemSoundID(clickUpURL, &clickUpID);
     }
     return self;
 }
@@ -67,9 +67,7 @@
 	
     CGGradientRelease(glossGradient);
     CGColorSpaceRelease(rgbColorspace); 
-	
-	// TODO draw edge
-	// TODO draw title better
+
 	if (black) {
 		CGContextSetRGBFillColor(currentContext, 0, 0, 0, 1);
 	} else {
@@ -178,7 +176,7 @@
 	if (delegate && [delegate respondsToSelector:@selector(matrixButtonClicked:)]) { 
 		[delegate matrixButtonClicked:self];
 	}		
-	self.down = NO;
+	[self performSelector:@selector(setDown:) withObject:NO afterDelay:.01];
 }
 
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -213,7 +211,6 @@
 - (void)dealloc {
     [super dealloc];
 	[activity release];
-	
 	
 	AudioServicesDisposeSystemSoundID(clickDownID);
 	CFRelease(clickDownURL);
