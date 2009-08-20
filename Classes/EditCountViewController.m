@@ -17,7 +17,7 @@
 
 - (id)initWithCount:(TZCount *)c {
 	if (self = [super initWithStyle:UITableViewStyleGrouped]) {
-		self.title = @"Count";
+		self.title = c.activity.name;
 		
 		UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] 
 										  initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
@@ -114,7 +114,7 @@
 
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 4;
+    return 3;
 }
 
 
@@ -135,9 +135,9 @@
     // Set up the cell...
 	switch (indexPath.row) {
 		case 0:
-			cell.textLabel.text = @"Activity";
-			cell.detailTextLabel.text = count.activity.name;
-			cell.selectionStyle = UITableViewCellSelectionStyleNone;
+			cell.textLabel.text = @"Amount";
+			cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", [NSNumber numberWithDouble:count.amount]];
+			cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;			
 			break;
 		case 1:
 			cell.textLabel.text = @"Note";
@@ -147,11 +147,6 @@
 		case 2:
 			cell.textLabel.text = @"Tags";
 			cell.detailTextLabel.text = count.tags;
-			cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-			break;
-		case 3:
-			cell.textLabel.text = @"Amount";
-			cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", [NSNumber numberWithDouble:count.amount]];
 			cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 			break;
 	}
@@ -167,6 +162,19 @@
 	// [anotherViewController release];
 	
 	switch (indexPath.row) {
+		case 0: {
+			// amount
+			EditTextFieldViewController *etfvc = [[EditTextFieldViewController alloc] init];
+			etfvc.editedObject = count;
+			etfvc.textValue = [NSString stringWithFormat:@"%@", [NSNumber numberWithDouble:count.amount]];
+			etfvc.editedFieldKey = @"amount";
+			etfvc.sigFieldKey = @"amount_sig";
+			etfvc.title = @"Amount";
+			etfvc.numberEditing = YES;
+			[self.navigationController pushViewController:etfvc animated:YES];
+			[etfvc release];							
+			break;
+		}			
 		case 1: {
 			// note
 			EditTextViewViewController *etvvc = [[EditTextViewViewController alloc] init];
@@ -187,19 +195,6 @@
 			etvvc.title = @"Tags";
 			[self.navigationController pushViewController:etvvc animated:YES];
 			[etvvc release];									
-			break;
-		}
-		case 3: {
-			// amount
-			EditTextFieldViewController *etfvc = [[EditTextFieldViewController alloc] init];
-			etfvc.editedObject = count;
-			etfvc.textValue = [NSString stringWithFormat:@"%@", [NSNumber numberWithDouble:count.amount]];
-			etfvc.editedFieldKey = @"amount";
-			etfvc.sigFieldKey = @"amount_sig";
-			etfvc.title = @"Amount";
-			etfvc.numberEditing = YES;
-			[self.navigationController pushViewController:etfvc animated:YES];
-			[etfvc release];							
 			break;
 		}
 	}

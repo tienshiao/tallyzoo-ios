@@ -7,14 +7,16 @@ Button Screen
 - edit mode
   - delete activity
   - click to edit activity
+Activity
+- count
+  - move acitivity to title
+  - move amount to top
 
 TODO
 Activity
 - public/private support
 - count
-  - move acitivity to title
   - inline edit amount
-  - move amount to top
 Button Screen
 - graphical title
 - edit mode
