@@ -367,6 +367,8 @@
 }
 
 - (void)save:(id)sender {
+	activity.public = showPublicSwitch.on;
+	activity.display_total = showCountSwitch.on;
 	if (![activity save]) {
 	}
 	[self.navigationController dismissModalViewControllerAnimated:YES];
