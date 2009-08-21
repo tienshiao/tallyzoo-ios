@@ -171,6 +171,7 @@
 		[self loadScrollViewWithPage:i];
 	}
 //	[self.tableView reloadData];
+	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:animated];	
 }
 
 /*

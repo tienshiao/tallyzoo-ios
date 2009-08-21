@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-
-@interface GraphViewController : UIViewController {
-
+@interface GraphViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
+	NSMutableArray *activities;
+	
+	UITableView *_tableView;
+	int oldSelection;
 }
 
 @end

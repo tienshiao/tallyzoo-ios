@@ -34,6 +34,12 @@
 		61D0F289103B5965002B78C5 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61D0F288103B5965002B78C5 /* AudioToolbox.framework */; };
 		61D0F35A103BE1B7002B78C5 /* red_down.png in Resources */ = {isa = PBXBuildFile; fileRef = 61D0F358103BE1B7002B78C5 /* red_down.png */; };
 		61D0F35B103BE1B7002B78C5 /* red_up.png in Resources */ = {isa = PBXBuildFile; fileRef = 61D0F359103BE1B7002B78C5 /* red_up.png */; };
+		61D0F4B9103DFB7C002B78C5 /* GraphCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 61D0F4B8103DFB7C002B78C5 /* GraphCell.m */; };
+		61D0F677103E6512002B78C5 /* UpperLeftView.m in Sources */ = {isa = PBXBuildFile; fileRef = 61D0F676103E6512002B78C5 /* UpperLeftView.m */; };
+		61D0F690103E6644002B78C5 /* UpperRightView.m in Sources */ = {isa = PBXBuildFile; fileRef = 61D0F68F103E6644002B78C5 /* UpperRightView.m */; };
+		61D0F6A8103E68D7002B78C5 /* LowerLeftView.m in Sources */ = {isa = PBXBuildFile; fileRef = 61D0F6A7103E68D7002B78C5 /* LowerLeftView.m */; };
+		61D0F6C4103E6AB3002B78C5 /* LowerRightView.m in Sources */ = {isa = PBXBuildFile; fileRef = 61D0F6C3103E6AB3002B78C5 /* LowerRightView.m */; };
+		61D0F756103E8BE2002B78C5 /* SelectLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 61D0F755103E8BE2002B78C5 /* SelectLayer.m */; };
 		61E643E5102C2C9000E78174 /* ChooseCountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61E643E4102C2C9000E78174 /* ChooseCountViewController.m */; };
 		61E6444B102D1E1F00E78174 /* ColorPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61E6444A102D1E1F00E78174 /* ColorPickerViewController.m */; };
 		61E6455410315C3200E78174 /* CustomColorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61E6455310315C3200E78174 /* CustomColorViewController.m */; };
@@ -89,6 +95,18 @@
 		61D0F288103B5965002B78C5 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		61D0F358103BE1B7002B78C5 /* red_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red_down.png; sourceTree = "<group>"; };
 		61D0F359103BE1B7002B78C5 /* red_up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red_up.png; sourceTree = "<group>"; };
+		61D0F4B7103DFB7C002B78C5 /* GraphCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphCell.h; sourceTree = "<group>"; };
+		61D0F4B8103DFB7C002B78C5 /* GraphCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphCell.m; sourceTree = "<group>"; };
+		61D0F675103E6512002B78C5 /* UpperLeftView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpperLeftView.h; sourceTree = "<group>"; };
+		61D0F676103E6512002B78C5 /* UpperLeftView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpperLeftView.m; sourceTree = "<group>"; };
+		61D0F68E103E6644002B78C5 /* UpperRightView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpperRightView.h; sourceTree = "<group>"; };
+		61D0F68F103E6644002B78C5 /* UpperRightView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpperRightView.m; sourceTree = "<group>"; };
+		61D0F6A6103E68D7002B78C5 /* LowerLeftView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LowerLeftView.h; sourceTree = "<group>"; };
+		61D0F6A7103E68D7002B78C5 /* LowerLeftView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LowerLeftView.m; sourceTree = "<group>"; };
+		61D0F6C2103E6AB3002B78C5 /* LowerRightView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LowerRightView.h; sourceTree = "<group>"; };
+		61D0F6C3103E6AB3002B78C5 /* LowerRightView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LowerRightView.m; sourceTree = "<group>"; };
+		61D0F754103E8BE2002B78C5 /* SelectLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectLayer.h; sourceTree = "<group>"; };
+		61D0F755103E8BE2002B78C5 /* SelectLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectLayer.m; sourceTree = "<group>"; };
 		61E643E3102C2C9000E78174 /* ChooseCountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseCountViewController.h; sourceTree = "<group>"; };
 		61E643E4102C2C9000E78174 /* ChooseCountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseCountViewController.m; sourceTree = "<group>"; };
 		61E64449102D1E1F00E78174 /* ColorPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorPickerViewController.h; sourceTree = "<group>"; };
@@ -128,12 +146,15 @@
 				615CC865101FF15B00BD6BB2 /* Utilities */,
 				615CCAEA10283E4700BD6BB2 /* Editors */,
 				615CC84C101FCB3C00BD6BB2 /* Models */,
+				61D0F6C1103E6A97002B78C5 /* Masks */,
 				61E64A391035C61400E78174 /* EditCountViewController.h */,
 				61E64A3A1035C61400E78174 /* EditCountViewController.m */,
 				615CCA341022E97600BD6BB2 /* EditActivityViewController.h */,
 				615CCA351022E97600BD6BB2 /* EditActivityViewController.m */,
 				615CC821101D9F9100BD6BB2 /* DetailedCountViewController.h */,
 				615CC822101D9F9100BD6BB2 /* DetailedCountViewController.m */,
+				61D0F4B7103DFB7C002B78C5 /* GraphCell.h */,
+				61D0F4B8103DFB7C002B78C5 /* GraphCell.m */,
 				615CC81C101D9F0900BD6BB2 /* GraphViewController.h */,
 				615CC81D101D9F0900BD6BB2 /* GraphViewController.m */,
 				615CC7F5101D927300BD6BB2 /* MatrixButton.h */,
@@ -142,6 +163,8 @@
 				615CC83B101EE74100BD6BB2 /* MatrixView.m */,
 				615CC7F2101D924D00BD6BB2 /* MatrixViewController.h */,
 				615CC7F3101D924D00BD6BB2 /* MatrixViewController.m */,
+				61D0F754103E8BE2002B78C5 /* SelectLayer.h */,
+				61D0F755103E8BE2002B78C5 /* SelectLayer.m */,
 				1D3623240D0F684500981E51 /* TallyZooAppDelegate.h */,
 				1D3623250D0F684500981E51 /* TallyZooAppDelegate.m */,
 			);
@@ -252,6 +275,21 @@
 			name = Editors;
 			sourceTree = "<group>";
 		};
+		61D0F6C1103E6A97002B78C5 /* Masks */ = {
+			isa = PBXGroup;
+			children = (
+				61D0F675103E6512002B78C5 /* UpperLeftView.h */,
+				61D0F676103E6512002B78C5 /* UpperLeftView.m */,
+				61D0F68E103E6644002B78C5 /* UpperRightView.h */,
+				61D0F68F103E6644002B78C5 /* UpperRightView.m */,
+				61D0F6A6103E68D7002B78C5 /* LowerLeftView.h */,
+				61D0F6A7103E68D7002B78C5 /* LowerLeftView.m */,
+				61D0F6C2103E6AB3002B78C5 /* LowerRightView.h */,
+				61D0F6C3103E6AB3002B78C5 /* LowerRightView.m */,
+			);
+			name = Masks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -334,6 +372,12 @@
 				61E645DB1031DF3800E78174 /* ColorView.m in Sources */,
 				61E646301031E78500E78174 /* ColorCellView.m in Sources */,
 				61E64A3B1035C61400E78174 /* EditCountViewController.m in Sources */,
+				61D0F4B9103DFB7C002B78C5 /* GraphCell.m in Sources */,
+				61D0F677103E6512002B78C5 /* UpperLeftView.m in Sources */,
+				61D0F690103E6644002B78C5 /* UpperRightView.m in Sources */,
+				61D0F6A8103E68D7002B78C5 /* LowerLeftView.m in Sources */,
+				61D0F6C4103E6AB3002B78C5 /* LowerRightView.m in Sources */,
+				61D0F756103E8BE2002B78C5 /* SelectLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
