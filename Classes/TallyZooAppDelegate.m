@@ -44,11 +44,11 @@
 	
 	MatrixViewController *mvc = [[MatrixViewController alloc] init];
 	UINavigationController *mnc = [[UINavigationController alloc] initWithRootViewController:mvc];
-	mnc.tabBarItem.title = @"Count";
+	mnc.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Count" image:[UIImage imageNamed:@"10-medical.png"] tag:1];
 	[mvc release];
 	
 	GraphViewController *gvc = [[GraphViewController alloc] init];
-	gvc.tabBarItem.title = @"Graphs";
+	gvc.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Graph" image:[UIImage imageNamed:@"16-line-chart.png"] tag:2];
 	
 	UITabBarController *tbController = [[UITabBarController alloc] init];
 	tbController.viewControllers = [NSArray arrayWithObjects:mnc, gvc, nil];

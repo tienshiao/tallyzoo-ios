@@ -40,6 +40,8 @@
 		61D0F6A8103E68D7002B78C5 /* LowerLeftView.m in Sources */ = {isa = PBXBuildFile; fileRef = 61D0F6A7103E68D7002B78C5 /* LowerLeftView.m */; };
 		61D0F6C4103E6AB3002B78C5 /* LowerRightView.m in Sources */ = {isa = PBXBuildFile; fileRef = 61D0F6C3103E6AB3002B78C5 /* LowerRightView.m */; };
 		61D0F756103E8BE2002B78C5 /* SelectLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 61D0F755103E8BE2002B78C5 /* SelectLayer.m */; };
+		61D0F7D1103E9A00002B78C5 /* 10-medical.png in Resources */ = {isa = PBXBuildFile; fileRef = 61D0F7CF103E9A00002B78C5 /* 10-medical.png */; };
+		61D0F7D2103E9A00002B78C5 /* 16-line-chart.png in Resources */ = {isa = PBXBuildFile; fileRef = 61D0F7D0103E9A00002B78C5 /* 16-line-chart.png */; };
 		61E643E5102C2C9000E78174 /* ChooseCountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61E643E4102C2C9000E78174 /* ChooseCountViewController.m */; };
 		61E6444B102D1E1F00E78174 /* ColorPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61E6444A102D1E1F00E78174 /* ColorPickerViewController.m */; };
 		61E6455410315C3200E78174 /* CustomColorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61E6455310315C3200E78174 /* CustomColorViewController.m */; };
@@ -107,6 +109,8 @@
 		61D0F6C3103E6AB3002B78C5 /* LowerRightView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LowerRightView.m; sourceTree = "<group>"; };
 		61D0F754103E8BE2002B78C5 /* SelectLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectLayer.h; sourceTree = "<group>"; };
 		61D0F755103E8BE2002B78C5 /* SelectLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectLayer.m; sourceTree = "<group>"; };
+		61D0F7CF103E9A00002B78C5 /* 10-medical.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "10-medical.png"; sourceTree = "<group>"; };
+		61D0F7D0103E9A00002B78C5 /* 16-line-chart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "16-line-chart.png"; sourceTree = "<group>"; };
 		61E643E3102C2C9000E78174 /* ChooseCountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseCountViewController.h; sourceTree = "<group>"; };
 		61E643E4102C2C9000E78174 /* ChooseCountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseCountViewController.m; sourceTree = "<group>"; };
 		61E64449102D1E1F00E78174 /* ColorPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorPickerViewController.h; sourceTree = "<group>"; };
@@ -203,6 +207,8 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				61D0F7CF103E9A00002B78C5 /* 10-medical.png */,
+				61D0F7D0103E9A00002B78C5 /* 16-line-chart.png */,
 				61D0F358103BE1B7002B78C5 /* red_down.png */,
 				61D0F359103BE1B7002B78C5 /* red_up.png */,
 				61D0F270103B56D1002B78C5 /* click_down.wav */,
@@ -340,6 +346,8 @@
 				61D0F273103B56D1002B78C5 /* click_up.wav in Resources */,
 				61D0F35A103BE1B7002B78C5 /* red_down.png in Resources */,
 				61D0F35B103BE1B7002B78C5 /* red_up.png in Resources */,
+				61D0F7D1103E9A00002B78C5 /* 10-medical.png in Resources */,
+				61D0F7D2103E9A00002B78C5 /* 16-line-chart.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

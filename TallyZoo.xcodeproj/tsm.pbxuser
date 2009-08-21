@@ -9,9 +9,9 @@
 	};
 	1D3623250D0F684500981E51 /* TallyZooAppDelegate.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {726, 1050}}";
-			sepNavSelRange = "{2250, 0}";
-			sepNavVisRange = "{148, 1636}";
+			sepNavIntBoundsRect = "{{0, 0}, {738, 1050}}";
+			sepNavSelRange = "{1927, 0}";
+			sepNavVisRange = "{654, 1701}";
 		};
 	};
 	1D6058900D05DD3D006BFB54 /* TallyZoo */ = {
@@ -989,6 +989,13 @@
 			61D0F7C8103E9691002B78C5 /* PBXTextBookmark */ = 61D0F7C8103E9691002B78C5 /* PBXTextBookmark */;
 			61D0F7C9103E9691002B78C5 /* PBXTextBookmark */ = 61D0F7C9103E9691002B78C5 /* PBXTextBookmark */;
 			61D0F7CE103E96D6002B78C5 /* PBXTextBookmark */ = 61D0F7CE103E96D6002B78C5 /* PBXTextBookmark */;
+			61D0F7DB103E9BBF002B78C5 /* PBXTextBookmark */ = 61D0F7DB103E9BBF002B78C5 /* PBXTextBookmark */;
+			61D0F7DC103E9BBF002B78C5 /* PBXTextBookmark */ = 61D0F7DC103E9BBF002B78C5 /* PBXTextBookmark */;
+			61D0F7DD103E9BBF002B78C5 /* PBXTextBookmark */ = 61D0F7DD103E9BBF002B78C5 /* PBXTextBookmark */;
+			61D0F7DE103E9BBF002B78C5 /* PBXTextBookmark */ = 61D0F7DE103E9BBF002B78C5 /* PBXTextBookmark */;
+			61D0F7E1103E9BCE002B78C5 /* PBXTextBookmark */ = 61D0F7E1103E9BCE002B78C5 /* PBXTextBookmark */;
+			61D0F7E3103E9BF0002B78C5 /* PBXTextBookmark */ = 61D0F7E3103E9BF0002B78C5 /* PBXTextBookmark */;
+			61D0F7ED103E9C34002B78C5 /* PBXTextBookmark */ = 61D0F7ED103E9C34002B78C5 /* PBXTextBookmark */;
 			61E6440C102CFA6200E78174 = 61E6440C102CFA6200E78174 /* PBXTextBookmark */;
 			61E6440D102CFA6200E78174 = 61E6440D102CFA6200E78174 /* PBXTextBookmark */;
 			61E6440E102CFA6200E78174 = 61E6440E102CFA6200E78174 /* PBXTextBookmark */;
@@ -1890,9 +1897,9 @@
 	};
 	615CC81D101D9F0900BD6BB2 /* GraphViewController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {984, 2450}}";
-			sepNavSelRange = "{4489, 0}";
-			sepNavVisRange = "{4085, 969}";
+			sepNavIntBoundsRect = "{{0, 0}, {780, 2296}}";
+			sepNavSelRange = "{2109, 0}";
+			sepNavVisRange = "{1477, 518}";
 			sepNavWindowFrame = "{{61, 62}, {929, 669}}";
 		};
 	};
@@ -4443,7 +4450,7 @@
 		fRef = 1D3623250D0F684500981E51 /* TallyZooAppDelegate.m */;
 		name = "TallyZooAppDelegate.m: 65";
 		rLen = 0;
-		rLoc = 2186;
+		rLoc = 2352;
 		rType = 0;
 		vrLen = 1216;
 		vrLoc = 1037;
@@ -4453,7 +4460,7 @@
 		fRef = 1D3623250D0F684500981E51 /* TallyZooAppDelegate.m */;
 		name = "TallyZooAppDelegate.m: 65";
 		rLen = 0;
-		rLoc = 2186;
+		rLoc = 2352;
 		rType = 0;
 		vrLen = 1214;
 		vrLoc = 1037;
@@ -4493,7 +4500,7 @@
 		fRef = 1D3623250D0F684500981E51 /* TallyZooAppDelegate.m */;
 		name = "TallyZooAppDelegate.m: 65";
 		rLen = 0;
-		rLoc = 2186;
+		rLoc = 2352;
 		rType = 0;
 		vrLen = 1214;
 		vrLoc = 1037;
@@ -5204,7 +5211,7 @@
 		fRef = 1D3623250D0F684500981E51 /* TallyZooAppDelegate.m */;
 		name = "TallyZooAppDelegate.m: 70";
 		rLen = 0;
-		rLoc = 2250;
+		rLoc = 2416;
 		rType = 0;
 		vrLen = 1000;
 		vrLoc = 1260;
@@ -5304,7 +5311,7 @@
 		fRef = 1D3623250D0F684500981E51 /* TallyZooAppDelegate.m */;
 		name = "TallyZooAppDelegate.m: 70";
 		rLen = 0;
-		rLoc = 2250;
+		rLoc = 2416;
 		rType = 0;
 		vrLen = 1000;
 		vrLoc = 1260;
@@ -5648,7 +5655,7 @@
 		fRef = 1D3623250D0F684500981E51 /* TallyZooAppDelegate.m */;
 		name = "TallyZooAppDelegate.m: 70";
 		rLen = 0;
-		rLoc = 2250;
+		rLoc = 2416;
 		rType = 0;
 		vrLen = 1000;
 		vrLoc = 1260;
@@ -5818,7 +5825,7 @@
 		fRef = 1D3623250D0F684500981E51 /* TallyZooAppDelegate.m */;
 		name = "TallyZooAppDelegate.m: 70";
 		rLen = 0;
-		rLoc = 2250;
+		rLoc = 2416;
 		rType = 0;
 		vrLen = 1000;
 		vrLoc = 1260;
@@ -6578,7 +6585,7 @@
 		fRef = 1D3623250D0F684500981E51 /* TallyZooAppDelegate.m */;
 		name = "TallyZooAppDelegate.m: 70";
 		rLen = 0;
-		rLoc = 2250;
+		rLoc = 2416;
 		rType = 0;
 		vrLen = 1328;
 		vrLoc = 923;
@@ -6758,7 +6765,7 @@
 		fRef = 1D3623250D0F684500981E51 /* TallyZooAppDelegate.m */;
 		name = "TallyZooAppDelegate.m: 70";
 		rLen = 0;
-		rLoc = 2250;
+		rLoc = 2416;
 		rType = 0;
 		vrLen = 1328;
 		vrLoc = 923;
@@ -6908,7 +6915,7 @@
 		fRef = 1D3623250D0F684500981E51 /* TallyZooAppDelegate.m */;
 		name = "TallyZooAppDelegate.m: 70";
 		rLen = 0;
-		rLoc = 2250;
+		rLoc = 2416;
 		rType = 0;
 		vrLen = 1540;
 		vrLoc = 180;
@@ -6958,7 +6965,7 @@
 		fRef = 1D3623250D0F684500981E51 /* TallyZooAppDelegate.m */;
 		name = "TallyZooAppDelegate.m: 70";
 		rLen = 0;
-		rLoc = 2250;
+		rLoc = 2416;
 		rType = 0;
 		vrLen = 1540;
 		vrLoc = 180;
@@ -8650,7 +8657,7 @@
 		fRef = 1D3623250D0F684500981E51 /* TallyZooAppDelegate.m */;
 		name = "TallyZooAppDelegate.m: 70";
 		rLen = 0;
-		rLoc = 2250;
+		rLoc = 2416;
 		rType = 0;
 		vrLen = 1636;
 		vrLoc = 148;
@@ -8790,7 +8797,7 @@
 		fRef = 1D3623250D0F684500981E51 /* TallyZooAppDelegate.m */;
 		name = "TallyZooAppDelegate.m: 70";
 		rLen = 0;
-		rLoc = 2250;
+		rLoc = 2416;
 		rType = 0;
 		vrLen = 1636;
 		vrLoc = 148;
@@ -11450,6 +11457,76 @@
 		rType = 0;
 		vrLen = 969;
 		vrLoc = 4085;
+	};
+	61D0F7DB103E9BBF002B78C5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 615CC81D101D9F0900BD6BB2 /* GraphViewController.m */;
+		name = "GraphViewController.m: 143";
+		rLen = 0;
+		rLoc = 4489;
+		rType = 0;
+		vrLen = 967;
+		vrLoc = 4085;
+	};
+	61D0F7DC103E9BBF002B78C5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* TallyZooAppDelegate.m */;
+		name = "TallyZooAppDelegate.m: 70";
+		rLen = 0;
+		rLoc = 2416;
+		rType = 0;
+		vrLen = 1571;
+		vrLoc = 213;
+	};
+	61D0F7DD103E9BBF002B78C5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 615CC81D101D9F0900BD6BB2 /* GraphViewController.m */;
+		name = "GraphViewController.m: 143";
+		rLen = 0;
+		rLoc = 4489;
+		rType = 0;
+		vrLen = 967;
+		vrLoc = 4085;
+	};
+	61D0F7DE103E9BBF002B78C5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* TallyZooAppDelegate.m */;
+		name = "TallyZooAppDelegate.m: 51";
+		rLen = 0;
+		rLoc = 1982;
+		rType = 0;
+		vrLen = 1699;
+		vrLoc = 654;
+	};
+	61D0F7E1103E9BCE002B78C5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* TallyZooAppDelegate.m */;
+		name = "TallyZooAppDelegate.m: 51";
+		rLen = 0;
+		rLoc = 1982;
+		rType = 0;
+		vrLen = 1699;
+		vrLoc = 654;
+	};
+	61D0F7E3103E9BF0002B78C5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* TallyZooAppDelegate.m */;
+		name = "TallyZooAppDelegate.m: 51";
+		rLen = 0;
+		rLoc = 1927;
+		rType = 0;
+		vrLen = 1699;
+		vrLoc = 654;
+	};
+	61D0F7ED103E9C34002B78C5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* TallyZooAppDelegate.m */;
+		name = "TallyZooAppDelegate.m: 51";
+		rLen = 0;
+		rLoc = 1927;
+		rType = 0;
+		vrLen = 1701;
+		vrLoc = 654;
 	};
 	61E643E3102C2C9000E78174 /* ChooseCountViewController.h */ = {
 		uiCtxt = {
