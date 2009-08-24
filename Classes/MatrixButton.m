@@ -127,6 +127,8 @@
 					 withFont:[UIFont boldSystemFontOfSize:16] 
 				lineBreakMode:UILineBreakModeWordWrap 
 					alignment:UITextAlignmentCenter];
+		
+		CGPathRelease(path);
 	}
 	
 	CGContextBeginPath(currentContext);

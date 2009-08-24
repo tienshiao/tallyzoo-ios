@@ -7,12 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GraphView.h"
 
 @interface GraphViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
 	NSMutableArray *activities;
 	
 	UITableView *_tableView;
 	int oldSelection;
+	
+	GraphView *graphView;
 }
 
 @end

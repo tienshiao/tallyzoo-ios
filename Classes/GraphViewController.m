@@ -65,7 +65,11 @@
 	[containerView addSubview:lrView];
 	[lrView release];
 	
+	graphView = [[GraphView alloc] initWithFrame:CGRectMake(10, 227, 300, 180)];
+	[containerView addSubview:graphView];	
+	
 	[self setView:containerView];
+	[containerView release];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -86,6 +90,7 @@
 	if ([activities count]) {
 		oldSelection = 0;
 		[_tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:YES scrollPosition:UITableViewScrollPositionNone];
+		graphView.activity = [activities objectAtIndex:0];
 	}
 	
 	[_tableView flashScrollIndicators];
@@ -150,6 +155,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	oldSelection = indexPath.row;
+	graphView.activity = [activities objectAtIndex:indexPath.row];
 }
 
 
@@ -168,6 +174,10 @@
 
 - (void)dealloc {
     [super dealloc];
+	
+	[activities release];
+	[graphView release];
+	[_tableView release];
 }
 
 

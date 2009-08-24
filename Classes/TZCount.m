@@ -22,6 +22,7 @@
 @synthesize latitude;
 @synthesize longitude;
 @synthesize deleted;
+@synthesize created_on;
 
 - (id)initWithKey:(int)k andActivity:(TZActivity *)a {
 	if (self = [super init]) {
@@ -37,6 +38,7 @@
 				self.latitude = [rs doubleForColumn:@"latitude"];
 				self.longitude = [rs doubleForColumn:@"longitude"];
 				self.deleted = [rs boolForColumn:@"deleted"];
+				self.created_on = [rs stringForColumn:@"created_on"];
 			}
 			[rs close];
 		} else {

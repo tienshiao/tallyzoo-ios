@@ -42,6 +42,7 @@
 		61D0F756103E8BE2002B78C5 /* SelectLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 61D0F755103E8BE2002B78C5 /* SelectLayer.m */; };
 		61D0F7D1103E9A00002B78C5 /* 10-medical.png in Resources */ = {isa = PBXBuildFile; fileRef = 61D0F7CF103E9A00002B78C5 /* 10-medical.png */; };
 		61D0F7D2103E9A00002B78C5 /* 16-line-chart.png in Resources */ = {isa = PBXBuildFile; fileRef = 61D0F7D0103E9A00002B78C5 /* 16-line-chart.png */; };
+		61D0F7F0103FC90A002B78C5 /* GraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = 61D0F7EF103FC90A002B78C5 /* GraphView.m */; };
 		61E643E5102C2C9000E78174 /* ChooseCountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61E643E4102C2C9000E78174 /* ChooseCountViewController.m */; };
 		61E6444B102D1E1F00E78174 /* ColorPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61E6444A102D1E1F00E78174 /* ColorPickerViewController.m */; };
 		61E6455410315C3200E78174 /* CustomColorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61E6455310315C3200E78174 /* CustomColorViewController.m */; };
@@ -111,6 +112,8 @@
 		61D0F755103E8BE2002B78C5 /* SelectLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectLayer.m; sourceTree = "<group>"; };
 		61D0F7CF103E9A00002B78C5 /* 10-medical.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "10-medical.png"; sourceTree = "<group>"; };
 		61D0F7D0103E9A00002B78C5 /* 16-line-chart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "16-line-chart.png"; sourceTree = "<group>"; };
+		61D0F7EE103FC90A002B78C5 /* GraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphView.h; sourceTree = "<group>"; };
+		61D0F7EF103FC90A002B78C5 /* GraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphView.m; sourceTree = "<group>"; };
 		61E643E3102C2C9000E78174 /* ChooseCountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseCountViewController.h; sourceTree = "<group>"; };
 		61E643E4102C2C9000E78174 /* ChooseCountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseCountViewController.m; sourceTree = "<group>"; };
 		61E64449102D1E1F00E78174 /* ColorPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorPickerViewController.h; sourceTree = "<group>"; };
@@ -159,6 +162,8 @@
 				615CC822101D9F9100BD6BB2 /* DetailedCountViewController.m */,
 				61D0F4B7103DFB7C002B78C5 /* GraphCell.h */,
 				61D0F4B8103DFB7C002B78C5 /* GraphCell.m */,
+				61D0F7EE103FC90A002B78C5 /* GraphView.h */,
+				61D0F7EF103FC90A002B78C5 /* GraphView.m */,
 				615CC81C101D9F0900BD6BB2 /* GraphViewController.h */,
 				615CC81D101D9F0900BD6BB2 /* GraphViewController.m */,
 				615CC7F5101D927300BD6BB2 /* MatrixButton.h */,
@@ -386,6 +391,7 @@
 				61D0F6A8103E68D7002B78C5 /* LowerLeftView.m in Sources */,
 				61D0F6C4103E6AB3002B78C5 /* LowerRightView.m in Sources */,
 				61D0F756103E8BE2002B78C5 /* SelectLayer.m in Sources */,
+				61D0F7F0103FC90A002B78C5 /* GraphView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

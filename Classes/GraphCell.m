@@ -25,7 +25,7 @@
 		
 		shading = [[UIView alloc] initWithFrame:containerView.bounds];
 		shading.backgroundColor = [UIColor blueColor];
-		shading.alpha = .15;
+		shading.alpha = .1;
 		[containerView addSubview:shading];
 		
 		selectLayer = [[SelectLayer alloc] initWithFrame:containerView.bounds];

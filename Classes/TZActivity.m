@@ -30,6 +30,7 @@
 @synthesize position;
 @synthesize deleted;
 @synthesize created_on;
+@synthesize counts;
 
 - (id)initWithKey:(NSInteger)k {
 	if (self = [super init]) {
@@ -68,6 +69,8 @@
 		}
 		
 		counts = nil;
+		formatter = [[NSNumberFormatter alloc] init];
+		[formatter setRoundingMode: NSNumberFormatterRoundHalfEven];
 	}
 	return self;
 }
@@ -195,6 +198,19 @@
 }
 
 - (void)loadCounts {
+	[counts removeAllObjects];
+	
+	counts = [[NSMutableArray alloc] init];
+
+	FMDatabase *dbh = UIAppDelegate.database;
+	FMResultSet *rs = [dbh executeQuery:@"SELECT id FROM counts WHERE activity_id = ? AND deleted = 0 ORDER BY created_on",
+					   [NSNumber numberWithInt:key]];
+	while ([rs next]) {
+		TZCount *c = [[TZCount alloc] initWithKey:[rs intForColumn:@"id"] andActivity:self];
+		[counts addObject:c];
+		[c release];
+	}
+	
 }
 
 - (void)simpleCount {
@@ -220,13 +236,10 @@
 		sig = step_sig;
 	}
 
-	NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
 	[formatter setMaximumFractionDigits:sig];
 	[formatter setMinimumFractionDigits:sig];
-	[formatter setRoundingMode: NSNumberFormatterRoundHalfEven];
 	
 	NSString *numberString = [formatter stringFromNumber:[NSNumber numberWithDouble:initial_value + total]];
-	[formatter release];
 
 	return numberString;
 }
@@ -239,5 +252,8 @@
 	[default_tags release];
 	[color release];
 	[created_on release];
+	
+	[counts release];
+	[formatter release];
 }
 @end

@@ -13,6 +13,7 @@ Activity
   - move amount to top
 
 TODO
+- add timezone support
 Activity
 - public/private support
 - count

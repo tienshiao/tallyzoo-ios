@@ -20,6 +20,7 @@
 	double latitude;
 	double longitude;
 	BOOL deleted;
+	NSString *created_on;
 }
 
 @property(assign, nonatomic) TZActivity *activity;
@@ -31,6 +32,7 @@
 @property(assign, nonatomic) double latitude;
 @property(assign, nonatomic) double longitude;
 @property(assign, nonatomic) BOOL deleted;
+@property(copy, nonatomic) NSString *created_on;
 
 - (id)initWithKey:(int)key andActivity:(TZActivity *)key;
 - (BOOL)save;

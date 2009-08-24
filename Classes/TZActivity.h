@@ -28,6 +28,7 @@
 	NSString *created_on;
 	
 	NSMutableArray *counts;
+	NSNumberFormatter *formatter;
 }
 
 @property(assign, nonatomic) NSInteger key;
@@ -46,6 +47,7 @@
 @property(assign, nonatomic) int position;
 @property(assign, nonatomic) BOOL deleted;
 @property(copy, nonatomic) NSString *created_on;
+@property(nonatomic, readonly) NSMutableArray *counts;
 
 -(id)initWithKey:(NSInteger)k;
 -(BOOL)save;
