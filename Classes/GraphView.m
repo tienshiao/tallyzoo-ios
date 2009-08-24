@@ -64,8 +64,10 @@
 	
 	// all data
 	if (timespan == TIMESPAN_ALL) {
-		xmin = [[dateFormatter dateFromString:[[activity.counts objectAtIndex:0] created_on]] retain];
-		xmax = [[dateFormatter dateFromString:[[activity.counts objectAtIndex:[activity.counts count] - 1] created_on]] retain];
+		if ([activity.counts count]) {
+			xmin = [[dateFormatter dateFromString:[[activity.counts objectAtIndex:0] created_on]] retain];
+			xmax = [[dateFormatter dateFromString:[[activity.counts objectAtIndex:[activity.counts count] - 1] created_on]] retain];
+		}
 				
 		x_start_sec = [xmin timeIntervalSinceReferenceDate];
 		x_end_sec = [xmax timeIntervalSinceReferenceDate];
