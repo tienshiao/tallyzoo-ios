@@ -28,6 +28,8 @@
 	float canvasWidth;
 	
 	TZActivity *activity;
+	
+	NSArray *timespans;
 }
 
 @property (nonatomic, assign) TZActivity *activity;

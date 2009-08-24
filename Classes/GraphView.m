@@ -13,13 +13,14 @@
 
 #define FONT_SIZE 16
 
-#define TIMESPAN_ALL 0
-#define TIMESPAN_1D  1
-#define TIMESPAN_1W  2
-#define TIMESPAN_1M  3
-#define TIMESPAN_3M  4
-#define TIMESPAN_6M  5
-#define TIMESPAN_1Y  6
+#define TIMESPAN_1D  0
+#define TIMESPAN_1W  1
+#define TIMESPAN_1M  2
+#define TIMESPAN_3M  3
+#define TIMESPAN_6M  4
+#define TIMESPAN_1Y  5
+#define TIMESPAN_ALL 6
+
 
 @implementation GraphView
 
@@ -33,7 +34,9 @@
 		dateFormatter = [[NSDateFormatter alloc] init];
 		[dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
 		
-		timespan = TIMESPAN_1W;
+		timespan = TIMESPAN_ALL;
+		
+		timespans = [[NSArray alloc] initWithObjects:@"1d", @"1w", @"1m", @"3m", @"6m", @"1y", @"all", nil];
     }
     return self;
 }
@@ -44,6 +47,7 @@
 	ymax = activity.initial_value;
 	ysig = activity.init_sig;
 	
+	// TODO adjust ymin/ymax based on visible x timespan
 	NSEnumerator *e = [activity.counts objectEnumerator];
 	TZCount *c;
 	while (c = (TZCount *)[e nextObject]) {
@@ -84,8 +88,37 @@
 		x_start_sec = [NSDate timeIntervalSinceReferenceDate] - 365 * 24 * 60 * 60;
 		x_end_sec = [NSDate timeIntervalSinceReferenceDate];				
 	}
+
 	
+	
+	[formatter setMaximumFractionDigits:ysig];
+	[formatter setMinimumFractionDigits:ysig];
+	
+	ywidth = 0;
+	
+	NSString *numString = [formatter stringFromNumber:[NSNumber numberWithDouble:ymin]];
+	CGSize s = [numString sizeWithFont:[UIFont boldSystemFontOfSize:FONT_SIZE]];
+	if (s.width > ywidth) {
+		ywidth = s.width;
+	}
+	numString = [formatter stringFromNumber:[NSNumber numberWithDouble:ymin + ((ymax - ymin) / 3)]];
+	s = [numString sizeWithFont:[UIFont boldSystemFontOfSize:FONT_SIZE]];
+	if (s.width > ywidth) {
+		ywidth = s.width;
+	}
+	numString = [formatter stringFromNumber:[NSNumber numberWithDouble:ymin + (2 * (ymax - ymin) / 3)]];
+	s = [numString sizeWithFont:[UIFont boldSystemFontOfSize:FONT_SIZE]];
+	if (s.width > ywidth) {
+		ywidth = s.width;
+	}
+	numString = [formatter stringFromNumber:[NSNumber numberWithDouble:ymax]];
+	s = [numString sizeWithFont:[UIFont boldSystemFontOfSize:FONT_SIZE]];
+	if (s.width > ywidth) {
+		ywidth = s.width;
+	}	
 }
+
+#define TOP_PADDING 25
 
 - (void)drawRect:(CGRect)rect {
     // Drawing code
@@ -114,6 +147,28 @@
 	CGContextSetRGBFillColor(context, 1, 1, 1, .1);
 	CGContextFillPath(context);
 
+	// draw timespans
+	double width = s.width / [timespans count];
+	for (int i = 0; i < [timespans count]; i++) {
+		NSString *t = [timespans objectAtIndex:i];
+		CGSize ts = [t sizeWithFont:[UIFont boldSystemFontOfSize:FONT_SIZE]];
+		double x_offset = i * width + (width - ts.width) / 2;
+		if (i == timespan) {
+			CGContextMoveToPoint(context, x_offset, 2);
+			CGContextAddLineToPoint(context, x_offset + ts.width, 2);
+			CGContextAddArc(context, x_offset + ts.width, 2 + ts.height/2, ts.height/2, M_PI * 1.5, M_PI * .5, 0);
+			CGContextAddLineToPoint(context, x_offset, 2 + ts.height);
+			CGContextAddArc(context, x_offset, 2 + ts.height/2, ts.height/2, M_PI * .5, M_PI * 1.5, 0);
+			CGContextSetRGBFillColor(context, 1, 1, 1, 1);
+			CGContextFillPath(context);
+
+			CGContextSetFillColorWithColor(context, [[UIColor colorWithHexString:@"191970"] CGColor]);
+			[t drawAtPoint:CGPointMake(x_offset, 2) withFont:[UIFont boldSystemFontOfSize:FONT_SIZE]];
+		} else {
+			CGContextSetRGBFillColor(context, 1, 1, 1, 1);
+			[t drawAtPoint:CGPointMake(x_offset, 2) withFont:[UIFont boldSystemFontOfSize:FONT_SIZE]];
+		}
+	}
 	
 	CGContextSetLineWidth(context, 1);
 
@@ -133,16 +188,16 @@
 	CGContextSetRGBFillColor(context, 1, 1, 1, 1); 
 	NSString *numString = [formatter stringFromNumber:[NSNumber numberWithDouble:ymin]];
 	CGSize ns = [numString sizeWithFont:[UIFont boldSystemFontOfSize:FONT_SIZE]];
-	[numString drawAtPoint:CGPointMake(s.width - ywidth - 3, 20 + s.height - 40 - ns.height) withFont:[UIFont boldSystemFontOfSize:FONT_SIZE]];
+	[numString drawAtPoint:CGPointMake(s.width - ywidth - 3, TOP_PADDING + s.height - 40 - ns.height) withFont:[UIFont boldSystemFontOfSize:FONT_SIZE]];
 
 	numString = [formatter stringFromNumber:[NSNumber numberWithDouble:ymin + (ymax - ymin) / 3]];
-	[numString drawAtPoint:CGPointMake(s.width - ywidth - 3, 20 + (s.height - 40 - ns.height) * 2 / 3) withFont:[UIFont boldSystemFontOfSize:FONT_SIZE]];
+	[numString drawAtPoint:CGPointMake(s.width - ywidth - 3, TOP_PADDING + (s.height - 40 - ns.height) * 2 / 3) withFont:[UIFont boldSystemFontOfSize:FONT_SIZE]];
 
 	numString = [formatter stringFromNumber:[NSNumber numberWithDouble:ymin + (ymax - ymin) * 2 / 3]];
-	[numString drawAtPoint:CGPointMake(s.width - ywidth - 3, 20 + (s.height - 40 - ns.height) / 3) withFont:[UIFont boldSystemFontOfSize:FONT_SIZE]];	
+	[numString drawAtPoint:CGPointMake(s.width - ywidth - 3, TOP_PADDING + (s.height - 40 - ns.height) / 3) withFont:[UIFont boldSystemFontOfSize:FONT_SIZE]];	
 	
 	numString = [formatter stringFromNumber:[NSNumber numberWithDouble:ymax]];
-	[numString drawAtPoint:CGPointMake(s.width - ywidth - 3, 20) withFont:[UIFont boldSystemFontOfSize:FONT_SIZE]];
+	[numString drawAtPoint:CGPointMake(s.width - ywidth - 3, TOP_PADDING) withFont:[UIFont boldSystemFontOfSize:FONT_SIZE]];
 
 	
 	double xwidth = s.width - ywidth - 6;
@@ -169,7 +224,7 @@
 	for (int i = 0; i < x_lines; i++) {
 		double x_pos = (i + 1) * xwidth / x_lines;
 		CGContextMoveToPoint(context, x_pos, s.height - 21);
-		CGContextAddLineToPoint(context, x_pos, 20);
+		CGContextAddLineToPoint(context, x_pos, TOP_PADDING);
 		CGContextStrokePath(context);			
 	}
 	
@@ -211,7 +266,7 @@
 		current += c.amount;
 		double c_secs = [cdate timeIntervalSinceReferenceDate];
 		double x_pos = (c_secs - x_start_sec) / (xwidth_secs) * xwidth;
-		double y_pos = (current - activity.initial_value) / (ymax - ymin) * (s.height - 21 - 20);
+		double y_pos = (current - activity.initial_value) / (ymax - ymin) * (s.height - 21 - TOP_PADDING);
 		if (i == 0) {
 			CGContextMoveToPoint(context, x_pos, s.height - 21 - y_pos);
 		} else {
@@ -222,6 +277,23 @@
 	CGContextSetLineWidth(context, 2);
 	CGContextStrokePath(context);	
 	
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+	int old_timespan = timespan;	
+	double width = self.bounds.size.width / [timespans count];
+
+	for (UITouch *touch in touches) {
+		CGPoint location = [touch locationInView:self];
+		if (location.y < TOP_PADDING) {
+			timespan = location.x / width;
+		}
+	}
+	
+	if (old_timespan != timespan) {
+		[self findMinMax];
+		[self setNeedsDisplay];
+	}
 }
 
 - (TZActivity *)activity {
@@ -236,35 +308,7 @@
 	
 	[activity loadCounts];
 	
-	[self findMinMax];
-	
-
-	[formatter setMaximumFractionDigits:ysig];
-	[formatter setMinimumFractionDigits:ysig];
-	
-	ywidth = 0;
-	
-	NSString *numString = [formatter stringFromNumber:[NSNumber numberWithDouble:ymin]];
-	CGSize s = [numString sizeWithFont:[UIFont boldSystemFontOfSize:FONT_SIZE]];
-	if (s.width > ywidth) {
-		ywidth = s.width;
-	}
-	numString = [formatter stringFromNumber:[NSNumber numberWithDouble:ymin + ((ymax - ymin) / 3)]];
-	s = [numString sizeWithFont:[UIFont boldSystemFontOfSize:FONT_SIZE]];
-	if (s.width > ywidth) {
-		ywidth = s.width;
-	}
-	numString = [formatter stringFromNumber:[NSNumber numberWithDouble:ymin + (2 * (ymax - ymin) / 3)]];
-	s = [numString sizeWithFont:[UIFont boldSystemFontOfSize:FONT_SIZE]];
-	if (s.width > ywidth) {
-		ywidth = s.width;
-	}
-	numString = [formatter stringFromNumber:[NSNumber numberWithDouble:ymax]];
-	s = [numString sizeWithFont:[UIFont boldSystemFontOfSize:FONT_SIZE]];
-	if (s.width > ywidth) {
-		ywidth = s.width;
-	}
-	
+	[self findMinMax];	
 	[self setNeedsDisplay];
 }
 
@@ -277,6 +321,8 @@
 	
 	[xmax release];
 	[xmin release];
+	
+	[timespans release];
 }
 
 
