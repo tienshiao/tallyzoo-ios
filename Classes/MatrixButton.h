@@ -31,6 +31,8 @@
 	SystemSoundID clickDownID;
 	CFURLRef clickUpURL;
 	SystemSoundID clickUpID;	
+	
+	float hold_threshold;
 }
 
 @property(assign, nonatomic) BOOL down;

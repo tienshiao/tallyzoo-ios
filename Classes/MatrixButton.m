@@ -27,6 +27,12 @@
 											 CFSTR("click_up"),
 											 CFSTR("wav"), NULL);
 		AudioServicesCreateSystemSoundID(clickUpURL, &clickUpID);
+		
+		NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+		hold_threshold = [defaults floatForKey:@"delay_preference"];
+		if (hold_threshold < 0.5) {
+			hold_threshold = 0.5;
+		}
     }
     return self;
 }
@@ -149,7 +155,6 @@
 	
 }
 
-#define HOLD_THRESHOLD 2.0
 - (void)timeoutTouch {
 	if (delegate && [delegate respondsToSelector:@selector(matrixButtonHeld:)]) { 
 		[delegate matrixButtonHeld:self];
@@ -160,7 +165,7 @@
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
 	// start timer
-	[self performSelector:@selector(timeoutTouch) withObject:nil afterDelay:HOLD_THRESHOLD];
+	[self performSelector:@selector(timeoutTouch) withObject:nil afterDelay:hold_threshold];
 	self.down = YES;
 	held = NO;
 }

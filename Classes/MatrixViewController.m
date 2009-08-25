@@ -42,6 +42,9 @@
 		for (int i = 0; i < [self getNumberOfScreens]; i++) {
 			[matrices addObject:[NSNull null]];
 		}
+		
+		NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+		button_behavior = [defaults integerForKey:@"behavior_preference"];
 	}
 	return self;
 }
@@ -248,21 +251,36 @@
 		[addNavigationController release];
 		[eavc release];			
 	} else {
-		[mb.activity simpleCount];
+		if (button_behavior == 0) {
+			[mb.activity simpleCount];
+		} else {
+			TZCount *newCount = [[TZCount alloc] initWithKey:0 andActivity:mb.activity];
+			EditCountViewController *ecvc = [[EditCountViewController alloc] initWithCount:newCount];
+			UINavigationController *addNavigationController =[[UINavigationController alloc] initWithRootViewController:ecvc];
+			
+			[[self navigationController] presentModalViewController:addNavigationController animated:YES];
+			
+			[addNavigationController release];
+			[ecvc release];				
+		}
 	}
 }
 
 - (void)matrixButtonHeld:(MatrixButton *)mb {
 	if (editting) {
 	} else {
-		TZCount *newCount = [[TZCount alloc] initWithKey:0 andActivity:mb.activity];
-		EditCountViewController *ecvc = [[EditCountViewController alloc] initWithCount:newCount];
-		UINavigationController *addNavigationController =[[UINavigationController alloc] initWithRootViewController:ecvc];
+		if (button_behavior == 0) {
+			TZCount *newCount = [[TZCount alloc] initWithKey:0 andActivity:mb.activity];
+			EditCountViewController *ecvc = [[EditCountViewController alloc] initWithCount:newCount];
+			UINavigationController *addNavigationController =[[UINavigationController alloc] initWithRootViewController:ecvc];
 	
-		[[self navigationController] presentModalViewController:addNavigationController animated:YES];
+			[[self navigationController] presentModalViewController:addNavigationController animated:YES];
 	
-		[addNavigationController release];
-		[ecvc release];	
+			[addNavigationController release];
+			[ecvc release];	
+		} else {
+			[mb.activity simpleCount];
+		}
 	}
 }
 

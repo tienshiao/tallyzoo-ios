@@ -19,6 +19,8 @@
 	UIBarButtonItem *editBarButtonItem;
 	UIBarButtonItem *doneBarButtonItem;
 	BOOL editting;
+	
+	int button_behavior;
 }
 
 - (int)getNumberOfScreens;
