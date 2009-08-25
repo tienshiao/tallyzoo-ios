@@ -16,6 +16,20 @@
 @synthesize database;
 @synthesize location;
 
+- (void)initializeDefaults {
+	float testValue = [[NSUserDefaults standardUserDefaults] floatForKey:@"delay_preference"];
+	if (testValue == 0.0) {
+		// since no default values have been set (i.e. no preferences file created), create it here
+		NSDictionary *appDefaults =  [NSDictionary dictionaryWithObjectsAndKeys:
+									  [NSNumber numberWithInt:0], @"behavior_preference",
+									  [NSNumber numberWithFloat:1.5], @"delay_preference",
+									  nil];
+		
+		[[NSUserDefaults standardUserDefaults] registerDefaults:appDefaults];
+		[[NSUserDefaults standardUserDefaults] synchronize];
+	}
+}
+
 - (void)initializeDatabase {
     // First, test for existence.
     BOOL success;
@@ -45,6 +59,7 @@
 }
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
+	[self initializeDefaults];
 	[self initializeDatabase];
 
 	locationManager = [[CLLocationManager alloc] init];
