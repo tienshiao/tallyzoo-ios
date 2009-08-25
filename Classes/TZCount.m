@@ -29,7 +29,7 @@
 		FMDatabase *dbh = UIAppDelegate.database;
 		key = k;
 		if (key) {
-			FMResultSet *rs = [dbh executeQuery:@"SELECT * FROM counts WHERE id = ? AND deleted = 0", [NSNumber numberWithInt:key], nil];
+			FMResultSet *rs = [dbh executeQuery:@"SELECT * FROM counts WHERE id = ? AND deleted = 0", [NSNumber numberWithInt:key]];
 			if ([rs next]) {
 				self.note = [rs stringForColumn:@"note"];
 				self.tags = [rs stringForColumn:@"tags"];
@@ -87,8 +87,8 @@
 		 [NSNumber numberWithDouble:latitude],
  		 [NSNumber numberWithDouble:longitude],
 		 [NSNumber numberWithInt:[[NSTimeZone systemTimeZone] secondsFromGMT]],
-		 [NSNumber numberWithInt:[[NSTimeZone systemTimeZone] secondsFromGMT]],
-		 nil];
+		 [NSNumber numberWithInt:[[NSTimeZone systemTimeZone] secondsFromGMT]]
+		];
 		if ([dbh hadError]) {
 			return NO;
 		} else {
@@ -117,8 +117,8 @@
 		 [NSNumber numberWithDouble:longitude],
 		 [NSNumber numberWithBool:deleted],
 		 [NSNumber numberWithInt:[[NSTimeZone systemTimeZone] secondsFromGMT]],
-		 [NSNumber numberWithInt:key],
-		 nil];
+		 [NSNumber numberWithInt:key]
+		];
 		
 		if ([dbh hadError]) {
 			return NO;

@@ -37,7 +37,7 @@
 		FMDatabase *dbh = UIAppDelegate.database;
 		key = k;
 		if (key) {
-			FMResultSet *rs = [dbh executeQuery:@"SELECT * FROM activities WHERE id = ?", [NSNumber numberWithInt:key], nil];
+			FMResultSet *rs = [dbh executeQuery:@"SELECT * FROM activities WHERE id = ?", [NSNumber numberWithInt:key]];
 			if ([rs next]) {
 				self.name = [rs stringForColumn:@"name"];
 				self.default_note = [rs stringForColumn:@"default_note"];
@@ -146,8 +146,8 @@
 			[NSNumber numberWithInt:screen],
 			[NSNumber numberWithInt:position],
 			[NSNumber numberWithInt:[[NSTimeZone systemTimeZone] secondsFromGMT]],
-			[NSNumber numberWithInt:[[NSTimeZone systemTimeZone] secondsFromGMT]],
-			nil];
+			[NSNumber numberWithInt:[[NSTimeZone systemTimeZone] secondsFromGMT]]
+		   ];
 		if ([dbh hadError]) {
 			return NO;
 		} else {
@@ -186,8 +186,8 @@
 		 [NSNumber numberWithInt:position],
 		 [NSNumber numberWithBool:deleted],
 		 [NSNumber numberWithInt:[[NSTimeZone systemTimeZone] secondsFromGMT]],
-		 [NSNumber numberWithInt:key],
-		 nil];
+		 [NSNumber numberWithInt:key]
+		];
 		
 		if ([dbh hadError]) {
 			return NO;
