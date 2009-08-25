@@ -145,8 +145,8 @@
 			[NSNumber numberWithBool:display_total],
 			[NSNumber numberWithInt:screen],
 			[NSNumber numberWithInt:position],
-			@"",
-			@"",
+			[NSNumber numberWithInt:[[NSTimeZone systemTimeZone] secondsFromGMT]],
+			[NSNumber numberWithInt:[[NSTimeZone systemTimeZone] secondsFromGMT]],
 			nil];
 		if ([dbh hadError]) {
 			return NO;
@@ -185,7 +185,7 @@
 		 [NSNumber numberWithInt:screen],
 		 [NSNumber numberWithInt:position],
 		 [NSNumber numberWithBool:deleted],
-		 @"",
+		 [NSNumber numberWithInt:[[NSTimeZone systemTimeZone] secondsFromGMT]],
 		 [NSNumber numberWithInt:key],
 		 nil];
 		

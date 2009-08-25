@@ -47,9 +47,11 @@
 			self.amount = a.default_step;
 			self.amount_sig = a.step_sig;
 			
-			// TODO ask for permission to use location earlier
-			self.latitude = 0.0;
-			self.longitude = 0.0;
+
+			CLLocation *location = UIAppDelegate.location;
+			
+			self.longitude = location.coordinate.longitude;
+			self.latitude = location.coordinate.latitude;
 			
 			self.deleted = NO;
 		}
@@ -70,6 +72,7 @@
 	FMDatabase *dbh = UIAppDelegate.database;
 	
 	if (key == 0) {
+		// TODO if no location data
 		// INSERT
 		[dbh executeUpdate:@"INSERT INTO counts (activity_id, note, tags, amount, amount_sig,\
 		 latitude, longitude, deleted, created_on, created_tz, \
@@ -83,8 +86,8 @@
 		 [NSNumber numberWithInt:amount_sig],
 		 [NSNumber numberWithDouble:latitude],
  		 [NSNumber numberWithDouble:longitude],
-		 @"",
-		 @"",
+		 [NSNumber numberWithInt:[[NSTimeZone systemTimeZone] secondsFromGMT]],
+		 [NSNumber numberWithInt:[[NSTimeZone systemTimeZone] secondsFromGMT]],
 		 nil];
 		if ([dbh hadError]) {
 			return NO;
@@ -113,7 +116,7 @@
 		 [NSNumber numberWithDouble:latitude],
 		 [NSNumber numberWithDouble:longitude],
 		 [NSNumber numberWithBool:deleted],
-		 @"",
+		 [NSNumber numberWithInt:[[NSTimeZone systemTimeZone] secondsFromGMT]],
 		 [NSNumber numberWithInt:key],
 		 nil];
 		

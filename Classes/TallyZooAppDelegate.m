@@ -14,6 +14,7 @@
 
 @synthesize window;
 @synthesize database;
+@synthesize location;
 
 - (void)initializeDatabase {
     // First, test for existence.
@@ -39,8 +40,18 @@
 	}
 }
 
+- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation{
+	self.location = newLocation;
+}
+
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
 	[self initializeDatabase];
+
+	locationManager = [[CLLocationManager alloc] init];
+	locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
+	locationManager.distanceFilter = 20;
+	locationManager.delegate = self;
+	[locationManager startUpdatingLocation];
 	
 	MatrixViewController *mvc = [[MatrixViewController alloc] init];
 	UINavigationController *mnc = [[UINavigationController alloc] initWithRootViewController:mvc];
@@ -68,6 +79,9 @@
 - (void)dealloc {
     [window release];
     [super dealloc];
+
+	[locationManager release];
+	[location release];
 }
 
 
