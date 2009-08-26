@@ -7,6 +7,7 @@ Button Screen
 - edit mode
   - delete activity
   - click to edit activity
+- shake to undo
 Activity
 - count
   - move acitivity to title
@@ -25,9 +26,9 @@ Button Screen
 - graphical title
 - edit mode
   - drag and rearrange
-- shake to undo
 - better feedback (glow/fade off)
 Count Details Screen
 Graph
+- fix graph with no activities
 Sync
 Configuration

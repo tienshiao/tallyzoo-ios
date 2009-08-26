@@ -190,13 +190,13 @@
 	CGContextSetRGBFillColor(context, 1, 1, 1, 1); 
 	NSString *numString = [formatter stringFromNumber:[NSNumber numberWithDouble:ymin]];
 	CGSize ns = [numString sizeWithFont:[UIFont boldSystemFontOfSize:FONT_SIZE]];
-	[numString drawAtPoint:CGPointMake(s.width - ywidth - 3, TOP_PADDING + s.height - 40 - ns.height) withFont:[UIFont boldSystemFontOfSize:FONT_SIZE]];
+	[numString drawAtPoint:CGPointMake(s.width - ywidth - 3, TOP_PADDING + s.height - TOP_PADDING - 20 - ns.height) withFont:[UIFont boldSystemFontOfSize:FONT_SIZE]];
 
 	numString = [formatter stringFromNumber:[NSNumber numberWithDouble:ymin + (ymax - ymin) / 3]];
-	[numString drawAtPoint:CGPointMake(s.width - ywidth - 3, TOP_PADDING + (s.height - 40 - ns.height) * 2 / 3) withFont:[UIFont boldSystemFontOfSize:FONT_SIZE]];
+	[numString drawAtPoint:CGPointMake(s.width - ywidth - 3, TOP_PADDING + (s.height - TOP_PADDING - 20 - ns.height) * 2 / 3) withFont:[UIFont boldSystemFontOfSize:FONT_SIZE]];
 
 	numString = [formatter stringFromNumber:[NSNumber numberWithDouble:ymin + (ymax - ymin) * 2 / 3]];
-	[numString drawAtPoint:CGPointMake(s.width - ywidth - 3, TOP_PADDING + (s.height - 40 - ns.height) / 3) withFont:[UIFont boldSystemFontOfSize:FONT_SIZE]];	
+	[numString drawAtPoint:CGPointMake(s.width - ywidth - 3, TOP_PADDING + (s.height - TOP_PADDING - 20 - ns.height) / 3) withFont:[UIFont boldSystemFontOfSize:FONT_SIZE]];	
 	
 	numString = [formatter stringFromNumber:[NSNumber numberWithDouble:ymax]];
 	[numString drawAtPoint:CGPointMake(s.width - ywidth - 3, TOP_PADDING) withFont:[UIFont boldSystemFontOfSize:FONT_SIZE]];
