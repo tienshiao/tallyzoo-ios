@@ -43,6 +43,9 @@
 		61D0F7D1103E9A00002B78C5 /* 10-medical.png in Resources */ = {isa = PBXBuildFile; fileRef = 61D0F7CF103E9A00002B78C5 /* 10-medical.png */; };
 		61D0F7D2103E9A00002B78C5 /* 16-line-chart.png in Resources */ = {isa = PBXBuildFile; fileRef = 61D0F7D0103E9A00002B78C5 /* 16-line-chart.png */; };
 		61D0F7F0103FC90A002B78C5 /* GraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = 61D0F7EF103FC90A002B78C5 /* GraphView.m */; };
+		61D0FAFC104387B6002B78C5 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61D0FAFB104387B6002B78C5 /* CoreLocation.framework */; };
+		61D0FBC410446507002B78C5 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 61D0FBC310446507002B78C5 /* Settings.bundle */; };
+		61D0FC391045166C002B78C5 /* ShakeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 61D0FC381045166C002B78C5 /* ShakeView.m */; };
 		61E643E5102C2C9000E78174 /* ChooseCountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61E643E4102C2C9000E78174 /* ChooseCountViewController.m */; };
 		61E6444B102D1E1F00E78174 /* ColorPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61E6444A102D1E1F00E78174 /* ColorPickerViewController.m */; };
 		61E6455410315C3200E78174 /* CustomColorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61E6455310315C3200E78174 /* CustomColorViewController.m */; };
@@ -114,6 +117,10 @@
 		61D0F7D0103E9A00002B78C5 /* 16-line-chart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "16-line-chart.png"; sourceTree = "<group>"; };
 		61D0F7EE103FC90A002B78C5 /* GraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphView.h; sourceTree = "<group>"; };
 		61D0F7EF103FC90A002B78C5 /* GraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphView.m; sourceTree = "<group>"; };
+		61D0FAFB104387B6002B78C5 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		61D0FBC310446507002B78C5 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		61D0FC371045166C002B78C5 /* ShakeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShakeView.h; sourceTree = "<group>"; };
+		61D0FC381045166C002B78C5 /* ShakeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShakeView.m; sourceTree = "<group>"; };
 		61E643E3102C2C9000E78174 /* ChooseCountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseCountViewController.h; sourceTree = "<group>"; };
 		61E643E4102C2C9000E78174 /* ChooseCountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseCountViewController.m; sourceTree = "<group>"; };
 		61E64449102D1E1F00E78174 /* ColorPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorPickerViewController.h; sourceTree = "<group>"; };
@@ -141,6 +148,7 @@
 				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
 				615CC8E9101FF27F00BD6BB2 /* libsqlite3.0.dylib in Frameworks */,
 				61D0F289103B5965002B78C5 /* AudioToolbox.framework in Frameworks */,
+				61D0FAFC104387B6002B78C5 /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -174,6 +182,8 @@
 				615CC7F3101D924D00BD6BB2 /* MatrixViewController.m */,
 				61D0F754103E8BE2002B78C5 /* SelectLayer.h */,
 				61D0F755103E8BE2002B78C5 /* SelectLayer.m */,
+				61D0FC371045166C002B78C5 /* ShakeView.h */,
+				61D0FC381045166C002B78C5 /* ShakeView.m */,
 				1D3623240D0F684500981E51 /* TallyZooAppDelegate.h */,
 				1D3623250D0F684500981E51 /* TallyZooAppDelegate.m */,
 			);
@@ -223,6 +233,7 @@
 				615CC90C102218ED00BD6BB2 /* tallyzoo.db */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* TallyZoo-Info.plist */,
+				61D0FBC310446507002B78C5 /* Settings.bundle */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -230,6 +241,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				61D0FAFB104387B6002B78C5 /* CoreLocation.framework */,
 				61D0F288103B5965002B78C5 /* AudioToolbox.framework */,
 				615CC8E8101FF27F00BD6BB2 /* libsqlite3.0.dylib */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
@@ -353,6 +365,7 @@
 				61D0F35B103BE1B7002B78C5 /* red_up.png in Resources */,
 				61D0F7D1103E9A00002B78C5 /* 10-medical.png in Resources */,
 				61D0F7D2103E9A00002B78C5 /* 16-line-chart.png in Resources */,
+				61D0FBC410446507002B78C5 /* Settings.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -392,6 +405,7 @@
 				61D0F6C4103E6AB3002B78C5 /* LowerRightView.m in Sources */,
 				61D0F756103E8BE2002B78C5 /* SelectLayer.m in Sources */,
 				61D0F7F0103FC90A002B78C5 /* GraphView.m in Sources */,
+				61D0FC391045166C002B78C5 /* ShakeView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

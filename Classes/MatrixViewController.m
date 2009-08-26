@@ -14,6 +14,7 @@
 #import "TZActivity.h"
 #import "TZCount.h"
 #import "MatrixButton.h"
+#import "ShakeView.h"
 
 @implementation MatrixViewController
 
@@ -121,8 +122,9 @@
 
 // Implement loadView to create a view hierarchy programmatically, without using a nib.
 - (void)loadView {
-	UIView *containerView = [[UIView alloc] init];
+	ShakeView *containerView = [[ShakeView alloc] init];
 	containerView.backgroundColor = [UIColor blackColor];
+	containerView.delegate = self;
 	
 	int screens = [self getNumberOfScreens];
 	
@@ -175,6 +177,10 @@
 	}
 //	[self.tableView reloadData];
 	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:animated];	
+}
+
+- (void)viewDidAppear:(BOOL)animater {
+	[self.view becomeFirstResponder];
 }
 
 /*
@@ -281,6 +287,41 @@
 		} else {
 			[mb.activity simpleCount];
 		}
+	}
+}
+
+-(void)shakeHappened:(ShakeView*)view {
+	FMDatabase *dbh = UIAppDelegate.database;
+	FMResultSet *rs = [dbh executeQuery:@"SELECT id FROM counts WHERE deleted = 0 ORDER BY created_on DESC LIMIT 1"];
+	[rs next];
+	
+	TZCount *c = [[TZCount alloc] initWithKey:[rs intForColumn:@"id"] andActivity:nil];
+	undo_count_id = c.key;
+	
+	TZActivity *a = [[TZActivity alloc] initWithKey:c.activity_id];
+	
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Undo" 
+													message:[NSString stringWithFormat:@"Undo last count on '%@'?", a.name] 
+												   delegate:self 
+										  cancelButtonTitle:@"Cancel" 
+										  otherButtonTitles:@"Undo Count", nil];
+	alert.delegate = self;
+	[alert show];
+	
+	[c release];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+	if (buttonIndex) {
+		FMDatabase *dbh = UIAppDelegate.database;
+		FMResultSet *rs = [dbh executeQuery:@"UPDATE counts SET deleted = 1 WHERE id = ?", [NSNumber numberWithInt:undo_count_id]];
+		[rs next];
+		
+		int screens = [self getNumberOfScreens];
+		for (int i = 0; i < screens; i++) {
+			[self loadScrollViewWithPage:i];
+		}
+		
 	}
 }
 

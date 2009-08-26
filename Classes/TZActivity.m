@@ -127,13 +127,18 @@
 	
 	if (key == 0) {
 		// INSERT
-		[dbh executeUpdate:@"INSERT into activities (name, default_note, default_tags, initial_value, init_sig,\
+		CFUUIDRef uuid = CFUUIDCreate(NULL);
+		CFStringRef guid = CFUUIDCreateString(NULL, uuid);
+		CFRelease(uuid);
+		
+		[dbh executeUpdate:@"INSERT into activities (guid, name, default_note, default_tags, initial_value, init_sig,\
 												default_step, step_sig, color, count_updown, display_total, \
 											    screen, position, deleted, created_on, created_tz, \
 												modified_on, modified_tz) VALUES \
-												(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0, \
+												(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0, \
 												datetime('now', 'localtime'), ?, datetime('now', 'localtime'), ?)",
-			name,
+			(NSString *)guid,
+		    name,
 			default_note,
 			default_tags,
 			[NSNumber numberWithDouble:initial_value],
@@ -148,6 +153,7 @@
 			[NSNumber numberWithInt:[[NSTimeZone systemTimeZone] secondsFromGMT]],
 			[NSNumber numberWithInt:[[NSTimeZone systemTimeZone] secondsFromGMT]]
 		   ];
+		CFRelease(guid);
 		if ([dbh hadError]) {
 			return NO;
 		} else {

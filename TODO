@@ -11,9 +11,12 @@ Activity
 - count
   - move acitivity to title
   - move amount to top
+- add timezone support
+Preferences
+- click for advanced
+- hold length
 
 TODO
-- add timezone support
 Activity
 - public/private support
 - count
@@ -28,6 +31,3 @@ Count Details Screen
 Graph
 Sync
 Configuration
-Preferences
-- click for advanced
-- hold length

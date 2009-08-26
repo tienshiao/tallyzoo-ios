@@ -1,5 +1,6 @@
 create table activities (
 id INTEGER PRIMARY KEY AUTOINCREMENT,
+    guid TEXT,
     name TEXT, -- limited to a shorter number of characters
     default_note TEXT, -- limited to some short number of characters
     default_tags TEXT, -- delimited string
@@ -22,6 +23,7 @@ id INTEGER PRIMARY KEY AUTOINCREMENT,
 
 create table counts (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
+    guid TEXT,
     activity_id INTEGER,
     note TEXT,
     tags TEXT,

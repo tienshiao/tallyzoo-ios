@@ -23,6 +23,7 @@
 @synthesize longitude;
 @synthesize deleted;
 @synthesize created_on;
+@synthesize activity_id;
 
 - (id)initWithKey:(int)k andActivity:(TZActivity *)a {
 	if (self = [super init]) {
@@ -39,6 +40,7 @@
 				self.longitude = [rs doubleForColumn:@"longitude"];
 				self.deleted = [rs boolForColumn:@"deleted"];
 				self.created_on = [rs stringForColumn:@"created_on"];
+				self.activity_id = [rs intForColumn:@"activity_id"];
 			}
 			[rs close];
 		} else {
@@ -74,11 +76,16 @@
 	if (key == 0) {
 		// TODO if no location data
 		// INSERT
-		[dbh executeUpdate:@"INSERT INTO counts (activity_id, note, tags, amount, amount_sig,\
+		CFUUIDRef uuid = CFUUIDCreate(NULL);
+		CFStringRef guid = CFUUIDCreateString(NULL, uuid);
+		CFRelease(uuid);
+		
+		[dbh executeUpdate:@"INSERT INTO counts (guid, activity_id, note, tags, amount, amount_sig,\
 		 latitude, longitude, deleted, created_on, created_tz, \
 		 modified_on, modified_tz) VALUES \
-		 (?, ?, ?, ?, ?, ?, ?, 0, \
+		 (?, ?, ?, ?, ?, ?, ?, ?, 0, \
 		 datetime('now', 'localtime'), ?, datetime('now', 'localtime'), ?)",
+		 (NSString *)guid,
 		 [NSNumber numberWithInt:activity.key],
 		 note,
 		 tags,
@@ -89,6 +96,8 @@
 		 [NSNumber numberWithInt:[[NSTimeZone systemTimeZone] secondsFromGMT]],
 		 [NSNumber numberWithInt:[[NSTimeZone systemTimeZone] secondsFromGMT]]
 		];
+		
+		CFRelease(guid);
 		if ([dbh hadError]) {
 			return NO;
 		} else {

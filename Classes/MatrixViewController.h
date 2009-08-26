@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "MatrixView.h"
 
-@interface MatrixViewController : UIViewController<UIScrollViewDelegate> {
+@interface MatrixViewController : UIViewController<UIScrollViewDelegate, UIAlertViewDelegate> {
 	NSMutableArray *matrices;
 	
 	UIPageControl *_pageControl;
@@ -21,6 +21,7 @@
 	BOOL editting;
 	
 	int button_behavior;
+	int undo_count_id;
 }
 
 - (int)getNumberOfScreens;
