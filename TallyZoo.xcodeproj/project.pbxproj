@@ -46,6 +46,7 @@
 		61D0FAFC104387B6002B78C5 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61D0FAFB104387B6002B78C5 /* CoreLocation.framework */; };
 		61D0FBC410446507002B78C5 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 61D0FBC310446507002B78C5 /* Settings.bundle */; };
 		61D0FC391045166C002B78C5 /* ShakeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 61D0FC381045166C002B78C5 /* ShakeView.m */; };
+		61D0FCA810461DE8002B78C5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61D0FCA710461DE8002B78C5 /* QuartzCore.framework */; };
 		61E643E5102C2C9000E78174 /* ChooseCountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61E643E4102C2C9000E78174 /* ChooseCountViewController.m */; };
 		61E6444B102D1E1F00E78174 /* ColorPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61E6444A102D1E1F00E78174 /* ColorPickerViewController.m */; };
 		61E6455410315C3200E78174 /* CustomColorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61E6455310315C3200E78174 /* CustomColorViewController.m */; };
@@ -121,6 +122,7 @@
 		61D0FBC310446507002B78C5 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		61D0FC371045166C002B78C5 /* ShakeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShakeView.h; sourceTree = "<group>"; };
 		61D0FC381045166C002B78C5 /* ShakeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShakeView.m; sourceTree = "<group>"; };
+		61D0FCA710461DE8002B78C5 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		61E643E3102C2C9000E78174 /* ChooseCountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseCountViewController.h; sourceTree = "<group>"; };
 		61E643E4102C2C9000E78174 /* ChooseCountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseCountViewController.m; sourceTree = "<group>"; };
 		61E64449102D1E1F00E78174 /* ColorPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorPickerViewController.h; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 				615CC8E9101FF27F00BD6BB2 /* libsqlite3.0.dylib in Frameworks */,
 				61D0F289103B5965002B78C5 /* AudioToolbox.framework in Frameworks */,
 				61D0FAFC104387B6002B78C5 /* CoreLocation.framework in Frameworks */,
+				61D0FCA810461DE8002B78C5 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,6 +244,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				61D0FCA710461DE8002B78C5 /* QuartzCore.framework */,
 				61D0FAFB104387B6002B78C5 /* CoreLocation.framework */,
 				61D0F288103B5965002B78C5 /* AudioToolbox.framework */,
 				615CC8E8101FF27F00BD6BB2 /* libsqlite3.0.dylib */,

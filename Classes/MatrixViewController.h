@@ -28,6 +28,8 @@
 
 - (void)addItem:(id)sender;
 - (void)editButtons:(id)sender;
+- (void)wobbleView:(UIView *)v;
+- (void)stopWobbleView:(UIView *)v;
 
 
 @end

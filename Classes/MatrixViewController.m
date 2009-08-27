@@ -6,6 +6,7 @@
 //  Copyright 2009 __MyCompanyName__. All rights reserved.
 //
 
+#import <QuartzCore/QuartzCore.h>
 #import "MatrixViewController.h"
 #import "TallyZooAppDelegate.h"
 #import "FMDatabase.h"
@@ -83,6 +84,10 @@
 		r.origin.y = (a.position / 3) * r.size.height;
 		button.frame = r;
 		button.delegate = self;
+		
+		if (editting) {
+			[self wobbleView:button];
+		}
 		
 		[mv.buttons replaceObjectAtIndex:a.position withObject:button];
 		[mv addSubview:button];
@@ -221,15 +226,63 @@
 	[eavc release];	
 }
 
+- (void)wobbleView:(UIView *)v {
+	CALayer *l = v.layer;
+	
+	l.transform = CATransform3DMakeScale(0.9, 0.9, 1);
+	
+	// here is an example wiggle
+	CABasicAnimation *wiggle = [CABasicAnimation animationWithKeyPath:@"transform"];
+	wiggle.duration = 0.1;
+	wiggle.repeatCount = 1e100f;
+	wiggle.autoreverses = YES;
+	wiggle.fromValue = [NSValue valueWithCATransform3D:CATransform3DRotate(l.transform,-0.05, 0.0 ,1.0 ,2.0)];
+	wiggle.toValue = [NSValue valueWithCATransform3D:CATransform3DRotate(l.transform,0.05, 0.0 ,1.0 ,2.0)];
+	
+	// doing the wiggle
+	[l addAnimation:wiggle forKey:@"wiggle"];
+}
+
+- (void)stopWobbleView:(UIView *)v {
+	[v.layer removeAllAnimations];
+	v.layer.transform = CATransform3DIdentity;
+}
 
 - (void)editButtons:(id)sender {
 	editting = YES;
 	self.navigationItem.leftBarButtonItem = doneBarButtonItem;
+	
+	for (MatrixView *matrix in matrices) {
+		if ((NSNull *)matrix == [NSNull null]) {
+			continue;
+		}
+		
+		for (MatrixButton *button in matrix.buttons) {
+			if ((NSNull *)button == [NSNull null]) {
+				continue;
+			}
+			[self wobbleView:button];
+		}
+	}
 }
 
 - (void)doneButtons:(id)sender {
 	editting = NO;
 	self.navigationItem.leftBarButtonItem = editBarButtonItem;
+
+	for (MatrixView *matrix in matrices) {
+		if ((NSNull *)matrix == [NSNull null]) {
+			continue;
+		}
+		
+		for (MatrixButton *button in matrix.buttons) {
+			if ((NSNull *)button == [NSNull null]) {
+				continue;
+			}
+			[self stopWobbleView:button];
+		}
+	}
+	
 }
 
 - (void)pageChanged:(id)sender {
