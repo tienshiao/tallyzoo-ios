@@ -55,6 +55,12 @@
 				self.created_on = [rs stringForColumn:@"created_on"];
 			}
 			[rs close];
+			
+			if ([dbh intForQuery:@"SELECT count(*) FROM groups_activities WHERE group_id = 0 and activity_id = ?", [NSNumber numberWithInt:key]]) {
+				self.public = YES;
+			} else {
+				self.public = NO;
+			}
 		} else {
 			self.public = YES;
 			self.initial_value = 0;
@@ -156,9 +162,19 @@
 		CFRelease(guid);
 		if ([dbh hadError]) {
 			return NO;
-		} else {
-			return YES;
+		} 
+
+		key = [dbh lastInsertRowId];
+		
+		if (public) {
+			[dbh executeUpdate:@"INSERT INTO groups_activities (group_id, activity_id) VALUES (0, ?)", [NSNumber numberWithInt:key]];
+			
+			if ([dbh hadError]) {
+				return NO;
+			}
 		}
+		
+		return YES;
 	} else {
 		// UPDATE
 		[dbh executeUpdate:@"UPDATE activities \
@@ -197,9 +213,19 @@
 		
 		if ([dbh hadError]) {
 			return NO;
+		}
+		
+		if (public) {
+			[dbh executeUpdate:@"INSERT INTO groups_activities (group_id, activity_id) VALUES (0, ?)", [NSNumber numberWithInt:key]];
 		} else {
-			return YES;
-		}		
+			[dbh executeUpdate:@"DELETE FROM groups_activities WHERE group_id = 0 AND activity_id = ?", [NSNumber numberWithInt:key]];
+		}
+
+		if ([dbh hadError]) {
+			return NO;
+		}
+		
+		return YES;
 	}
 }
 

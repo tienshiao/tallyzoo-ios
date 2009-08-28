@@ -9,6 +9,7 @@ Button Screen
   - click to edit activity
 - shake to undo
 Activity
+- public/private support
 - count
   - move acitivity to title
   - move amount to top
@@ -16,10 +17,11 @@ Activity
 Preferences
 - click for advanced
 - hold length
+Graph
+- fix graph with no activities
 
 TODO
 Activity
-- public/private support
 - count
   - inline edit amount
 Button Screen
@@ -29,6 +31,5 @@ Button Screen
 - better feedback (glow/fade off)
 Count Details Screen
 Graph
-- fix graph with no activities
 Sync
 Configuration

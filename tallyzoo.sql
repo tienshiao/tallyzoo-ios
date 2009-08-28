@@ -38,3 +38,15 @@ create table counts (
     modified_tz INTEGER
 );
 
+create table groups_activities (
+    group_id INTEGER,
+    activity_id INTEGER,
+    CONSTRAINT group_activity UNIQUE(group_id, activity_id)
+);
+
+create table groups (
+    id INTEGER PRIMARY KEY,
+    name TEXT
+);
+
+INSERT INTO groups (id, name) VALUES (0, 'Public');
