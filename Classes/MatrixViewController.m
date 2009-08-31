@@ -47,6 +47,13 @@
 		
 		NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 		button_behavior = [defaults integerForKey:@"behavior_preference"];
+		
+		locationSheet = [[UIActionSheet alloc] initWithTitle:@"Retrieving Location ..."
+													delegate:self 
+										   cancelButtonTitle:@"Cancel" 
+									  destructiveButtonTitle:@"Save Without Location" 
+										   otherButtonTitles:nil];
+		locationSheet.actionSheetStyle = UIActionSheetStyleAutomatic;		
 	}
 	return self;
 }
@@ -158,6 +165,10 @@
 	_pageControl.frame = frame;
 	[_pageControl addTarget:self action:@selector(pageChanged:) forControlEvents:UIControlEventValueChanged];
 	
+	locationBusyView = [[LocationBusyView alloc] initWithFrame:CGRectMake(110, 100, 100, 100)];
+	locationBusyView.hidden = YES;
+	[containerView addSubview:locationBusyView];
+	
 	[self setView:containerView];
 }
 
@@ -213,6 +224,21 @@
 // At the end of scroll animation, reset the boolean used when scrolls originate from the UIPageControl
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     _pageControlUsed = NO;
+}
+
+- (void)pageChanged:(id)sender {
+	int page = _pageControl.currentPage;
+    // load the visible page and the page on either side of it (to avoid flashes when the user starts scrolling)
+    //[self loadScrollViewWithPage:page - 1];
+    //[self loadScrollViewWithPage:page];
+    //[self loadScrollViewWithPage:page + 1];
+    // update the scroll view to the appropriate page
+    CGRect frame = _scrollView.frame;
+    frame.origin.x = frame.size.width * page;
+    frame.origin.y = 0;
+    [_scrollView scrollRectToVisible:frame animated:YES];
+    // Set the boolean used when scrolls originate from the UIPageControl. See scrollViewDidScroll: above.
+    _pageControlUsed = YES;	
 }
 
 - (void)addItem:(id)sender {
@@ -285,21 +311,6 @@
 	
 }
 
-- (void)pageChanged:(id)sender {
-	int page = _pageControl.currentPage;
-    // load the visible page and the page on either side of it (to avoid flashes when the user starts scrolling)
-    //[self loadScrollViewWithPage:page - 1];
-    //[self loadScrollViewWithPage:page];
-    //[self loadScrollViewWithPage:page + 1];
-    // update the scroll view to the appropriate page
-    CGRect frame = _scrollView.frame;
-    frame.origin.x = frame.size.width * page;
-    frame.origin.y = 0;
-    [_scrollView scrollRectToVisible:frame animated:YES];
-    // Set the boolean used when scrolls originate from the UIPageControl. See scrollViewDidScroll: above.
-    _pageControlUsed = YES;	
-}
-
 - (void)matrixButtonClicked:(MatrixButton *)mb {
 	if (editting) {
 		EditActivityViewController *eavc = [[EditActivityViewController alloc] initWithActivity:mb.activity];
@@ -311,7 +322,21 @@
 		[eavc release];			
 	} else {
 		if (button_behavior == 0) {
-			[mb.activity simpleCount];
+			NSLog(@"accuracy %f", UIAppDelegate.location.horizontalAccuracy);
+			if (UIAppDelegate.location.horizontalAccuracy <= 0) {
+				tmp_button = mb;
+				[self waitForLocation];
+			} else {
+				[mb.activity simpleCount];
+/*				UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Location" 
+																message:[NSString stringWithFormat:@"%@", UIAppDelegate.location] 
+															   delegate:nil
+													  cancelButtonTitle:@"Close"
+													  otherButtonTitles:nil];
+				alert.delegate = self;
+				[alert show];*/
+				
+			}
 		} else {
 			TZCount *newCount = [[TZCount alloc] initWithKey:0 andActivity:mb.activity];
 			EditCountViewController *ecvc = [[EditCountViewController alloc] initWithCount:newCount];
@@ -338,7 +363,12 @@
 			[addNavigationController release];
 			[ecvc release];	
 		} else {
-			[mb.activity simpleCount];
+			if (UIAppDelegate.location.horizontalAccuracy <= 0) {
+				tmp_button = mb;
+				[self waitForLocation];
+			} else {
+				[mb.activity simpleCount];
+			}
 		}
 	}
 }
@@ -378,6 +408,30 @@
 	}
 }
 
+- (void)waitForLocation {
+	locationBusyView.hidden = NO;
+	UIAppDelegate.locationDelegate = self;
+	[locationSheet showInView:self.tabBarController.view]; // show from our table view (pops up in the middle of the table)
+}
+
+- (void)locationFound {
+	[locationSheet dismissWithClickedButtonIndex:1 animated:YES];
+	[tmp_button.activity simpleCount];
+	[tmp_button setNeedsDisplay];
+	tmp_button = nil;
+	locationBusyView.hidden = YES;
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+	// the user clicked one of the OK/Cancel buttons
+	if (buttonIndex == 0) {
+		[tmp_button.activity simpleCount];
+		[tmp_button setNeedsDisplay];
+		tmp_button.activity = nil;
+		locationBusyView.hidden = YES;
+	}
+}
+
 - (void)didReceiveMemoryWarning {
 	// Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
@@ -400,6 +454,8 @@
 	
 	[editBarButtonItem release];
 	[doneBarButtonItem release];
+	
+	[locationSheet release];
 }
 
 

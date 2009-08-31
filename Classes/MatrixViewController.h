@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MatrixButton.h"
 #import "MatrixView.h"
+#import "LocationBusyView.h"
 
-@interface MatrixViewController : UIViewController<UIScrollViewDelegate, UIAlertViewDelegate> {
+
+@interface MatrixViewController : UIViewController<UIScrollViewDelegate, UIAlertViewDelegate, UIActionSheetDelegate> {
 	NSMutableArray *matrices;
 	
 	UIPageControl *_pageControl;
@@ -22,6 +25,10 @@
 	
 	int button_behavior;
 	int undo_count_id;
+	
+	UIActionSheet *locationSheet;
+	MatrixButton *tmp_button;
+	LocationBusyView *locationBusyView;
 }
 
 - (int)getNumberOfScreens;
@@ -30,6 +37,8 @@
 - (void)editButtons:(id)sender;
 - (void)wobbleView:(UIView *)v;
 - (void)stopWobbleView:(UIView *)v;
+
+- (void)waitForLocation;
 
 
 @end
