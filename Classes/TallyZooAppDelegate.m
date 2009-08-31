@@ -15,6 +15,7 @@
 @synthesize window;
 @synthesize database;
 @synthesize location;
+@synthesize locationDelegate;
 
 - (void)initializeDefaults {
 	float testValue = [[NSUserDefaults standardUserDefaults] floatForKey:@"delay_preference"];
@@ -56,6 +57,10 @@
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation{
 	self.location = newLocation;
+	
+	if (locationDelegate && [locationDelegate respondsToSelector:@selector(locationFound)]) { 
+		[locationDelegate locationFound];
+	}	
 }
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
@@ -76,8 +81,9 @@
 	GraphViewController *gvc = [[GraphViewController alloc] init];
 	gvc.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Graph" image:[UIImage imageNamed:@"16-line-chart.png"] tag:2];
 	
-	UITabBarController *tbController = [[UITabBarController alloc] init];
+	tbController = [[TZTabBarController alloc] init];
 	tbController.viewControllers = [NSArray arrayWithObjects:mnc, gvc, nil];
+	tbController.view.backgroundColor = [UIColor blackColor];
 	
 	[mnc release];
 	[gvc release];
@@ -95,6 +101,7 @@
     [window release];
     [super dealloc];
 
+	[tbController release];
 	[locationManager release];
 	[location release];
 }

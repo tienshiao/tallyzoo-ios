@@ -8,21 +8,25 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
+#import "TZTabBarController.h"
 #import "FMDatabase.h"
 
 #define UIAppDelegate ((TallyZooAppDelegate *)[UIApplication sharedApplication].delegate)
 
 @interface TallyZooAppDelegate : NSObject <UIApplicationDelegate, CLLocationManagerDelegate> {
     UIWindow *window;
+	TZTabBarController *tbController;
 	
 	FMDatabase *database;
 	CLLocationManager *locationManager;
 	CLLocation *location;
+	id locationDelegate;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) FMDatabase *database;
 @property (nonatomic, retain) CLLocation *location;
+@property (nonatomic, assign) id locationDelegate;
 
 @end
 

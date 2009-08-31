@@ -47,6 +47,7 @@
 		61D0FBC410446507002B78C5 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 61D0FBC310446507002B78C5 /* Settings.bundle */; };
 		61D0FC391045166C002B78C5 /* ShakeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 61D0FC381045166C002B78C5 /* ShakeView.m */; };
 		61D0FCA810461DE8002B78C5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61D0FCA710461DE8002B78C5 /* QuartzCore.framework */; };
+		61D0FD941048D6A8002B78C5 /* LocationBusyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 61D0FD931048D6A8002B78C5 /* LocationBusyView.m */; };
 		61E643E5102C2C9000E78174 /* ChooseCountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61E643E4102C2C9000E78174 /* ChooseCountViewController.m */; };
 		61E6444B102D1E1F00E78174 /* ColorPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61E6444A102D1E1F00E78174 /* ColorPickerViewController.m */; };
 		61E6455410315C3200E78174 /* CustomColorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61E6455310315C3200E78174 /* CustomColorViewController.m */; };
@@ -55,6 +56,8 @@
 		61E6490A1032C29600E78174 /* dist.plist in Resources */ = {isa = PBXBuildFile; fileRef = 61E649091032C29600E78174 /* dist.plist */; };
 		61E64A3B1035C61400E78174 /* EditCountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61E64A3A1035C61400E78174 /* EditCountViewController.m */; };
 		61E64B511036C11800E78174 /* icon2.png in Resources */ = {isa = PBXBuildFile; fileRef = 61E64B501036C11800E78174 /* icon2.png */; };
+		61FCDE87104B552000F16BF1 /* TZTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61FCDE86104B552000F16BF1 /* TZTabBarController.m */; };
+		61FCDF9E104BA5CD00F16BF1 /* LandscapeGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = 61FCDF9D104BA5CD00F16BF1 /* LandscapeGraphView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -123,6 +126,8 @@
 		61D0FC371045166C002B78C5 /* ShakeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShakeView.h; sourceTree = "<group>"; };
 		61D0FC381045166C002B78C5 /* ShakeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShakeView.m; sourceTree = "<group>"; };
 		61D0FCA710461DE8002B78C5 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		61D0FD921048D6A8002B78C5 /* LocationBusyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationBusyView.h; sourceTree = "<group>"; };
+		61D0FD931048D6A8002B78C5 /* LocationBusyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationBusyView.m; sourceTree = "<group>"; };
 		61E643E3102C2C9000E78174 /* ChooseCountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseCountViewController.h; sourceTree = "<group>"; };
 		61E643E4102C2C9000E78174 /* ChooseCountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseCountViewController.m; sourceTree = "<group>"; };
 		61E64449102D1E1F00E78174 /* ColorPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorPickerViewController.h; sourceTree = "<group>"; };
@@ -137,6 +142,10 @@
 		61E64A391035C61400E78174 /* EditCountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditCountViewController.h; sourceTree = "<group>"; };
 		61E64A3A1035C61400E78174 /* EditCountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditCountViewController.m; sourceTree = "<group>"; };
 		61E64B501036C11800E78174 /* icon2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon2.png; sourceTree = "<group>"; };
+		61FCDE85104B552000F16BF1 /* TZTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TZTabBarController.h; sourceTree = "<group>"; };
+		61FCDE86104B552000F16BF1 /* TZTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TZTabBarController.m; sourceTree = "<group>"; };
+		61FCDF9C104BA5CD00F16BF1 /* LandscapeGraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LandscapeGraphView.h; sourceTree = "<group>"; };
+		61FCDF9D104BA5CD00F16BF1 /* LandscapeGraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LandscapeGraphView.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* TallyZoo-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "TallyZoo-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -177,6 +186,10 @@
 				61D0F7EF103FC90A002B78C5 /* GraphView.m */,
 				615CC81C101D9F0900BD6BB2 /* GraphViewController.h */,
 				615CC81D101D9F0900BD6BB2 /* GraphViewController.m */,
+				61FCDF9C104BA5CD00F16BF1 /* LandscapeGraphView.h */,
+				61FCDF9D104BA5CD00F16BF1 /* LandscapeGraphView.m */,
+				61D0FD921048D6A8002B78C5 /* LocationBusyView.h */,
+				61D0FD931048D6A8002B78C5 /* LocationBusyView.m */,
 				615CC7F5101D927300BD6BB2 /* MatrixButton.h */,
 				615CC7F6101D927300BD6BB2 /* MatrixButton.m */,
 				615CC83A101EE74100BD6BB2 /* MatrixView.h */,
@@ -275,6 +288,8 @@
 				615CC8E2101FF24C00BD6BB2 /* FMDatabaseAdditions.m */,
 				615CC8E3101FF24C00BD6BB2 /* FMResultSet.h */,
 				615CC8E4101FF24C00BD6BB2 /* FMResultSet.m */,
+				61FCDE85104B552000F16BF1 /* TZTabBarController.h */,
+				61FCDE86104B552000F16BF1 /* TZTabBarController.m */,
 				615CC852101FD17800BD6BB2 /* UIColor-Expanded.h */,
 				615CC853101FD17800BD6BB2 /* UIColor-Expanded.m */,
 			);
@@ -410,6 +425,9 @@
 				61D0F756103E8BE2002B78C5 /* SelectLayer.m in Sources */,
 				61D0F7F0103FC90A002B78C5 /* GraphView.m in Sources */,
 				61D0FC391045166C002B78C5 /* ShakeView.m in Sources */,
+				61D0FD941048D6A8002B78C5 /* LocationBusyView.m in Sources */,
+				61FCDE87104B552000F16BF1 /* TZTabBarController.m in Sources */,
+				61FCDF9E104BA5CD00F16BF1 /* LandscapeGraphView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

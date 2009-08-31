@@ -21,6 +21,8 @@
 - (id)init {
 	if (self = [super init]) {
 		activities = [[NSMutableArray alloc] init];
+		
+		self.tabBarController.view.backgroundColor = [UIColor blackColor];
 	}
 	return self;
 }
@@ -38,8 +40,8 @@
 
 // Implement loadView to create a view hierarchy programmatically, without using a nib.
 - (void)loadView {
-	UIView *containerView = [[UIView alloc] init];
-	containerView.backgroundColor = [UIColor blackColor];
+	portraitView = [[UIView alloc] init];
+	portraitView.backgroundColor = [UIColor blackColor];
 	
 	_tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, 220) style:UITableViewStylePlain];
 	_tableView.backgroundColor = [UIColor blackColor];
@@ -47,29 +49,30 @@
 	_tableView.indicatorStyle = UIScrollViewIndicatorStyleWhite;
 	_tableView.delegate = self;
 	_tableView.dataSource = self;
-	[containerView addSubview:_tableView];
+	[portraitView addSubview:_tableView];
 	
 	UpperLeftView *ulView = [[UpperLeftView alloc] initWithFrame:CGRectMake(10, 0, 10, 10)];
-	[containerView addSubview:ulView];
+	[portraitView addSubview:ulView];
 	[ulView release];
 
 	UpperRightView *urView = [[UpperRightView alloc] initWithFrame:CGRectMake(300, 0, 10, 10)];
-	[containerView addSubview:urView];
+	[portraitView addSubview:urView];
 	[urView release];
 
 	LowerLeftView *llView = [[LowerLeftView alloc] initWithFrame:CGRectMake(10, _tableView.bounds.size.height - 10, 10, 10)];
-	[containerView addSubview:llView];
+	[portraitView addSubview:llView];
 	[llView release];
 		
 	LowerRightView *lrView = [[LowerRightView alloc] initWithFrame:CGRectMake(300, _tableView.bounds.size.height - 10, 10, 10)];
-	[containerView addSubview:lrView];
+	[portraitView addSubview:lrView];
 	[lrView release];
 	
 	graphView = [[GraphView alloc] initWithFrame:CGRectMake(10, 227, 300, 180)];
-	[containerView addSubview:graphView];	
+	[portraitView addSubview:graphView];	
 	
-	[self setView:containerView];
-	[containerView release];
+	[self setView:portraitView];
+
+	landscapeView = [[LandscapeGraphView alloc] initWithFrame:CGRectMake(0, 0, 480, 320) activities:activities];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -85,6 +88,7 @@
 		[a release];
 	}
 	
+	landscapeView.activities = activities;
 	[_tableView reloadData];
 
 	if ([activities count]) {
@@ -105,13 +109,139 @@
 }
 */
 
-/*
+
 // Override to allow orientations other than the default portrait orientation.
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+	return interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown;
 }
-*/
+
+- (void)animateFullScreen:(BOOL)isFullScreen duration:(NSTimeInterval)duration {
+	
+	//hide status bar & navigation bar
+	//[self.navigationController setNavigationBarHidden:isFullScreen animated:YES];
+	
+	CGRect tabBarFrame = self.tabBarController.tabBar.frame;
+	if (isFullScreen == NO && tabBarFrame.origin.y != 480) {
+		// what?
+		tabBarFrame.origin.y = 480;
+		self.tabBarController.tabBar.frame = tabBarFrame;	
+	}
+
+	// show/hide tableView
+//	portraitView.alpha = isFullScreen ? 0 : 1;
+	portraitView.hidden = isFullScreen;
+	
+	[UIView beginAnimations:@"fullscreen" context:nil];
+	[UIView setAnimationBeginsFromCurrentState:YES];
+	[UIView setAnimationDuration:duration];
+	
+	//move tab bar up/down
+	tabBarFrame = self.tabBarController.tabBar.frame;
+	int tabBarHeight = tabBarFrame.size.height;
+	int offset = isFullScreen ? tabBarHeight : -1 * tabBarHeight;
+	int tabBarY = tabBarFrame.origin.y + offset;
+	tabBarFrame.origin.y = tabBarY;
+	self.tabBarController.tabBar.frame = tabBarFrame;
+	
+	//fade it in/out
+	self.tabBarController.tabBar.alpha = isFullScreen ? 0 : 1;
+	
+	 //resize webview to be full screen / normal
+	 [graphView removeFromSuperview];
+	 if (isFullScreen) {
+		 //previousTabBarView is an ivar to hang on to the original view...
+		 //previousTabBarView = self.tabBarController.view;
+		 [self.tabBarController.view addSubview:graphView];
+	 
+	 } else {
+		 [portraitView addSubview:graphView];
+	 }
+	
+	[UIView commitAnimations];	
+}
+
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+	if (toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft ||
+		toInterfaceOrientation == UIInterfaceOrientationLandscapeRight) {
+		// hide stuff before we rotate
+		BOOL isFullScreen = YES;
+		[self animateFullScreen:isFullScreen duration:duration];
+		[[UIApplication sharedApplication] setStatusBarHidden:YES animated:YES];
+	}	
+}
+
+- (void)willAnimateFirstHalfOfRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation 
+													duration:(NSTimeInterval)duration {
+	if (toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft) {
+		[UIView beginAnimations:@"port_to_landscape_left" context:nil];
+		[UIView setAnimationBeginsFromCurrentState:YES];
+		[UIView setAnimationDuration:duration];
+
+		graphView.transform = CGAffineTransformConcat(CGAffineTransformMakeRotation(M_PI * .25),
+													  CGAffineTransformMakeTranslation(0, -150));
+	
+		[UIView commitAnimations];			
+	} else if (toInterfaceOrientation == UIInterfaceOrientationLandscapeRight) {
+		[UIView beginAnimations:@"port_to_landscape_right" context:nil];
+		[UIView setAnimationBeginsFromCurrentState:YES];
+		[UIView setAnimationDuration:duration];
+
+		graphView.transform = CGAffineTransformConcat(CGAffineTransformMakeRotation(M_PI * -.25),
+													  CGAffineTransformMakeTranslation(160, -150));
+		
+		[UIView commitAnimations];					
+	} else {
+		graphView.hidden = NO;
+	}
+}
+- (void)willAnimateSecondHalfOfRotationFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation 
+											   		   duration:(NSTimeInterval)duration {
+	if (fromInterfaceOrientation == UIInterfaceOrientationLandscapeLeft) {
+		[UIView beginAnimations:@"landscape_left_to_port" context:nil];
+		[UIView setAnimationBeginsFromCurrentState:YES];
+		[UIView setAnimationDuration:duration];
+
+		graphView.transform = CGAffineTransformInvert(
+								CGAffineTransformConcat(CGAffineTransformMakeRotation(M_PI * .25),
+													  CGAffineTransformMakeTranslation(160, -150)));
+		
+		[UIView commitAnimations];					
+		[landscapeView removeFromSuperview];
+		portraitView.hidden = NO;
+	} else if (fromInterfaceOrientation == UIInterfaceOrientationLandscapeRight) {
+		[UIView beginAnimations:@"landscape_right_to_port" context:nil];
+		[UIView setAnimationBeginsFromCurrentState:YES];
+		[UIView setAnimationDuration:duration];
+
+		graphView.transform = CGAffineTransformInvert(
+								  CGAffineTransformConcat(CGAffineTransformMakeRotation(M_PI * -.25),
+								  CGAffineTransformMakeTranslation(0, -150)));
+		
+		[UIView commitAnimations];
+		[landscapeView removeFromSuperview];
+		portraitView.hidden = NO;
+	} else {
+		graphView.hidden = YES;
+		[self.tabBarController.view addSubview:landscapeView];
+	}
+}
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+	[[UIApplication sharedApplication] setStatusBarHidden:NO animated:YES];
+	if (self.interfaceOrientation == UIInterfaceOrientationPortrait) {
+		self.view.frame = CGRectMake(0.0, 0.0, 320.0, 480.0);
+		// show stuff after we rotate
+		BOOL isFullScreen = NO;
+		[self animateFullScreen:isFullScreen duration:0.3];
+		graphView.transform = CGAffineTransformIdentity;
+	} else if (self.interfaceOrientation == UIInterfaceOrientationLandscapeLeft ||
+			   self.interfaceOrientation == UIInterfaceOrientationLandscapeRight) {
+		self.view.frame = CGRectMake(0.0, 0.0, 480.0, 320.0);
+		landscapeView.transform = CGAffineTransformIdentity;
+	}
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	return ([activities count] < 5) ? 5 : [activities count];
 }
@@ -156,6 +286,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	oldSelection = indexPath.row;
 	graphView.activity = [activities objectAtIndex:indexPath.row];
+	landscapeView.currentPage = indexPath.row;
 }
 
 
@@ -178,6 +309,9 @@
 	[activities release];
 	[graphView release];
 	[_tableView release];
+	
+	[portraitView release];
+	[landscapeView release];
 }
 
 

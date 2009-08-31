@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "GraphView.h"
+#import "LandscapeGraphView.h"
 
 @interface GraphViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
 	NSMutableArray *activities;
@@ -16,6 +17,8 @@
 	int oldSelection;
 	
 	GraphView *graphView;
+	LandscapeGraphView *landscapeView;
+	UIView *portraitView;
 }
 
 @end

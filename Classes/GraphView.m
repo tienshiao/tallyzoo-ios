@@ -125,6 +125,9 @@
 - (void)drawRect:(CGRect)rect {
     // Drawing code
 	CGSize s = self.bounds.size;
+	BOOL showName = s.height > 270;
+	double top = (showName) ? TOP_PADDING : 0;
+	double top_padding = (showName) ? 2 * TOP_PADDING : TOP_PADDING;
 	CGContextRef context = UIGraphicsGetCurrentContext();
 
 	// clipping for rounded corners
@@ -148,6 +151,13 @@
 	CGContextAddRect(context, CGRectMake(0, 0, s.width, s.height / 2));
 	CGContextSetRGBFillColor(context, 1, 1, 1, .1);
 	CGContextFillPath(context);
+	
+	// draw name
+	if (showName) {
+		NSString *name = activity.name;
+		CGContextSetRGBFillColor(context, 1, 1, 1, 1);
+		[name drawAtPoint:CGPointMake(10, 2) withFont:[UIFont boldSystemFontOfSize:FONT_SIZE]];
+	}
 
 	// draw timespans
 	double width = s.width / [timespans count];
@@ -156,19 +166,19 @@
 		CGSize ts = [t sizeWithFont:[UIFont boldSystemFontOfSize:FONT_SIZE]];
 		double x_offset = i * width + (width - ts.width) / 2;
 		if (i == timespan) {
-			CGContextMoveToPoint(context, x_offset, 2);
-			CGContextAddLineToPoint(context, x_offset + ts.width, 2);
-			CGContextAddArc(context, x_offset + ts.width, 2 + ts.height/2, ts.height/2, M_PI * 1.5, M_PI * .5, 0);
-			CGContextAddLineToPoint(context, x_offset, 2 + ts.height);
-			CGContextAddArc(context, x_offset, 2 + ts.height/2, ts.height/2, M_PI * .5, M_PI * 1.5, 0);
+			CGContextMoveToPoint(context, x_offset, top + 2);
+			CGContextAddLineToPoint(context, x_offset + ts.width, top + 2);
+			CGContextAddArc(context, x_offset + ts.width, top + 2 + ts.height/2, ts.height/2, M_PI * 1.5, M_PI * .5, 0);
+			CGContextAddLineToPoint(context, x_offset, top + 2 + ts.height);
+			CGContextAddArc(context, x_offset, top + 2 + ts.height/2, ts.height/2, M_PI * .5, M_PI * 1.5, 0);
 			CGContextSetRGBFillColor(context, 1, 1, 1, 1);
 			CGContextFillPath(context);
 
 			CGContextSetFillColorWithColor(context, [[UIColor colorWithHexString:@"191970"] CGColor]);
-			[t drawAtPoint:CGPointMake(x_offset, 2) withFont:[UIFont boldSystemFontOfSize:FONT_SIZE]];
+			[t drawAtPoint:CGPointMake(x_offset, top + 2) withFont:[UIFont boldSystemFontOfSize:FONT_SIZE]];
 		} else {
 			CGContextSetRGBFillColor(context, 1, 1, 1, 1);
-			[t drawAtPoint:CGPointMake(x_offset, 2) withFont:[UIFont boldSystemFontOfSize:FONT_SIZE]];
+			[t drawAtPoint:CGPointMake(x_offset, top + 2) withFont:[UIFont boldSystemFontOfSize:FONT_SIZE]];
 		}
 	}
 	
@@ -190,16 +200,16 @@
 	CGContextSetRGBFillColor(context, 1, 1, 1, 1); 
 	NSString *numString = [formatter stringFromNumber:[NSNumber numberWithDouble:ymin]];
 	CGSize ns = [numString sizeWithFont:[UIFont boldSystemFontOfSize:FONT_SIZE]];
-	[numString drawAtPoint:CGPointMake(s.width - ywidth - 3, TOP_PADDING + s.height - TOP_PADDING - 20 - ns.height) withFont:[UIFont boldSystemFontOfSize:FONT_SIZE]];
+	[numString drawAtPoint:CGPointMake(s.width - ywidth - 3, top_padding + s.height - top_padding - 20 - ns.height) withFont:[UIFont boldSystemFontOfSize:FONT_SIZE]];
 
 	numString = [formatter stringFromNumber:[NSNumber numberWithDouble:ymin + (ymax - ymin) / 3]];
-	[numString drawAtPoint:CGPointMake(s.width - ywidth - 3, TOP_PADDING + (s.height - TOP_PADDING - 20 - ns.height) * 2 / 3) withFont:[UIFont boldSystemFontOfSize:FONT_SIZE]];
+	[numString drawAtPoint:CGPointMake(s.width - ywidth - 3, top_padding + (s.height - top_padding - 20 - ns.height) * 2 / 3) withFont:[UIFont boldSystemFontOfSize:FONT_SIZE]];
 
 	numString = [formatter stringFromNumber:[NSNumber numberWithDouble:ymin + (ymax - ymin) * 2 / 3]];
-	[numString drawAtPoint:CGPointMake(s.width - ywidth - 3, TOP_PADDING + (s.height - TOP_PADDING - 20 - ns.height) / 3) withFont:[UIFont boldSystemFontOfSize:FONT_SIZE]];	
+	[numString drawAtPoint:CGPointMake(s.width - ywidth - 3, top_padding + (s.height - top_padding - 20 - ns.height) / 3) withFont:[UIFont boldSystemFontOfSize:FONT_SIZE]];	
 	
 	numString = [formatter stringFromNumber:[NSNumber numberWithDouble:ymax]];
-	[numString drawAtPoint:CGPointMake(s.width - ywidth - 3, TOP_PADDING) withFont:[UIFont boldSystemFontOfSize:FONT_SIZE]];
+	[numString drawAtPoint:CGPointMake(s.width - ywidth - 3, top_padding) withFont:[UIFont boldSystemFontOfSize:FONT_SIZE]];
 
 	
 	double xwidth = s.width - ywidth - 6;
@@ -226,7 +236,7 @@
 	for (int i = 0; i < x_lines; i++) {
 		double x_pos = (i + 1) * xwidth / x_lines;
 		CGContextMoveToPoint(context, x_pos, s.height - 21);
-		CGContextAddLineToPoint(context, x_pos, TOP_PADDING);
+		CGContextAddLineToPoint(context, x_pos, top_padding);
 		CGContextStrokePath(context);			
 	}
 	
@@ -268,7 +278,7 @@
 		current += c.amount;
 		double c_secs = [cdate timeIntervalSinceReferenceDate];
 		double x_pos = (c_secs - x_start_sec) / (xwidth_secs) * xwidth;
-		double y_pos = (current - activity.initial_value) / (ymax - ymin) * (s.height - 21 - TOP_PADDING);
+		double y_pos = (current - activity.initial_value) / (ymax - ymin) * (s.height - 21 - top_padding);
 		if (i == 0) {
 			CGContextMoveToPoint(context, x_pos, s.height - 21 - y_pos);
 		} else {
@@ -284,10 +294,13 @@
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
 	int old_timespan = timespan;	
 	double width = self.bounds.size.width / [timespans count];
-
+	BOOL showName = self.bounds.size.height > 270;
+	double top_padding = (showName) ? 2 * TOP_PADDING : TOP_PADDING;
+	double top = (showName) ? TOP_PADDING : 0;
+	
 	for (UITouch *touch in touches) {
 		CGPoint location = [touch locationInView:self];
-		if (location.y < TOP_PADDING) {
+		if (location.y > top && location.y < top_padding) {
 			timespan = location.x / width;
 		}
 	}
