@@ -23,10 +23,10 @@
 											   CFSTR("wav"), NULL);
 		AudioServicesCreateSystemSoundID(clickDownURL, &clickDownID);
 		
-		clickUpURL = CFBundleCopyResourceURL(CFBundleGetMainBundle(),
-											 CFSTR("click_up"),
-											 CFSTR("wav"), NULL);
-		AudioServicesCreateSystemSoundID(clickUpURL, &clickUpID);
+//		clickUpURL = CFBundleCopyResourceURL(CFBundleGetMainBundle(),
+//											 CFSTR("click_up"),
+//											 CFSTR("wav"), NULL);
+//		AudioServicesCreateSystemSoundID(clickUpURL, &clickUpID);
 		
 		NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 		hold_threshold = [defaults floatForKey:@"delay_preference"];
@@ -199,7 +199,7 @@
 		if (d) {
 			AudioServicesPlaySystemSound(clickDownID);
 		} else {
-			AudioServicesPlaySystemSound(clickUpID);
+			//AudioServicesPlaySystemSound(clickUpID);
 		}
 		[self setNeedsDisplay];
 		down = d;
@@ -224,8 +224,8 @@
 	
 	AudioServicesDisposeSystemSoundID(clickDownID);
 	CFRelease(clickDownURL);
-	AudioServicesDisposeSystemSoundID(clickUpID);
-	CFRelease(clickUpURL);	
+//	AudioServicesDisposeSystemSoundID(clickUpID);
+//	CFRelease(clickUpURL);	
 }
 
 - (id)delegate {

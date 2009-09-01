@@ -29,8 +29,8 @@
 	
 	CFURLRef clickDownURL;
 	SystemSoundID clickDownID;
-	CFURLRef clickUpURL;
-	SystemSoundID clickUpID;	
+//	CFURLRef clickUpURL;
+//	SystemSoundID clickUpID;	
 	
 	float hold_threshold;
 }
