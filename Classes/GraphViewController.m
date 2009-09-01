@@ -109,30 +109,15 @@
 }
 */
 
-
-// Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Return YES for supported orientations
-	return interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown;
-}
-
-- (void)animateFullScreen:(BOOL)isFullScreen duration:(NSTimeInterval)duration {
-	
-	//hide status bar & navigation bar
-	//[self.navigationController setNavigationBarHidden:isFullScreen animated:YES];
-	
+- (void)animateToFullScreen:(BOOL)isFullScreen duration:(NSTimeInterval)duration {
 	CGRect tabBarFrame = self.tabBarController.tabBar.frame;
 	if (isFullScreen == NO && tabBarFrame.origin.y != 480) {
 		// what?
 		tabBarFrame.origin.y = 480;
 		self.tabBarController.tabBar.frame = tabBarFrame;	
 	}
-
-	// show/hide tableView
-//	portraitView.alpha = isFullScreen ? 0 : 1;
-	portraitView.hidden = isFullScreen;
 	
-	[UIView beginAnimations:@"fullscreen" context:nil];
+	[UIView beginAnimations:@"animateToFullScreen" context:nil];
 	[UIView setAnimationBeginsFromCurrentState:YES];
 	[UIView setAnimationDuration:duration];
 	
@@ -146,100 +131,65 @@
 	
 	//fade it in/out
 	self.tabBarController.tabBar.alpha = isFullScreen ? 0 : 1;
-	
-	 //resize webview to be full screen / normal
-	 [graphView removeFromSuperview];
-	 if (isFullScreen) {
-		 //previousTabBarView is an ivar to hang on to the original view...
-		 //previousTabBarView = self.tabBarController.view;
-		 [self.tabBarController.view addSubview:graphView];
-	 
-	 } else {
-		 [portraitView addSubview:graphView];
-	 }
-	
+
 	[UIView commitAnimations];	
 }
 
+// Override to allow orientations other than the default portrait orientation.
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    // Return YES for supported orientations
+	return interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown;
+}
+
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+	duration = 5;
 	if (toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft ||
 		toInterfaceOrientation == UIInterfaceOrientationLandscapeRight) {
-		// hide stuff before we rotate
-		BOOL isFullScreen = YES;
-		[self animateFullScreen:isFullScreen duration:duration];
-		[[UIApplication sharedApplication] setStatusBarHidden:YES animated:YES];
-	}	
-}
-
-- (void)willAnimateFirstHalfOfRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation 
-													duration:(NSTimeInterval)duration {
-	if (toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft) {
-		[UIView beginAnimations:@"port_to_landscape_left" context:nil];
+		[self animateToFullScreen:YES duration:duration];
+		[UIView beginAnimations:@"fadeout_portrait" context:nil];
 		[UIView setAnimationBeginsFromCurrentState:YES];
 		[UIView setAnimationDuration:duration];
-
-		graphView.transform = CGAffineTransformConcat(CGAffineTransformMakeRotation(M_PI * .25),
-													  CGAffineTransformMakeTranslation(0, -150));
-	
-		[UIView commitAnimations];			
-	} else if (toInterfaceOrientation == UIInterfaceOrientationLandscapeRight) {
-		[UIView beginAnimations:@"port_to_landscape_right" context:nil];
-		[UIView setAnimationBeginsFromCurrentState:YES];
-		[UIView setAnimationDuration:duration];
-
-		graphView.transform = CGAffineTransformConcat(CGAffineTransformMakeRotation(M_PI * -.25),
-													  CGAffineTransformMakeTranslation(160, -150));
+		
+		portraitView.alpha = 0;
 		
 		[UIView commitAnimations];					
 	} else {
-		graphView.hidden = NO;
-	}
-}
-- (void)willAnimateSecondHalfOfRotationFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation 
-											   		   duration:(NSTimeInterval)duration {
-	if (fromInterfaceOrientation == UIInterfaceOrientationLandscapeLeft) {
-		[UIView beginAnimations:@"landscape_left_to_port" context:nil];
+		[UIView beginAnimations:@"fadeout_landscape" context:nil];
 		[UIView setAnimationBeginsFromCurrentState:YES];
 		[UIView setAnimationDuration:duration];
-
-		graphView.transform = CGAffineTransformInvert(
-								CGAffineTransformConcat(CGAffineTransformMakeRotation(M_PI * .25),
-													  CGAffineTransformMakeTranslation(160, -150)));
 		
-		[UIView commitAnimations];					
-		[landscapeView removeFromSuperview];
-		portraitView.hidden = NO;
-	} else if (fromInterfaceOrientation == UIInterfaceOrientationLandscapeRight) {
-		[UIView beginAnimations:@"landscape_right_to_port" context:nil];
-		[UIView setAnimationBeginsFromCurrentState:YES];
-		[UIView setAnimationDuration:duration];
-
-		graphView.transform = CGAffineTransformInvert(
-								  CGAffineTransformConcat(CGAffineTransformMakeRotation(M_PI * -.25),
-								  CGAffineTransformMakeTranslation(0, -150)));
+		landscapeView.alpha = 0;
 		
-		[UIView commitAnimations];
-		[landscapeView removeFromSuperview];
-		portraitView.hidden = NO;
-	} else {
-		graphView.hidden = YES;
-		[self.tabBarController.view addSubview:landscapeView];
+		[UIView commitAnimations];							
 	}
+	[[UIApplication sharedApplication] setStatusBarHidden:YES animated:YES];
 }
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
-	[[UIApplication sharedApplication] setStatusBarHidden:NO animated:YES];
-	if (self.interfaceOrientation == UIInterfaceOrientationPortrait) {
-		self.view.frame = CGRectMake(0.0, 0.0, 320.0, 480.0);
-		// show stuff after we rotate
-		BOOL isFullScreen = NO;
-		[self animateFullScreen:isFullScreen duration:0.3];
-		graphView.transform = CGAffineTransformIdentity;
-	} else if (self.interfaceOrientation == UIInterfaceOrientationLandscapeLeft ||
-			   self.interfaceOrientation == UIInterfaceOrientationLandscapeRight) {
-		self.view.frame = CGRectMake(0.0, 0.0, 480.0, 320.0);
-		landscapeView.transform = CGAffineTransformIdentity;
+	NSTimeInterval duration = .25;
+	if (fromInterfaceOrientation == UIInterfaceOrientationLandscapeLeft ||
+		fromInterfaceOrientation == UIInterfaceOrientationLandscapeRight) {
+		[self animateToFullScreen:NO duration:duration];
+		[landscapeView removeFromSuperview];
+		[UIView beginAnimations:@"fadein_portrait" context:nil];
+		[UIView setAnimationBeginsFromCurrentState:YES];
+		[UIView setAnimationDuration:duration];
+		
+		portraitView.alpha = 1;
+		
+		[UIView commitAnimations];					
+	} else {
+		landscapeView.alpha = 0;
+		[self.tabBarController.view addSubview:landscapeView];
+		[UIView beginAnimations:@"fadein_landscape" context:nil];
+		[UIView setAnimationBeginsFromCurrentState:YES];
+		[UIView setAnimationDuration:duration];
+		
+		landscapeView.alpha = 1;
+		
+		[UIView commitAnimations];							
 	}
+	[[UIApplication sharedApplication] setStatusBarHidden:NO animated:YES];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

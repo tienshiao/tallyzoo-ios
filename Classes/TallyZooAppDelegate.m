@@ -90,6 +90,7 @@
 	
 	[window addSubview:tbController.view];
     [window makeKeyAndVisible];
+	window.backgroundColor = [UIColor blackColor];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
