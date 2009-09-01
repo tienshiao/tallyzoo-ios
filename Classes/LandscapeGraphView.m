@@ -48,6 +48,9 @@
 		[_pageControl addTarget:self action:@selector(pageChanged:) forControlEvents:UIControlEventValueChanged];
 		
 		self.currentPage = 0;
+		
+		[self loadScrollViewWithPage:0];
+		[self loadScrollViewWithPage:1];
     }
     return self;
 }
@@ -143,6 +146,10 @@
 	
 	// reload them
 	self.currentPage = currentPage;
+
+	[self loadScrollViewWithPage:currentPage - 1];
+    [self loadScrollViewWithPage:currentPage];
+    [self loadScrollViewWithPage:currentPage + 1];
 }
 
 - (int)currentPage {
@@ -152,15 +159,7 @@
 - (void)setCurrentPage:(int)p {
 	currentPage = p;
 	
-	[self loadScrollViewWithPage:p - 1];
-	[self loadScrollViewWithPage:p];
-	[self loadScrollViewWithPage:p + 1];		
-	_pageControlUsed = YES;
 	_pageControl.currentPage = p;
-	CGRect frame = _scrollView.frame;
-	frame.origin.x = frame.size.width * p;
-	frame.origin.y = 0;
-	[_scrollView scrollRectToVisible:frame animated:YES];	
 }
 
 - (void)dealloc {
