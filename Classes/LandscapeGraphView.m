@@ -72,6 +72,7 @@
     CGFloat pageWidth = _scrollView.frame.size.width;
     int page = floor((_scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
     _pageControl.currentPage = page;
+	currentPage = page;
 	
 	// load the visible page and the page on either side of it (to avoid flashes when the user starts scrolling)
     [self loadScrollViewWithPage:page - 1];
@@ -160,6 +161,9 @@
 	currentPage = p;
 	
 	_pageControl.currentPage = p;
+	
+	[self pageChanged:_pageControl];
+	_pageControlUsed = NO;
 }
 
 - (void)dealloc {

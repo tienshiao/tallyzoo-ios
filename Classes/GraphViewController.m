@@ -171,6 +171,10 @@
 		fromInterfaceOrientation == UIInterfaceOrientationLandscapeRight) {
 		[self animateToFullScreen:NO duration:duration];
 		[landscapeView removeFromSuperview];
+		
+		[_tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:landscapeView.currentPage inSection:0] animated:NO scrollPosition:UITableViewScrollPositionNone];
+		[self tableView:_tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:landscapeView.currentPage inSection:0]];
+		
 		[UIView beginAnimations:@"fadein_portrait" context:nil];
 		[UIView setAnimationBeginsFromCurrentState:YES];
 		[UIView setAnimationDuration:duration];
