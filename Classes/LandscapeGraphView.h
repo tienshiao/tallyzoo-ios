@@ -21,8 +21,8 @@
 	int currentPage;
 }
 
-@property(nonatomic, assign) NSMutableArray *activities;
-@property(nonatomic, assign) int currentPage;
+@property(assign, nonatomic) NSMutableArray *activities;
+@property(assign, nonatomic) int currentPage;
 
 - (void)loadScrollViewWithPage:(int)page;
 - (id)initWithFrame:(CGRect)frame activities:(NSMutableArray *)a;
