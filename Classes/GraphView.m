@@ -290,7 +290,27 @@
 	}
 	CGContextSetRGBStrokeColor(context, 1, 1, 1, 1);
 	CGContextSetLineWidth(context, 2);
-	CGContextStrokePath(context);	
+	CGContextStrokePath(context);
+	
+	// fill graph
+	current = activity.initial_value;
+	for (int i = 0; i < [activity.counts count]; i++) {
+		TZCount *c = [activity.counts objectAtIndex:i];
+		NSDate *cdate = [dateFormatter dateFromString:c.created_on];
+		current += c.amount;
+		double c_secs = [cdate timeIntervalSinceReferenceDate];
+		double x_pos = (c_secs - x_start_sec) / (xwidth_secs) * xwidth;
+		double y_pos = (current - activity.initial_value) / (ymax - ymin) * (s.height - 21 - top_padding);
+		if (i == 0) {
+			CGContextMoveToPoint(context, x_pos, s.height - 21 - y_pos);
+		} else {
+			CGContextAddLineToPoint(context, x_pos, s.height - 21 - y_pos);
+		}
+	}
+	CGContextAddLineToPoint(context, xwidth, s.height - 21);
+	CGContextAddLineToPoint(context, 0, s.height - 21);
+	CGContextSetRGBFillColor(context, 1, 1, 1, 0.15);
+	CGContextFillPath(context);
 	
 }
 
