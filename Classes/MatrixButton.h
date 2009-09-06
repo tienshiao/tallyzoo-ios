@@ -40,5 +40,8 @@
 @property(nonatomic, retain) TZActivity *activity;
 
 - (id)initWithActivity:(TZActivity *)a;
+- (void)wobble;
+- (void)stopWobble;
+
 
 @end

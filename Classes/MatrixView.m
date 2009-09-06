@@ -10,46 +10,317 @@
 
 @implementation MatrixView
 
-@synthesize buttons;
+@synthesize currentPage;
+@synthesize pages;
+@synthesize delegate;
+@synthesize scrollView;
 
-- (id)initWithFrame:(CGRect)frame andScreenNumber:(int)page {
+- (id)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
         // Initialization code
-		buttons = [[NSMutableArray alloc] init];
-		for (int i = 0; i < 9; i++) {
-			[buttons addObject:[NSNull null]];
-		}
+		pages = [[NSMutableArray alloc] init];
 		
-		_page = page;
-		
+		editting = NO;
+		moved = NO;
     }
     return self;
 }
 
-- (void)clearButtons {
-	for (int i = 0; i < 9; i++) {
-		MatrixButton *button = [buttons objectAtIndex:i];
-		if ([button isKindOfClass:[UIView class]]) {
-			[button removeFromSuperview];
-		}
-	}		
-	[buttons release];
+- (void)addPage {
+	NSMutableArray *buttons;
 	buttons = [[NSMutableArray alloc] init];
-	for (int i = 0; i < 9; i++) {
-		[buttons addObject:[NSNull null]];
-	}	
+	[pages addObject:buttons];
+}
+
+- (void)clearButtons:(int)page {
+	for (int i = [pages count]; i <= page; i++) {
+		[self addPage];
+	}
+	
+	NSMutableArray *buttons = [pages objectAtIndex:page];
+	for (int i = 0; i < [buttons count]; i++) {
+		MatrixButton *button = [buttons objectAtIndex:i];
+		[button removeFromSuperview];
+	}		
+	buttons = [[NSMutableArray alloc] init];
+	[pages replaceObjectAtIndex:page withObject:buttons];
 }
 
 - (void)drawRect:(CGRect)rect {
     // Drawing code
 }
 
+- (void)timeoutTouch {
+	// check that we are still touching the same button
+	if (!CGRectContainsPoint(selected.frame, current_touch)) {
+		// not in the button anymore, ignore it
+		selected = nil;
+		return;
+	}
+	
+	// enlarge button, and disable scrollview's handling
+	selected.alpha = .6;
+
+	// move to out of scrollview, movements will be done there
+	[selected removeFromSuperview];
+	[self.superview.superview addSubview:selected];
+	
+	CGPoint center = selected.center;
+	center.x = center.x - currentPage * 320;
+	selected.center = center;
+	
+	[selected stopWobble];
+	[UIView beginAnimations:nil context:nil];
+	[UIView setAnimationDuration:.2];
+	selected.transform = CGAffineTransformIdentity;
+	[UIView commitAnimations];
+	
+	moved = YES;
+	
+	scrollView.canCancelContentTouches = NO;
+	scrollView.delaysContentTouches = NO;
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+	if (!editting) {
+		return;
+	}
 
 
+	for (UITouch *t in touches) {
+		CGPoint position = [t locationInView:self];
+		NSMutableArray *buttons = [pages objectAtIndex:currentPage];
+		for (MatrixButton *b in buttons) {
+			if (CGRectContainsPoint(b.frame, position)) {
+				selected = b;
+				original_position = position;
+				current_touch = position;
+				original_center = selected.center;
+				[self performSelector:@selector(timeoutTouch) withObject:nil afterDelay:1];
+				
+			}
+		}
+	}
+}
+
+- (void)reflowButtons {
+	// update positions on current page
+	NSMutableArray *buttons = [pages objectAtIndex:currentPage];
+
+	[UIView beginAnimations:nil context:nil];
+	[UIView setAnimationDuration:.2];
+	for (int i = 0; i < [buttons count]; i++) {
+		MatrixButton *b = [buttons objectAtIndex:i];
+		
+		if (b == selected) {
+			continue;
+		}
+		
+		if (i < 9 ) {
+			b.center  = CGPointMake((i % 3) * b.bounds.size.width + b.bounds.size.width / 2 + currentPage * 320,
+									(i / 3) * b.bounds.size.height + b.bounds.size.height / 2);
+		} else {
+			// overflow the page
+			[buttons removeObject:b];
+			MatrixButton *currentButton = b;
+			int j = currentPage + 1;
+			while (true) {
+				if (j >= [pages count]) {
+					[pages addObject:[[NSMutableArray alloc] init]];
+					// adjust scrollview/matrix view frame/page controller
+				}
+				NSMutableArray *newbuttons = [pages objectAtIndex:j];
+				[newbuttons insertObject:currentButton atIndex:0];
+				currentButton.center  = CGPointMake(0 * b.bounds.size.width + b.bounds.size.width / 2 + j * 320,
+													0 * b.bounds.size.height + b.bounds.size.height / 2);
+				if ([newbuttons count] <= 9) {
+					break;
+				}
+				
+				currentButton = [newbuttons objectAtIndex:9];
+				j++;
+			}			
+		}
+	}
+	selected.transform = CGAffineTransformIdentity;
+	[UIView commitAnimations];	
+}
+
+#define SCROLL_THRESHOLD 10
+#define SCROLL_TIMEOUT	3
+
+- (void)timeoutScroll {
+	BOOL scrolled = NO;
+	CGRect frame = scrollView.frame;
+	frame.origin.y = 0;
+	
+	// scroll to next/prev page
+	if (selected.center.x < SCROLL_THRESHOLD) {
+		if (currentPage != 0) {
+			frame.origin.x = frame.size.width * (currentPage - 1);
+			scrolled = YES;
+		}
+	} else if (selected.center.x > 320 - SCROLL_THRESHOLD) {
+		if (currentPage != [pages count] - 1) {
+			frame.origin.x = frame.size.width * (currentPage + 1);
+			scrolled = YES;
+		}
+	}
+	
+	if (scrolled) {
+		[scrollView scrollRectToVisible:frame animated:YES];
+		
+		// remove selected from current page
+		NSMutableArray *buttons = [pages objectAtIndex:currentPage];
+		[buttons removeObject:selected];
+		
+		[self reflowButtons];
+	}
+		
+	// after handling scroll, reset flag
+	setScrollTimeout = NO;
+}
+		
+		
+- (void)updatePositions {
+	int x = selected.center.x / selected.bounds.size.width; 
+	int y = selected.center.y / selected.bounds.size.height;
+	int position = y * 3 + x;
+	
+	if (selected.center.x < SCROLL_THRESHOLD ||
+		selected.center.x > 320 - SCROLL_THRESHOLD) {
+		if (!setScrollTimeout) {
+			[self performSelector:@selector(timeoutScroll) withObject:nil afterDelay:SCROLL_TIMEOUT];
+			setScrollTimeout = YES;
+		}
+		return;
+	} else {
+		[NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(timeoutScroll) object:nil];
+		setScrollTimeout = NO;
+	}
+
+	CGSize s = selected.bounds.size;
+	CGRect r = CGRectMake(x * s.width + s.width / 4, y * s.height + s.height / 4, 
+						  s.width / 2, s.height / 2);
+	if (!CGRectContainsPoint(r, selected.center)) {
+		return;
+	}
+	
+	NSMutableArray *buttons = [pages objectAtIndex:currentPage];
+	
+	if (position >= [buttons count]) {
+		position = [buttons count] - 1;
+	}
+	
+	if (position == [buttons indexOfObject:selected]) {
+		return;
+	}
+	
+	[buttons removeObject:selected];
+	if (position == [buttons count] - 1) {
+		[buttons addObject:selected];
+	} else {
+		[buttons insertObject:selected atIndex:position];
+	}
+	
+	[self reflowButtons];
+}
+
+#define MOVE_THRESHOLD 5
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+	if (!editting) {
+		return;
+	}
+	if (!moved) {
+		return;
+	}
+
+	for (UITouch *t in touches) {
+		CGPoint position = [t locationInView:self.superview.superview];
+		current_touch = position;
+		selected.center = position;
+		
+		[self updatePositions];
+	}
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+	if (!editting) {
+		return;
+	}
+	
+	if (!moved) {
+		// treat as a click
+		if (delegate && [delegate respondsToSelector:@selector(matrixButtonClicked:)]) { 
+			[delegate matrixButtonClicked:selected];
+		}	
+	}
+
+	[selected removeFromSuperview];
+	[self addSubview:selected];
+	// snap to position
+	NSMutableArray *buttons = [pages objectAtIndex:currentPage];
+	int i = [buttons indexOfObject:selected];
+	selected.center = CGPointMake((i % 3) * selected.bounds.size.width + selected.bounds.size.width / 2 + currentPage * 320,
+					   		      (i / 3) * selected.bounds.size.height + selected.bounds.size.height / 2);
+	original_center = selected.center;
+	
+	selected.transform = CGAffineTransformIdentity;
+	[selected wobble];
+	selected.alpha = 1;
+	selected = nil;
+	moved = NO;
+
+	scrollView.canCancelContentTouches = YES;
+	scrollView.delaysContentTouches = YES;
+}
+
+- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
+	[selected removeFromSuperview];
+	[self addSubview:selected];
+	[selected wobble];
+	selected.center = original_center;
+	selected.alpha = 1;
+	selected = nil;
+	moved = NO;	
+
+	scrollView.canCancelContentTouches = YES;
+	scrollView.delaysContentTouches = YES;
+
+}
+
+- (BOOL)editting {
+	return editting;
+}
+
+- (void)setEditting:(BOOL)e {
+	if (editting == e) {
+		return;
+	}
+	
+	editting = e;
+	
+	if (editting) {
+		for (NSMutableArray *p in pages) {
+			for (MatrixButton *b in p) {
+				[b wobble];
+				b.userInteractionEnabled = NO;
+			}
+		}
+	} else {
+		for (NSMutableArray *p in pages) {
+			for (MatrixButton *b in p) {
+				[b stopWobble];
+				b.userInteractionEnabled = YES;
+			}
+		}		
+	}
+}
+			
 - (void)dealloc {
     [super dealloc];
 	
-	[buttons release];
+	[pages release];
 }
 
 

@@ -13,7 +13,7 @@
 
 
 @interface MatrixViewController : UIViewController<UIScrollViewDelegate, UIAlertViewDelegate, UIActionSheetDelegate> {
-	NSMutableArray *matrices;
+	MatrixView *matrixView;
 	
 	UIPageControl *_pageControl;
 	UIScrollView *_scrollView;
@@ -35,8 +35,6 @@
 
 - (void)addItem:(id)sender;
 - (void)editButtons:(id)sender;
-- (void)wobbleView:(UIView *)v;
-- (void)stopWobbleView:(UIView *)v;
 
 - (void)waitForLocation;
 

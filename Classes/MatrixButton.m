@@ -6,6 +6,7 @@
 //  Copyright 2009 __MyCompanyName__. All rights reserved.
 //
 
+#import <QuartzCore/QuartzCore.h>
 #import "MatrixButton.h"
 #import "UIColor-Expanded.h"
 
@@ -153,6 +154,28 @@
 	CGContextSetRGBStrokeColor(currentContext, 0, 0, 0, .6);
 	CGContextStrokePath(currentContext);
 	
+}
+
+- (void)wobble {
+	CALayer *l = self.layer;
+	
+	l.transform = CATransform3DMakeScale(0.9, 0.9, 1);
+	
+	// here is an example wiggle
+	CABasicAnimation *wiggle = [CABasicAnimation animationWithKeyPath:@"transform"];
+	wiggle.duration = 0.1;
+	wiggle.repeatCount = 1e100f;
+	wiggle.autoreverses = YES;
+	wiggle.fromValue = [NSValue valueWithCATransform3D:CATransform3DRotate(l.transform,-0.03, 0.0 ,0.0 ,1.0)];
+	wiggle.toValue = [NSValue valueWithCATransform3D:CATransform3DRotate(l.transform,0.03, 0.0 ,0.0 ,1.0)];
+	
+	// doing the wiggle
+	[l addAnimation:wiggle forKey:@"wiggle"];
+}
+
+- (void)stopWobble {
+	[self.layer removeAllAnimations];
+	self.layer.transform = CATransform3DIdentity;
 }
 
 - (void)timeoutTouch {

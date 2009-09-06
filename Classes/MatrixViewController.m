@@ -6,7 +6,6 @@
 //  Copyright 2009 __MyCompanyName__. All rights reserved.
 //
 
-#import <QuartzCore/QuartzCore.h>
 #import "MatrixViewController.h"
 #import "TallyZooAppDelegate.h"
 #import "FMDatabase.h"
@@ -40,11 +39,6 @@
 																		  action:@selector(doneButtons:)];
 		editting = NO;
 		
-		matrices = [[NSMutableArray alloc] init];
-		for (int i = 0; i < [self getNumberOfScreens]; i++) {
-			[matrices addObject:[NSNull null]];
-		}
-		
 		NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 		button_behavior = [defaults integerForKey:@"behavior_preference"];
 		
@@ -76,60 +70,40 @@
 	return [rs intForColumn:@"max_screen"] + 1;
 }
 
-- (void)loadButtons:(MatrixView *)mv screen:(int)screen {
-	[mv clearButtons];
+- (void)loadMatrixViewWithPage:(int)page {
+	if (page < 0) return;
+	if (page >= [self getNumberOfScreens]) return;
+	
+	[matrixView clearButtons:page];
+	NSMutableArray *buttons = [matrixView.pages objectAtIndex:page];
 	FMDatabase *dbh = UIAppDelegate.database;
-	FMResultSet *rs = [dbh executeQuery:@"SELECT id FROM activities WHERE deleted = 0 AND screen = ?",
-					   [NSNumber numberWithInt:screen]];
-	while ([rs next]) {
+	FMResultSet *rs = [dbh executeQuery:@"SELECT id FROM activities WHERE deleted = 0 AND screen = ? ORDER BY position",
+					   [NSNumber numberWithInt:page]];
+	int currentPosition = 0;
+	while ([rs next]) {		
 		TZActivity *a = [[TZActivity alloc] initWithKey:[rs intForColumn:@"id"]];
 		MatrixButton *button = [[MatrixButton alloc] initWithActivity:a];
 		
 		// setup frame
-		CGRect r = CGRectMake(0, 0, mv.bounds.size.width/3, mv.bounds.size.height/3);
-		r.origin.x = (a.position % 3) * r.size.width;
-		r.origin.y = (a.position / 3) * r.size.height;
+		CGRect r = CGRectMake(0, 0, 320/3, matrixView.bounds.size.height/3);
+		r.origin.x = (currentPosition % 3) * r.size.width + 320 * page;
+		r.origin.y = (currentPosition / 3) * r.size.height;
 		button.frame = r;
 		button.delegate = self;
 		
 		if (editting) {
-			[self wobbleView:button];
+			button.userInteractionEnabled = NO;
+			[button wobble];
 		}
 		
-		[mv.buttons replaceObjectAtIndex:a.position withObject:button];
-		[mv addSubview:button];
+		[buttons addObject:button];
+		[matrixView addSubview:button];
 		[a release];
 		[button release];
-	}	
-}
-
-- (void)loadScrollViewWithPage:(int)page {
-	if (page < 0) return;
-	if (page >= [self getNumberOfScreens]) return;
-	
-	if (page >= [matrices count]) {
-		for (int i = [matrices count] - 1; i < page; i++) {
-			[matrices addObject:[NSNull null]];
-		}
+		
+		currentPosition++;
 	}
 	
-	// replace the placeholder if necessary
-    MatrixView *matrix = [matrices objectAtIndex:page];
-    if ((NSNull *)matrix == [NSNull null]) {
-        matrix = [[MatrixView alloc] initWithFrame:_scrollView.bounds andScreenNumber:page];
-        [matrices replaceObjectAtIndex:page withObject:matrix];
-        [matrix release];
-    }
-	
-	[self loadButtons:matrix screen:page];
-	
-    if (nil == matrix.superview) {
-        CGRect frame = _scrollView.frame;
-        frame.origin.x = frame.size.width * page;
-        frame.origin.y = 0;
-        matrix.frame = frame;
-        [_scrollView addSubview:matrix];
-    }	
 }
 
 // Implement loadView to create a view hierarchy programmatically, without using a nib.
@@ -148,10 +122,13 @@
 	_scrollView.scrollsToTop = NO;
 	_scrollView.delegate = self;
 	[containerView addSubview:_scrollView];
-	
-/*	for (int i = 0; i < screens; i++) {
-		[self loadScrollViewWithPage:i];
-	}*/
+
+	matrixView = [[MatrixView alloc] init];
+	CGRect frame = CGRectZero;
+	frame.size = _scrollView.contentSize;
+	matrixView.frame = frame;
+	matrixView.scrollView = _scrollView;
+	[_scrollView addSubview:matrixView];
 	
 	_pageControl = [[UIPageControl alloc] init];
 	_pageControl.numberOfPages = screens;
@@ -159,7 +136,7 @@
 	_pageControl.frame = CGRectMake(0, 300, 0, 20);
 	[containerView addSubview:_pageControl];
 	[_pageControl sizeToFit];
-	CGRect frame = _pageControl.frame;
+	frame = _pageControl.frame;
 	frame.size.height = 20;
 	frame.origin.y = 365 - frame.size.height;
 	_pageControl.frame = frame;
@@ -187,11 +164,14 @@
 
 	_scrollView.contentSize = CGSizeMake(320 * screens, _scrollView.frame.size.height);
 	_pageControl.numberOfPages = screens;
+	CGRect frame = matrixView.frame;
+	frame.size = _scrollView.contentSize;
+	matrixView.frame = frame;
 	
 	for (int i = 0; i < screens; i++) {
-		[self loadScrollViewWithPage:i];
+		[self loadMatrixViewWithPage:i];
 	}
-//	[self.tableView reloadData];
+
 	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:animated];	
 }
 
@@ -219,6 +199,7 @@
     CGFloat pageWidth = _scrollView.frame.size.width;
     int page = floor((_scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
     _pageControl.currentPage = page;
+	matrixView.currentPage = page;
 }
 
 // At the end of scroll animation, reset the boolean used when scrolls originate from the UIPageControl
@@ -228,6 +209,7 @@
 
 - (void)pageChanged:(id)sender {
 	int page = _pageControl.currentPage;
+	matrixView.currentPage = page;
     // load the visible page and the page on either side of it (to avoid flashes when the user starts scrolling)
     //[self loadScrollViewWithPage:page - 1];
     //[self loadScrollViewWithPage:page];
@@ -252,63 +234,21 @@
 	[eavc release];	
 }
 
-- (void)wobbleView:(UIView *)v {
-	CALayer *l = v.layer;
-	
-	l.transform = CATransform3DMakeScale(0.9, 0.9, 1);
-	
-	// here is an example wiggle
-	CABasicAnimation *wiggle = [CABasicAnimation animationWithKeyPath:@"transform"];
-	wiggle.duration = 0.1;
-	wiggle.repeatCount = 1e100f;
-	wiggle.autoreverses = YES;
-	wiggle.fromValue = [NSValue valueWithCATransform3D:CATransform3DRotate(l.transform,-0.05, 0.0 ,1.0 ,2.0)];
-	wiggle.toValue = [NSValue valueWithCATransform3D:CATransform3DRotate(l.transform,0.05, 0.0 ,1.0 ,2.0)];
-	
-	// doing the wiggle
-	[l addAnimation:wiggle forKey:@"wiggle"];
-}
-
-- (void)stopWobbleView:(UIView *)v {
-	[v.layer removeAllAnimations];
-	v.layer.transform = CATransform3DIdentity;
-}
-
 - (void)editButtons:(id)sender {
 	editting = YES;
+//	_scrollView.canCancelContentTouches = NO;
+//	_scrollView.delaysContentTouches = NO;
 	self.navigationItem.leftBarButtonItem = doneBarButtonItem;
+	matrixView.editting = YES;
 	
-	for (MatrixView *matrix in matrices) {
-		if ((NSNull *)matrix == [NSNull null]) {
-			continue;
-		}
-		
-		for (MatrixButton *button in matrix.buttons) {
-			if ((NSNull *)button == [NSNull null]) {
-				continue;
-			}
-			[self wobbleView:button];
-		}
-	}
 }
 
 - (void)doneButtons:(id)sender {
 	editting = NO;
+//	_scrollView.canCancelContentTouches = YES;
+//	_scrollView.delaysContentTouches = YES;
 	self.navigationItem.leftBarButtonItem = editBarButtonItem;
-
-	for (MatrixView *matrix in matrices) {
-		if ((NSNull *)matrix == [NSNull null]) {
-			continue;
-		}
-		
-		for (MatrixButton *button in matrix.buttons) {
-			if ((NSNull *)button == [NSNull null]) {
-				continue;
-			}
-			[self stopWobbleView:button];
-		}
-	}
-	
+	matrixView.editting = NO;
 }
 
 - (void)matrixButtonClicked:(MatrixButton *)mb {
@@ -450,7 +390,7 @@
 	
 	[_pageControl release];
 	[_scrollView release];
-	[matrices release];
+	[matrixView release];
 	
 	[editBarButtonItem release];
 	[doneBarButtonItem release];
