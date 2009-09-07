@@ -62,8 +62,10 @@
 	selected.alpha = .6;
 
 	// move to out of scrollview, movements will be done there
+	[selected retain];
 	[selected removeFromSuperview];
 	[scrollView.superview addSubview:selected];
+	[selected release];
 	
 	CGPoint center = selected.center;
 	center.x = center.x - currentPage * 320;
@@ -208,20 +210,22 @@
 	
 	NSMutableArray *buttons = [pages objectAtIndex:currentPage];
 	
-	if (position >= [buttons count]) {
-		position = [buttons count] - 1;
+	if (position > [buttons count] - 1) {
+		position = [buttons count];
 	}
 	
 	if (position == [buttons indexOfObject:selected]) {
 		return;
 	}
 	
+	[selected retain];
 	[buttons removeObject:selected];
-	if (position == [buttons count]) {
+	if (position >= [buttons count]) {
 		[buttons addObject:selected];
 	} else {
 		[buttons insertObject:selected atIndex:position];
 	}
+	[selected release];
 	
 	[self reflowButtons];
 }
@@ -244,6 +248,26 @@
 	}
 }
 
+- (void)saveButtons {
+	for (int i = 0; i < [pages count]; i++) {
+		NSMutableArray *buttons = [pages objectAtIndex:i];
+		for (int j = 0; j < [buttons count]; j++) {
+			MatrixButton *b = [buttons objectAtIndex:j];
+			
+			if (b.activity.screen != i ||
+				b.activity.position != j) {
+				b.activity.screen = i;
+				b.activity.position = j;
+				[b.activity save];
+			}
+
+			b.center = CGPointMake((j % 3) * b.bounds.size.width + b.bounds.size.width / 2 + i * 320,
+								   (j / 3) * b.bounds.size.height + b.bounds.size.height / 2);			
+			
+		}
+	}
+}
+
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
 	if (!editting) {
 		return;
@@ -263,16 +287,16 @@
 	}
 	
 	NSMutableArray *buttons = [pages objectAtIndex:currentPage];
-	if ([pages indexOfObject:selected] == NSNotFound) {
+	if ([buttons indexOfObject:selected] == NSNotFound) {
 		int x = selected.center.x / selected.bounds.size.width; 
 		int y = selected.center.y / selected.bounds.size.height;
 		int position = y * 3 + x;
 		
-		if (position >= [buttons count]) {
-			position = [buttons count] - 1;
+		if (position > [buttons count] - 1) {
+			position = [buttons count];
 		}
 		
-		if (position == [buttons count]) {
+		if (position >= [buttons count]) {
 			[buttons addObject:selected];
 		} else {
 			[buttons insertObject:selected atIndex:position];
@@ -332,6 +356,16 @@
 			}
 		}
 	} else {
+		
+		for (int i = [pages count] - 1; i >= 0; i--) {
+			// remove page if nothing there
+			if ([[pages objectAtIndex:i] count] == 0) {
+				[pages removeObjectAtIndex:i];
+			}
+		}
+		
+		[self saveButtons];
+		
 		for (NSMutableArray *p in pages) {
 			for (MatrixButton *b in p) {
 				[b stopWobble];

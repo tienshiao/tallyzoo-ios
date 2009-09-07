@@ -255,13 +255,6 @@
 	editting = NO;
 	self.navigationItem.leftBarButtonItem = editBarButtonItem;
 	matrixView.editting = NO;
-	
-	for (int i = [matrixView.pages count] - 1; i >= 0; i--) {
-		// remove page if nothing there
-		if ([[matrixView.pages objectAtIndex:i] count] == 0) {
-			[matrixView.pages removeObjectAtIndex:i];
-		}
-	}
 
 	_scrollView.contentSize = CGSizeMake(320 * [matrixView.pages count], _scrollView.frame.size.height);
 	_pageControl.numberOfPages = [matrixView.pages count];
