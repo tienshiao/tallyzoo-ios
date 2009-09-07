@@ -127,6 +127,7 @@
 	CGRect frame = CGRectZero;
 	frame.size = _scrollView.contentSize;
 	matrixView.frame = frame;
+	matrixView.delegate = self;
 	matrixView.scrollView = _scrollView;
 	[_scrollView addSubview:matrixView];
 	
@@ -236,19 +237,37 @@
 
 - (void)editButtons:(id)sender {
 	editting = YES;
-//	_scrollView.canCancelContentTouches = NO;
-//	_scrollView.delaysContentTouches = NO;
 	self.navigationItem.leftBarButtonItem = doneBarButtonItem;
 	matrixView.editting = YES;
+	
+	[matrixView.pages addObject:[[NSMutableArray alloc] init]];
+	// adjust scrollview/matrix view frame/page controller
+	
+	_scrollView.contentSize = CGSizeMake(320 * [matrixView.pages count], _scrollView.frame.size.height);
+	_pageControl.numberOfPages = [matrixView.pages count];
+	CGRect frame = matrixView.frame;
+	frame.size = _scrollView.contentSize;
+	matrixView.frame = frame;
 	
 }
 
 - (void)doneButtons:(id)sender {
 	editting = NO;
-//	_scrollView.canCancelContentTouches = YES;
-//	_scrollView.delaysContentTouches = YES;
 	self.navigationItem.leftBarButtonItem = editBarButtonItem;
 	matrixView.editting = NO;
+	
+	for (int i = [matrixView.pages count] - 1; i >= 0; i--) {
+		// remove page if nothing there
+		if ([[matrixView.pages objectAtIndex:i] count] == 0) {
+			[matrixView.pages removeObjectAtIndex:i];
+		}
+	}
+
+	_scrollView.contentSize = CGSizeMake(320 * [matrixView.pages count], _scrollView.frame.size.height);
+	_pageControl.numberOfPages = [matrixView.pages count];
+	CGRect frame = matrixView.frame;
+	frame.size = _scrollView.contentSize;
+	matrixView.frame = frame;
 }
 
 - (void)matrixButtonClicked:(MatrixButton *)mb {

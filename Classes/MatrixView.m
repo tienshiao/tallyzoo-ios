@@ -63,7 +63,7 @@
 
 	// move to out of scrollview, movements will be done there
 	[selected removeFromSuperview];
-	[self.superview.superview addSubview:selected];
+	[scrollView.superview addSubview:selected];
 	
 	CGPoint center = selected.center;
 	center.x = center.x - currentPage * 320;
@@ -125,19 +125,19 @@
 			MatrixButton *currentButton = b;
 			int j = currentPage + 1;
 			while (true) {
-				if (j >= [pages count]) {
-					[pages addObject:[[NSMutableArray alloc] init]];
-					// adjust scrollview/matrix view frame/page controller
-				}
 				NSMutableArray *newbuttons = [pages objectAtIndex:j];
 				[newbuttons insertObject:currentButton atIndex:0];
-				currentButton.center  = CGPointMake(0 * b.bounds.size.width + b.bounds.size.width / 2 + j * 320,
-													0 * b.bounds.size.height + b.bounds.size.height / 2);
+				for (int k = 0; k < [newbuttons count]; k++) {
+					MatrixButton *kb = [newbuttons objectAtIndex:k];
+					kb.center = CGPointMake((k % 3) * b.bounds.size.width + b.bounds.size.width / 2 + j * 320,
+											(k / 3) * b.bounds.size.height + b.bounds.size.height / 2);
+				}
 				if ([newbuttons count] <= 9) {
 					break;
 				}
 				
 				currentButton = [newbuttons objectAtIndex:9];
+				[newbuttons removeObject:currentButton];
 				j++;
 			}			
 		}
@@ -147,7 +147,7 @@
 }
 
 #define SCROLL_THRESHOLD 10
-#define SCROLL_TIMEOUT	3
+#define SCROLL_TIMEOUT	2
 
 - (void)timeoutScroll {
 	BOOL scrolled = NO;
@@ -199,12 +199,12 @@
 		setScrollTimeout = NO;
 	}
 
-	CGSize s = selected.bounds.size;
-	CGRect r = CGRectMake(x * s.width + s.width / 4, y * s.height + s.height / 4, 
-						  s.width / 2, s.height / 2);
-	if (!CGRectContainsPoint(r, selected.center)) {
-		return;
-	}
+//	CGSize s = selected.bounds.size;
+//	CGRect r = CGRectMake(x * s.width + s.width / 4, y * s.height + s.height / 4, 
+//						  s.width / 2, s.height / 2);
+//	if (!CGRectContainsPoint(r, selected.center)) {
+//		return;
+//	}
 	
 	NSMutableArray *buttons = [pages objectAtIndex:currentPage];
 	
@@ -217,7 +217,7 @@
 	}
 	
 	[buttons removeObject:selected];
-	if (position == [buttons count] - 1) {
+	if (position == [buttons count]) {
 		[buttons addObject:selected];
 	} else {
 		[buttons insertObject:selected atIndex:position];
@@ -236,7 +236,7 @@
 	}
 
 	for (UITouch *t in touches) {
-		CGPoint position = [t locationInView:self.superview.superview];
+		CGPoint position = [t locationInView:scrollView.superview];
 		current_touch = position;
 		selected.center = position;
 		
@@ -256,14 +256,38 @@
 		}	
 	}
 
-	[selected removeFromSuperview];
-	[self addSubview:selected];
-	// snap to position
+	for (UITouch *t in touches) {
+		CGPoint position = [t locationInView:scrollView.superview];
+		current_touch = position;
+		selected.center = position;
+	}
+	
 	NSMutableArray *buttons = [pages objectAtIndex:currentPage];
+	if ([pages indexOfObject:selected] == NSNotFound) {
+		int x = selected.center.x / selected.bounds.size.width; 
+		int y = selected.center.y / selected.bounds.size.height;
+		int position = y * 3 + x;
+		
+		if (position >= [buttons count]) {
+			position = [buttons count] - 1;
+		}
+		
+		if (position == [buttons count]) {
+			[buttons addObject:selected];
+		} else {
+			[buttons insertObject:selected atIndex:position];
+		}
+		
+		[self reflowButtons];		
+	}
+	
+	[selected removeFromSuperview];
+	// snap to position
 	int i = [buttons indexOfObject:selected];
 	selected.center = CGPointMake((i % 3) * selected.bounds.size.width + selected.bounds.size.width / 2 + currentPage * 320,
 					   		      (i / 3) * selected.bounds.size.height + selected.bounds.size.height / 2);
 	original_center = selected.center;
+	[self addSubview:selected];
 	
 	selected.transform = CGAffineTransformIdentity;
 	[selected wobble];
