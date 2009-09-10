@@ -16,9 +16,9 @@ id INTEGER PRIMARY KEY AUTOINCREMENT,
     position INTEGER,  -- position in matrix (0-8),
     deleted INTEGER, -- 1 = deleted
     created_on TEXT,  -- datetime stored in localtime
-    created_tz INTEGER,
+    created_on_UTC TEXT,
     modified_on TEXT, -- datetime stored in localtime
-    modified_tz INTEGER
+    modified_on_UTC TEXT
 );
 
 create table counts (
@@ -33,9 +33,9 @@ create table counts (
     longitude REAL,
     deleted INTEGER,
     created_on TEXT, -- datetime stored in localtime
-    created_tz INTEGER,
+    created_on_UTC TEXT,
     modified_on TEXT, -- datetime stored in localtime
-    modified_tz INTEGER
+    modified_on_UTC TEXT
 );
 
 create table groups_activities (

@@ -139,10 +139,10 @@
 		
 		[dbh executeUpdate:@"INSERT into activities (guid, name, default_note, default_tags, initial_value, init_sig,\
 												default_step, step_sig, color, count_updown, display_total, \
-											    screen, position, deleted, created_on, created_tz, \
-												modified_on, modified_tz) VALUES \
+											    screen, position, deleted, created_on, created_on_UTC, \
+												modified_on, modified_on_UTC) VALUES \
 												(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0, \
-												datetime('now', 'localtime'), ?, datetime('now', 'localtime'), ?)",
+												datetime('now', 'localtime'), datetime('now', 'utc'), datetime('now', 'localtime'), datetime('now', 'utc'))",
 			(NSString *)guid,
 		    name,
 			default_note,
@@ -155,9 +155,7 @@
 			[NSNumber numberWithInt:count_updown],
 			[NSNumber numberWithBool:display_total],
 			[NSNumber numberWithInt:screen],
-			[NSNumber numberWithInt:position],
-			[NSNumber numberWithInt:[[NSTimeZone systemTimeZone] secondsFromGMT]],
-			[NSNumber numberWithInt:[[NSTimeZone systemTimeZone] secondsFromGMT]]
+			[NSNumber numberWithInt:position]
 		   ];
 		CFRelease(guid);
 		if ([dbh hadError]) {
@@ -192,7 +190,7 @@
 									position = ?, \
 									deleted = ?, \
 									modified_on = datetime('now', 'localtime'),\
-									modified_tz = ? \
+									modified_on_UTC = datetime('now', 'utc')\
 							 WHERE id = ?",
 		 name,
 		 default_note,
@@ -207,7 +205,6 @@
 		 [NSNumber numberWithInt:screen],
 		 [NSNumber numberWithInt:position],
 		 [NSNumber numberWithBool:deleted],
-		 [NSNumber numberWithInt:[[NSTimeZone systemTimeZone] secondsFromGMT]],
 		 [NSNumber numberWithInt:key]
 		];
 		

@@ -81,10 +81,10 @@
 		CFRelease(uuid);
 		
 		[dbh executeUpdate:@"INSERT INTO counts (guid, activity_id, note, tags, amount, amount_sig,\
-		 latitude, longitude, deleted, created_on, created_tz, \
-		 modified_on, modified_tz) VALUES \
+		 latitude, longitude, deleted, created_on, created_on_UTC, \
+		 modified_on, modified_on_UTC) VALUES \
 		 (?, ?, ?, ?, ?, ?, ?, ?, 0, \
-		 datetime('now', 'localtime'), ?, datetime('now', 'localtime'), ?)",
+		 datetime('now', 'localtime'), datetime('now', 'utc'), datetime('now', 'localtime'), datetime('now', 'utc'))",
 		 (NSString *)guid,
 		 [NSNumber numberWithInt:activity.key],
 		 note,
@@ -92,9 +92,7 @@
 		 [NSNumber numberWithDouble:amount],
 		 [NSNumber numberWithInt:amount_sig],
 		 [NSNumber numberWithDouble:latitude],
- 		 [NSNumber numberWithDouble:longitude],
-		 [NSNumber numberWithInt:[[NSTimeZone systemTimeZone] secondsFromGMT]],
-		 [NSNumber numberWithInt:[[NSTimeZone systemTimeZone] secondsFromGMT]]
+ 		 [NSNumber numberWithDouble:longitude]
 		];
 		
 		CFRelease(guid);
@@ -115,7 +113,7 @@
 				longitude = ?, \
 				deleted = ?, \
 				modified_on = datetime('now', 'localtime'),\
-				modified_tz = ? \
+				modified_on_UTC = datetime('now', 'utc')\
 				WHERE id = ?",
 		 [NSNumber numberWithInt:activity.key],
 		 note,
@@ -125,7 +123,6 @@
 		 [NSNumber numberWithDouble:latitude],
 		 [NSNumber numberWithDouble:longitude],
 		 [NSNumber numberWithBool:deleted],
-		 [NSNumber numberWithInt:[[NSTimeZone systemTimeZone] secondsFromGMT]],
 		 [NSNumber numberWithInt:key]
 		];
 		
