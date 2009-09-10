@@ -145,7 +145,7 @@
 			cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 			break;
 		case 2:
-			cell.textLabel.text = @"Tags";
+			cell.textLabel.text = @"Categories";
 			cell.detailTextLabel.text = count.tags;
 			cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 			break;

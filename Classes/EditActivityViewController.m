@@ -136,13 +136,25 @@
 #pragma mark Table view methods
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return 2;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+	if (section == 0) {
+		return nil;
+	} else {
+		return @"Advanced";
+	}	
 }
 
 
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 9;
+	if (section == 0) {
+		return 2;
+	} else {
+		return 7;
+	}
 }
 
 
@@ -159,64 +171,71 @@
 	cell.accessoryView = nil;
     
     // Set up the cell...
-	switch (indexPath.row) {
-		case 0:
-			// name
-			cell.textLabel.text = @"Name";
-			cell.detailTextLabel.text = activity.name;
-			cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-			break;
-		case 1:
-			// default_note
-			cell.textLabel.text = @"Note";
-			cell.detailTextLabel.text = activity.default_note;
-			cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-			break;
-		case 2:
-			// default tags
-			cell.textLabel.text = @"Tags";
-			cell.detailTextLabel.text = activity.default_tags;
-			cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-			break;
-		case 3:
-			// color
-			cell.textLabel.text = @"Color";
-			cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-			colorView.color = activity.color;
-			[cell.contentView addSubview:colorView];
-			break;
-		case 4:
-			// group - private/public
-			cell.textLabel.text = @"Public";
-			cell.accessoryView = showPublicSwitch;
-			break;
-		case 5:
-			// display_total
-			cell.textLabel.text = @"Show Count";
-			cell.accessoryView = showCountSwitch;
-			break;
-		case 6:
-			// initial value
-			cell.textLabel.text = @"Initial Value";
-			cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", [NSNumber numberWithDouble:activity.initial_value]];
-			cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-			break;
-		case 7:
-			// default_step
-			cell.textLabel.text = @"Default Increment";
-			cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", [NSNumber numberWithDouble:activity.default_step]];
-			cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-			break;
-		case 8:
-			// count_updown
-			cell.textLabel.text = @"Count";
-			if (activity.count_updown > 0) {
-				cell.detailTextLabel.text = @"count up"; 
-			} else {
-				cell.detailTextLabel.text = @"count down";
-			}
-			cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;			
-			break;
+	if (indexPath.section == 0) {
+		switch (indexPath.row) {
+			case 0:
+				// name
+				cell.textLabel.text = @"Name";
+				cell.detailTextLabel.text = activity.name;
+				cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+				break;
+			case 1:
+				// color
+				cell.textLabel.text = @"Note";
+				cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+				colorView.color = activity.color;
+				[cell.contentView addSubview:colorView];
+				break;
+		}		
+	} else {
+		switch (indexPath.row) {
+			case 0:
+				// default tags
+				cell.textLabel.text = @"Categories";
+				cell.detailTextLabel.text = activity.default_tags;
+				cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+				break;				
+			case 1:
+				// default_note
+				cell.textLabel.text = @"Note";
+				cell.detailTextLabel.text = activity.default_note;
+				cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+				break;
+			case 2:
+				// display_total
+				cell.textLabel.text = @"Show Count";
+				cell.accessoryView = showCountSwitch;
+				cell.selectionStyle = UITableViewCellSelectionStyleNone;
+				break;				
+			case 3:
+				// group - private/public
+				cell.textLabel.text = @"Public";
+				cell.accessoryView = showPublicSwitch;
+				cell.selectionStyle = UITableViewCellSelectionStyleNone;
+				break;
+			case 4:
+				// initial value
+				cell.textLabel.text = @"Initial Value";
+				cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", [NSNumber numberWithDouble:activity.initial_value]];
+				cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+				break;
+			case 5:
+				// default_step
+				cell.textLabel.text = @"Default Increment";
+				cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", [NSNumber numberWithDouble:activity.default_step]];
+				cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+				break;
+			case 6:
+				// count_updown
+				cell.textLabel.text = @"Count";
+				if (activity.count_updown > 0) {
+					cell.detailTextLabel.text = @"count up"; 
+				} else {
+					cell.detailTextLabel.text = @"count down";
+				}
+				cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;			
+				break;
+		}
 	}
 	
     return cell;
@@ -229,18 +248,44 @@
 	// [self.navigationController pushViewController:anotherViewController];
 	// [anotherViewController release];
 	
+	if (indexPath.section == 0) {
+		switch (indexPath.row) {
+			case 0: {
+				// name
+				EditTextFieldViewController *etfvc = [[EditTextFieldViewController alloc] init];
+				etfvc.editedObject = activity;
+				etfvc.textValue = activity.name;
+				etfvc.editedFieldKey = @"name";
+				etfvc.title = @"Name";
+				[self.navigationController pushViewController:etfvc animated:YES];
+				[etfvc release];
+				break;
+			}
+			case 1: {
+				// color
+				ColorPickerViewController *cpvc = [[ColorPickerViewController alloc] init];
+				cpvc.editedObject = activity;
+				cpvc.colorValue = activity.color;
+				cpvc.editedFieldKey = @"color";
+				cpvc.title = @"Color";
+				[self.navigationController pushViewController:cpvc animated:YES];
+				[cpvc release];					
+				break;
+			}				
+		}
+	} else {
 	switch (indexPath.row) {
 		case 0: {
-			// name
-			EditTextFieldViewController *etfvc = [[EditTextFieldViewController alloc] init];
-			etfvc.editedObject = activity;
-			etfvc.textValue = activity.name;
-			etfvc.editedFieldKey = @"name";
-			etfvc.title = @"Name";
-			[self.navigationController pushViewController:etfvc animated:YES];
-			[etfvc release];
+			// default tags
+			EditTextViewViewController *etvvc = [[EditTextViewViewController alloc] init];
+			etvvc.editedObject = activity;
+			etvvc.textValue = activity.default_tags;
+			etvvc.editedFieldKey = @"default_tags";
+			etvvc.title = @"Default Categories";
+			[self.navigationController pushViewController:etvvc animated:YES];
+			[etvvc release];						
 			break;
-		}
+		}			
 		case 1: {
 			// default_note
 			EditTextViewViewController *etvvc = [[EditTextViewViewController alloc] init];
@@ -252,37 +297,16 @@
 			[etvvc release];			
 			break;
 		}
-		case 2: {
-			// default tags
-			EditTextViewViewController *etvvc = [[EditTextViewViewController alloc] init];
-			etvvc.editedObject = activity;
-			etvvc.textValue = activity.default_tags;
-			etvvc.editedFieldKey = @"default_tags";
-			etvvc.title = @"Default Tags";
-			[self.navigationController pushViewController:etvvc animated:YES];
-			[etvvc release];						
-			break;
-		}
-		case 3: {
-			// color
-			ColorPickerViewController *cpvc = [[ColorPickerViewController alloc] init];
-			cpvc.editedObject = activity;
-			cpvc.colorValue = activity.color;
-			cpvc.editedFieldKey = @"color";
-			cpvc.title = @"Color";
-			[self.navigationController pushViewController:cpvc animated:YES];
-			[cpvc release];					
-			break;
-		}
-		case 4:
-			// group - private/public
-			// nothing
-			break;
-		case 5:
+		case 2:
 			// display_total
 			// nothing
 			break;
-		case 6: {
+			
+		case 3:
+			// group - private/public
+			// nothing
+			break;
+		case 4: {
 			// initial value
 			EditTextFieldViewController *etfvc = [[EditTextFieldViewController alloc] init];
 			etfvc.editedObject = activity;
@@ -295,7 +319,7 @@
 			[etfvc release];			
 			break;
 		}
-		case 7: {
+		case 5: {
 			// default_step
 			EditTextFieldViewController *etfvc = [[EditTextFieldViewController alloc] init];
 			etfvc.editedObject = activity;
@@ -308,7 +332,7 @@
 			[etfvc release];							
 			break;
 		}
-		case 8: {
+		case 6: {
 			// count_updown
 			ChooseCountViewController *ccvc = [[ChooseCountViewController alloc] init];
 			ccvc.editedObject = activity;
@@ -319,6 +343,7 @@
 			[ccvc release];					
 			break;
 		}
+	}
 	}
 }
 
