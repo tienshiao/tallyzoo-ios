@@ -29,6 +29,10 @@
 		615CCA361022E97600BD6BB2 /* EditActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 615CCA351022E97600BD6BB2 /* EditActivityViewController.m */; };
 		615CCC10102A183400BD6BB2 /* EditTextFieldViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 615CCC0F102A183400BD6BB2 /* EditTextFieldViewController.m */; };
 		615CCC5B102A1EAF00BD6BB2 /* EditTextViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 615CCC5A102A1EAF00BD6BB2 /* EditTextViewViewController.m */; };
+		615E4EF1104E6263007DF031 /* SyncViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 615E4EF0104E6263007DF031 /* SyncViewController.m */; };
+		615E4EF9104E639B007DF031 /* 02-redo.png in Resources */ = {isa = PBXBuildFile; fileRef = 615E4EF8104E639B007DF031 /* 02-redo.png */; };
+		615E504B1050F841007DF031 /* logo2.png in Resources */ = {isa = PBXBuildFile; fileRef = 615E504A1050F841007DF031 /* logo2.png */; };
+		615E52E21056DC6A007DF031 /* AccountBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 615E52E11056DC6A007DF031 /* AccountBackgroundView.m */; };
 		61D0F272103B56D1002B78C5 /* click_down.wav in Resources */ = {isa = PBXBuildFile; fileRef = 61D0F270103B56D1002B78C5 /* click_down.wav */; };
 		61D0F273103B56D1002B78C5 /* click_up.wav in Resources */ = {isa = PBXBuildFile; fileRef = 61D0F271103B56D1002B78C5 /* click_up.wav */; };
 		61D0F289103B5965002B78C5 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61D0F288103B5965002B78C5 /* AudioToolbox.framework */; };
@@ -100,6 +104,12 @@
 		615CCC0F102A183400BD6BB2 /* EditTextFieldViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditTextFieldViewController.m; sourceTree = "<group>"; };
 		615CCC59102A1EAF00BD6BB2 /* EditTextViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditTextViewViewController.h; sourceTree = "<group>"; };
 		615CCC5A102A1EAF00BD6BB2 /* EditTextViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditTextViewViewController.m; sourceTree = "<group>"; };
+		615E4EEF104E6263007DF031 /* SyncViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyncViewController.h; sourceTree = "<group>"; };
+		615E4EF0104E6263007DF031 /* SyncViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyncViewController.m; sourceTree = "<group>"; };
+		615E4EF8104E639B007DF031 /* 02-redo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "02-redo.png"; sourceTree = "<group>"; };
+		615E504A1050F841007DF031 /* logo2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo2.png; sourceTree = "<group>"; };
+		615E52E01056DC6A007DF031 /* AccountBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountBackgroundView.h; sourceTree = "<group>"; };
+		615E52E11056DC6A007DF031 /* AccountBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountBackgroundView.m; sourceTree = "<group>"; };
 		61D0F270103B56D1002B78C5 /* click_down.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = click_down.wav; sourceTree = "<group>"; };
 		61D0F271103B56D1002B78C5 /* click_up.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = click_up.wav; sourceTree = "<group>"; };
 		61D0F288103B5965002B78C5 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -174,6 +184,8 @@
 				615CCAEA10283E4700BD6BB2 /* Editors */,
 				615CC84C101FCB3C00BD6BB2 /* Models */,
 				61D0F6C1103E6A97002B78C5 /* Masks */,
+				615E52E01056DC6A007DF031 /* AccountBackgroundView.h */,
+				615E52E11056DC6A007DF031 /* AccountBackgroundView.m */,
 				61E64A391035C61400E78174 /* EditCountViewController.h */,
 				61E64A3A1035C61400E78174 /* EditCountViewController.m */,
 				615CCA341022E97600BD6BB2 /* EditActivityViewController.h */,
@@ -200,6 +212,8 @@
 				61D0F755103E8BE2002B78C5 /* SelectLayer.m */,
 				61D0FC371045166C002B78C5 /* ShakeView.h */,
 				61D0FC381045166C002B78C5 /* ShakeView.m */,
+				615E4EEF104E6263007DF031 /* SyncViewController.h */,
+				615E4EF0104E6263007DF031 /* SyncViewController.m */,
 				1D3623240D0F684500981E51 /* TallyZooAppDelegate.h */,
 				1D3623250D0F684500981E51 /* TallyZooAppDelegate.m */,
 			);
@@ -238,6 +252,8 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				615E504A1050F841007DF031 /* logo2.png */,
+				615E4EF8104E639B007DF031 /* 02-redo.png */,
 				61D0F7CF103E9A00002B78C5 /* 10-medical.png */,
 				61D0F7D0103E9A00002B78C5 /* 16-line-chart.png */,
 				61D0F358103BE1B7002B78C5 /* red_down.png */,
@@ -385,6 +401,8 @@
 				61D0F7D1103E9A00002B78C5 /* 10-medical.png in Resources */,
 				61D0F7D2103E9A00002B78C5 /* 16-line-chart.png in Resources */,
 				61D0FBC410446507002B78C5 /* Settings.bundle in Resources */,
+				615E4EF9104E639B007DF031 /* 02-redo.png in Resources */,
+				615E504B1050F841007DF031 /* logo2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -428,6 +446,8 @@
 				61D0FD941048D6A8002B78C5 /* LocationBusyView.m in Sources */,
 				61FCDE87104B552000F16BF1 /* TZTabBarController.m in Sources */,
 				61FCDF9E104BA5CD00F16BF1 /* LandscapeGraphView.m in Sources */,
+				615E4EF1104E6263007DF031 /* SyncViewController.m in Sources */,
+				615E52E21056DC6A007DF031 /* AccountBackgroundView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

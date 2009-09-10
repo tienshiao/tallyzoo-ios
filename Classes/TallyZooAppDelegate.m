@@ -9,6 +9,7 @@
 #import "TallyZooAppDelegate.h"
 #import "MatrixViewController.h"
 #import "GraphViewController.h"
+#import "SyncViewController.h"
 
 @implementation TallyZooAppDelegate
 
@@ -81,8 +82,11 @@
 	GraphViewController *gvc = [[GraphViewController alloc] init];
 	gvc.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Graph" image:[UIImage imageNamed:@"16-line-chart.png"] tag:2];
 	
+	SyncViewController *svc = [[SyncViewController alloc] init];
+	svc.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Sync" image:[UIImage imageNamed:@"02-redo.png"] tag:3];
+	
 	tbController = [[TZTabBarController alloc] init];
-	tbController.viewControllers = [NSArray arrayWithObjects:mnc, gvc, nil];
+	tbController.viewControllers = [NSArray arrayWithObjects:mnc, gvc, svc, nil];
 	tbController.view.backgroundColor = [UIColor blackColor];
 	
 	[mnc release];
