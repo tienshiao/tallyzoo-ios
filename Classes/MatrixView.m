@@ -148,7 +148,7 @@
 	[UIView commitAnimations];	
 }
 
-#define SCROLL_THRESHOLD 10
+#define SCROLL_THRESHOLD 15
 #define SCROLL_TIMEOUT	2
 
 - (void)timeoutScroll {
