@@ -354,7 +354,7 @@
 		
 		int screens = [self getNumberOfScreens];
 		for (int i = 0; i < screens; i++) {
-			[self loadScrollViewWithPage:i];
+			[self loadMatrixViewWithPage:i];
 		}
 		
 	}

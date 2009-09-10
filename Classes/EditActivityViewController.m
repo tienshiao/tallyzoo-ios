@@ -181,7 +181,7 @@
 				break;
 			case 1:
 				// color
-				cell.textLabel.text = @"Note";
+				cell.textLabel.text = @"Color";
 				cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 				colorView.color = activity.color;
 				[cell.contentView addSubview:colorView];

@@ -98,7 +98,7 @@
 				original_position = position;
 				current_touch = position;
 				original_center = selected.center;
-				[self performSelector:@selector(timeoutTouch) withObject:nil afterDelay:1];
+				[self performSelector:@selector(timeoutTouch) withObject:nil afterDelay:.5];
 				
 			}
 		}
@@ -149,7 +149,7 @@
 }
 
 #define SCROLL_THRESHOLD 15
-#define SCROLL_TIMEOUT	2
+#define SCROLL_TIMEOUT	1
 
 - (void)timeoutScroll {
 	BOOL scrolled = NO;
@@ -277,7 +277,8 @@
 		// treat as a click
 		if (delegate && [delegate respondsToSelector:@selector(matrixButtonClicked:)]) { 
 			[delegate matrixButtonClicked:selected];
-		}	
+		}
+		return;
 	}
 
 	for (UITouch *t in touches) {
