@@ -69,7 +69,7 @@
 			self.step_sig = 0;
 			self.count_updown = 1;
 			self.display_total = 1;
-			self.color = [UIColor whiteColor];
+			self.color = [UIColor blueColor];
 			self.screen = -1;
 			self.position = 0;
 		}

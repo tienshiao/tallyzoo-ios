@@ -56,34 +56,26 @@
 */
 
 - (int)getColorRow {
-	if ([[colorValue hexStringFromColor] isEqual:[[UIColor blackColor] hexStringFromColor]]) {
+	if ([[colorValue hexStringFromColor] isEqual:[[UIColor blueColor] hexStringFromColor]]) {
 		return 0;
-	} else if ([[colorValue hexStringFromColor] isEqual:[[UIColor blueColor] hexStringFromColor]]) {
-		return 1;
 	} else if ([[colorValue hexStringFromColor] isEqual:[[UIColor brownColor] hexStringFromColor]]) {
-		return 2;
-	} else if ([[colorValue hexStringFromColor] isEqual:[[UIColor cyanColor] hexStringFromColor]]) {
-		return 3;
-	} else if ([[colorValue hexStringFromColor] isEqual:[[UIColor darkGrayColor] hexStringFromColor]]) {
-		return 4;
-	} else if ([[colorValue hexStringFromColor] isEqual:[[UIColor grayColor] hexStringFromColor]]) {
-		return 5;
-	} else if ([[colorValue hexStringFromColor] isEqual:[[UIColor greenColor] hexStringFromColor]]) {
-		return 6;
-	} else if ([[colorValue hexStringFromColor] isEqual:[[UIColor lightGrayColor] hexStringFromColor]]) {
-		return 7;
-	} else if ([[colorValue hexStringFromColor] isEqual:[[UIColor magentaColor] hexStringFromColor]]) {
-		return 8;
-	} else if ([[colorValue hexStringFromColor] isEqual:[[UIColor orangeColor] hexStringFromColor]]) {
-		return 9;
+		return 1;
 	} else if ([[colorValue hexStringFromColor] isEqual:[[UIColor purpleColor] hexStringFromColor]]) {
-		return 10;
+		return 2;
+	} else if ([[colorValue hexStringFromColor] isEqual:[[UIColor magentaColor] hexStringFromColor]]) {
+		return 3;
 	} else if ([[colorValue hexStringFromColor] isEqual:[[UIColor redColor] hexStringFromColor]]) {
-		return 11;
-	} else if ([[colorValue hexStringFromColor] isEqual:[[UIColor whiteColor] hexStringFromColor]]) {
-		return 12;
+		return 4;
+	} else if ([[colorValue hexStringFromColor] isEqual:[[UIColor orangeColor] hexStringFromColor]]) {
+		return 5;
 	} else if ([[colorValue hexStringFromColor] isEqual:[[UIColor yellowColor] hexStringFromColor]]) {
-		return 13;
+		return 6;
+	} else if ([[colorValue hexStringFromColor] isEqual:[[UIColor greenColor] hexStringFromColor]]) {
+		return 7;
+	} else if ([[colorValue hexStringFromColor] isEqual:[[UIColor grayColor] hexStringFromColor]]) {
+		return 8;
+	} else if ([[colorValue hexStringFromColor] isEqual:[[UIColor darkGrayColor] hexStringFromColor]]) {
+		return 9;
 	} else {
 		return -1;
 	}
@@ -96,7 +88,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 
-	if (old_row == 14) {
+	if (old_row == 11) {
 		// previously selected custom color and then changed it
 		self.colorValue = self.customColor;
 	} else {
@@ -112,7 +104,7 @@
 			if (customColor == nil) {
 				self.customColor = self.colorValue;
 			}
-			old_row = 14;
+			old_row = 11;
 		}
 	}
 	
@@ -166,7 +158,7 @@
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	if (section == 0) {
-		return 15;
+		return 11;
 	} else {
 		return 1;
 	}
@@ -190,80 +182,60 @@
 		// Set up the cell...
 		switch (indexPath.row) {
 			case 0: {
-				cell.label.text = @"Black";
-				cell.color = [UIColor blackColor];
-				break;
-			}
-			case 1: {
 				cell.label.text = @"Blue";
 				cell.color = [UIColor blueColor];
 				break;
 			}
-			case 2: {
+			case 1: {
 				cell.label.text = @"Brown";
 				cell.color = [UIColor brownColor];
 				break;
 			}
-			case 3: {
-				cell.label.text = @"Cyan";
-				cell.color = [UIColor cyanColor];
-				break;
-			}
-			case 4: {
-				cell.label.text = @"Dark Gray";
-				cell.color = [UIColor darkGrayColor];
-				break;
-			}
-			case 5: {
-				cell.label.text = @"Gray";
-				cell.color = [UIColor grayColor];
-				break;
-			}
-			case 6: {
-				cell.label.text = @"Green";
-				cell.color = [UIColor greenColor];
-				break;
-			}
-			case 7: {
-				cell.label.text = @"Light Gray";
-				cell.color = [UIColor lightGrayColor];
-				break;
-			}
-			case 8: {
-				cell.label.text = @"Magenta";
-				cell.color = [UIColor magentaColor];
-				break;
-			}
-			case 9: {
-				cell.label.text = @"Orange";
-				cell.color = [UIColor orangeColor];
-				break;
-			}
-			case 10: {
+			case 2: {
 				cell.label.text = @"Purple";
 				cell.color = [UIColor purpleColor];
 				break;
 			}
-			case 11: {
+			case 3: {
+				cell.label.text = @"Magenta";
+				cell.color = [UIColor magentaColor];
+				break;
+			}
+			case 4: {
 				cell.label.text = @"Red";
 				cell.color = [UIColor redColor];
 				break;
-			}	
-			case 12: {
-				cell.label.text = @"White";
-				cell.color = [UIColor whiteColor];
+			}
+			case 5: {
+				cell.label.text = @"Orange";
+				cell.color = [UIColor orangeColor];
 				break;
 			}
-			case 13: {
+			case 6: {
 				cell.label.text = @"Yellow";
 				cell.color = [UIColor yellowColor];
 				break;
 			}
-			case 14: {
+			case 7: {
+				cell.label.text = @"Green";
+				cell.color = [UIColor greenColor];
+				break;
+			}
+			case 8: {
+				cell.label.text = @"Gray";
+				cell.color = [UIColor grayColor];
+				break;
+			}
+			case 9: {
+				cell.label.text = @"Dark Gray";
+				cell.color = [UIColor darkGrayColor];
+				break;
+			}
+			case 10: {
 				cell.label.text = @"Custom";
 				cell.color = customColor;
 				break;
-			}				
+			}
 		}
 		
 //		if ([[colorValue hexStringFromColor] isEqual:[cell.color hexStringFromColor]]) {
