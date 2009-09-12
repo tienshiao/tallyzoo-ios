@@ -278,6 +278,7 @@
 		if (delegate && [delegate respondsToSelector:@selector(matrixButtonClicked:)]) { 
 			[delegate matrixButtonClicked:selected];
 		}
+		selected = nil;
 		return;
 	}
 
