@@ -8,6 +8,7 @@
 
 #import "EditActivityViewController.h"
 #import "ColorPickerViewController.h"
+#import "ChooseBadgeViewController.h"
 #import "ChooseCountViewController.h"
 #import "EditTextFieldViewController.h"
 #import "EditTextViewViewController.h"
@@ -39,9 +40,6 @@
 		
 		showPublicSwitch = [[UISwitch alloc] init];
 		showPublicSwitch.on = a.public;
-		
-		showCountSwitch = [[UISwitch alloc] init];
-		showCountSwitch.on = a.display_total;
 		
 		colorView = [[ColorView alloc] initWithFrame:CGRectMake(250, 8, 25, 25)];
 		colorView.tag = COLOR_TAG;
@@ -153,7 +151,7 @@
 	if (section == 0) {
 		return 2;
 	} else {
-		return 7;
+		return 6;
 	}
 }
 
@@ -189,43 +187,59 @@
 		}		
 	} else {
 		switch (indexPath.row) {
-			case 0:
+/*			case 0:
 				// default tags
 				cell.textLabel.text = @"Categories";
 				cell.detailTextLabel.text = activity.default_tags;
 				cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-				break;				
-			case 1:
+				break;*/
+			case 0:
 				// default_note
 				cell.textLabel.text = @"Note";
 				cell.detailTextLabel.text = activity.default_note;
 				cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 				break;
-			case 2:
+			case 1:
 				// display_total
-				cell.textLabel.text = @"Show Count";
-				cell.accessoryView = showCountSwitch;
-				cell.selectionStyle = UITableViewCellSelectionStyleNone;
+				cell.textLabel.text = @"Badge";
+				switch (activity.display_total) {
+					case BADGE_OFF:
+						cell.detailTextLabel.text = @"off"; 						
+						break;
+					case BADGE_ALL:
+						cell.detailTextLabel.text = @"all time";
+						break;
+					case BADGE_DAY:
+						cell.detailTextLabel.text = @"daily total";
+						break;
+					case BADGE_WEEK:
+						cell.detailTextLabel.text = @"weekly total";
+						break;
+					case BADGE_MONTH:
+						cell.detailTextLabel.text = @"monthly total";
+						break;
+				}
+				cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;							
 				break;				
-			case 3:
+			case 2:
 				// group - private/public
 				cell.textLabel.text = @"Public";
 				cell.accessoryView = showPublicSwitch;
 				cell.selectionStyle = UITableViewCellSelectionStyleNone;
 				break;
-			case 4:
+			case 3:
 				// initial value
 				cell.textLabel.text = @"Initial Value";
 				cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", [NSNumber numberWithDouble:activity.initial_value]];
 				cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 				break;
-			case 5:
+			case 4:
 				// default_step
 				cell.textLabel.text = @"Default Increment";
 				cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", [NSNumber numberWithDouble:activity.default_step]];
 				cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 				break;
-			case 6:
+			case 5:
 				// count_updown
 				cell.textLabel.text = @"Count";
 				if (activity.count_updown > 0) {
@@ -274,76 +288,82 @@
 			}				
 		}
 	} else {
-	switch (indexPath.row) {
-		case 0: {
-			// default tags
-			EditTextViewViewController *etvvc = [[EditTextViewViewController alloc] init];
-			etvvc.editedObject = activity;
-			etvvc.textValue = activity.default_tags;
-			etvvc.editedFieldKey = @"default_tags";
-			etvvc.title = @"Default Categories";
-			[self.navigationController pushViewController:etvvc animated:YES];
-			[etvvc release];						
-			break;
-		}			
-		case 1: {
-			// default_note
-			EditTextViewViewController *etvvc = [[EditTextViewViewController alloc] init];
-			etvvc.editedObject = activity;
-			etvvc.textValue = activity.default_note;
-			etvvc.editedFieldKey = @"default_note";
-			etvvc.title = @"Default Note";
-			[self.navigationController pushViewController:etvvc animated:YES];
-			[etvvc release];			
-			break;
+		switch (indexPath.row) {
+	/*		case 0: {
+				 // default tags
+				 EditTextViewViewController *etvvc = [[EditTextViewViewController alloc] init];
+				 etvvc.editedObject = activity;
+				 etvvc.textValue = activity.default_tags;
+				 etvvc.editedFieldKey = @"default_tags";
+				 etvvc.title = @"Default Categories";
+				 [self.navigationController pushViewController:etvvc animated:YES];
+				 [etvvc release];						
+				 break;
+				 }*/
+			case 0: {
+				// default_note
+				EditTextViewViewController *etvvc = [[EditTextViewViewController alloc] init];
+				etvvc.editedObject = activity;
+				etvvc.textValue = activity.default_note;
+				etvvc.editedFieldKey = @"default_note";
+				etvvc.title = @"Default Note";
+				[self.navigationController pushViewController:etvvc animated:YES];
+				[etvvc release];			
+				break;
+			}
+			case 1:{
+				// display_total
+				ChooseBadgeViewController *cbvc = [[ChooseBadgeViewController alloc] init];
+				cbvc.editedObject = activity;
+				cbvc.display_total = activity.display_total;
+				cbvc.editedFieldKey = @"display_total";
+				cbvc.title = @"Badge";
+				[self.navigationController pushViewController:cbvc animated:YES];
+				[cbvc release];					
+				break;
+			}
+			case 2:
+				// group - private/public
+				// nothing
+				break;
+			case 3: {
+				// initial value
+				EditTextFieldViewController *etfvc = [[EditTextFieldViewController alloc] init];
+				etfvc.editedObject = activity;
+				etfvc.textValue = [NSString stringWithFormat:@"%@", [NSNumber numberWithDouble:activity.initial_value]];
+				etfvc.editedFieldKey = @"initial_value";
+				etfvc.sigFieldKey = @"init_sig";
+				etfvc.title = @"Initial Value";
+				etfvc.numberEditing = YES;
+				[self.navigationController pushViewController:etfvc animated:YES];
+				[etfvc release];			
+				break;
+			}
+			case 4: {
+				// default_step
+				EditTextFieldViewController *etfvc = [[EditTextFieldViewController alloc] init];
+				etfvc.editedObject = activity;
+				etfvc.textValue = [NSString stringWithFormat:@"%@", [NSNumber numberWithDouble:activity.default_step]];
+				etfvc.editedFieldKey = @"default_step";
+				etfvc.sigFieldKey = @"step_sig";
+				etfvc.title = @"Default Step";
+				etfvc.numberEditing = YES;
+				[self.navigationController pushViewController:etfvc animated:YES];
+				[etfvc release];							
+				break;
+			}
+			case 5: {
+				// count_updown
+				ChooseCountViewController *ccvc = [[ChooseCountViewController alloc] init];
+				ccvc.editedObject = activity;
+				ccvc.selection = activity.count_updown;
+				ccvc.editedFieldKey = @"count_updown";
+				ccvc.title = @"Count";
+				[self.navigationController pushViewController:ccvc animated:YES];
+				[ccvc release];					
+				break;
+			}
 		}
-		case 2:
-			// display_total
-			// nothing
-			break;
-			
-		case 3:
-			// group - private/public
-			// nothing
-			break;
-		case 4: {
-			// initial value
-			EditTextFieldViewController *etfvc = [[EditTextFieldViewController alloc] init];
-			etfvc.editedObject = activity;
-			etfvc.textValue = [NSString stringWithFormat:@"%@", [NSNumber numberWithDouble:activity.initial_value]];
-			etfvc.editedFieldKey = @"initial_value";
-			etfvc.sigFieldKey = @"init_sig";
-			etfvc.title = @"Initial Value";
-			etfvc.numberEditing = YES;
-			[self.navigationController pushViewController:etfvc animated:YES];
-			[etfvc release];			
-			break;
-		}
-		case 5: {
-			// default_step
-			EditTextFieldViewController *etfvc = [[EditTextFieldViewController alloc] init];
-			etfvc.editedObject = activity;
-			etfvc.textValue = [NSString stringWithFormat:@"%@", [NSNumber numberWithDouble:activity.default_step]];
-			etfvc.editedFieldKey = @"default_step";
-			etfvc.sigFieldKey = @"step_sig";
-			etfvc.title = @"Default Step";
-			etfvc.numberEditing = YES;
-			[self.navigationController pushViewController:etfvc animated:YES];
-			[etfvc release];							
-			break;
-		}
-		case 6: {
-			// count_updown
-			ChooseCountViewController *ccvc = [[ChooseCountViewController alloc] init];
-			ccvc.editedObject = activity;
-			ccvc.selection = activity.count_updown;
-			ccvc.editedFieldKey = @"count_updown";
-			ccvc.title = @"Count";
-			[self.navigationController pushViewController:ccvc animated:YES];
-			[ccvc release];					
-			break;
-		}
-	}
 	}
 }
 
@@ -393,7 +413,6 @@
 
 - (void)save:(id)sender {
 	activity.public = showPublicSwitch.on;
-	activity.display_total = showCountSwitch.on;
 	if (![activity save]) {
 	}
 	[self.navigationController dismissModalViewControllerAnimated:YES];
@@ -425,7 +444,6 @@
     [super dealloc];
 	
 	[activity release];
-	[showCountSwitch release];
 	[colorView release];
 	
 	[deleteButton release];

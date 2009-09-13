@@ -48,7 +48,7 @@
 				self.step_sig = [rs intForColumn:@"step_sig"];
 				self.color = [UIColor colorWithHexString:[rs stringForColumn:@"color"]];
 				self.count_updown = [rs intForColumn:@"count_updown"];
-				self.display_total = [rs boolForColumn:@"display_total"];
+				self.display_total = [rs intForColumn:@"display_total"];
 				self.screen = [rs intForColumn:@"screen"];
 				self.position = [rs intForColumn:@"position"];
 				self.deleted = [rs boolForColumn:@"deleted"];
@@ -82,7 +82,7 @@
 }
 
 - (BOOL)needsPosition {
-	FMDatabase *dbh = UIAppDelegate.database;
+//	FMDatabase *dbh = UIAppDelegate.database;
 	if (screen < 0) {
 		return YES;
 	}
@@ -90,14 +90,18 @@
 		return YES;
 	}
 	
-	FMResultSet *rs = [dbh executeQuery:@"SELECT count(*) AS c FROM activities WHERE id <> ? AND screen = ? AND position = ? AND deleted = 0",
+/*	FMResultSet *rs = [dbh executeQuery:@"SELECT count(*) AS c FROM activities WHERE id <> ? AND screen = ? AND position = ? AND deleted = 0",
 							[NSNumber numberWithInt:key], [NSNumber numberWithInt:screen], [NSNumber numberWithInt:position]];
 	[rs next];
 	if ([rs intForColumn:@"c"] == 0) {
+		[rs close];
 		return NO;
 	} else {
+		[rs close];
 		return YES;
-	}
+	}*/
+	
+	return NO;
 }
 
 - (void)findNextPosition {
@@ -117,8 +121,10 @@
 			if ([rs intForColumn:@"c"] == 0) {
 				screen = _s;
 				position = _p;
+				[rs close];
 				return;
 			}
+			[rs close];
 		}
 		_s++;
 	}
@@ -153,7 +159,7 @@
 			[NSNumber numberWithInt:step_sig],
 			[color hexStringFromColor],
 			[NSNumber numberWithInt:count_updown],
-			[NSNumber numberWithBool:display_total],
+		    [NSNumber numberWithInt:display_total],
 			[NSNumber numberWithInt:screen],
 			[NSNumber numberWithInt:position]
 		   ];
@@ -201,7 +207,7 @@
 		 [NSNumber numberWithInt:step_sig],
 		 [color hexStringFromColor],
 		 [NSNumber numberWithInt:count_updown],
-		 [NSNumber numberWithBool:display_total],
+		 [NSNumber numberWithInt:display_total],
 		 [NSNumber numberWithInt:screen],
 		 [NSNumber numberWithInt:position],
 		 [NSNumber numberWithBool:deleted],
@@ -213,7 +219,7 @@
 		}
 		
 		if (public) {
-			[dbh executeUpdate:@"INSERT INTO groups_activities (group_id, activity_id) VALUES (0, ?)", [NSNumber numberWithInt:key]];
+			[dbh executeUpdate:@"INSERT OR IGNORE INTO groups_activities (group_id, activity_id) VALUES (0, ?)", [NSNumber numberWithInt:key]];
 		} else {
 			[dbh executeUpdate:@"DELETE FROM groups_activities WHERE group_id = 0 AND activity_id = ?", [NSNumber numberWithInt:key]];
 		}
@@ -251,9 +257,39 @@
 
 -(NSString *)sum {
 	FMDatabase *dbh = UIAppDelegate.database;
-	FMResultSet *rs = [dbh executeQuery:@"SELECT SUM(amount) AS total, MAX(amount_sig) AS amount_sig FROM counts WHERE activity_id = ? AND deleted = 0",
-	   [NSNumber numberWithInt:key]];
+	FMResultSet *rs;
+	
+	if (display_total == 1) {
+		// all
+		rs = [dbh executeQuery:@"SELECT SUM(amount) AS total, MAX(amount_sig) AS amount_sig FROM counts WHERE activity_id = ? AND deleted = 0",
+				[NSNumber numberWithInt:key]];
+	} else if (display_total == 2) {
+		// daily
+		rs = [dbh executeQuery:@"SELECT SUM(amount) AS total, MAX(amount_sig) AS amount_sig FROM counts WHERE activity_id = ? AND deleted = 0 AND created_on >= date('now')",
+			  [NSNumber numberWithInt:key]];		
+	} else if (display_total == 3) {
+		// weekly
+		NSCalendar *calendar = [NSCalendar currentCalendar];
+		NSDate *today = [[NSDate alloc] init];
+		NSDate *beginningOfWeek = nil;
+		BOOL ok = [calendar rangeOfUnit:NSWeekCalendarUnit startDate:&beginningOfWeek
+								interval:NULL forDate:today];
+		NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
+		[dateFormatter setDateFormat:@"yyyy-MM-dd 00:00:00"];
+		rs = [dbh executeQuery:@"SELECT SUM(amount) AS total, MAX(amount_sig) AS amount_sig FROM counts WHERE activity_id = ? AND deleted = 0 AND created_on >= ?",
+			  [NSNumber numberWithInt:key], [dateFormatter stringFromDate:beginningOfWeek]];
+		[today release];
+	} else if (display_total == 4) {
+		// monthly
+		rs = [dbh executeQuery:@"SELECT SUM(amount) AS total, MAX(amount_sig) AS amount_sig FROM counts WHERE activity_id = ? AND deleted = 0 AND created_on >= date('now', 'start of month')",
+			  [NSNumber numberWithInt:key]];		
+	}
 	[rs next];
+	
+	if ([dbh hadError]) {
+        NSLog(@"Err %d: %@", [dbh lastErrorCode], [dbh lastErrorMessage]);
+    }
+    
 	
 	double total = [rs doubleForColumn:@"total"];
 	int sig = [rs intForColumn:@"amount_sig"];

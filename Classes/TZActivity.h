@@ -21,7 +21,7 @@
 	UIColor *color;
 	BOOL public;
 	int count_updown;
-	BOOL display_total;
+	int display_total;
 	int screen;
 	int position;
 	BOOL deleted;
@@ -42,7 +42,7 @@
 @property(nonatomic, retain) UIColor *color;
 @property(assign, nonatomic) BOOL public;
 @property(assign, nonatomic) int count_updown;
-@property(assign, nonatomic) BOOL display_total;
+@property(assign, nonatomic) int display_total;
 @property(assign, nonatomic) int screen;
 @property(assign, nonatomic) int position;
 @property(assign, nonatomic) BOOL deleted;
@@ -54,5 +54,12 @@
 -(void)loadCounts;
 -(void)simpleCount;
 -(NSString *)sum;
+
+
+#define BADGE_OFF 0
+#define BADGE_ALL 1
+#define BADGE_DAY 2
+#define BADGE_WEEK 3
+#define BADGE_MONTH 4
 
 @end
