@@ -29,10 +29,6 @@
 																	  action:@selector(cancel:)];
 		self.navigationItem.leftBarButtonItem = barButtonItem;
 		[barButtonItem release];
-		
-//		self.tableView.rowHeight = 180;
-		
-//		self.tableView.scrollEnabled = NO;
 	}
 	return self;
 }
@@ -118,7 +114,6 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-		cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     
     // Set up the cell...
