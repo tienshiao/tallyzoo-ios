@@ -14,6 +14,7 @@
 
 @implementation TZActivity
 
+@synthesize guid;
 @synthesize key;
 @synthesize name;
 @synthesize default_note;
@@ -30,6 +31,9 @@
 @synthesize position;
 @synthesize deleted;
 @synthesize created_on;
+@synthesize created_on_UTC;
+@synthesize modified_on;
+@synthesize modified_on_UTC;
 @synthesize counts;
 
 - (id)initWithKey:(NSInteger)k {
@@ -39,6 +43,7 @@
 		if (key) {
 			FMResultSet *rs = [dbh executeQuery:@"SELECT * FROM activities WHERE id = ?", [NSNumber numberWithInt:key]];
 			if ([rs next]) {
+				self.guid = [rs stringForColumn:@"guid"];
 				self.name = [rs stringForColumn:@"name"];
 				self.default_note = [rs stringForColumn:@"default_note"];
 				self.default_tags = [rs stringForColumn:@"default_tags"];
@@ -53,6 +58,9 @@
 				self.position = [rs intForColumn:@"position"];
 				self.deleted = [rs boolForColumn:@"deleted"];
 				self.created_on = [rs stringForColumn:@"created_on"];
+				self.created_on_UTC = [rs stringForColumn:@"created_on_UTC"];
+				self.modified_on = [rs stringForColumn:@"modified_on"];
+				self.modified_on_UTC = [rs stringForColumn:@"modified_on_UTC"];
 			}
 			[rs close];
 			
@@ -79,6 +87,18 @@
 		[formatter setRoundingMode: NSNumberFormatterRoundHalfEven];
 	}
 	return self;
+}
+
+- (id)initWithGUID:(NSString *)g {
+	FMDatabase *dbh = UIAppDelegate.database;
+
+	if (g) {
+		FMResultSet *rs = [dbh executeQuery:@"SELECT id FROM activities WHERE guid = ?", g];
+		if ([rs next]) {
+			return [self initWithKey:[rs intForColumn:@"id"]];
+		}
+	}
+	return [self initWithKey:0];
 }
 
 - (BOOL)needsPosition {
@@ -148,7 +168,7 @@
 											    screen, position, deleted, created_on, created_on_UTC, \
 												modified_on, modified_on_UTC) VALUES \
 												(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0, \
-												datetime('now', 'localtime'), datetime('now', 'utc'), datetime('now', 'localtime'), datetime('now', 'utc'))",
+												datetime('now', 'localtime'), datetime('now'), datetime('now', 'localtime'), datetime('now'))",
 			(NSString *)guid,
 		    name,
 			default_note,
@@ -196,7 +216,7 @@
 									position = ?, \
 									deleted = ?, \
 									modified_on = datetime('now', 'localtime'),\
-									modified_on_UTC = datetime('now', 'utc')\
+									modified_on_UTC = datetime('now')\
 							 WHERE id = ?",
 		 name,
 		 default_note,
@@ -224,6 +244,115 @@
 			[dbh executeUpdate:@"DELETE FROM groups_activities WHERE group_id = 0 AND activity_id = ?", [NSNumber numberWithInt:key]];
 		}
 
+		if ([dbh hadError]) {
+			return NO;
+		}
+		
+		return YES;
+	}
+}
+
+
+- (BOOL)saveRaw {
+	FMDatabase *dbh = UIAppDelegate.database;
+	
+	if ([self needsPosition]) {
+		[self findNextPosition];
+	}
+	
+	if (key == 0) {
+		// INSERT
+		[dbh executeUpdate:@"INSERT into activities (guid, name, default_note, default_tags, initial_value, init_sig,\
+		 default_step, step_sig, color, count_updown, display_total, \
+		 screen, position, deleted, created_on, created_on_UTC, \
+		 modified_on, modified_on_UTC) VALUES \
+		 (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0, \
+		 ?, ?, ?, ?)",
+		 guid,
+		 name,
+		 default_note,
+		 default_tags,
+		 [NSNumber numberWithDouble:initial_value],
+		 [NSNumber numberWithInt:init_sig],
+		 [NSNumber numberWithDouble:default_step],
+		 [NSNumber numberWithInt:step_sig],
+		 [color hexStringFromColor],
+		 [NSNumber numberWithInt:count_updown],
+		 [NSNumber numberWithInt:display_total],
+		 [NSNumber numberWithInt:screen],
+		 [NSNumber numberWithInt:position],
+		 created_on,
+		 created_on_UTC,
+		 modified_on,
+		 modified_on_UTC
+		 ];
+
+		if ([dbh hadError]) {
+			return NO;
+		} 
+		
+		key = [dbh lastInsertRowId];
+		
+		if (public) {
+			[dbh executeUpdate:@"INSERT INTO groups_activities (group_id, activity_id) VALUES (0, ?)", [NSNumber numberWithInt:key]];
+			
+			if ([dbh hadError]) {
+				return NO;
+			}
+		}
+		
+		return YES;
+	} else {
+		// UPDATE
+		[dbh executeUpdate:@"UPDATE activities \
+		 SET name = ?, \
+		 default_note = ?, \
+		 default_tags = ?, \
+		 initial_value = ?, \
+		 init_sig = ?, \
+		 default_step = ?, \
+		 step_sig = ?, \
+		 color = ?, \
+		 count_updown = ?, \
+		 display_total = ?, \
+		 screen = ?, \
+		 position = ?, \
+		 deleted = ?, \
+		 created_on = ?,\
+		 created_on_UTC = ?,\
+		 modified_on = ?,\
+		 modified_on_UTC = ?\
+		 WHERE id = ?",
+		 name,
+		 default_note,
+		 default_tags,
+		 [NSNumber numberWithDouble:initial_value],
+		 [NSNumber numberWithInt:init_sig],
+		 [NSNumber numberWithDouble:default_step],
+		 [NSNumber numberWithInt:step_sig],
+		 [color hexStringFromColor],
+		 [NSNumber numberWithInt:count_updown],
+		 [NSNumber numberWithInt:display_total],
+		 [NSNumber numberWithInt:screen],
+		 [NSNumber numberWithInt:position],
+		 [NSNumber numberWithBool:deleted],
+		 [NSNumber numberWithInt:key],
+		 created_on,
+		 created_on_UTC,
+		 modified_on,
+		 modified_on_UTC
+		 ];
+		
+		if ([dbh hadError]) {
+			return NO;
+		}
+		
+		if (public) {
+			[dbh executeUpdate:@"INSERT OR IGNORE INTO groups_activities (group_id, activity_id) VALUES (0, ?)", [NSNumber numberWithInt:key]];
+		} else {
+			[dbh executeUpdate:@"DELETE FROM groups_activities WHERE group_id = 0 AND activity_id = ?", [NSNumber numberWithInt:key]];
+		}
+		
 		if ([dbh hadError]) {
 			return NO;
 		}

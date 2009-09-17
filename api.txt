@@ -1,0 +1,61 @@
+activities.list
+Request:
+
+list all:
+<request>
+</request>
+
+list all since:
+<request>
+  <since datetime="" />
+</request>
+
+list match:
+<request>
+  <match guid="" name="" etc />
+</request>
+
+Response:
+<response>
+  <activities>
+    <activity guid="" name="" default_note="" initial_value="" init_sig="" default_step="" step_sig="" color="" count_updown="" display_total="" screen="" position="" deleted="" created_on="" created_on_UTC="" modified_on="" modified_on_UTC="">
+      <group name="public" id="0" />
+      <count guid="" note="" amount="" amount_sig="" latitude="" longitude="" deleted="" created_on="" created_on_UTC="" modified_on="" modified_on_UTC="" />
+    </activity>
+  </activities>
+</response>
+
+activities.create
+<request>
+  <activity guid="" name="" default_note="" initial_value="" init_sig="" default_step="" step_sig="" color="" count_updown="" display_total="" screen="" position="" deleted="" created_on="" created_on_UTC="" modified_on="" modified_on_UTC="">
+    <group name="public" id="0" />
+  </activity>
+</request>
+
+
+
+activities.update
+- Updates a specific activity as referenced by GUID (required). All other paremeters optional.
+Request:
+<request>
+  <activity guid="" name="" default_note="" initial_value="" init_sig="" default_step="" step_sig="" color="" count_updown="" display_total="" screen="" position="" deleted="" created_on="" created_on_UTC="" modified_on="" modified_on_UTC="">
+    <group name="public" id="0" />
+</request>
+
+
+counts.create
+Request:
+<request>
+  <count guid="" note="" amount="" amount_sig="" latitude="" longitude="" deleted="" created_on="" created_on_UTC="" modified_on="" modified_on_UTC="" />
+</request>
+
+counts.update
+<request>
+  <count guid="" note="" amount="" amount_sig="" latitude="" longitude="" deleted="" created_on="" created_on_UTC="" modified_on="" modified_on_UTC="" />
+</request>
+
+
+sync algorithm
+download activities.list since last sync
+merge with local database, serverside newer replaces local data (except for iPhone specific data)
+update serverside with local updates since last sync

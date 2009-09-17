@@ -10,6 +10,7 @@
 
 
 @interface TZActivity : NSObject {
+	NSString *guid;
 	NSInteger key;
 	NSString *name;
 	NSString *default_note;
@@ -26,11 +27,15 @@
 	int position;
 	BOOL deleted;
 	NSString *created_on;
+	NSString *created_on_UTC;
+	NSString *modified_on;
+	NSString *modified_on_UTC;
 	
 	NSMutableArray *counts;
 	NSNumberFormatter *formatter;
 }
 
+@property(copy, nonatomic) NSString *guid;
 @property(assign, nonatomic) NSInteger key;
 @property(copy, nonatomic) NSString *name;
 @property(copy, nonatomic) NSString *default_note;
@@ -47,13 +52,18 @@
 @property(assign, nonatomic) int position;
 @property(assign, nonatomic) BOOL deleted;
 @property(copy, nonatomic) NSString *created_on;
+@property(copy, nonatomic) NSString *created_on_UTC;
+@property(copy, nonatomic) NSString *modified_on;
+@property(copy, nonatomic) NSString *modified_on_UTC;
 @property(nonatomic, readonly) NSMutableArray *counts;
 
--(id)initWithKey:(NSInteger)k;
--(BOOL)save;
--(void)loadCounts;
--(void)simpleCount;
--(NSString *)sum;
+- (id)initWithKey:(NSInteger)k;
+- (id)initWithGUID:(NSString *)guid;
+- (BOOL)save;
+- (BOOL)saveRaw;
+- (void)loadCounts;
+- (void)simpleCount;
+- (NSString *)sum;
 
 
 #define BADGE_OFF 0

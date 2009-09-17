@@ -12,6 +12,7 @@
 @interface TZCount : NSObject {
 	TZActivity *activity;
 	
+	NSString *guid;
 	NSInteger key;
 	NSString *note;
 	NSString *tags;
@@ -21,11 +22,15 @@
 	double longitude;
 	BOOL deleted;
 	NSString *created_on;
+	NSString *created_on_UTC;
+	NSString *modified_on;
+	NSString *modified_on_UTC;
 	
 	NSInteger activity_id;
 }
 
 @property(assign, nonatomic) TZActivity *activity;
+@property(copy, nonatomic) NSString *guid;
 @property(assign, nonatomic) NSInteger key;
 @property(copy, nonatomic) NSString *note;
 @property(copy, nonatomic) NSString *tags;
@@ -35,9 +40,14 @@
 @property(assign, nonatomic) double longitude;
 @property(assign, nonatomic) BOOL deleted;
 @property(copy, nonatomic) NSString *created_on;
+@property(copy, nonatomic) NSString *created_on_UTC;
+@property(copy, nonatomic) NSString *modified_on;
+@property(copy, nonatomic) NSString *modified_on_UTC;
 @property(assign, nonatomic) NSInteger activity_id;
 
-- (id)initWithKey:(int)key andActivity:(TZActivity *)key;
+- (id)initWithKey:(int)key andActivity:(TZActivity *)activity;
+- (id)initWithGUID:(NSString *)guid andActivity:(TZActivity *)activity;
 - (BOOL)save;
+- (BOOL)saveRaw;
 
 @end
