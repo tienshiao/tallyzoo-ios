@@ -31,10 +31,13 @@
 	LocationBusyView *locationBusyView;
 }
 
+@property(assign, nonatomic) BOOL editting;
+
 - (int)getNumberOfScreens;
 
 - (void)addItem:(id)sender;
 - (void)editButtons:(id)sender;
+- (void)doneButtons:(id)sender;
 
 - (void)waitForLocation;
 

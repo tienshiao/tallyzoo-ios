@@ -18,6 +18,8 @@
 
 @implementation MatrixViewController
 
+@synthesize editting;
+
 -(id)init {
 	if (self = [super init]) {
 		self.title = @"TallyZoo";
@@ -358,6 +360,7 @@
 		}
 		
 	}
+	[alertView autorelease];
 }
 
 - (void)waitForLocation {
@@ -379,9 +382,9 @@
 	if (buttonIndex == 0) {
 		[tmp_button.activity simpleCount];
 		[tmp_button setNeedsDisplay];
-		tmp_button.activity = nil;
-		locationBusyView.hidden = YES;
 	}
+	tmp_button = nil;
+	locationBusyView.hidden = YES;
 }
 
 - (void)didReceiveMemoryWarning {
