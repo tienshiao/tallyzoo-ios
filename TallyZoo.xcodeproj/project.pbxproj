@@ -13,6 +13,8 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
+		6151C7851059639900D253CA /* MoreTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6151C7841059639900D253CA /* MoreTableViewController.m */; };
+		6151C7941059667400D253CA /* logo3.png in Resources */ = {isa = PBXBuildFile; fileRef = 6151C7931059667400D253CA /* logo3.png */; };
 		615CC7F4101D924D00BD6BB2 /* MatrixViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 615CC7F3101D924D00BD6BB2 /* MatrixViewController.m */; };
 		615CC7F7101D927300BD6BB2 /* MatrixButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 615CC7F6101D927300BD6BB2 /* MatrixButton.m */; };
 		615CC81E101D9F0900BD6BB2 /* GraphViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 615CC81D101D9F0900BD6BB2 /* GraphViewController.m */; };
@@ -31,10 +33,12 @@
 		615CCC5B102A1EAF00BD6BB2 /* EditTextViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 615CCC5A102A1EAF00BD6BB2 /* EditTextViewViewController.m */; };
 		615E4EF1104E6263007DF031 /* SyncViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 615E4EF0104E6263007DF031 /* SyncViewController.m */; };
 		615E4EF9104E639B007DF031 /* 02-redo.png in Resources */ = {isa = PBXBuildFile; fileRef = 615E4EF8104E639B007DF031 /* 02-redo.png */; };
-		615E504B1050F841007DF031 /* logo2.png in Resources */ = {isa = PBXBuildFile; fileRef = 615E504A1050F841007DF031 /* logo2.png */; };
 		615E52E21056DC6A007DF031 /* AccountBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 615E52E11056DC6A007DF031 /* AccountBackgroundView.m */; };
+		617AB181105BA7470036610C /* ChooseBadgeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 617AB180105BA7470036610C /* ChooseBadgeViewController.m */; };
+		617AB211105DC9870036610C /* SFHFKeychainUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 617AB210105DC9870036610C /* SFHFKeychainUtils.m */; };
+		617AB225105DD1060036610C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 617AB224105DD1060036610C /* Security.framework */; };
+		617AB2A2105E0D520036610C /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 617AB2A1105E0D520036610C /* Default.png */; };
 		61D0F272103B56D1002B78C5 /* click_down.wav in Resources */ = {isa = PBXBuildFile; fileRef = 61D0F270103B56D1002B78C5 /* click_down.wav */; };
-		61D0F273103B56D1002B78C5 /* click_up.wav in Resources */ = {isa = PBXBuildFile; fileRef = 61D0F271103B56D1002B78C5 /* click_up.wav */; };
 		61D0F289103B5965002B78C5 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61D0F288103B5965002B78C5 /* AudioToolbox.framework */; };
 		61D0F35A103BE1B7002B78C5 /* red_down.png in Resources */ = {isa = PBXBuildFile; fileRef = 61D0F358103BE1B7002B78C5 /* red_down.png */; };
 		61D0F35B103BE1B7002B78C5 /* red_up.png in Resources */ = {isa = PBXBuildFile; fileRef = 61D0F359103BE1B7002B78C5 /* red_up.png */; };
@@ -59,7 +63,6 @@
 		61E646301031E78500E78174 /* ColorCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 61E6462F1031E78500E78174 /* ColorCellView.m */; };
 		61E6490A1032C29600E78174 /* dist.plist in Resources */ = {isa = PBXBuildFile; fileRef = 61E649091032C29600E78174 /* dist.plist */; };
 		61E64A3B1035C61400E78174 /* EditCountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61E64A3A1035C61400E78174 /* EditCountViewController.m */; };
-		61E64B511036C11800E78174 /* icon2.png in Resources */ = {isa = PBXBuildFile; fileRef = 61E64B501036C11800E78174 /* icon2.png */; };
 		61FCDE87104B552000F16BF1 /* TZTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61FCDE86104B552000F16BF1 /* TZTabBarController.m */; };
 		61FCDF9E104BA5CD00F16BF1 /* LandscapeGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = 61FCDF9D104BA5CD00F16BF1 /* LandscapeGraphView.m */; };
 /* End PBXBuildFile section */
@@ -74,6 +77,9 @@
 		28AD733E0D9D9553002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* TallyZoo_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TallyZoo_Prefix.pch; sourceTree = "<group>"; };
+		6151C7831059639900D253CA /* MoreTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreTableViewController.h; sourceTree = "<group>"; };
+		6151C7841059639900D253CA /* MoreTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreTableViewController.m; sourceTree = "<group>"; };
+		6151C7931059667400D253CA /* logo3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo3.png; sourceTree = "<group>"; };
 		615CC7F2101D924D00BD6BB2 /* MatrixViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatrixViewController.h; sourceTree = "<group>"; };
 		615CC7F3101D924D00BD6BB2 /* MatrixViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MatrixViewController.m; sourceTree = "<group>"; };
 		615CC7F5101D927300BD6BB2 /* MatrixButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatrixButton.h; sourceTree = "<group>"; };
@@ -107,11 +113,15 @@
 		615E4EEF104E6263007DF031 /* SyncViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyncViewController.h; sourceTree = "<group>"; };
 		615E4EF0104E6263007DF031 /* SyncViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyncViewController.m; sourceTree = "<group>"; };
 		615E4EF8104E639B007DF031 /* 02-redo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "02-redo.png"; sourceTree = "<group>"; };
-		615E504A1050F841007DF031 /* logo2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo2.png; sourceTree = "<group>"; };
 		615E52E01056DC6A007DF031 /* AccountBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountBackgroundView.h; sourceTree = "<group>"; };
 		615E52E11056DC6A007DF031 /* AccountBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountBackgroundView.m; sourceTree = "<group>"; };
+		617AB17F105BA7470036610C /* ChooseBadgeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseBadgeViewController.h; sourceTree = "<group>"; };
+		617AB180105BA7470036610C /* ChooseBadgeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseBadgeViewController.m; sourceTree = "<group>"; };
+		617AB20F105DC9870036610C /* SFHFKeychainUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFHFKeychainUtils.h; sourceTree = "<group>"; };
+		617AB210105DC9870036610C /* SFHFKeychainUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFHFKeychainUtils.m; sourceTree = "<group>"; };
+		617AB224105DD1060036610C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = /System/Library/Frameworks/Security.framework; sourceTree = "<absolute>"; };
+		617AB2A1105E0D520036610C /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		61D0F270103B56D1002B78C5 /* click_down.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = click_down.wav; sourceTree = "<group>"; };
-		61D0F271103B56D1002B78C5 /* click_up.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = click_up.wav; sourceTree = "<group>"; };
 		61D0F288103B5965002B78C5 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		61D0F358103BE1B7002B78C5 /* red_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red_down.png; sourceTree = "<group>"; };
 		61D0F359103BE1B7002B78C5 /* red_up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red_up.png; sourceTree = "<group>"; };
@@ -151,7 +161,6 @@
 		61E649091032C29600E78174 /* dist.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = dist.plist; sourceTree = "<group>"; };
 		61E64A391035C61400E78174 /* EditCountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditCountViewController.h; sourceTree = "<group>"; };
 		61E64A3A1035C61400E78174 /* EditCountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditCountViewController.m; sourceTree = "<group>"; };
-		61E64B501036C11800E78174 /* icon2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon2.png; sourceTree = "<group>"; };
 		61FCDE85104B552000F16BF1 /* TZTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TZTabBarController.h; sourceTree = "<group>"; };
 		61FCDE86104B552000F16BF1 /* TZTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TZTabBarController.m; sourceTree = "<group>"; };
 		61FCDF9C104BA5CD00F16BF1 /* LandscapeGraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LandscapeGraphView.h; sourceTree = "<group>"; };
@@ -171,6 +180,7 @@
 				61D0F289103B5965002B78C5 /* AudioToolbox.framework in Frameworks */,
 				61D0FAFC104387B6002B78C5 /* CoreLocation.framework in Frameworks */,
 				61D0FCA810461DE8002B78C5 /* QuartzCore.framework in Frameworks */,
+				617AB225105DD1060036610C /* Security.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -208,6 +218,8 @@
 				615CC83B101EE74100BD6BB2 /* MatrixView.m */,
 				615CC7F2101D924D00BD6BB2 /* MatrixViewController.h */,
 				615CC7F3101D924D00BD6BB2 /* MatrixViewController.m */,
+				6151C7831059639900D253CA /* MoreTableViewController.h */,
+				6151C7841059639900D253CA /* MoreTableViewController.m */,
 				61D0F754103E8BE2002B78C5 /* SelectLayer.h */,
 				61D0F755103E8BE2002B78C5 /* SelectLayer.m */,
 				61D0FC371045166C002B78C5 /* ShakeView.h */,
@@ -252,15 +264,14 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				615E504A1050F841007DF031 /* logo2.png */,
+				617AB2A1105E0D520036610C /* Default.png */,
+				6151C7931059667400D253CA /* logo3.png */,
 				615E4EF8104E639B007DF031 /* 02-redo.png */,
 				61D0F7CF103E9A00002B78C5 /* 10-medical.png */,
 				61D0F7D0103E9A00002B78C5 /* 16-line-chart.png */,
 				61D0F358103BE1B7002B78C5 /* red_down.png */,
 				61D0F359103BE1B7002B78C5 /* red_up.png */,
 				61D0F270103B56D1002B78C5 /* click_down.wav */,
-				61D0F271103B56D1002B78C5 /* click_up.wav */,
-				61E64B501036C11800E78174 /* icon2.png */,
 				61E649091032C29600E78174 /* dist.plist */,
 				615CC90C102218ED00BD6BB2 /* tallyzoo.db */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
@@ -273,6 +284,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				617AB224105DD1060036610C /* Security.framework */,
 				61D0FCA710461DE8002B78C5 /* QuartzCore.framework */,
 				61D0FAFB104387B6002B78C5 /* CoreLocation.framework */,
 				61D0F288103B5965002B78C5 /* AudioToolbox.framework */,
@@ -304,6 +316,8 @@
 				615CC8E2101FF24C00BD6BB2 /* FMDatabaseAdditions.m */,
 				615CC8E3101FF24C00BD6BB2 /* FMResultSet.h */,
 				615CC8E4101FF24C00BD6BB2 /* FMResultSet.m */,
+				617AB20F105DC9870036610C /* SFHFKeychainUtils.h */,
+				617AB210105DC9870036610C /* SFHFKeychainUtils.m */,
 				61FCDE85104B552000F16BF1 /* TZTabBarController.h */,
 				61FCDE86104B552000F16BF1 /* TZTabBarController.m */,
 				615CC852101FD17800BD6BB2 /* UIColor-Expanded.h */,
@@ -315,6 +329,8 @@
 		615CCAEA10283E4700BD6BB2 /* Editors */ = {
 			isa = PBXGroup;
 			children = (
+				617AB17F105BA7470036610C /* ChooseBadgeViewController.h */,
+				617AB180105BA7470036610C /* ChooseBadgeViewController.m */,
 				61E643E3102C2C9000E78174 /* ChooseCountViewController.h */,
 				61E643E4102C2C9000E78174 /* ChooseCountViewController.m */,
 				61E6462E1031E78500E78174 /* ColorCellView.h */,
@@ -393,16 +409,15 @@
 				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
 				615CC90D102218ED00BD6BB2 /* tallyzoo.db in Resources */,
 				61E6490A1032C29600E78174 /* dist.plist in Resources */,
-				61E64B511036C11800E78174 /* icon2.png in Resources */,
 				61D0F272103B56D1002B78C5 /* click_down.wav in Resources */,
-				61D0F273103B56D1002B78C5 /* click_up.wav in Resources */,
 				61D0F35A103BE1B7002B78C5 /* red_down.png in Resources */,
 				61D0F35B103BE1B7002B78C5 /* red_up.png in Resources */,
 				61D0F7D1103E9A00002B78C5 /* 10-medical.png in Resources */,
 				61D0F7D2103E9A00002B78C5 /* 16-line-chart.png in Resources */,
 				61D0FBC410446507002B78C5 /* Settings.bundle in Resources */,
 				615E4EF9104E639B007DF031 /* 02-redo.png in Resources */,
-				615E504B1050F841007DF031 /* logo2.png in Resources */,
+				6151C7941059667400D253CA /* logo3.png in Resources */,
+				617AB2A2105E0D520036610C /* Default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -448,6 +463,9 @@
 				61FCDF9E104BA5CD00F16BF1 /* LandscapeGraphView.m in Sources */,
 				615E4EF1104E6263007DF031 /* SyncViewController.m in Sources */,
 				615E52E21056DC6A007DF031 /* AccountBackgroundView.m in Sources */,
+				6151C7851059639900D253CA /* MoreTableViewController.m in Sources */,
+				617AB181105BA7470036610C /* ChooseBadgeViewController.m in Sources */,
+				617AB211105DC9870036610C /* SFHFKeychainUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

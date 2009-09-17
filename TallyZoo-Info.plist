@@ -9,7 +9,7 @@
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIconFile</key>
-	<string>logo2.png</string>
+	<string>logo3.png</string>
 	<key>CFBundleIdentifier</key>
 	<string>org.tienshiao.TZTest</string>
 	<key>CFBundleInfoDictionaryVersion</key>
