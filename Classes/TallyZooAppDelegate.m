@@ -7,9 +7,9 @@
 //
 
 #import "TallyZooAppDelegate.h"
-#import "MatrixViewController.h"
 #import "GraphViewController.h"
 #import "SyncViewController.h"
+#import "MoreTableViewController.h"
 
 @implementation TallyZooAppDelegate
 
@@ -74,23 +74,31 @@
 	locationManager.delegate = self;
 	[locationManager startUpdatingLocation];
 	
-	MatrixViewController *mvc = [[MatrixViewController alloc] init];
+	mvc = [[MatrixViewController alloc] init];
 	UINavigationController *mnc = [[UINavigationController alloc] initWithRootViewController:mvc];
 	mnc.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Count" image:[UIImage imageNamed:@"10-medical.png"] tag:1];
-	[mvc release];
 	
 	GraphViewController *gvc = [[GraphViewController alloc] init];
 	gvc.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Graph" image:[UIImage imageNamed:@"16-line-chart.png"] tag:2];
 	
 	SyncViewController *svc = [[SyncViewController alloc] init];
-	svc.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Sync" image:[UIImage imageNamed:@"02-redo.png"] tag:3];
+	UINavigationController *snc = [[UINavigationController alloc] initWithRootViewController:svc];
+	snc.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Sync" image:[UIImage imageNamed:@"02-redo.png"] tag:3];
+	[svc release];
+	
+	MoreTableViewController *mtvc = [[MoreTableViewController alloc] init];
+	UINavigationController *mtnc = [[UINavigationController alloc] initWithRootViewController:mtvc];
+	mtnc.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"More" image:nil tag:4];
+	[mtvc release];
 	
 	tbController = [[TZTabBarController alloc] init];
-	tbController.viewControllers = [NSArray arrayWithObjects:mnc, gvc, svc, nil];
+	tbController.viewControllers = [NSArray arrayWithObjects:mnc, gvc, snc, mtnc, nil];
 	tbController.view.backgroundColor = [UIColor blackColor];
 	
 	[mnc release];
 	[gvc release];
+	[snc release];
+	[mtnc release];
 	
 	[window addSubview:tbController.view];
     [window makeKeyAndVisible];
@@ -98,6 +106,10 @@
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
+	if (mvc.editting) {
+		[mvc doneButtons:self];
+	}
+	
     // Close the database.
 	[database close];
 }

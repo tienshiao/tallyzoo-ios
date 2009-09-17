@@ -10,12 +10,14 @@
 #import <CoreLocation/CoreLocation.h>
 #import "TZTabBarController.h"
 #import "FMDatabase.h"
+#import "MatrixViewController.h"
 
 #define UIAppDelegate ((TallyZooAppDelegate *)[UIApplication sharedApplication].delegate)
 
 @interface TallyZooAppDelegate : NSObject <UIApplicationDelegate, CLLocationManagerDelegate> {
     UIWindow *window;
 	TZTabBarController *tbController;
+	MatrixViewController *mvc;
 	
 	FMDatabase *database;
 	CLLocationManager *locationManager;
