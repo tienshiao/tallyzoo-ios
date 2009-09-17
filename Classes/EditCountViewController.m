@@ -114,7 +114,7 @@
 
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 3;
+    return 2;
 }
 
 
@@ -144,11 +144,11 @@
 			cell.detailTextLabel.text = count.note;
 			cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 			break;
-		case 2:
+/*		case 2:
 			cell.textLabel.text = @"Categories";
 			cell.detailTextLabel.text = count.tags;
 			cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-			break;
+			break;*/
 	}
 	
     return cell;
@@ -186,7 +186,7 @@
 			[etvvc release];						
 			break;
 		}
-		case 2: {
+/*		case 2: {
 			// tags
 			EditTextViewViewController *etvvc = [[EditTextViewViewController alloc] init];
 			etvvc.editedObject = count;
@@ -196,7 +196,7 @@
 			[self.navigationController pushViewController:etvvc animated:YES];
 			[etvvc release];									
 			break;
-		}
+		}*/
 	}
 }
 
