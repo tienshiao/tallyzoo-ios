@@ -330,22 +330,24 @@
 -(void)shakeHappened:(ShakeView*)view {
 	FMDatabase *dbh = UIAppDelegate.database;
 	FMResultSet *rs = [dbh executeQuery:@"SELECT id FROM counts WHERE deleted = 0 ORDER BY created_on DESC LIMIT 1"];
-	[rs next];
+
+	if ([rs next]) {
 	
-	TZCount *c = [[TZCount alloc] initWithKey:[rs intForColumn:@"id"] andActivity:nil];
-	undo_count_id = c.key;
+		TZCount *c = [[TZCount alloc] initWithKey:[rs intForColumn:@"id"] andActivity:nil];
+		undo_count_id = c.key;
 	
-	TZActivity *a = [[TZActivity alloc] initWithKey:c.activity_id];
+		TZActivity *a = [[TZActivity alloc] initWithKey:c.activity_id];
 	
-	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Undo" 
-													message:[NSString stringWithFormat:@"Undo last count on '%@'?", a.name] 
-												   delegate:self 
-										  cancelButtonTitle:@"Cancel" 
-										  otherButtonTitles:@"Undo Count", nil];
-	alert.delegate = self;
-	[alert show];
-	
-	[c release];
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Undo" 
+														message:[NSString stringWithFormat:@"Undo last count on '%@'?", a.name] 
+													   delegate:self 
+											  cancelButtonTitle:@"Cancel" 
+											  otherButtonTitles:@"Undo Count", nil];
+		alert.delegate = self;
+		[alert show];
+		
+		[c release];
+	}
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
