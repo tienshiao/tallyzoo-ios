@@ -275,7 +275,7 @@
 	
 	if (!moved) {
 		// treat as a click
-		if (delegate && [delegate respondsToSelector:@selector(matrixButtonClicked:)]) { 
+		if (selected && delegate && [delegate respondsToSelector:@selector(matrixButtonClicked:)]) { 
 			[delegate matrixButtonClicked:selected];
 		}
 		selected = nil;
