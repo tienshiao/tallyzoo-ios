@@ -394,7 +394,7 @@
 				[NSNumber numberWithInt:key]];
 	} else if (display_total == 2) {
 		// daily
-		rs = [dbh executeQuery:@"SELECT SUM(amount) AS total, MAX(amount_sig) AS amount_sig FROM counts WHERE activity_id = ? AND deleted = 0 AND created_on >= date('now')",
+		rs = [dbh executeQuery:@"SELECT SUM(amount) AS total, MAX(amount_sig) AS amount_sig FROM counts WHERE activity_id = ? AND deleted = 0 AND created_on >= date('now', 'localtime')",
 			  [NSNumber numberWithInt:key]];		
 	} else if (display_total == 3) {
 		// weekly
@@ -410,7 +410,7 @@
 		[today release];
 	} else if (display_total == 4) {
 		// monthly
-		rs = [dbh executeQuery:@"SELECT SUM(amount) AS total, MAX(amount_sig) AS amount_sig FROM counts WHERE activity_id = ? AND deleted = 0 AND created_on >= date('now', 'start of month')",
+		rs = [dbh executeQuery:@"SELECT SUM(amount) AS total, MAX(amount_sig) AS amount_sig FROM counts WHERE activity_id = ? AND deleted = 0 AND created_on >= date('now', 'localtime', 'start of month')",
 			  [NSNumber numberWithInt:key]];		
 	}
 	[rs next];
