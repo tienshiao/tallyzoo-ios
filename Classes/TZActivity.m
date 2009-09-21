@@ -36,6 +36,11 @@
 @synthesize modified_on_UTC;
 @synthesize counts;
 
++ (BOOL)nameExists:(NSString *)n {
+	FMDatabase *dbh = UIAppDelegate.database;
+	return [dbh intForQuery:@"SELECT count(*) FROM activities WHERE deleted = 0 and name = ?", n];
+}
+
 - (id)initWithKey:(NSInteger)k {
 	if (self = [super init]) {
 		FMDatabase *dbh = UIAppDelegate.database;
@@ -94,6 +99,18 @@
 
 	if (g) {
 		FMResultSet *rs = [dbh executeQuery:@"SELECT id FROM activities WHERE guid = ?", g];
+		if ([rs next]) {
+			return [self initWithKey:[rs intForColumn:@"id"]];
+		}
+	}
+	return [self initWithKey:0];
+}
+
+- (id)initWithName:(NSString *)n {
+	FMDatabase *dbh = UIAppDelegate.database;
+	
+	if (n) {
+		FMResultSet *rs = [dbh executeQuery:@"SELECT id FROM activities WHERE name = ?", n];
 		if ([rs next]) {
 			return [self initWithKey:[rs intForColumn:@"id"]];
 		}

@@ -57,8 +57,10 @@
 @property(copy, nonatomic) NSString *modified_on_UTC;
 @property(nonatomic, readonly) NSMutableArray *counts;
 
++ (BOOL)nameExists:(NSString *)n;
 - (id)initWithKey:(NSInteger)k;
 - (id)initWithGUID:(NSString *)guid;
+- (id)initWithName:(NSString *)name;
 - (BOOL)save;
 - (BOOL)saveRaw;
 - (void)loadCounts;

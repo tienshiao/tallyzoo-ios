@@ -450,6 +450,24 @@
 	//NSLog(@"ended element: %@", elementName);
 	if ([elementName isEqualToString:@"activity"]) {
 		if (activityNewer) {
+			// check for name conflict
+			TZActivity *a = [[TZActivity alloc] initWithName:currentActivity.name];
+			if (a.key != 0 &&
+				a.key != currentActivity.key) {
+				// rename existing one on iPhone
+				int i = 2;
+				NSString *newName = [NSString stringWithFormat:@"%@ %d", a.name, i];
+				
+				while ([TZActivity nameExists:newName]) {
+					i++;
+					newName = [NSString stringWithFormat:@"%@ %d", a.name, i];
+				}
+				
+				a.name = newName;
+				[a save];
+			}
+			[a release];
+			
 			[currentActivity saveRaw];
 		}
 		
