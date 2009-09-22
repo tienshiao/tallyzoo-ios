@@ -7,8 +7,8 @@
 //
 
 #import "GraphViewController.h"
-#import "GraphCell.h"
 #import "TallyZooAppDelegate.h"
+#import "CountsViewController.h"
 #import "FMDatabase.h"
 #import "FMResultSet.h"
 #import "UpperLeftView.h"
@@ -100,6 +100,12 @@
 	[_tableView flashScrollIndicators];
 	
 	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque animated:animated];
+	
+	[self.navigationController setNavigationBarHidden:YES animated:animated];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+	[self.navigationController setNavigationBarHidden:NO animated:animated];
 }
 
 /*
@@ -206,6 +212,7 @@
     GraphCell *cell = (GraphCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[[GraphCell alloc] initWithReuseIdentifier:CellIdentifier] autorelease];
+		cell.delegate = self;
     }
 	
 	if (indexPath.row < [activities count]) {
@@ -243,6 +250,11 @@
 	landscapeView.currentPage = indexPath.row;
 }
 
+- (void)graphCellAccessoryClicked:(GraphCell *)gc {
+	CountsViewController *cvc = [[CountsViewController alloc] initWithActivity:gc.activity];
+	[self.navigationController pushViewController:cvc animated:YES];
+	[cvc release];	
+}
 
 - (void)didReceiveMemoryWarning {
 	// Releases the view if it doesn't have a superview.

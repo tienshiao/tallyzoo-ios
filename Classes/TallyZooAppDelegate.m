@@ -79,7 +79,10 @@
 	mnc.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Count" image:[UIImage imageNamed:@"10-medical.png"] tag:1];
 	
 	GraphViewController *gvc = [[GraphViewController alloc] init];
-	gvc.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Graph" image:[UIImage imageNamed:@"16-line-chart.png"] tag:2];
+	UINavigationController *gnc = [[UINavigationController alloc] initWithRootViewController:gvc];
+	gnc.navigationBarHidden = YES;
+	gnc.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Graph" image:[UIImage imageNamed:@"16-line-chart.png"] tag:2];
+	[gvc release];
 	
 	SyncViewController *svc = [[SyncViewController alloc] init];
 	UINavigationController *snc = [[UINavigationController alloc] initWithRootViewController:svc];
@@ -92,11 +95,11 @@
 	[mtvc release];
 	
 	tbController = [[TZTabBarController alloc] init];
-	tbController.viewControllers = [NSArray arrayWithObjects:mnc, gvc, snc, mtnc, nil];
+	tbController.viewControllers = [NSArray arrayWithObjects:mnc, gnc, snc, mtnc, nil];
 	tbController.view.backgroundColor = [UIColor blackColor];
 	
 	[mnc release];
-	[gvc release];
+	[gnc release];
 	[snc release];
 	[mtnc release];
 	

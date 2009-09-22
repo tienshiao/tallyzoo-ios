@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "GraphView.h"
+#import "GraphCell.h"
 #import "LandscapeGraphView.h"
 
-@interface GraphViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
+@interface GraphViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, GraphCellDelegate> {
 	NSMutableArray *activities;
 	
 	UITableView *_tableView;

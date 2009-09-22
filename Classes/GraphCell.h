@@ -10,6 +10,14 @@
 #import "TZActivity.h"
 #import "SelectLayer.h"
 
+@class GraphCell;
+
+@protocol GraphCellDelegate <NSObject>
+@optional
+- (void)graphCellAccessoryClicked:(GraphCell *)gc;
+@end
+
+
 @interface GraphCell : UITableViewCell {
 	BOOL first;
 	BOOL last;
@@ -19,12 +27,16 @@
 	UIView *shading;
 	SelectLayer *selectLayer;
 	UILabel *alabel;
+	UIButton *accessoryButton;
+	
+	id<GraphCellDelegate> delegate;
 }
 
 @property(assign, nonatomic) int index;
 @property(assign, nonatomic) BOOL first;
 @property(assign, nonatomic) BOOL last;
 @property(assign, nonatomic) TZActivity *activity;
+@property(assign, nonatomic) id<GraphCellDelegate> delegate;
 
 - (id)initWithReuseIdentifier:(NSString *)reuseIdentifier;
 

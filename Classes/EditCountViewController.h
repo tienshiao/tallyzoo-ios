@@ -11,10 +11,15 @@
 
 @interface EditCountViewController : UITableViewController {
 	TZCount *count;
+
+	UIButton *deleteButton;
+	
+	BOOL nonmodal;
 }
 
 @property (nonatomic, retain) TZCount *count;
 
 - (id)initWithCount:(TZCount *)c;
+- (id)initNonModalWithCount:(TZCount *)c;
 
 @end

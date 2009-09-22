@@ -15,6 +15,8 @@
 
 @implementation GraphCell
 
+@synthesize delegate;
+
 - (id)initWithReuseIdentifier:(NSString *)reuseIdentifier {
     if (self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier]) {
         // Initialization code
@@ -41,6 +43,14 @@
 		alabel.opaque = NO;
 		[containerView addSubview:alabel];
 		
+		accessoryButton = [[UIButton buttonWithType:UIButtonTypeDetailDisclosure] retain];
+		CGRect r = accessoryButton.frame;
+		r.origin.x = containerView.frame.size.width - 33;
+		r.origin.y = 8;
+		accessoryButton.frame = r;
+		[accessoryButton addTarget:self action:@selector(accessoryClicked:) forControlEvents:UIControlEventTouchUpInside];
+		[containerView addSubview:accessoryButton];
+		
 		UpperLeftView *ulView = [[UpperLeftView alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
 		ulView.tag = 1;
 		[containerView addSubview:ulView];
@@ -66,6 +76,12 @@
 		
     }
     return self;
+}
+
+- (void)accessoryClicked:(id)sender {
+	if (delegate && [delegate respondsToSelector:@selector(graphCellAccessoryClicked:)]) { 
+		[delegate graphCellAccessoryClicked:self];
+	}	
 }
 
 - (void)drawRect:(CGRect) rect {
@@ -130,6 +146,7 @@
 	[shading release];
 	[selectLayer release];
 	[alabel release];
+	[accessoryButton release];
 }
 
 

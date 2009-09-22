@@ -38,6 +38,7 @@
 		617AB211105DC9870036610C /* SFHFKeychainUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 617AB210105DC9870036610C /* SFHFKeychainUtils.m */; };
 		617AB225105DD1060036610C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 617AB224105DD1060036610C /* Security.framework */; };
 		617AB2A2105E0D520036610C /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 617AB2A1105E0D520036610C /* Default.png */; };
+		617AB4F6106852AC0036610C /* CountsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 617AB4F5106852AC0036610C /* CountsViewController.m */; };
 		61D0F272103B56D1002B78C5 /* click_down.wav in Resources */ = {isa = PBXBuildFile; fileRef = 61D0F270103B56D1002B78C5 /* click_down.wav */; };
 		61D0F289103B5965002B78C5 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61D0F288103B5965002B78C5 /* AudioToolbox.framework */; };
 		61D0F35A103BE1B7002B78C5 /* red_down.png in Resources */ = {isa = PBXBuildFile; fileRef = 61D0F358103BE1B7002B78C5 /* red_down.png */; };
@@ -121,6 +122,8 @@
 		617AB210105DC9870036610C /* SFHFKeychainUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFHFKeychainUtils.m; sourceTree = "<group>"; };
 		617AB224105DD1060036610C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = /System/Library/Frameworks/Security.framework; sourceTree = "<absolute>"; };
 		617AB2A1105E0D520036610C /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		617AB4F4106852AC0036610C /* CountsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountsViewController.h; sourceTree = "<group>"; };
+		617AB4F5106852AC0036610C /* CountsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountsViewController.m; sourceTree = "<group>"; };
 		61D0F270103B56D1002B78C5 /* click_down.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = click_down.wav; sourceTree = "<group>"; };
 		61D0F288103B5965002B78C5 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		61D0F358103BE1B7002B78C5 /* red_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red_down.png; sourceTree = "<group>"; };
@@ -196,12 +199,14 @@
 				61D0F6C1103E6A97002B78C5 /* Masks */,
 				615E52E01056DC6A007DF031 /* AccountBackgroundView.h */,
 				615E52E11056DC6A007DF031 /* AccountBackgroundView.m */,
+				617AB4F4106852AC0036610C /* CountsViewController.h */,
+				617AB4F5106852AC0036610C /* CountsViewController.m */,
+				615CC821101D9F9100BD6BB2 /* DetailedCountViewController.h */,
+				615CC822101D9F9100BD6BB2 /* DetailedCountViewController.m */,
 				61E64A391035C61400E78174 /* EditCountViewController.h */,
 				61E64A3A1035C61400E78174 /* EditCountViewController.m */,
 				615CCA341022E97600BD6BB2 /* EditActivityViewController.h */,
 				615CCA351022E97600BD6BB2 /* EditActivityViewController.m */,
-				615CC821101D9F9100BD6BB2 /* DetailedCountViewController.h */,
-				615CC822101D9F9100BD6BB2 /* DetailedCountViewController.m */,
 				61D0F4B7103DFB7C002B78C5 /* GraphCell.h */,
 				61D0F4B8103DFB7C002B78C5 /* GraphCell.m */,
 				61D0F7EE103FC90A002B78C5 /* GraphView.h */,
@@ -466,6 +471,7 @@
 				6151C7851059639900D253CA /* MoreTableViewController.m in Sources */,
 				617AB181105BA7470036610C /* ChooseBadgeViewController.m in Sources */,
 				617AB211105DC9870036610C /* SFHFKeychainUtils.m in Sources */,
+				617AB4F6106852AC0036610C /* CountsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -503,12 +509,14 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_ENTITLEMENTS = dist.plist;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Tienshiao Ma";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Tienshiao Ma";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "17472491-C31E-4AE9-A906-35DCAD5841D4";
+				PROVISIONING_PROFILE = "8D5FDE1B-04CB-4FE2-A6FA-0A6E8F0F2BAB";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8D5FDE1B-04CB-4FE2-A6FA-0A6E8F0F2BAB";
 				SDKROOT = iphoneos3.0;
 			};
 			name = "Release Ad Hoc";

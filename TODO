@@ -8,6 +8,8 @@ Button Screen
   - delete activity
   - click to edit activity
 - shake to undo
+- edit mode
+  - drag and rearrange
 Activity
 - public/private support
 - count
@@ -22,14 +24,15 @@ Graph
 
 TODO
 Activity
+- name collisions
 - count
   - inline edit amount
 Button Screen
 - graphical title
-- edit mode
-  - drag and rearrange
 - better feedback (glow/fade off)
 Count Details Screen
 Graph
+- graph when no activities
 Sync
+- name collisions
 Configuration

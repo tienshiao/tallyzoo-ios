@@ -14,31 +14,54 @@
 
 @synthesize count;
 
+- (id)initNonModalWithCount:(TZCount *)c {
+	nonmodal = YES;
+	if (self = [self initWithCount:c]) {
+	}
+}
 
 - (id)initWithCount:(TZCount *)c {
 	if (self = [super initWithStyle:UITableViewStyleGrouped]) {
 		self.title = c.activity.name;
-		
-		UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] 
-										  initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
-										  target:self 
-										  action:@selector(cancel:)];
-		self.navigationItem.leftBarButtonItem = barButtonItem;
-		[barButtonItem release];
-		
-		barButtonItem = [[UIBarButtonItem alloc] 
-						 initWithBarButtonSystemItem:UIBarButtonSystemItemSave
-						 target:self 
-						 action:@selector(save:)];
-		//		barButtonItem.enabled = NO;
-		self.navigationItem.rightBarButtonItem = barButtonItem;
-		[barButtonItem release];
-		
+
+		if (!nonmodal) {
+			UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] 
+											  initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
+											  target:self 
+											  action:@selector(cancel:)];
+			self.navigationItem.leftBarButtonItem = barButtonItem;
+			[barButtonItem release];
+			
+			barButtonItem = [[UIBarButtonItem alloc] 
+							 initWithBarButtonSystemItem:UIBarButtonSystemItemSave
+							 target:self 
+							 action:@selector(save:)];
+			//		barButtonItem.enabled = NO;
+			self.navigationItem.rightBarButtonItem = barButtonItem;
+			[barButtonItem release];
+		}
 		
 		self.count = c;
 		
 		if (count.key) {
-			// TODO show delete option
+			deleteButton = [[UIButton buttonWithType:UIButtonTypeCustom] retain];
+			deleteButton.titleLabel.font = [UIFont boldSystemFontOfSize:[UIFont buttonFontSize]];
+			[deleteButton setTitleShadowColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.5] forState:UIControlStateNormal];
+			deleteButton.titleLabel.shadowOffset = CGSizeMake(0, -1);
+			[deleteButton setTitle:@"Delete Count" forState:UIControlStateNormal];
+			
+			UIImage *image = [UIImage imageNamed:@"red_up.png"];
+			UIImage *newImage = [image stretchableImageWithLeftCapWidth:12.0 topCapHeight:0.0];
+			[deleteButton setBackgroundImage:newImage forState:UIControlStateNormal];
+			
+			UIImage *imagePressed = [UIImage imageNamed:@"red_down.png"];
+			UIImage *newPressedImage = [imagePressed stretchableImageWithLeftCapWidth:12.0 topCapHeight:0.0];
+			[deleteButton setBackgroundImage:newPressedImage forState:UIControlStateHighlighted];
+			
+			deleteButton.frame = CGRectMake(10, 20, 300, 40);
+			[deleteButton addTarget:self action:@selector(deleteCount:) forControlEvents:UIControlEventTouchUpInside];
+			
+			self.tableView.tableFooterView = deleteButton;			
 		}
 	}
 	return self;
@@ -239,6 +262,27 @@
     return YES;
 }
 */
+
+- (void)deleteCount:(id)sender {
+	// open a dialog with an OK and cancel button
+	UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
+															 delegate:self 
+													cancelButtonTitle:@"Cancel" 
+											   destructiveButtonTitle:@"Delete Count" 
+													otherButtonTitles:nil];
+	actionSheet.actionSheetStyle = UIActionSheetStyleDefault;
+	[actionSheet showInView:self.navigationController.view]; // show from our table view (pops up in the middle of the table)
+	[actionSheet release];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+	// the user clicked one of the OK/Cancel buttons
+	if (buttonIndex == 0) {
+		count.deleted = YES;
+		[count save];
+		[self.navigationController dismissModalViewControllerAnimated:YES];		
+	}
+}
 
 - (void)cancel:(id)sender {
 	[self.navigationController dismissModalViewControllerAnimated:YES];
