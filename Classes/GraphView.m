@@ -40,6 +40,8 @@
 		timespan = TIMESPAN_ALL;
 		
 		timespans = [[NSArray alloc] initWithObjects:@"1d", @"1w", @"1m", @"3m", @"6m", @"1y", @"all", nil];
+		
+		[self findMinMax];	
     }
     return self;
 }
@@ -51,9 +53,10 @@
 	ysig = activity.init_sig;
 	
 	// TODO adjust ymin/ymax based on visible x timespan
-	NSEnumerator *e = [activity.counts objectEnumerator];
-	TZCount *c;
-	while (c = (TZCount *)[e nextObject]) {
+//	NSEnumerator *e = [activity.counts objectEnumerator];
+//	TZCount *c;
+//	while (c = (TZCount *)[e nextObject]) {
+	for (TZCount *c in activity.counts) {
 		current += c.amount;
 		if (current < ymin) {
 			ymin = current;
@@ -273,47 +276,54 @@
 	}
 	[xformatter release];
 	
-	// draw graph
-	double current = activity.initial_value;
-	for (int i = 0; i < [activity.counts count]; i++) {
-		TZCount *c = [activity.counts objectAtIndex:i];
-		NSDate *cdate = [dateFormatter dateFromString:c.created_on];
-		current += c.amount;
-		double c_secs = [cdate timeIntervalSinceReferenceDate];
-		double x_pos = (c_secs - x_start_sec) / (xwidth_secs) * xwidth;
-		double y_pos = (current - activity.initial_value) / (ymax - ymin) * (s.height - 21 - top_padding);
-		if (i == 0) {
-			CGContextMoveToPoint(context, x_pos, s.height - 21 - y_pos);
-		} else {
-			CGContextAddLineToPoint(context, x_pos, s.height - 21 - y_pos);
+	if (activity) {
+		// draw graph
+		double current = activity.initial_value;
+//		for (int i = 0; i < [activity.counts count]; i++) {
+//			TZCount *c = [activity.counts objectAtIndex:i];
+		int i = 0;
+		for (TZCount *c in activity.counts) {
+			NSDate *cdate = [dateFormatter dateFromString:c.created_on];
+			current += c.amount;
+			double c_secs = [cdate timeIntervalSinceReferenceDate];
+			double x_pos = (c_secs - x_start_sec) / (xwidth_secs) * xwidth;
+			double y_pos = (current - activity.initial_value) / (ymax - ymin) * (s.height - 21 - top_padding);
+			if (i == 0) {
+				CGContextMoveToPoint(context, x_pos, s.height - 21 - y_pos);
+			} else {
+				CGContextAddLineToPoint(context, x_pos, s.height - 21 - y_pos);
+			}
+			i++;
 		}
-	}
-	CGContextSetRGBStrokeColor(context, 1, 1, 1, 1);
-	CGContextSetLineWidth(context, 2);
-	CGContextStrokePath(context);
-	
-	// fill graph
-	current = activity.initial_value;
-	double first_x_pos;
-	for (int i = 0; i < [activity.counts count]; i++) {
-		TZCount *c = [activity.counts objectAtIndex:i];
-		NSDate *cdate = [dateFormatter dateFromString:c.created_on];
-		current += c.amount;
-		double c_secs = [cdate timeIntervalSinceReferenceDate];
-		double x_pos = (c_secs - x_start_sec) / (xwidth_secs) * xwidth;
-		double y_pos = (current - activity.initial_value) / (ymax - ymin) * (s.height - 21 - top_padding);
-		if (i == 0) {
-			CGContextMoveToPoint(context, x_pos, s.height - 21 - y_pos);
-			first_x_pos = x_pos;
-		} else {
-			CGContextAddLineToPoint(context, x_pos, s.height - 21 - y_pos);
+		CGContextSetRGBStrokeColor(context, 1, 1, 1, 1);
+		CGContextSetLineWidth(context, 2);
+		CGContextStrokePath(context);
+		
+		// fill graph
+		current = activity.initial_value;
+		double first_x_pos;
+//		for (int i = 0; i < [activity.counts count]; i++) {
+//			TZCount *c = [activity.counts objectAtIndex:i];
+		i = 0;
+		for (TZCount *c in activity.counts) {			
+			NSDate *cdate = [dateFormatter dateFromString:c.created_on];
+			current += c.amount;
+			double c_secs = [cdate timeIntervalSinceReferenceDate];
+			double x_pos = (c_secs - x_start_sec) / (xwidth_secs) * xwidth;
+			double y_pos = (current - activity.initial_value) / (ymax - ymin) * (s.height - 21 - top_padding);
+			if (i == 0) {
+				CGContextMoveToPoint(context, x_pos, s.height - 21 - y_pos);
+				first_x_pos = x_pos;
+			} else {
+				CGContextAddLineToPoint(context, x_pos, s.height - 21 - y_pos);
+			}
+			i++;
 		}
+		CGContextAddLineToPoint(context, xwidth, s.height - 21);
+		CGContextAddLineToPoint(context, first_x_pos, s.height - 21);
+		CGContextSetRGBFillColor(context, 1, 1, 1, 0.15);
+		CGContextFillPath(context);
 	}
-	CGContextAddLineToPoint(context, xwidth, s.height - 21);
-	CGContextAddLineToPoint(context, first_x_pos, s.height - 21);
-	CGContextSetRGBFillColor(context, 1, 1, 1, 0.15);
-	CGContextFillPath(context);
-	
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
