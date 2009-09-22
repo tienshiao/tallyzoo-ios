@@ -10,6 +10,7 @@
 #import "TallyZooAppDelegate.h"
 #import "FMDatabase.h"
 #import "FMResultSet.h"
+#import "UIColor-Expanded.h"
 #import "AccountBackgroundView.h"
 #import "SFHFKeychainUtils.h"
 #import "TZCount.h"
