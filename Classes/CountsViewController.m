@@ -108,7 +108,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier] autorelease];
-		//cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     
     // Set up the cell...
@@ -133,12 +133,8 @@
 	// [self.navigationController pushViewController:anotherViewController];
 	// [anotherViewController release];
 	TZCount *c = [activity.counts objectAtIndex:indexPath.row];
-	EditCountViewController *ecvc = [[EditCountViewController alloc] initWithCount:c];
-	UINavigationController *addNavigationController =[[UINavigationController alloc] initWithRootViewController:ecvc];
-	
-	[[self navigationController] presentModalViewController:addNavigationController animated:YES];
-	
-	[addNavigationController release];
+	EditCountViewController *ecvc = [[EditCountViewController alloc] initNonModalWithCount:c];
+	[self.navigationController pushViewController:ecvc animated:YES];
 	[ecvc release];					
 }
 

@@ -24,22 +24,21 @@
 	if (self = [super initWithStyle:UITableViewStyleGrouped]) {
 		self.title = c.activity.name;
 
-		if (!nonmodal) {
-			UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] 
-											  initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
-											  target:self 
-											  action:@selector(cancel:)];
-			self.navigationItem.leftBarButtonItem = barButtonItem;
-			[barButtonItem release];
-			
-			barButtonItem = [[UIBarButtonItem alloc] 
-							 initWithBarButtonSystemItem:UIBarButtonSystemItemSave
-							 target:self 
-							 action:@selector(save:)];
-			//		barButtonItem.enabled = NO;
-			self.navigationItem.rightBarButtonItem = barButtonItem;
-			[barButtonItem release];
-		}
+		
+		UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] 
+										  initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
+										  target:self 
+										  action:@selector(cancel:)];
+		self.navigationItem.leftBarButtonItem = barButtonItem;
+		[barButtonItem release];
+		
+		barButtonItem = [[UIBarButtonItem alloc] 
+						 initWithBarButtonSystemItem:UIBarButtonSystemItemSave
+						 target:self 
+						 action:@selector(save:)];
+		//		barButtonItem.enabled = NO;
+		self.navigationItem.rightBarButtonItem = barButtonItem;
+		[barButtonItem release];
 		
 		self.count = c;
 		
@@ -280,18 +279,30 @@
 	if (buttonIndex == 0) {
 		count.deleted = YES;
 		[count save];
-		[self.navigationController dismissModalViewControllerAnimated:YES];		
+		if (nonmodal) {
+			[self.navigationController popViewControllerAnimated:YES];
+		} else {
+			[self.navigationController dismissModalViewControllerAnimated:YES];		
+		}
 	}
 }
 
 - (void)cancel:(id)sender {
-	[self.navigationController dismissModalViewControllerAnimated:YES];
+	if (nonmodal) {
+		[self.navigationController popViewControllerAnimated:YES];
+	} else {
+		[self.navigationController dismissModalViewControllerAnimated:YES];
+	}
 }
 
 - (void)save:(id)sender {
 	if (![count save]) {
 	}
-	[self.navigationController dismissModalViewControllerAnimated:YES];
+	if (nonmodal) {
+		[self.navigationController popViewControllerAnimated:YES];
+	} else {
+		[self.navigationController dismissModalViewControllerAnimated:YES];
+	}
 }
 
 
