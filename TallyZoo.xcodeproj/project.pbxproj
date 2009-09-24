@@ -39,6 +39,7 @@
 		617AB225105DD1060036610C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 617AB224105DD1060036610C /* Security.framework */; };
 		617AB2A2105E0D520036610C /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 617AB2A1105E0D520036610C /* Default.png */; };
 		617AB4F6106852AC0036610C /* CountsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 617AB4F5106852AC0036610C /* CountsViewController.m */; };
+		617AB656106B04EC0036610C /* EditCountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 617AB655106B04EC0036610C /* EditCountViewController.m */; };
 		61D0F272103B56D1002B78C5 /* click_down.wav in Resources */ = {isa = PBXBuildFile; fileRef = 61D0F270103B56D1002B78C5 /* click_down.wav */; };
 		61D0F289103B5965002B78C5 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61D0F288103B5965002B78C5 /* AudioToolbox.framework */; };
 		61D0F35A103BE1B7002B78C5 /* red_down.png in Resources */ = {isa = PBXBuildFile; fileRef = 61D0F358103BE1B7002B78C5 /* red_down.png */; };
@@ -63,7 +64,6 @@
 		61E645DB1031DF3800E78174 /* ColorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 61E645DA1031DF3800E78174 /* ColorView.m */; };
 		61E646301031E78500E78174 /* ColorCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 61E6462F1031E78500E78174 /* ColorCellView.m */; };
 		61E6490A1032C29600E78174 /* dist.plist in Resources */ = {isa = PBXBuildFile; fileRef = 61E649091032C29600E78174 /* dist.plist */; };
-		61E64A3B1035C61400E78174 /* EditCountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61E64A3A1035C61400E78174 /* EditCountViewController.m */; };
 		61FCDE87104B552000F16BF1 /* TZTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61FCDE86104B552000F16BF1 /* TZTabBarController.m */; };
 		61FCDF9E104BA5CD00F16BF1 /* LandscapeGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = 61FCDF9D104BA5CD00F16BF1 /* LandscapeGraphView.m */; };
 /* End PBXBuildFile section */
@@ -124,6 +124,8 @@
 		617AB2A1105E0D520036610C /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		617AB4F4106852AC0036610C /* CountsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountsViewController.h; sourceTree = "<group>"; };
 		617AB4F5106852AC0036610C /* CountsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountsViewController.m; sourceTree = "<group>"; };
+		617AB654106B04EC0036610C /* EditCountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditCountViewController.h; sourceTree = "<group>"; };
+		617AB655106B04EC0036610C /* EditCountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditCountViewController.m; sourceTree = "<group>"; };
 		61D0F270103B56D1002B78C5 /* click_down.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = click_down.wav; sourceTree = "<group>"; };
 		61D0F288103B5965002B78C5 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		61D0F358103BE1B7002B78C5 /* red_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red_down.png; sourceTree = "<group>"; };
@@ -162,8 +164,6 @@
 		61E6462E1031E78500E78174 /* ColorCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorCellView.h; sourceTree = "<group>"; };
 		61E6462F1031E78500E78174 /* ColorCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorCellView.m; sourceTree = "<group>"; };
 		61E649091032C29600E78174 /* dist.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = dist.plist; sourceTree = "<group>"; };
-		61E64A391035C61400E78174 /* EditCountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditCountViewController.h; sourceTree = "<group>"; };
-		61E64A3A1035C61400E78174 /* EditCountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditCountViewController.m; sourceTree = "<group>"; };
 		61FCDE85104B552000F16BF1 /* TZTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TZTabBarController.h; sourceTree = "<group>"; };
 		61FCDE86104B552000F16BF1 /* TZTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TZTabBarController.m; sourceTree = "<group>"; };
 		61FCDF9C104BA5CD00F16BF1 /* LandscapeGraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LandscapeGraphView.h; sourceTree = "<group>"; };
@@ -203,8 +203,8 @@
 				617AB4F5106852AC0036610C /* CountsViewController.m */,
 				615CC821101D9F9100BD6BB2 /* DetailedCountViewController.h */,
 				615CC822101D9F9100BD6BB2 /* DetailedCountViewController.m */,
-				61E64A391035C61400E78174 /* EditCountViewController.h */,
-				61E64A3A1035C61400E78174 /* EditCountViewController.m */,
+				617AB654106B04EC0036610C /* EditCountViewController.h */,
+				617AB655106B04EC0036610C /* EditCountViewController.m */,
 				615CCA341022E97600BD6BB2 /* EditActivityViewController.h */,
 				615CCA351022E97600BD6BB2 /* EditActivityViewController.m */,
 				61D0F4B7103DFB7C002B78C5 /* GraphCell.h */,
@@ -454,7 +454,6 @@
 				61E6455410315C3200E78174 /* CustomColorViewController.m in Sources */,
 				61E645DB1031DF3800E78174 /* ColorView.m in Sources */,
 				61E646301031E78500E78174 /* ColorCellView.m in Sources */,
-				61E64A3B1035C61400E78174 /* EditCountViewController.m in Sources */,
 				61D0F4B9103DFB7C002B78C5 /* GraphCell.m in Sources */,
 				61D0F677103E6512002B78C5 /* UpperLeftView.m in Sources */,
 				61D0F690103E6644002B78C5 /* UpperRightView.m in Sources */,
@@ -472,6 +471,7 @@
 				617AB181105BA7470036610C /* ChooseBadgeViewController.m in Sources */,
 				617AB211105DC9870036610C /* SFHFKeychainUtils.m in Sources */,
 				617AB4F6106852AC0036610C /* CountsViewController.m in Sources */,
+				617AB656106B04EC0036610C /* EditCountViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

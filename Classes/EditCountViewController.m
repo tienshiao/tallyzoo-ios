@@ -2,7 +2,7 @@
 //  EditCountViewController.m
 //  TallyZoo
 //
-//  Created by Tienshiao Ma on 8/14/09.
+//  Created by Tienshiao Ma on 9/23/09.
 //  Copyright 2009 __MyCompanyName__. All rights reserved.
 //
 
@@ -11,19 +11,20 @@
 #import "EditTextViewViewController.h"
 
 @implementation EditCountViewController
-
 @synthesize count;
+@synthesize created;
 
 - (id)initNonModalWithCount:(TZCount *)c {
 	nonmodal = YES;
 	if (self = [self initWithCount:c]) {
 	}
+	
+	return self;
 }
 
 - (id)initWithCount:(TZCount *)c {
-	if (self = [super initWithStyle:UITableViewStyleGrouped]) {
+	if (self = [super init]) {
 		self.title = c.activity.name;
-
 		
 		UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] 
 										  initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
@@ -42,69 +43,77 @@
 		
 		self.count = c;
 		
-		if (count.key) {
-			deleteButton = [[UIButton buttonWithType:UIButtonTypeCustom] retain];
-			deleteButton.titleLabel.font = [UIFont boldSystemFontOfSize:[UIFont buttonFontSize]];
-			[deleteButton setTitleShadowColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.5] forState:UIControlStateNormal];
-			deleteButton.titleLabel.shadowOffset = CGSizeMake(0, -1);
-			[deleteButton setTitle:@"Delete Count" forState:UIControlStateNormal];
-			
-			UIImage *image = [UIImage imageNamed:@"red_up.png"];
-			UIImage *newImage = [image stretchableImageWithLeftCapWidth:12.0 topCapHeight:0.0];
-			[deleteButton setBackgroundImage:newImage forState:UIControlStateNormal];
-			
-			UIImage *imagePressed = [UIImage imageNamed:@"red_down.png"];
-			UIImage *newPressedImage = [imagePressed stretchableImageWithLeftCapWidth:12.0 topCapHeight:0.0];
-			[deleteButton setBackgroundImage:newPressedImage forState:UIControlStateHighlighted];
-			
-			deleteButton.frame = CGRectMake(10, 20, 300, 40);
-			[deleteButton addTarget:self action:@selector(deleteCount:) forControlEvents:UIControlEventTouchUpInside];
-			
-			self.tableView.tableFooterView = deleteButton;			
-		}
+		dateFormatter = [[NSDateFormatter alloc] init];
+		[dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+		self.created = [dateFormatter dateFromString:c.created_on];
 	}
 	return self;
 }
 
 
-/*
-- (id)initWithStyle:(UITableViewStyle)style {
-    // Override initWithStyle: if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
-    if (self = [super initWithStyle:style]) {
-    }
-    return self;
+
+// Implement loadView to create a view hierarchy programmatically, without using a nib.
+- (void)loadView {
+	UIView *containerView = [[UIView alloc] init];
+	containerView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+	self.view = containerView;
+	[containerView sizeToFit];
+	
+	tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, 400) style:UITableViewStyleGrouped];
+	tableView.delegate = self;
+	tableView.dataSource = self;
+	[containerView addSubview:tableView];
+	
+	datePicker = [[UIDatePicker alloc] init];
+	[containerView addSubview:datePicker];
+	datePickerShown = NO;
+	datePicker.date = created;
+	[datePicker addTarget:self action:@selector(dateChanged:) forControlEvents:UIControlEventValueChanged];
+	
+	if (count.key) {
+		deleteButton = [[UIButton buttonWithType:UIButtonTypeCustom] retain];
+		deleteButton.titleLabel.font = [UIFont boldSystemFontOfSize:[UIFont buttonFontSize]];
+		[deleteButton setTitleShadowColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.5] forState:UIControlStateNormal];
+		deleteButton.titleLabel.shadowOffset = CGSizeMake(0, -1);
+		[deleteButton setTitle:@"Delete Count" forState:UIControlStateNormal];
+		
+		UIImage *image = [UIImage imageNamed:@"red_up.png"];
+		UIImage *newImage = [image stretchableImageWithLeftCapWidth:12.0 topCapHeight:0.0];
+		[deleteButton setBackgroundImage:newImage forState:UIControlStateNormal];
+		
+		UIImage *imagePressed = [UIImage imageNamed:@"red_down.png"];
+		UIImage *newPressedImage = [imagePressed stretchableImageWithLeftCapWidth:12.0 topCapHeight:0.0];
+		[deleteButton setBackgroundImage:newPressedImage forState:UIControlStateHighlighted];
+		
+		deleteButton.frame = CGRectMake(10, 20, 300, 40);
+		[deleteButton addTarget:self action:@selector(deleteCount:) forControlEvents:UIControlEventTouchUpInside];
+		
+		tableView.tableFooterView = deleteButton;
+	}
+	
 }
-*/
+
 
 /*
+// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 */
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-	[self.tableView reloadData];
-}
+	[tableView reloadData];	
 
-/*
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
+	CGRect r = datePicker.frame;
+	r.origin.y = datePicker.superview.frame.size.height;
+	datePicker.frame = r;
+	
+	r = tableView.frame;
+	r.size.height = tableView.superview.frame.size.height;
+	tableView.frame = r;
+	
 }
-*/
-/*
-- (void)viewWillDisappear:(BOOL)animated {
-	[super viewWillDisappear:animated];
-}
-*/
-/*
-- (void)viewDidDisappear:(BOOL)animated {
-	[super viewDidDisappear:animated];
-}
-*/
 
 /*
 // Override to allow orientations other than the default portrait orientation.
@@ -126,6 +135,58 @@
 	// e.g. self.myOutlet = nil;
 }
 
+- (void)dateChanged:(id)sender {
+	self.created = datePicker.date;
+	[tableView reloadData];
+}
+
+- (void)showDatePicker {
+	if (datePickerShown) {
+		return;
+	}
+	
+	CGRect r = datePicker.frame;
+	double dHeight = r.size.height;
+	
+	[UIView beginAnimations:@"showDatePicker" context:nil];
+	[UIView setAnimationBeginsFromCurrentState:YES];
+	[UIView setAnimationDuration:.25];
+	
+	r.origin.y = r.origin.y - dHeight;
+	datePicker.frame = r;
+	
+	r = tableView.frame;
+	r.size.height = r.size.height - dHeight;
+	tableView.frame = r;
+	
+	[UIView commitAnimations];		
+	
+	datePickerShown = YES;
+}
+
+- (void)hideDatePicker {
+	if (!datePickerShown) {
+		return;
+	}
+	
+	CGRect r = datePicker.frame;
+	double dHeight = r.size.height;
+	
+	[UIView beginAnimations:@"hideDatePicker" context:nil];
+	[UIView setAnimationBeginsFromCurrentState:YES];
+	[UIView setAnimationDuration:.25];
+	
+	r.origin.y = r.origin.y + dHeight;
+	datePicker.frame = r;
+	
+	r = tableView.frame;
+	r.size.height = r.size.height + dHeight;
+	tableView.frame = r;
+	
+	[UIView commitAnimations];			
+	
+	datePickerShown = NO;
+}
 
 #pragma mark Table view methods
 
@@ -136,7 +197,7 @@
 
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 2;
+    return 3;
 }
 
 
@@ -166,11 +227,10 @@
 			cell.detailTextLabel.text = count.note;
 			cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 			break;
-/*		case 2:
-			cell.textLabel.text = @"Categories";
-			cell.detailTextLabel.text = count.tags;
-			cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-			break;*/
+		case 2:
+			cell.textLabel.text = @"Created";
+			cell.detailTextLabel.text = [dateFormatter stringFromDate:created];
+			break;
 	}
 	
     return cell;
@@ -194,7 +254,8 @@
 			etfvc.title = @"Amount";
 			etfvc.numberEditing = YES;
 			[self.navigationController pushViewController:etfvc animated:YES];
-			[etfvc release];							
+			[etfvc release];
+			[self hideDatePicker];
 			break;
 		}			
 		case 1: {
@@ -205,62 +266,62 @@
 			etvvc.editedFieldKey = @"note";
 			etvvc.title = @"Note";
 			[self.navigationController pushViewController:etvvc animated:YES];
-			[etvvc release];						
+			[etvvc release];
+			[self hideDatePicker];
 			break;
 		}
-/*		case 2: {
-			// tags
-			EditTextViewViewController *etvvc = [[EditTextViewViewController alloc] init];
-			etvvc.editedObject = count;
-			etvvc.textValue = count.tags;
-			etvvc.editedFieldKey = @"tags";
-			etvvc.title = @"Tags";
-			[self.navigationController pushViewController:etvvc animated:YES];
-			[etvvc release];									
+		case 2: {
+			// created_on
+			[tableView deselectRowAtIndexPath:indexPath animated:YES];
+			if (datePickerShown) {
+				[self hideDatePicker];
+			} else {
+				[self showDatePicker];
+			}
 			break;
-		}*/
+		}
 	}
 }
 
 
 /*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
+ // Override to support conditional editing of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+ // Return NO if you do not want the specified item to be editable.
+ return YES;
+ }
+ */
 
 
 /*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:YES];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
+ // Override to support editing the table view.
+ - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+ 
+ if (editingStyle == UITableViewCellEditingStyleDelete) {
+ // Delete the row from the data source
+ [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:YES];
+ }   
+ else if (editingStyle == UITableViewCellEditingStyleInsert) {
+ // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+ }   
+ }
+ */
 
 
 /*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
+ // Override to support rearranging the table view.
+ - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
+ }
+ */
 
 
 /*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
+ // Override to support conditional rearranging of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
+ // Return NO if you do not want the item to be re-orderable.
+ return YES;
+ }
+ */
 
 - (void)deleteCount:(id)sender {
 	// open a dialog with an OK and cancel button
@@ -296,6 +357,11 @@
 }
 
 - (void)save:(id)sender {
+	count.created_on = [dateFormatter stringFromDate:created];
+	NSTimeZone *timeZone = [NSTimeZone timeZoneWithName:@"UTC"];
+	[dateFormatter setTimeZone:timeZone];
+	count.created_on_UTC = [dateFormatter stringFromDate:created];
+	
 	if (![count save]) {
 	}
 	if (nonmodal) {
@@ -308,8 +374,13 @@
 
 - (void)dealloc {
     [super dealloc];
+
+	[tableView release];
+	[datePicker release];
+	[deleteButton release];
+	
+	[dateFormatter release];
 }
 
 
 @end
-

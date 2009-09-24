@@ -139,6 +139,8 @@
 				latitude = ?, \
 				longitude = ?, \
 				deleted = ?, \
+				created_on = ?,\
+				created_on_UTC = ?,\
 				modified_on = datetime('now', 'localtime'),\
 				modified_on_UTC = datetime('now')\
 				WHERE id = ?",
@@ -150,6 +152,8 @@
 		 [NSNumber numberWithDouble:latitude],
 		 [NSNumber numberWithDouble:longitude],
 		 [NSNumber numberWithBool:deleted],
+		 created_on,
+		 created_on_UTC,
 		 [NSNumber numberWithInt:key]
 		];
 		
