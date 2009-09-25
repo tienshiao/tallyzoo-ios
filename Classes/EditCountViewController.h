@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "TZCount.h"
 
-@interface EditCountViewController : UIViewController<UITableViewDelegate, UITableViewDataSource> {
+@interface EditCountViewController : UIViewController<UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate> {
 	TZCount *count;
 	
 	UITableView *tableView;

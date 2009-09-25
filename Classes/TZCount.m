@@ -64,6 +64,16 @@
 			self.latitude = location.coordinate.latitude;
 			
 			self.deleted = NO;
+
+			NSDate *now = [NSDate date];
+			NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+			[dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+			self.created_on = [dateFormatter stringFromDate:now];
+		
+			NSTimeZone *timeZone = [NSTimeZone timeZoneWithName:@"UTC"];
+			[dateFormatter setTimeZone:timeZone];
+			
+			self.created_on_UTC = [dateFormatter stringFromDate:now];
 		}
 
 		activity = a;
@@ -111,7 +121,7 @@
 		 latitude, longitude, deleted, created_on, created_on_UTC, \
 		 modified_on, modified_on_UTC) VALUES \
 		 (?, ?, ?, ?, ?, ?, ?, ?, 0, \
-		 datetime('now', 'localtime'), datetime('now'), datetime('now', 'localtime'), datetime('now'))",
+		 ?, ?, datetime('now', 'localtime'), datetime('now'))",
 		 (NSString *)guid,
 		 [NSNumber numberWithInt:activity.key],
 		 note,
@@ -119,7 +129,9 @@
 		 [NSNumber numberWithDouble:amount],
 		 [NSNumber numberWithInt:amount_sig],
 		 [NSNumber numberWithDouble:latitude],
- 		 [NSNumber numberWithDouble:longitude]
+ 		 [NSNumber numberWithDouble:longitude],
+		 created_on,
+		 created_on_UTC
 		];
 		
 		CFRelease(guid);

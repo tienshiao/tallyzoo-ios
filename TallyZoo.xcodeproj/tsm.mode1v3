@@ -229,8 +229,6 @@
 			<key>Layout</key>
 			<array>
 				<dict>
-					<key>BecomeActive</key>
-					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -282,7 +280,7 @@
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 34}, {253, 601}}</string>
+							<string>{{0, 0}, {253, 601}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -312,12 +310,14 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>EditCountViewController.m</string>
+								<string>TZCount.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -325,11 +325,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>EditCountViewController.m</string>
+										<string>TZCount.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>617AB6F0106BF9130036610C</string>
+										<string>617AB726106C6E620036610C</string>
 										<key>history</key>
 										<array>
 											<string>61E6468D1031FBFF00E78174</string>
@@ -378,12 +378,10 @@
 											<string>617AB3801060AB2E0036610C</string>
 											<string>617AB3BA1060E8330036610C</string>
 											<string>617AB46A106636B80036610C</string>
-											<string>617AB4C4106842A70036610C</string>
 											<string>617AB5441069557E0036610C</string>
 											<string>617AB55F10695C6E0036610C</string>
 											<string>617AB59C10697F650036610C</string>
 											<string>617AB5C8106983B30036610C</string>
-											<string>617AB5D0106983B30036610C</string>
 											<string>617AB5E1106A2D6E0036610C</string>
 											<string>617AB5E7106A2DB60036610C</string>
 											<string>617AB63A106B014D0036610C</string>
@@ -395,10 +393,8 @@
 											<string>617AB640106B014D0036610C</string>
 											<string>617AB641106B014D0036610C</string>
 											<string>617AB642106B014D0036610C</string>
-											<string>617AB663106B07A10036610C</string>
 											<string>617AB664106B07A10036610C</string>
 											<string>617AB6B8106BF5E50036610C</string>
-											<string>617AB6B9106BF5E50036610C</string>
 											<string>617AB6BA106BF5E50036610C</string>
 											<string>617AB6BB106BF5E50036610C</string>
 											<string>617AB6BC106BF5E50036610C</string>
@@ -407,10 +403,14 @@
 											<string>617AB6BF106BF5E50036610C</string>
 											<string>617AB6C0106BF5E50036610C</string>
 											<string>617AB6C1106BF5E50036610C</string>
-											<string>617AB6DC106BF7F60036610C</string>
-											<string>617AB6DD106BF7F60036610C</string>
-											<string>617AB6EE106BF9130036610C</string>
-											<string>617AB6EF106BF9130036610C</string>
+											<string>617AB700106C34DA0036610C</string>
+											<string>617AB702106C34DA0036610C</string>
+											<string>617AB70C106C6C2F0036610C</string>
+											<string>617AB721106C6E620036610C</string>
+											<string>617AB722106C6E620036610C</string>
+											<string>617AB723106C6E620036610C</string>
+											<string>617AB724106C6E620036610C</string>
+											<string>617AB725106C6E620036610C</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -606,12 +606,13 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>617AB727106C6E620036610C</string>
 		<string>617AB16A105B67050036610C</string>
 		<string>617AB160105B48B30036610C</string>
 		<string>1C78EAAD065D492600B07095</string>
 		<string>1CD10A99069EF8BA00B06720</string>
-		<string>615CC8D4101FF17600BD6BB2</string>
 		<string>1C530D57069F1CE1000CFCEE</string>
+		<string>615CC8D4101FF17600BD6BB2</string>
 		<string>/Users/tsm/ari/TallyZoo/TallyZoo.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
@@ -636,7 +637,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>EditCountViewController.m</string>
+								<string>TZCount.m</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -705,7 +706,7 @@
 			<key>WindowToolGUID</key>
 			<string>615CC8D4101FF17600BD6BB2</string>
 			<key>WindowToolIsVisible</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>FirstTimeWindowDisplayed</key>

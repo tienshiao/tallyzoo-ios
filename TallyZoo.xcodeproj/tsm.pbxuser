@@ -10,9 +10,9 @@
 	};
 	1D3623250D0F684500981E51 /* TallyZooAppDelegate.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {978, 1599}}";
-			sepNavSelRange = "{3210, 0}";
-			sepNavVisRange = "{2491, 1914}";
+			sepNavIntBoundsRect = "{{0, 0}, {978, 1586}}";
+			sepNavSelRange = "{3277, 0}";
+			sepNavVisRange = "{2491, 1935}";
 		};
 	};
 	1D6058900D05DD3D006BFB54 /* TallyZoo */ = {
@@ -787,6 +787,36 @@
 			617AB6EE106BF9130036610C /* PBXTextBookmark */ = 617AB6EE106BF9130036610C /* PBXTextBookmark */;
 			617AB6EF106BF9130036610C /* PBXTextBookmark */ = 617AB6EF106BF9130036610C /* PBXTextBookmark */;
 			617AB6F0106BF9130036610C /* PBXTextBookmark */ = 617AB6F0106BF9130036610C /* PBXTextBookmark */;
+			617AB6F3106C33190036610C /* PBXTextBookmark */ = 617AB6F3106C33190036610C /* PBXTextBookmark */;
+			617AB6F6106C33C90036610C /* PBXTextBookmark */ = 617AB6F6106C33C90036610C /* PBXTextBookmark */;
+			617AB6FA106C34350036610C /* PBXTextBookmark */ = 617AB6FA106C34350036610C /* PBXTextBookmark */;
+			617AB6FB106C34350036610C /* PBXTextBookmark */ = 617AB6FB106C34350036610C /* PBXTextBookmark */;
+			617AB6FC106C34350036610C /* PBXTextBookmark */ = 617AB6FC106C34350036610C /* PBXTextBookmark */;
+			617AB6FD106C34350036610C /* PBXTextBookmark */ = 617AB6FD106C34350036610C /* PBXTextBookmark */;
+			617AB700106C34DA0036610C /* PBXTextBookmark */ = 617AB700106C34DA0036610C /* PBXTextBookmark */;
+			617AB701106C34DA0036610C /* PBXTextBookmark */ = 617AB701106C34DA0036610C /* PBXTextBookmark */;
+			617AB702106C34DA0036610C /* PBXTextBookmark */ = 617AB702106C34DA0036610C /* PBXTextBookmark */;
+			617AB703106C34DA0036610C /* PBXTextBookmark */ = 617AB703106C34DA0036610C /* PBXTextBookmark */;
+			617AB704106C34DA0036610C /* PBXTextBookmark */ = 617AB704106C34DA0036610C /* PBXTextBookmark */;
+			617AB707106C34FC0036610C /* PBXTextBookmark */ = 617AB707106C34FC0036610C /* PBXTextBookmark */;
+			617AB70C106C6C2F0036610C /* PBXTextBookmark */ = 617AB70C106C6C2F0036610C /* PBXTextBookmark */;
+			617AB70D106C6C2F0036610C /* PBXTextBookmark */ = 617AB70D106C6C2F0036610C /* PBXTextBookmark */;
+			617AB70E106C6C2F0036610C /* PBXTextBookmark */ = 617AB70E106C6C2F0036610C /* PBXTextBookmark */;
+			617AB711106C6C3F0036610C /* PBXTextBookmark */ = 617AB711106C6C3F0036610C /* PBXTextBookmark */;
+			617AB715106C6C650036610C /* PBXTextBookmark */ = 617AB715106C6C650036610C /* PBXTextBookmark */;
+			617AB719106C6E4C0036610C /* PBXTextBookmark */ = 617AB719106C6E4C0036610C /* PBXTextBookmark */;
+			617AB71A106C6E4C0036610C /* XCBuildMessageTextBookmark */ = 617AB71A106C6E4C0036610C /* XCBuildMessageTextBookmark */;
+			617AB71B106C6E4C0036610C /* PBXTextBookmark */ = 617AB71B106C6E4C0036610C /* PBXTextBookmark */;
+			617AB71C106C6E4C0036610C /* PBXTextBookmark */ = 617AB71C106C6E4C0036610C /* PBXTextBookmark */;
+			617AB721106C6E620036610C /* PBXTextBookmark */ = 617AB721106C6E620036610C /* PBXTextBookmark */;
+			617AB722106C6E620036610C /* PBXTextBookmark */ = 617AB722106C6E620036610C /* PBXTextBookmark */;
+			617AB723106C6E620036610C /* PBXTextBookmark */ = 617AB723106C6E620036610C /* PBXTextBookmark */;
+			617AB724106C6E620036610C /* PBXTextBookmark */ = 617AB724106C6E620036610C /* PBXTextBookmark */;
+			617AB725106C6E620036610C /* XCBuildMessageTextBookmark */ = 617AB725106C6E620036610C /* XCBuildMessageTextBookmark */;
+			617AB726106C6E620036610C /* PBXTextBookmark */ = 617AB726106C6E620036610C /* PBXTextBookmark */;
+			617AB728106C6E630036610C /* XCBuildMessageTextBookmark */ = 617AB728106C6E630036610C /* XCBuildMessageTextBookmark */;
+			617AB729106C6E630036610C /* PBXTextBookmark */ = 617AB729106C6E630036610C /* PBXTextBookmark */;
+			617AB72A106C6E630036610C /* PBXTextBookmark */ = 617AB72A106C6E630036610C /* PBXTextBookmark */;
 			61D0F693103E682C002B78C5 = 61D0F693103E682C002B78C5 /* PBXTextBookmark */;
 			61D0F6AD103E6A31002B78C5 = 61D0F6AD103E6A31002B78C5 /* PBXTextBookmark */;
 			61D0F6C9103E6B69002B78C5 = 61D0F6C9103E6B69002B78C5 /* PBXTextBookmark */;
@@ -862,7 +892,7 @@
 		fRef = 61E64A391035C61400E78174 /* EditCountViewController.h */;
 		name = "EditCountViewController.h: 18";
 		rLen = 0;
-		rLoc = 913;
+		rLoc = 936;
 		rType = 0;
 		vrLen = 365;
 		vrLoc = 0;
@@ -892,7 +922,7 @@
 		fRef = 1D3623250D0F684500981E51 /* TallyZooAppDelegate.m */;
 		name = "TallyZooAppDelegate.m: 92";
 		rLen = 0;
-		rLoc = 3709;
+		rLoc = 3714;
 		rType = 0;
 		vrLen = 1926;
 		vrLoc = 2292;
@@ -994,7 +1024,7 @@
 		fRef = 615CC9021020413600BD6BB2 /* TZCount.m */;
 		name = "TZCount.m: 138";
 		rLen = 0;
-		rLoc = 5650;
+		rLoc = 6031;
 		rType = 0;
 		vrLen = 1336;
 		vrLoc = 237;
@@ -1174,9 +1204,9 @@
 	};
 	615CC81D101D9F0900BD6BB2 /* GraphViewController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1181, 3523}}";
-			sepNavSelRange = "{1206, 382}";
-			sepNavVisRange = "{864, 1645}";
+			sepNavIntBoundsRect = "{{0, 0}, {1181, 3575}}";
+			sepNavSelRange = "{1883, 0}";
+			sepNavVisRange = "{6867, 1301}";
 			sepNavWindowFrame = "{{61, 62}, {929, 669}}";
 		};
 	};
@@ -1286,15 +1316,15 @@
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {755, 702}}";
 			sepNavSelRange = "{1403, 16}";
-			sepNavVisRange = "{170, 1256}";
+			sepNavVisRange = "{136, 1290}";
 			sepNavWindowFrame = "{{1293, 98}, {733, 673}}";
 		};
 	};
 	615CC9021020413600BD6BB2 /* TZCount.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {936, 2938}}";
-			sepNavSelRange = "{2508, 0}";
-			sepNavVisRange = "{2388, 1167}";
+			sepNavIntBoundsRect = "{{0, 0}, {712, 3341}}";
+			sepNavSelRange = "{3649, 0}";
+			sepNavVisRange = "{3477, 281}";
 		};
 	};
 	615CCA341022E97600BD6BB2 /* EditActivityViewController.h */ = {
@@ -1525,7 +1555,7 @@
 		fRef = 1D3623250D0F684500981E51 /* TallyZooAppDelegate.m */;
 		name = "TallyZooAppDelegate.m: 92";
 		rLen = 0;
-		rLoc = 3709;
+		rLoc = 3714;
 		rType = 0;
 		vrLen = 1372;
 		vrLoc = 3088;
@@ -1535,7 +1565,7 @@
 		fRef = 1D3623250D0F684500981E51 /* TallyZooAppDelegate.m */;
 		name = "TallyZooAppDelegate.m: 92";
 		rLen = 0;
-		rLoc = 3709;
+		rLoc = 3714;
 		rType = 0;
 		vrLen = 1388;
 		vrLoc = 3072;
@@ -1545,7 +1575,7 @@
 		fRef = 1D3623250D0F684500981E51 /* TallyZooAppDelegate.m */;
 		name = "TallyZooAppDelegate.m: 92";
 		rLen = 0;
-		rLoc = 3709;
+		rLoc = 3714;
 		rType = 0;
 		vrLen = 1388;
 		vrLoc = 3072;
@@ -1595,7 +1625,7 @@
 		fRef = 1D3623250D0F684500981E51 /* TallyZooAppDelegate.m */;
 		name = "TallyZooAppDelegate.m: 81";
 		rLen = 0;
-		rLoc = 3017;
+		rLoc = 3021;
 		rType = 0;
 		vrLen = 1637;
 		vrLoc = 2750;
@@ -1725,7 +1755,7 @@
 		fRef = 1D3623250D0F684500981E51 /* TallyZooAppDelegate.m */;
 		name = "TallyZooAppDelegate.m: 110";
 		rLen = 0;
-		rLoc = 4381;
+		rLoc = 4402;
 		rType = 0;
 		vrLen = 1256;
 		vrLoc = 3204;
@@ -1735,7 +1765,7 @@
 		fRef = 1D3623250D0F684500981E51 /* TallyZooAppDelegate.m */;
 		name = "TallyZooAppDelegate.m: 110";
 		rLen = 0;
-		rLoc = 4381;
+		rLoc = 4402;
 		rType = 0;
 		vrLen = 1255;
 		vrLoc = 3202;
@@ -1745,7 +1775,7 @@
 		fRef = 1D3623250D0F684500981E51 /* TallyZooAppDelegate.m */;
 		name = "TallyZooAppDelegate.m: 110";
 		rLen = 0;
-		rLoc = 4381;
+		rLoc = 4402;
 		rType = 0;
 		vrLen = 1253;
 		vrLoc = 3202;
@@ -1755,7 +1785,7 @@
 		fRef = 1D3623250D0F684500981E51 /* TallyZooAppDelegate.m */;
 		name = "TallyZooAppDelegate.m: 110";
 		rLen = 0;
-		rLoc = 4381;
+		rLoc = 4402;
 		rType = 0;
 		vrLen = 1253;
 		vrLoc = 3202;
@@ -1765,7 +1795,7 @@
 		fRef = 1D3623250D0F684500981E51 /* TallyZooAppDelegate.m */;
 		name = "TallyZooAppDelegate.m: 110";
 		rLen = 0;
-		rLoc = 4381;
+		rLoc = 4402;
 		rType = 0;
 		vrLen = 1252;
 		vrLoc = 3202;
@@ -1855,7 +1885,7 @@
 		fRef = 1D3623250D0F684500981E51 /* TallyZooAppDelegate.m */;
 		name = "TallyZooAppDelegate.m: 110";
 		rLen = 0;
-		rLoc = 4379;
+		rLoc = 4400;
 		rType = 0;
 		vrLen = 1435;
 		vrLoc = 3019;
@@ -1865,7 +1895,7 @@
 		fRef = 1D3623250D0F684500981E51 /* TallyZooAppDelegate.m */;
 		name = "TallyZooAppDelegate.m: 110";
 		rLen = 0;
-		rLoc = 4379;
+		rLoc = 4400;
 		rType = 0;
 		vrLen = 1432;
 		vrLoc = 3019;
@@ -1962,7 +1992,7 @@
 		fRef = 1D3623250D0F684500981E51 /* TallyZooAppDelegate.m */;
 		name = "TallyZooAppDelegate.m: 110";
 		rLen = 0;
-		rLoc = 4379;
+		rLoc = 4400;
 		rType = 0;
 		vrLen = 1550;
 		vrLoc = 2901;
@@ -1972,7 +2002,7 @@
 		fRef = 1D3623250D0F684500981E51 /* TallyZooAppDelegate.m */;
 		name = "TallyZooAppDelegate.m: 110";
 		rLen = 0;
-		rLoc = 4379;
+		rLoc = 4400;
 		rType = 0;
 		vrLen = 1529;
 		vrLoc = 2901;
@@ -2032,7 +2062,7 @@
 		fRef = 1D3623250D0F684500981E51 /* TallyZooAppDelegate.m */;
 		name = "TallyZooAppDelegate.m: 114";
 		rLen = 0;
-		rLoc = 4437;
+		rLoc = 4458;
 		rType = 0;
 		vrLen = 1432;
 		vrLoc = 3019;
@@ -2504,7 +2534,7 @@
 		fRef = 615CC9021020413600BD6BB2 /* TZCount.m */;
 		name = "TZCount.m: 138";
 		rLen = 0;
-		rLoc = 5650;
+		rLoc = 6031;
 		rType = 0;
 		vrLen = 1364;
 		vrLoc = 213;
@@ -3064,7 +3094,7 @@
 		fRef = 615CC9021020413600BD6BB2 /* TZCount.m */;
 		name = "TZCount.m: 138";
 		rLen = 0;
-		rLoc = 5650;
+		rLoc = 6031;
 		rType = 0;
 		vrLen = 1340;
 		vrLoc = 237;
@@ -3364,7 +3394,7 @@
 		fRef = 615CC9021020413600BD6BB2 /* TZCount.m */;
 		name = "TZCount.m: 75";
 		rLen = 0;
-		rLoc = 2280;
+		rLoc = 2668;
 		rType = 0;
 		vrLen = 1099;
 		vrLoc = 1918;
@@ -3424,7 +3454,7 @@
 		fRef = 615CC9021020413600BD6BB2 /* TZCount.m */;
 		name = "TZCount.m: 183";
 		rLen = 0;
-		rLoc = 4787;
+		rLoc = 5168;
 		rType = 0;
 		vrLen = 301;
 		vrLoc = 4434;
@@ -3503,7 +3533,7 @@
 		fRef = 615CC9021020413600BD6BB2 /* TZCount.m */;
 		name = "TZCount.m: 187";
 		rLen = 0;
-		rLoc = 4828;
+		rLoc = 5209;
 		rType = 0;
 		vrLen = 1021;
 		vrLoc = 4120;
@@ -3872,7 +3902,7 @@
 		ignoreCount = 0;
 		lineNumber = 240;
 		location = TallyZoo;
-		modificationTime = 275511425.681499;
+		modificationTime = 275541605.704458;
 		originalNumberOfMultipleMatches = 1;
 		state = 1;
 	};
@@ -4154,7 +4184,7 @@
 		ignoreCount = 0;
 		lineNumber = 124;
 		location = TallyZoo;
-		modificationTime = 275511425.681789;
+		modificationTime = 275541605.704602;
 		originalNumberOfMultipleMatches = 1;
 		state = 1;
 	};
@@ -4202,7 +4232,7 @@
 		ignoreCount = 0;
 		lineNumber = 292;
 		location = TallyZoo;
-		modificationTime = 275511425.681878;
+		modificationTime = 275541605.704644;
 		originalNumberOfMultipleMatches = 1;
 		state = 1;
 	};
@@ -4331,7 +4361,7 @@
 		fRef = 615CC9021020413600BD6BB2 /* TZCount.m */;
 		name = "TZCount.m: 114";
 		rLen = 0;
-		rLoc = 3053;
+		rLoc = 3400;
 		rType = 0;
 		vrLen = 1171;
 		vrLoc = 2551;
@@ -4460,7 +4490,7 @@
 		ignoreCount = 0;
 		lineNumber = 221;
 		location = TallyZoo;
-		modificationTime = 275511425.681989;
+		modificationTime = 275541605.704665;
 		originalNumberOfMultipleMatches = 1;
 		state = 1;
 	};
@@ -5131,7 +5161,7 @@
 		fRef = 1D3623250D0F684500981E51 /* TallyZooAppDelegate.m */;
 		name = "TallyZooAppDelegate.m: 101";
 		rLen = 0;
-		rLoc = 4125;
+		rLoc = 4146;
 		rType = 0;
 		vrLen = 1913;
 		vrLoc = 2463;
@@ -5211,7 +5241,7 @@
 		fRef = 1D3623250D0F684500981E51 /* TallyZooAppDelegate.m */;
 		name = "TallyZooAppDelegate.m: 97";
 		rLen = 0;
-		rLoc = 4023;
+		rLoc = 4044;
 		rType = 0;
 		vrLen = 1882;
 		vrLoc = 2491;
@@ -5251,7 +5281,7 @@
 		fRef = 1D3623250D0F684500981E51 /* TallyZooAppDelegate.m */;
 		name = "TallyZooAppDelegate.m: 97";
 		rLen = 0;
-		rLoc = 4023;
+		rLoc = 4044;
 		rType = 0;
 		vrLen = 1885;
 		vrLoc = 2491;
@@ -5261,7 +5291,7 @@
 		fRef = 1D3623250D0F684500981E51 /* TallyZooAppDelegate.m */;
 		name = "TallyZooAppDelegate.m: 83";
 		rLen = 0;
-		rLoc = 3210;
+		rLoc = 3214;
 		rType = 0;
 		vrLen = 1888;
 		vrLoc = 2491;
@@ -5281,7 +5311,7 @@
 		fRef = 1D3623250D0F684500981E51 /* TallyZooAppDelegate.m */;
 		name = "TallyZooAppDelegate.m: 83";
 		rLen = 0;
-		rLoc = 3210;
+		rLoc = 3214;
 		rType = 0;
 		vrLen = 1914;
 		vrLoc = 2491;
@@ -5371,7 +5401,7 @@
 		fRef = 61D0F4B8103DFB7C002B78C5 /* GraphCell.m */;
 		name = "GraphCell.m: 139";
 		rLen = 0;
-		rLoc = 4037;
+		rLoc = 4155;
 		rType = 0;
 		vrLen = 637;
 		vrLoc = 3049;
@@ -5557,7 +5587,7 @@
 		fRef = 61E64A391035C61400E78174 /* EditCountViewController.h */;
 		name = "EditCountViewController.h: 18";
 		rLen = 0;
-		rLoc = 913;
+		rLoc = 936;
 		rType = 0;
 		vrLen = 365;
 		vrLoc = 0;
@@ -5606,7 +5636,7 @@
 		fRef = 61E64A391035C61400E78174 /* EditCountViewController.h */;
 		name = "EditCountViewController.h: 21";
 		rLen = 0;
-		rLoc = 920;
+		rLoc = 943;
 		rType = 0;
 		vrLen = 365;
 		vrLoc = 0;
@@ -5676,7 +5706,7 @@
 		fRef = 61D0F4B8103DFB7C002B78C5 /* GraphCell.m */;
 		name = "GraphCell.m: 83";
 		rLen = 0;
-		rLoc = 2982;
+		rLoc = 3014;
 		rType = 0;
 		vrLen = 1092;
 		vrLoc = 2274;
@@ -5806,7 +5836,7 @@
 		fRef = 61D0F4B8103DFB7C002B78C5 /* GraphCell.m */;
 		name = "GraphCell.m: 81";
 		rLen = 0;
-		rLoc = 2842;
+		rLoc = 2874;
 		rType = 0;
 		vrLen = 1275;
 		vrLoc = 1930;
@@ -5826,7 +5856,7 @@
 		fRef = 61D0F4B8103DFB7C002B78C5 /* GraphCell.m */;
 		name = "GraphCell.m: 81";
 		rLen = 0;
-		rLoc = 2842;
+		rLoc = 2874;
 		rType = 0;
 		vrLen = 1330;
 		vrLoc = 1930;
@@ -5935,7 +5965,7 @@
 		fRef = 61D0F4B8103DFB7C002B78C5 /* GraphCell.m */;
 		name = "GraphCell.m: 81";
 		rLen = 0;
-		rLoc = 2842;
+		rLoc = 2874;
 		rType = 0;
 		vrLen = 1327;
 		vrLoc = 1933;
@@ -6394,7 +6424,7 @@
 		fRef = 61E64A391035C61400E78174 /* EditCountViewController.h */;
 		name = "EditCountViewController.h: 21";
 		rLen = 42;
-		rLoc = 872;
+		rLoc = 895;
 		rType = 0;
 		vrLen = 425;
 		vrLoc = 0;
@@ -6671,7 +6701,7 @@
 		fRef = 61E64A391035C61400E78174 /* EditCountViewController.h */;
 		name = "EditCountViewController.h: 21";
 		rLen = 42;
-		rLoc = 872;
+		rLoc = 895;
 		rType = 0;
 		vrLen = 425;
 		vrLoc = 0;
@@ -6681,7 +6711,7 @@
 		fRef = 61E64A391035C61400E78174 /* EditCountViewController.h */;
 		name = "EditCountViewController.h: 15";
 		rLen = 0;
-		rLoc = 769;
+		rLoc = 792;
 		rType = 0;
 		vrLen = 451;
 		vrLoc = 0;
@@ -6701,7 +6731,7 @@
 		fRef = 61E64A391035C61400E78174 /* EditCountViewController.h */;
 		name = "EditCountViewController.h: 15";
 		rLen = 0;
-		rLoc = 769;
+		rLoc = 792;
 		rType = 0;
 		vrLen = 451;
 		vrLoc = 0;
@@ -6781,7 +6811,7 @@
 		fRef = 61E64A391035C61400E78174 /* EditCountViewController.h */;
 		name = "EditCountViewController.h: 15";
 		rLen = 0;
-		rLoc = 769;
+		rLoc = 792;
 		rType = 0;
 		vrLen = 451;
 		vrLoc = 0;
@@ -6821,7 +6851,7 @@
 		fRef = 61D0F4B8103DFB7C002B78C5 /* GraphCell.m */;
 		name = "GraphCell.m: 81";
 		rLen = 0;
-		rLoc = 2842;
+		rLoc = 2874;
 		rType = 0;
 		vrLen = 1219;
 		vrLoc = 2041;
@@ -6881,7 +6911,7 @@
 		fRef = 61E64A391035C61400E78174 /* EditCountViewController.h */;
 		name = "EditCountViewController.h: 15";
 		rLen = 0;
-		rLoc = 769;
+		rLoc = 792;
 		rType = 0;
 		vrLen = 451;
 		vrLoc = 0;
@@ -6971,7 +7001,7 @@
 		fRef = 61E64A391035C61400E78174 /* EditCountViewController.h */;
 		name = "EditCountViewController.h: 15";
 		rLen = 0;
-		rLoc = 769;
+		rLoc = 792;
 		rType = 0;
 		vrLen = 451;
 		vrLoc = 0;
@@ -7001,7 +7031,7 @@
 		fRef = 615CC9021020413600BD6BB2 /* TZCount.m */;
 		name = "TZCount.m: 114";
 		rLen = 0;
-		rLoc = 3053;
+		rLoc = 3400;
 		rType = 0;
 		vrLen = 1256;
 		vrLoc = 2508;
@@ -7021,7 +7051,7 @@
 		fRef = 61E64A391035C61400E78174 /* EditCountViewController.h */;
 		name = "EditCountViewController.h: 15";
 		rLen = 0;
-		rLoc = 719;
+		rLoc = 742;
 		rType = 0;
 		vrLen = 478;
 		vrLoc = 0;
@@ -7461,7 +7491,7 @@
 		fRef = 61E64A391035C61400E78174 /* EditCountViewController.h */;
 		name = "EditCountViewController.h: 18";
 		rLen = 0;
-		rLoc = 769;
+		rLoc = 792;
 		rType = 0;
 		vrLen = 503;
 		vrLoc = 0;
@@ -7518,16 +7548,16 @@
 	};
 	617AB654106B04EC0036610C /* EditCountViewController.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {755, 582}}";
-			sepNavSelRange = "{445, 0}";
-			sepNavVisRange = "{0, 666}";
+			sepNavIntBoundsRect = "{{0, 0}, {866, 582}}";
+			sepNavSelRange = "{316, 0}";
+			sepNavVisRange = "{0, 689}";
 		};
 	};
 	617AB655106B04EC0036610C /* EditCountViewController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1055, 5187}}";
-			sepNavSelRange = "{10896, 0}";
-			sepNavVisRange = "{9888, 1304}";
+			sepNavIntBoundsRect = "{{0, 0}, {775, 5096}}";
+			sepNavSelRange = "{1255, 0}";
+			sepNavVisRange = "{469, 1497}";
 		};
 	};
 	617AB663106B07A10036610C /* PBXTextBookmark */ = {
@@ -7565,7 +7595,7 @@
 		fRef = 617AB654106B04EC0036610C /* EditCountViewController.h */;
 		name = "EditCountViewController.h: 12";
 		rLen = 0;
-		rLoc = 294;
+		rLoc = 317;
 		rType = 0;
 		vrLen = 574;
 		vrLoc = 0;
@@ -7934,7 +7964,7 @@
 		fRef = 617AB654106B04EC0036610C /* EditCountViewController.h */;
 		name = "EditCountViewController.h: 20";
 		rLen = 0;
-		rLoc = 445;
+		rLoc = 468;
 		rType = 0;
 		vrLen = 666;
 		vrLoc = 0;
@@ -8044,7 +8074,7 @@
 		fRef = 617AB654106B04EC0036610C /* EditCountViewController.h */;
 		name = "EditCountViewController.h: 20";
 		rLen = 0;
-		rLoc = 445;
+		rLoc = 468;
 		rType = 0;
 		vrLen = 666;
 		vrLoc = 0;
@@ -8064,7 +8094,7 @@
 		fRef = 615CC9021020413600BD6BB2 /* TZCount.m */;
 		name = "TZCount.m: 114";
 		rLen = 0;
-		rLoc = 3053;
+		rLoc = 3400;
 		rType = 0;
 		vrLen = 1256;
 		vrLoc = 2508;
@@ -8123,7 +8153,7 @@
 		isa = PBXTextBookmark;
 		fRef = 615CC9021020413600BD6BB2 /* TZCount.m */;
 		rLen = 0;
-		rLoc = 100;
+		rLoc = 110;
 		rType = 1;
 	};
 	617AB6EA106BF87E0036610C /* PBXTextBookmark */ = {
@@ -8161,7 +8191,7 @@
 		fRef = 615CC9021020413600BD6BB2 /* TZCount.m */;
 		name = "TZCount.m: 101";
 		rLen = 0;
-		rLoc = 2508;
+		rLoc = 2896;
 		rType = 0;
 		vrLen = 1167;
 		vrLoc = 2388;
@@ -8186,6 +8216,300 @@
 		vrLen = 1304;
 		vrLoc = 9888;
 	};
+	617AB6F3106C33190036610C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 617AB655106B04EC0036610C /* EditCountViewController.m */;
+		name = "EditCountViewController.m: 342";
+		rLen = 0;
+		rLoc = 10342;
+		rType = 0;
+		vrLen = 1466;
+		vrLoc = 9609;
+	};
+	617AB6F6106C33C90036610C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 617AB655106B04EC0036610C /* EditCountViewController.m */;
+		name = "EditCountViewController.m: 342";
+		rLen = 0;
+		rLoc = 10342;
+		rType = 0;
+		vrLen = 1395;
+		vrLoc = 9609;
+	};
+	617AB6FA106C34350036610C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 617AB655106B04EC0036610C /* EditCountViewController.m */;
+		name = "EditCountViewController.m: 113";
+		rLen = 0;
+		rLoc = 3487;
+		rType = 0;
+		vrLen = 819;
+		vrLoc = 2444;
+	};
+	617AB6FB106C34350036610C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 615CC8FF1020412600BD6BB2 /* TZActivity.m */;
+		name = "TZActivity.m: 423";
+		rLen = 15;
+		rLoc = 11697;
+		rType = 0;
+		vrLen = 887;
+		vrLoc = 11067;
+	};
+	617AB6FC106C34350036610C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 61D0F7EF103FC90A002B78C5 /* GraphView.m */;
+		rLen = 15;
+		rLoc = 741;
+		rType = 0;
+	};
+	617AB6FD106C34350036610C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 61D0F7EF103FC90A002B78C5 /* GraphView.m */;
+		name = "GraphView.m: 38";
+		rLen = 56;
+		rLoc = 771;
+		rType = 0;
+		vrLen = 482;
+		vrLoc = 506;
+	};
+	617AB700106C34DA0036610C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 617AB654106B04EC0036610C /* EditCountViewController.h */;
+		name = "EditCountViewController.h: 12";
+		rLen = 0;
+		rLoc = 316;
+		rType = 0;
+		vrLen = 689;
+		vrLoc = 0;
+	};
+	617AB701106C34DA0036610C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 617AB655106B04EC0036610C /* EditCountViewController.m */;
+		name = "EditCountViewController.m: 52";
+		rLen = 0;
+		rLoc = 1317;
+		rType = 0;
+		vrLen = 1586;
+		vrLoc = 8844;
+	};
+	617AB702106C34DA0036610C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 615CC81D101D9F0900BD6BB2 /* GraphViewController.m */;
+		name = "GraphViewController.m: 61";
+		rLen = 0;
+		rLoc = 1883;
+		rType = 0;
+		vrLen = 1301;
+		vrLoc = 6867;
+	};
+	617AB703106C34DA0036610C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 61D0F4B8103DFB7C002B78C5 /* GraphCell.m */;
+		name = "GraphCell.m: 81";
+		rLen = 0;
+		rLoc = 2874;
+		rType = 0;
+		vrLen = 1238;
+		vrLoc = 2023;
+	};
+	617AB704106C34DA0036610C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 61D0F4B8103DFB7C002B78C5 /* GraphCell.m */;
+		name = "GraphCell.m: 145";
+		rLen = 0;
+		rLoc = 4017;
+		rType = 0;
+		vrLen = 707;
+		vrLoc = 3449;
+	};
+	617AB707106C34FC0036610C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 61D0F4B8103DFB7C002B78C5 /* GraphCell.m */;
+		name = "GraphCell.m: 145";
+		rLen = 0;
+		rLoc = 4017;
+		rType = 0;
+		vrLen = 707;
+		vrLoc = 3449;
+	};
+	617AB70C106C6C2F0036610C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 61D0F4B8103DFB7C002B78C5 /* GraphCell.m */;
+		name = "GraphCell.m: 126";
+		rLen = 0;
+		rLoc = 3677;
+		rType = 0;
+		vrLen = 707;
+		vrLoc = 3449;
+	};
+	617AB70D106C6C2F0036610C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* TallyZooAppDelegate.m */;
+		name = "TallyZooAppDelegate.m: 83";
+		rLen = 0;
+		rLoc = 3214;
+		rType = 0;
+		vrLen = 1914;
+		vrLoc = 2491;
+	};
+	617AB70E106C6C2F0036610C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* TallyZooAppDelegate.m */;
+		name = "TallyZooAppDelegate.m: 94";
+		rLen = 0;
+		rLoc = 3906;
+		rType = 0;
+		vrLen = 1930;
+		vrLoc = 2491;
+	};
+	617AB711106C6C3F0036610C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* TallyZooAppDelegate.m */;
+		name = "TallyZooAppDelegate.m: 94";
+		rLen = 0;
+		rLoc = 3906;
+		rType = 0;
+		vrLen = 1883;
+		vrLoc = 2491;
+	};
+	617AB715106C6C650036610C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* TallyZooAppDelegate.m */;
+		name = "TallyZooAppDelegate.m: 84";
+		rLen = 0;
+		rLoc = 3277;
+		rType = 0;
+		vrLen = 1888;
+		vrLoc = 2491;
+	};
+	617AB719106C6E4C0036610C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 617AB655106B04EC0036610C /* EditCountViewController.m */;
+		name = "EditCountViewController.m: 109";
+		rLen = 0;
+		rLoc = 3487;
+		rType = 0;
+		vrLen = 691;
+		vrLoc = 2508;
+	};
+	617AB71A106C6E4C0036610C /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "Request for member 'created' in something not a structure or union";
+		fRef = 615CC9021020413600BD6BB2 /* TZCount.m */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 70;
+		rType = 1;
+	};
+	617AB71B106C6E4C0036610C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 615CC9021020413600BD6BB2 /* TZCount.m */;
+		name = "TZCount.m: 71";
+		rLen = 0;
+		rLoc = 2071;
+		rType = 0;
+		vrLen = 396;
+		vrLoc = 1946;
+	};
+	617AB71C106C6E4C0036610C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 61D0F7EF103FC90A002B78C5 /* GraphView.m */;
+		name = "GraphView.m: 38";
+		rLen = 56;
+		rLoc = 771;
+		rType = 0;
+		vrLen = 482;
+		vrLoc = 506;
+	};
+	617AB721106C6E620036610C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* TallyZooAppDelegate.m */;
+		name = "TallyZooAppDelegate.m: 84";
+		rLen = 0;
+		rLoc = 3277;
+		rType = 0;
+		vrLen = 1935;
+		vrLoc = 2491;
+	};
+	617AB722106C6E620036610C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 615CC9011020413600BD6BB2 /* TZCount.h */;
+		name = "TZCount.h: 51";
+		rLen = 16;
+		rLoc = 1403;
+		rType = 0;
+		vrLen = 1290;
+		vrLoc = 136;
+	};
+	617AB723106C6E620036610C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 615CCA351022E97600BD6BB2 /* EditActivityViewController.m */;
+		name = "EditActivityViewController.m: 49";
+		rLen = 1161;
+		rLoc = 1378;
+		rType = 0;
+		vrLen = 1900;
+		vrLoc = 929;
+	};
+	617AB724106C6E620036610C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 617AB655106B04EC0036610C /* EditCountViewController.m */;
+		name = "EditCountViewController.m: 48";
+		rLen = 0;
+		rLoc = 1255;
+		rType = 0;
+		vrLen = 1497;
+		vrLoc = 469;
+	};
+	617AB725106C6E620036610C /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "Expected ':' before ',' token";
+		fRef = 615CC9021020413600BD6BB2 /* TZCount.m */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 132;
+		rType = 1;
+	};
+	617AB726106C6E620036610C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 615CC9021020413600BD6BB2 /* TZCount.m */;
+		name = "TZCount.m: 134";
+		rLen = 0;
+		rLoc = 3681;
+		rType = 0;
+		vrLen = 1117;
+		vrLoc = 3092;
+	};
+	617AB728106C6E630036610C /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "Expected ':' before ',' token";
+		fRef = 615CC9021020413600BD6BB2 /* TZCount.m */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 132;
+		rType = 1;
+	};
+	617AB729106C6E630036610C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 615CC9021020413600BD6BB2 /* TZCount.m */;
+		name = "TZCount.m: 133";
+		rLen = 0;
+		rLoc = 3649;
+		rType = 0;
+		vrLen = 281;
+		vrLoc = 3477;
+	};
+	617AB72A106C6E630036610C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 61D0F7EF103FC90A002B78C5 /* GraphView.m */;
+		name = "GraphView.m: 38";
+		rLen = 56;
+		rLoc = 771;
+		rType = 0;
+		vrLen = 457;
+		vrLoc = 506;
+	};
 	61D0F4B7103DFB7C002B78C5 /* GraphCell.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {755, 585}}";
@@ -8195,9 +8519,9 @@
 	};
 	61D0F4B8103DFB7C002B78C5 /* GraphCell.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1062, 1846}}";
-			sepNavSelRange = "{2842, 0}";
-			sepNavVisRange = "{2041, 1219}";
+			sepNavIntBoundsRect = "{{0, 0}, {1062, 2197}}";
+			sepNavSelRange = "{3677, 0}";
+			sepNavVisRange = "{3449, 707}";
 		};
 	};
 	61D0F675103E6512002B78C5 /* UpperLeftView.h */ = {
@@ -8339,9 +8663,9 @@
 	};
 	61D0F7EF103FC90A002B78C5 /* GraphView.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1244, 4940}}";
-			sepNavSelRange = "{1377, 0}";
-			sepNavVisRange = "{1401, 1613}";
+			sepNavIntBoundsRect = "{{0, 0}, {936, 5226}}";
+			sepNavSelRange = "{771, 56}";
+			sepNavVisRange = "{506, 457}";
 			sepNavWindowFrame = "{{1364, 59}, {733, 673}}";
 		};
 	};
