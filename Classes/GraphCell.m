@@ -50,6 +50,7 @@
 		accessoryButton.frame = r;
 		[accessoryButton addTarget:self action:@selector(accessoryClicked:) forControlEvents:UIControlEventTouchUpInside];
 		[containerView addSubview:accessoryButton];
+		accessoryButton.hidden = YES;
 		
 		UpperLeftView *ulView = [[UpperLeftView alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
 		ulView.tag = 1;
@@ -138,6 +139,11 @@
 	activity = a;
 	
 	alabel.text = activity.name;
+	if (a) {
+		accessoryButton.hidden = NO;
+	} else {
+		accessoryButton.hidden = YES;
+	}
 }
 
 - (void)dealloc {
