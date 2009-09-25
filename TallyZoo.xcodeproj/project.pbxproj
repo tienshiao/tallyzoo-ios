@@ -14,7 +14,6 @@
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 		6151C7851059639900D253CA /* MoreTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6151C7841059639900D253CA /* MoreTableViewController.m */; };
-		6151C7941059667400D253CA /* logo3.png in Resources */ = {isa = PBXBuildFile; fileRef = 6151C7931059667400D253CA /* logo3.png */; };
 		615CC7F4101D924D00BD6BB2 /* MatrixViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 615CC7F3101D924D00BD6BB2 /* MatrixViewController.m */; };
 		615CC7F7101D927300BD6BB2 /* MatrixButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 615CC7F6101D927300BD6BB2 /* MatrixButton.m */; };
 		615CC81E101D9F0900BD6BB2 /* GraphViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 615CC81D101D9F0900BD6BB2 /* GraphViewController.m */; };
@@ -40,6 +39,7 @@
 		617AB2A2105E0D520036610C /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 617AB2A1105E0D520036610C /* Default.png */; };
 		617AB4F6106852AC0036610C /* CountsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 617AB4F5106852AC0036610C /* CountsViewController.m */; };
 		617AB656106B04EC0036610C /* EditCountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 617AB655106B04EC0036610C /* EditCountViewController.m */; };
+		61B1D113106D4F0A00EA1FE7 /* Final_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 61B1D112106D4F0A00EA1FE7 /* Final_logo.png */; };
 		61D0F272103B56D1002B78C5 /* click_down.wav in Resources */ = {isa = PBXBuildFile; fileRef = 61D0F270103B56D1002B78C5 /* click_down.wav */; };
 		61D0F289103B5965002B78C5 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61D0F288103B5965002B78C5 /* AudioToolbox.framework */; };
 		61D0F35A103BE1B7002B78C5 /* red_down.png in Resources */ = {isa = PBXBuildFile; fileRef = 61D0F358103BE1B7002B78C5 /* red_down.png */; };
@@ -80,7 +80,6 @@
 		32CA4F630368D1EE00C91783 /* TallyZoo_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TallyZoo_Prefix.pch; sourceTree = "<group>"; };
 		6151C7831059639900D253CA /* MoreTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreTableViewController.h; sourceTree = "<group>"; };
 		6151C7841059639900D253CA /* MoreTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreTableViewController.m; sourceTree = "<group>"; };
-		6151C7931059667400D253CA /* logo3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo3.png; sourceTree = "<group>"; };
 		615CC7F2101D924D00BD6BB2 /* MatrixViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatrixViewController.h; sourceTree = "<group>"; };
 		615CC7F3101D924D00BD6BB2 /* MatrixViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MatrixViewController.m; sourceTree = "<group>"; };
 		615CC7F5101D927300BD6BB2 /* MatrixButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatrixButton.h; sourceTree = "<group>"; };
@@ -126,6 +125,7 @@
 		617AB4F5106852AC0036610C /* CountsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountsViewController.m; sourceTree = "<group>"; };
 		617AB654106B04EC0036610C /* EditCountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditCountViewController.h; sourceTree = "<group>"; };
 		617AB655106B04EC0036610C /* EditCountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditCountViewController.m; sourceTree = "<group>"; };
+		61B1D112106D4F0A00EA1FE7 /* Final_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Final_logo.png; sourceTree = "<group>"; };
 		61D0F270103B56D1002B78C5 /* click_down.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = click_down.wav; sourceTree = "<group>"; };
 		61D0F288103B5965002B78C5 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		61D0F358103BE1B7002B78C5 /* red_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red_down.png; sourceTree = "<group>"; };
@@ -269,8 +269,8 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				61B1D112106D4F0A00EA1FE7 /* Final_logo.png */,
 				617AB2A1105E0D520036610C /* Default.png */,
-				6151C7931059667400D253CA /* logo3.png */,
 				615E4EF8104E639B007DF031 /* 02-redo.png */,
 				61D0F7CF103E9A00002B78C5 /* 10-medical.png */,
 				61D0F7D0103E9A00002B78C5 /* 16-line-chart.png */,
@@ -421,8 +421,8 @@
 				61D0F7D2103E9A00002B78C5 /* 16-line-chart.png in Resources */,
 				61D0FBC410446507002B78C5 /* Settings.bundle in Resources */,
 				615E4EF9104E639B007DF031 /* 02-redo.png in Resources */,
-				6151C7941059667400D253CA /* logo3.png in Resources */,
 				617AB2A2105E0D520036610C /* Default.png in Resources */,
+				61B1D113106D4F0A00EA1FE7 /* Final_logo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
