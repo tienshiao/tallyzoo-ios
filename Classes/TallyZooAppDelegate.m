@@ -76,12 +76,12 @@
 	
 	mvc = [[MatrixViewController alloc] init];
 	UINavigationController *mnc = [[UINavigationController alloc] initWithRootViewController:mvc];
-	mnc.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Count" image:[UIImage imageNamed:@"10-medical.png"] tag:1];
+	mnc.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Dashboard" image:[UIImage imageNamed:@"10-medical.png"] tag:1];
 	
 	GraphViewController *gvc = [[GraphViewController alloc] init];
 	UINavigationController *gnc = [[UINavigationController alloc] initWithRootViewController:gvc];
 	gnc.navigationBarHidden = YES;
-	gnc.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Graph" image:[UIImage imageNamed:@"16-line-chart.png"] tag:2];
+	gnc.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Graphs" image:[UIImage imageNamed:@"16-line-chart.png"] tag:2];
 	[gvc release];
 	
 	SyncViewController *svc = [[SyncViewController alloc] init];
@@ -91,7 +91,7 @@
 	
 	MoreTableViewController *mtvc = [[MoreTableViewController alloc] init];
 	UINavigationController *mtnc = [[UINavigationController alloc] initWithRootViewController:mtvc];
-	mtnc.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"More" image:nil tag:4];
+	mtnc.tabBarItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemMore tag:4];
 	[mtvc release];
 	
 	tbController = [[TZTabBarController alloc] init];
