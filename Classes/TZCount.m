@@ -74,6 +74,8 @@
 			[dateFormatter setTimeZone:timeZone];
 			
 			self.created_on_UTC = [dateFormatter stringFromDate:now];
+			
+			[dateFormatter release];
 		}
 
 		activity = a;

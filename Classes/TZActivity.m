@@ -75,6 +75,8 @@
 				self.public = NO;
 			}
 		} else {
+			self.default_note = @"";
+			self.default_tags = @"";
 			self.public = YES;
 			self.initial_value = 0;
 			self.init_sig = 0;
@@ -403,7 +405,7 @@
 
 -(NSString *)sum {
 	FMDatabase *dbh = UIAppDelegate.database;
-	FMResultSet *rs;
+	FMResultSet *rs = nil;
 	
 	if (display_total == 1) {
 		// all

@@ -222,7 +222,7 @@
 	double xwidth_secs = x_end_sec - x_start_sec;
 
 	// draw x lines
-	int x_lines;
+	int x_lines = 0;
 	if (timespan == TIMESPAN_ALL) {
 		x_lines = 5;
 	} else if (timespan == TIMESPAN_1D) {

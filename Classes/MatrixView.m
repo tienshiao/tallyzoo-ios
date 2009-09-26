@@ -30,6 +30,7 @@
 	NSMutableArray *buttons;
 	buttons = [[NSMutableArray alloc] init];
 	[pages addObject:buttons];
+	[buttons release];
 }
 
 - (void)clearButtons:(int)page {
@@ -44,6 +45,7 @@
 	}		
 	buttons = [[NSMutableArray alloc] init];
 	[pages replaceObjectAtIndex:page withObject:buttons];
+	[buttons release];
 }
 
 - (void)drawRect:(CGRect)rect {

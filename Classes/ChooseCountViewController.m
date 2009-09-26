@@ -145,7 +145,7 @@
 	
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
 	
-	int old_row;
+	int old_row = 0;
 	
 	if (indexPath.row == 0 && selection == -1) {
 		selection = 1;

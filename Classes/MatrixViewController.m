@@ -235,6 +235,7 @@
 	
 	[addNavigationController release];
 	[eavc release];	
+	[newActivity release];
 }
 
 - (void)editButtons:(id)sender {
@@ -242,7 +243,7 @@
 	self.navigationItem.leftBarButtonItem = doneBarButtonItem;
 	matrixView.editting = YES;
 	
-	[matrixView.pages addObject:[[NSMutableArray alloc] init]];
+	[matrixView.pages addObject:[[[NSMutableArray alloc] init] autorelease]];
 	// adjust scrollview/matrix view frame/page controller
 	
 	_scrollView.contentSize = CGSizeMake(320 * [matrixView.pages count], _scrollView.frame.size.height);
@@ -299,7 +300,8 @@
 			[[self navigationController] presentModalViewController:addNavigationController animated:YES];
 			
 			[addNavigationController release];
-			[ecvc release];				
+			[ecvc release];
+			[newCount release];
 		}
 	}
 }
@@ -316,6 +318,7 @@
 	
 			[addNavigationController release];
 			[ecvc release];	
+			[newCount release];
 		} else {
 			if (UIAppDelegate.location.horizontalAccuracy <= 0) {
 				tmp_button = mb;
@@ -345,7 +348,8 @@
 											  otherButtonTitles:@"Undo Count", nil];
 		alert.delegate = self;
 		[alert show];
-		
+
+		[a release];
 		[c release];
 	}
 }
