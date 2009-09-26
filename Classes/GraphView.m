@@ -282,12 +282,15 @@
 //		for (int i = 0; i < [activity.counts count]; i++) {
 //			TZCount *c = [activity.counts objectAtIndex:i];
 		int i = 0;
+		double c_secs;
+		double x_pos;
+		double y_pos;
 		for (TZCount *c in activity.counts) {
 			NSDate *cdate = [dateFormatter dateFromString:c.created_on];
 			current += c.amount;
-			double c_secs = [cdate timeIntervalSinceReferenceDate];
-			double x_pos = (c_secs - x_start_sec) / (xwidth_secs) * xwidth;
-			double y_pos = (current - activity.initial_value) / (ymax - ymin) * (s.height - 21 - top_padding);
+			c_secs = [cdate timeIntervalSinceReferenceDate];
+			x_pos = (c_secs - x_start_sec) / (xwidth_secs) * xwidth;
+			y_pos = (current - activity.initial_value) / (ymax - ymin) * (s.height - 21 - top_padding);
 			if (i == 0) {
 				CGContextMoveToPoint(context, x_pos, s.height - 21 - y_pos);
 			} else {
@@ -308,9 +311,9 @@
 		for (TZCount *c in activity.counts) {			
 			NSDate *cdate = [dateFormatter dateFromString:c.created_on];
 			current += c.amount;
-			double c_secs = [cdate timeIntervalSinceReferenceDate];
-			double x_pos = (c_secs - x_start_sec) / (xwidth_secs) * xwidth;
-			double y_pos = (current - activity.initial_value) / (ymax - ymin) * (s.height - 21 - top_padding);
+			c_secs = [cdate timeIntervalSinceReferenceDate];
+			x_pos = (c_secs - x_start_sec) / (xwidth_secs) * xwidth;
+			y_pos = (current - activity.initial_value) / (ymax - ymin) * (s.height - 21 - top_padding);
 			if (i == 0) {
 				CGContextMoveToPoint(context, x_pos, s.height - 21 - y_pos);
 				first_x_pos = x_pos;
@@ -319,7 +322,7 @@
 			}
 			i++;
 		}
-		CGContextAddLineToPoint(context, xwidth, s.height - 21);
+		CGContextAddLineToPoint(context, x_pos, s.height - 21);
 		CGContextAddLineToPoint(context, first_x_pos, s.height - 21);
 		CGContextSetRGBFillColor(context, 1, 1, 1, 0.15);
 		CGContextFillPath(context);
