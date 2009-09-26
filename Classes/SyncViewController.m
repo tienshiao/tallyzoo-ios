@@ -65,12 +65,16 @@
 	lastLabel.textColor = [UIColor whiteColor];
 	lastLabel.backgroundColor = [UIColor blackColor];
 	lastLabel.font = [UIFont systemFontOfSize:14];
-	NSDateFormatter *df = [[NSDateFormatter alloc] init];
-	[df setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-	[df setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
-	NSDate *temp = [df dateFromString:lastSync];
-	lastLabel.text = [NSString stringWithFormat:@"Last Synced: %@", temp];
-	[df release];
+	if (lastSync) {
+		NSDateFormatter *df = [[NSDateFormatter alloc] init];
+		[df setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+		[df setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+		NSDate *temp = [df dateFromString:lastSync];
+		lastLabel.text = [NSString stringWithFormat:@"Last Synced: %@", temp];
+		[df release];
+	} else {
+		lastLabel.text = @"Last Synced: never";
+	}
 	[containerView addSubview:lastLabel];
 	
 	progressView = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleDefault];
@@ -174,12 +178,16 @@
 	progressView.hidden = YES;
 	lastLabel.hidden = NO;
 
-	NSDateFormatter *df = [[NSDateFormatter alloc] init];
-	[df setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-	[df setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
-	NSDate *temp = [df dateFromString:lastSync];	
-	lastLabel.text = [NSString stringWithFormat:@"Last Synced: %@", temp];
-	[df release];
+	if (lastSync) {
+		NSDateFormatter *df = [[NSDateFormatter alloc] init];
+		[df setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+		[df setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+		NSDate *temp = [df dateFromString:lastSync];	
+		lastLabel.text = [NSString stringWithFormat:@"Last Synced: %@", temp];
+		[df release];
+	} else {
+		lastLabel.text = @"Last Synced: never";
+	}
 }
 
 - (BOOL)getServerUpdates {
@@ -438,8 +446,7 @@
 			
 			currentActivity.name = [attributeDict objectForKey:@"name"];
 			
-			// TODO check fix name
-			
+			currentActivity.color = [UIColor colorWithHexString:[attributeDict objectForKey:@"color"]];
 			currentActivity.default_note = [attributeDict objectForKey:@"default_note"];
 			currentActivity.default_tags = [attributeDict objectForKey:@"tags"];
 			currentActivity.initial_value = [(NSString *)[attributeDict objectForKey:@"initial_value"] doubleValue];
@@ -467,7 +474,7 @@
 			currentActivity.public = YES;
 		}
 	} else if ([elementName isEqualToString:@"count"]) {
-		TZCount *count = [[TZCount alloc] initWithGUID:[attributeDict valueForKey:@"guid"]];
+		TZCount *count = [[TZCount alloc] initWithGUID:[attributeDict valueForKey:@"guid"] andActivity:currentActivity];
 		
 		// if data is newer
 		if (count.key == 0 ||
