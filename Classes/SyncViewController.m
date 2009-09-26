@@ -20,6 +20,10 @@
 - (id)init {
 	if (self = [super init]) {
 		self.title = @"Sync";
+
+		NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+		[lastSync release];
+		lastSync = [[defaults stringForKey:@"lastSync"] copy];		
 	}
 	return self;
 }
@@ -57,6 +61,24 @@
 	passwordField.delegate = self;
 	[abv addSubview:passwordField];
 	
+	lastLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 110, 280, 20)];
+	lastLabel.textColor = [UIColor whiteColor];
+	lastLabel.backgroundColor = [UIColor blackColor];
+	lastLabel.font = [UIFont systemFontOfSize:14];
+	NSDateFormatter *df = [[NSDateFormatter alloc] init];
+	[df setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+	[df setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+	NSDate *temp = [df dateFromString:lastSync];
+	lastLabel.text = [NSString stringWithFormat:@"Last Synced: %@", temp];
+	[df release];
+	[containerView addSubview:lastLabel];
+	
+	progressView = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleDefault];
+	progressView.frame = CGRectMake(20, 110, 280, 20);
+	progressView.progress = 0.0;
+	progressView.hidden = YES;
+	[containerView addSubview:progressView];
+	
 	syncButton = [[UIButton buttonWithType:UIButtonTypeRoundedRect] retain];
 	syncButton.titleLabel.font = [UIFont boldSystemFontOfSize:[UIFont buttonFontSize]];
 	[syncButton setTitleShadowColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.5] forState:UIControlStateNormal];
@@ -71,7 +93,7 @@
 	UIImage *newPressedImage = [imagePressed stretchableImageWithLeftCapWidth:12.0 topCapHeight:0.0];
 	[deleteButton setBackgroundImage:newPressedImage forState:UIControlStateHighlighted];*/
 	
-	syncButton.frame = CGRectMake(10, 110, 300, 40);
+	syncButton.frame = CGRectMake(10, 140, 300, 40);
 	[syncButton addTarget:self action:@selector(sync:) forControlEvents:UIControlEventTouchUpInside];
 
 	[containerView addSubview:syncButton];
@@ -125,6 +147,9 @@
 	[usernameField resignFirstResponder];
 	[passwordField resignFirstResponder];
 	syncButton.enabled = NO; 
+	lastLabel.hidden = YES;
+	progressView.hidden = NO;
+	progressView.progress = 0.0;
 	
 	// log current time for saving to last sync time
 	[now release];
@@ -144,7 +169,17 @@
 }
 
 - (void)syncCleanUp {
-	syncButton.enabled = YES; 
+	syncButton.enabled = YES;
+	progressView.progress = 1.0;
+	progressView.hidden = YES;
+	lastLabel.hidden = NO;
+
+	NSDateFormatter *df = [[NSDateFormatter alloc] init];
+	[df setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+	[df setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+	NSDate *temp = [df dateFromString:lastSync];	
+	lastLabel.text = [NSString stringWithFormat:@"Last Synced: %@", temp];
+	[df release];
 }
 
 - (BOOL)getServerUpdates {
@@ -239,20 +274,25 @@
 - (void)sendNextUpdate {
 	if ([syncQueue count] == 0) {
 		// All done
+		
+		// TODO update last sync date/time
+		NSDateFormatter *df = [[NSDateFormatter alloc] init];
+		[df setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+		[df setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+		[lastSync release];
+		lastSync = [[df stringFromDate:now] copy];
+		[df release];
+		NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+		[defaults setObject:lastSync forKey:@"lastSync"];
+		[defaults synchronize];
+		
+		
 		// TODO clean up UI, etc
 		[self syncCleanUp];
 		
 		[syncQueue release];
 		syncQueue = nil;
 		
-		// TODO update last sync date/time
-		NSDateFormatter *df = [[NSDateFormatter alloc] init];
-		[df setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-		[df setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
-		NSString *nowString = [df stringFromDate:now];
-		NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-		[defaults setObject:nowString forKey:@"lastSync"];
-		[defaults synchronize];
 		return;
 	}
 	
@@ -313,6 +353,8 @@
 	}
 	[rs close];
 	
+	syncTotal = [syncQueue count];
+	
 	[self sendNextUpdate];
 }
 
@@ -354,14 +396,16 @@
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
-	NSString *body = [[NSString alloc] initWithBytes:[receivedData bytes] 
+/*	NSString *body = [[NSString alloc] initWithBytes:[receivedData bytes] 
 											  length:[receivedData length] 
 											encoding:NSUTF8StringEncoding];
 	NSLog(body);
-	
+*/	
 	if (state == STATE_RECEIVING) {
+		progressView.progress = .15;
 		// parse activities
 		[self parseActivities];
+		progressView.progress = .3;
 		
 		// now to update
 		[connection release];
@@ -376,6 +420,8 @@
 
 		[syncQueue removeObjectAtIndex:0];
 		[self sendNextUpdate];
+		
+		progressView.progress = .3 + ((float) (syncTotal - [syncQueue count])) / syncTotal * .7;
 	}	
 }
 
@@ -506,8 +552,10 @@
 	[original_username release];
 	[usernameField release];
 	[passwordField release];
+	[progressView release];
 	[syncButton release];
 	
+	[lastLabel release];
 	[lastSync release];
 	[now release];
 	[xmlParser release];

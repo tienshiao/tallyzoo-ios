@@ -14,14 +14,18 @@
 	UITextField *usernameField;
 	UITextField *passwordField;
 	
+	UIProgressView *progressView;
+	
 	UIButton *syncButton;
 	
+	UILabel *lastLabel;
 	NSString *lastSync;
 	NSDate *now;
 	int state;
 	NSURLConnection *connection;
 	NSMutableData *receivedData;
 	NSMutableArray *syncQueue;
+	int syncTotal;
 	
 	NSXMLParser *xmlParser;
 	TZActivity *currentActivity;
