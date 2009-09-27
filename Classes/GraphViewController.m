@@ -168,7 +168,7 @@
 		
 		[UIView commitAnimations];							
 	}
-	[[UIApplication sharedApplication] setStatusBarHidden:YES animated:YES];
+//	[[UIApplication sharedApplication] setStatusBarHidden:YES animated:YES];
 }
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
@@ -199,7 +199,7 @@
 		
 		[UIView commitAnimations];							
 	}
-	[[UIApplication sharedApplication] setStatusBarHidden:NO animated:YES];
+//	[[UIApplication sharedApplication] setStatusBarHidden:NO animated:YES];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
