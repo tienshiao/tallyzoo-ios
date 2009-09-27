@@ -21,6 +21,8 @@
 	if (self = [super init]) {
 		self.title = @"Sync";
 
+		apiURL = @"test.tallyzoo.com/api.php";
+		
 		NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 		[lastSync release];
 		lastSync = [[defaults stringForKey:@"lastSync"] copy];		
@@ -191,7 +193,7 @@
 }
 
 - (BOOL)getServerUpdates {
-	NSString *urlString = [NSString stringWithFormat:@"http://%@:%@@home.tienshiao.org/~tsm/tallyzoo/api/activities.list", usernameField.text, passwordField.text];
+	NSString *urlString = [NSString stringWithFormat:@"http://%@:%@@%@/activities.list", usernameField.text, passwordField.text, apiURL];
 	NSURL *url = [NSURL URLWithString:urlString];
 	NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
 														   cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData 
@@ -309,10 +311,10 @@
 	NSString *urlString;
 	NSString *body;
 	if ([o isKindOfClass:[TZActivity class]]) {
-		urlString = [NSString stringWithFormat:@"http://%@:%@@home.tienshiao.org/~tsm/tallyzoo/api/activities.update", usernameField.text, passwordField.text];
+		urlString = [NSString stringWithFormat:@"http://%@:%@@%@/activities.update", usernameField.text, passwordField.text, apiURL];
 		body = [self buildActivityXML:(TZActivity *)o];
 	} else {
-		urlString = [NSString stringWithFormat:@"http://%@:%@@home.tienshiao.org/~tsm/tallyzoo/api/counts.update", usernameField.text, passwordField.text];
+		urlString = [NSString stringWithFormat:@"http://%@:%@@%@/counts.update", usernameField.text, passwordField.text, apiURL];
 		body = [self buildCountXML:(TZCount *)o];
 	}
 	
@@ -443,7 +445,7 @@
 		if (currentActivity.key == 0 ||
 			[(NSString *)[attributeDict objectForKey:@"modified_on_UTC"] compare:currentActivity.modified_on_UTC] == NSOrderedDescending) {
 			// load data
-			
+			currentActivity.guid = [attributeDict objectForKey:@"guid"];
 			currentActivity.name = [attributeDict objectForKey:@"name"];
 			
 			currentActivity.color = [UIColor colorWithHexString:[attributeDict objectForKey:@"color"]];
@@ -479,7 +481,7 @@
 		// if data is newer
 		if (count.key == 0 ||
 			[(NSString *)[attributeDict objectForKey:@"modified_on_UTC"] compare:count.modified_on_UTC] == NSOrderedDescending) {
-
+			count.guid = [attributeDict objectForKey:@"guid"];
 			count.note = [attributeDict objectForKey:@"note"];
 			count.amount = [(NSString *)[attributeDict objectForKey:@"amount"] doubleValue];
 			count.amount_sig = [(NSString *)[attributeDict objectForKey:@"amount_sig"] intValue];

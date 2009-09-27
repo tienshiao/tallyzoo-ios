@@ -26,6 +26,7 @@
 	NSMutableData *receivedData;
 	NSMutableArray *syncQueue;
 	int syncTotal;
+	NSString *apiURL;
 	
 	NSXMLParser *xmlParser;
 	TZActivity *currentActivity;
