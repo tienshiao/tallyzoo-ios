@@ -16,6 +16,8 @@
 	NSNumberFormatter *formatter;
 }
 
+@property (nonatomic, retain) TZActivity *activity;
+
 - (id)initWithActivity:(TZActivity *)a;
 
 @end

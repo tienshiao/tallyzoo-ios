@@ -13,9 +13,11 @@
 
 @implementation CountsViewController
 
+@synthesize activity;
+
 - (id)initWithActivity:(TZActivity *)a {
     if (self = [super init]) {
-		activity = a;
+		self.activity = a;
 		
 		self.title = a.name;
 		
@@ -182,6 +184,7 @@
 - (void)dealloc {
     [super dealloc];
 	
+	[activity release];
 	[formatter release];
 }
 
