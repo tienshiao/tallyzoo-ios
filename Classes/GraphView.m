@@ -226,7 +226,7 @@
 	if (timespan == TIMESPAN_ALL) {
 		x_lines = 5;
 	} else if (timespan == TIMESPAN_1D) {
-		x_lines = 7;
+		x_lines = 5;
 	} else if (timespan == TIMESPAN_1W) {
 		x_lines = 6;
 	} else if (timespan == TIMESPAN_1M) {
@@ -250,11 +250,25 @@
 	NSDateFormatter *xformatter = [[NSDateFormatter alloc] init];
 	if (timespan == TIMESPAN_ALL) {
 		// TODO magic picking thingy
-		[xformatter setDateFormat:@"H"];
+		if (xwidth_secs < 60 * 5) {
+			[xformatter setDateFormat:@"mm:ss"];	
+		} else if (xwidth_secs < 60 * 60 * 2) {
+			[xformatter setDateFormat:@"HH:mm"];	
+		} else if (xwidth_secs < 60 * 60 * 24 * 2) {
+			[xformatter setDateFormat:@"ha"];	
+		} else if (xwidth_secs < 60 * 60 * 24 * 7) {
+			[xformatter setDateFormat:@"ccc"];	
+		} else if (xwidth_secs < 60 * 60 * 24 * 30) {
+			[xformatter setDateFormat:@"d"];
+		} else if (xwidth_secs < 60 * 60 * 24 * 30 * 6) {
+			[xformatter setDateFormat:@"M/d"];
+		} else {
+			[xformatter setDateFormat:@"MMM"];			
+		}
 	} else if (timespan == TIMESPAN_1D) {
-		[xformatter setDateFormat:@"H"];
+		[xformatter setDateFormat:@"ha"];
 	} else if (timespan == TIMESPAN_1W) {
-		[xformatter setDateFormat:@"d"];
+		[xformatter setDateFormat:@"ccc"];
 	} else if (timespan == TIMESPAN_1M) {
 		[xformatter setDateFormat:@"d"];
 	} else if (timespan == TIMESPAN_3M) {
