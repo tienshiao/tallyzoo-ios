@@ -27,8 +27,7 @@
 }
 
 - (void)addPage {
-	NSMutableArray *buttons;
-	buttons = [[NSMutableArray alloc] init];
+	NSMutableArray *buttons = [[NSMutableArray alloc] init];
 	[pages addObject:buttons];
 	[buttons release];
 }
@@ -42,10 +41,8 @@
 	for (int i = 0; i < [buttons count]; i++) {
 		MatrixButton *button = [buttons objectAtIndex:i];
 		[button removeFromSuperview];
-	}		
-	buttons = [[NSMutableArray alloc] init];
-	[pages replaceObjectAtIndex:page withObject:buttons];
-	[buttons release];
+	}
+	[buttons removeAllObjects];
 }
 
 - (void)drawRect:(CGRect)rect {
@@ -380,9 +377,9 @@
 }
 			
 - (void)dealloc {
-    [super dealloc];
-	
 	[pages release];
+
+    [super dealloc];
 }
 
 

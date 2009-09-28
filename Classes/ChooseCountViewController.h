@@ -17,6 +17,6 @@
 
 @property (assign, nonatomic) NSInteger selection;
 @property (assign, nonatomic) id editedObject;
-@property (copy, nonatomic) NSString *editedFieldKey;
+@property (retain, nonatomic) NSString *editedFieldKey;
 
 @end

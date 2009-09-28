@@ -79,7 +79,7 @@
     [super viewWillAppear:animated];
 	
 	[activities removeAllObjects];
-	
+
 	FMDatabase *dbh = UIAppDelegate.database;
 	FMResultSet *rs = [dbh executeQuery:@"SELECT id FROM activities WHERE deleted = 0 ORDER BY upper(name)"];
 	while ([rs next]) {
@@ -87,6 +87,7 @@
 		[activities addObject:a];
 		[a release];
 	}
+	[rs close];
 	
 	landscapeView.activities = activities;
 	[_tableView reloadData];
@@ -106,6 +107,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
 	[self.navigationController setNavigationBarHidden:NO animated:animated];
+	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:animated];
 }
 
 /*
@@ -143,6 +145,10 @@
 
 // Override to allow orientations other than the default portrait orientation.
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+	if ([activities count] == 0) {
+		// that's just asking for trouble
+		return NO;
+	}
     // Return YES for supported orientations
 	return interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown;
 }
@@ -168,7 +174,6 @@
 		
 		[UIView commitAnimations];							
 	}
-//	[[UIApplication sharedApplication] setStatusBarHidden:YES animated:YES];
 }
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
@@ -199,7 +204,6 @@
 		
 		[UIView commitAnimations];							
 	}
-//	[[UIApplication sharedApplication] setStatusBarHidden:NO animated:YES];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -252,6 +256,7 @@
 
 - (void)graphCellAccessoryClicked:(GraphCell *)gc {
 	CountsViewController *cvc = [[CountsViewController alloc] initWithActivity:gc.activity];
+	
 	[self.navigationController pushViewController:cvc animated:YES];
 	[cvc release];	
 }
@@ -270,14 +275,14 @@
 
 
 - (void)dealloc {
-    [super dealloc];
-	
 	[activities release];
 	[graphView release];
 	[_tableView release];
 	
 	[portraitView release];
 	[landscapeView release];
+
+    [super dealloc];
 }
 
 

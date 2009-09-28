@@ -19,10 +19,10 @@
 	NSString *sigFieldKey;
 }
 
-@property (copy, nonatomic) NSString *textValue;
+@property (retain, nonatomic) NSString *textValue;
 @property (assign, nonatomic) id editedObject;
-@property (copy, nonatomic) NSString *editedFieldKey;
+@property (retain, nonatomic) NSString *editedFieldKey;
 @property (assign, nonatomic) BOOL numberEditing;
-@property (copy, nonatomic) NSString *sigFieldKey;
+@property (retain, nonatomic) NSString *sigFieldKey;
 
 @end

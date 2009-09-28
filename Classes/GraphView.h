@@ -32,6 +32,6 @@
 	NSArray *timespans;
 }
 
-@property (nonatomic, assign) TZActivity *activity;
+@property (nonatomic, retain) TZActivity *activity;
 
 @end

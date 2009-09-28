@@ -293,12 +293,13 @@
 	if (activity) {
 		// draw graph
 		double current = activity.initial_value;
-//		for (int i = 0; i < [activity.counts count]; i++) {
-//			TZCount *c = [activity.counts objectAtIndex:i];
-		int i = 0;
 		double c_secs;
 		double x_pos;
 		double y_pos;
+		
+//		for (int i = 0; i < [activity.counts count]; i++) {
+//			TZCount *c = [activity.counts objectAtIndex:i];
+		int i = 0;
 		for (TZCount *c in activity.counts) {
 			NSDate *cdate = [dateFormatter dateFromString:c.created_on];
 			current += c.amount;
@@ -368,9 +369,11 @@
 }
 
 - (void)setActivity:(TZActivity *)a {
-	if (activity == a) {
-		return;
-	}
+//	if (activity == a) {
+//		return;
+//	}
+	[a retain];
+	[activity release];
 	activity = a;
 	
 	[activity loadCounts];
@@ -381,15 +384,23 @@
 
 
 - (void)dealloc {
-    [super dealloc];
-	
 	[formatter release];
+	formatter = nil;
 	[dateFormatter release];
+	dateFormatter = nil;
 	
 	[xmax release];
+	xmax = nil;
 	[xmin release];
+	xmin = nil;
 	
 	[timespans release];
+	timespans = nil;
+	
+	[activity release];
+	activity = nil;
+
+    [super dealloc];
 }
 
 

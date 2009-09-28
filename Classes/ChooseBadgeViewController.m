@@ -205,7 +205,7 @@
 }
 */
 
-- (int)diplay_total {
+- (int)display_total {
 	return display_total;
 }
 
@@ -262,6 +262,8 @@
 
 
 - (void)dealloc {
+	[editedFieldKey release];
+	
     [super dealloc];
 }
 

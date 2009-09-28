@@ -9,6 +9,7 @@
 #import "TZActivity.h"
 #import "TallyZooAppDelegate.h"
 #import "FMDatabase.h"
+#import "FMDatabaseAdditions.h"
 #import "UIColor-Expanded.h"
 #import "TZCount.h"
 
@@ -89,7 +90,8 @@
 			self.position = 0;
 		}
 		
-		counts = nil;
+		counts = [[NSMutableArray alloc] init];
+
 		formatter = [[NSNumberFormatter alloc] init];
 		[formatter setRoundingMode: NSNumberFormatterRoundHalfEven];
 	}
@@ -179,7 +181,7 @@
 	if (key == 0) {
 		// INSERT
 		CFUUIDRef uuid = CFUUIDCreate(NULL);
-		CFStringRef guid = CFUUIDCreateString(NULL, uuid);
+		CFStringRef guidstr = CFUUIDCreateString(NULL, uuid);
 		CFRelease(uuid);
 		
 		[dbh executeUpdate:@"INSERT into activities (guid, name, default_note, default_tags, initial_value, init_sig,\
@@ -188,7 +190,7 @@
 												modified_on, modified_on_UTC) VALUES \
 												(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0, \
 												datetime('now', 'localtime'), datetime('now'), datetime('now', 'localtime'), datetime('now'))",
-			(NSString *)guid,
+			(NSString *)guidstr,
 		    name,
 			default_note,
 			default_tags,
@@ -202,7 +204,7 @@
 			[NSNumber numberWithInt:screen],
 			[NSNumber numberWithInt:position]
 		   ];
-		CFRelease(guid);
+		CFRelease(guidstr);
 		if ([dbh hadError]) {
 			return NO;
 		} 
@@ -381,10 +383,10 @@
 }
 
 - (void)loadCounts {
-	[counts removeAllObjects];
+	if ([counts count]) {
+		return;
+	}
 	
-	counts = [[NSMutableArray alloc] init];
-
 	FMDatabase *dbh = UIAppDelegate.database;
 	FMResultSet *rs = [dbh executeQuery:@"SELECT id FROM counts WHERE activity_id = ? AND deleted = 0 ORDER BY created_on",
 					   [NSNumber numberWithInt:key]];
@@ -393,7 +395,7 @@
 		[counts addObject:c];
 		[c release];
 	}
-	
+	[rs close];
 }
 
 - (void)simpleCount {
@@ -458,15 +460,30 @@
 }
 
 - (void)dealloc {
-	[super dealloc];
-	
+	[guid release];
+	guid = nil;
 	[name release];
+	name = nil;
 	[default_note release];
+	default_note = nil;
 	[default_tags release];
+	default_tags = nil;
 	[color release];
+	color = nil;
 	[created_on release];
+	created_on = nil;
+	[created_on_UTC release];
+	created_on_UTC = nil;
+	[modified_on release];
+	modified_on = nil;
+	[modified_on_UTC release];
+	modified_on_UTC = nil;
 	
 	[counts release];
+	counts = nil;
 	[formatter release];
+	formatter = nil;
+
+	[super dealloc];
 }
 @end

@@ -352,10 +352,12 @@
 }
 
 - (void)dealloc {
-    [super dealloc];
-	
 	[colorValue release];
 	[customColor release];
+
+	[editedFieldKey release];
+    
+	[super dealloc];
 }
 
 

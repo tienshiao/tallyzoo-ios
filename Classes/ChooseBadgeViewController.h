@@ -18,6 +18,6 @@
 
 @property (assign, nonatomic) NSInteger display_total;
 @property (assign, nonatomic) id editedObject;
-@property (copy, nonatomic) NSString *editedFieldKey;
+@property (retain, nonatomic) NSString *editedFieldKey;
 
 @end

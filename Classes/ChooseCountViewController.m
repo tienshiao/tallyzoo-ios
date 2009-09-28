@@ -217,9 +217,9 @@
 }
 
 - (void)dealloc {
-    [super dealloc];
-	
 	[editedFieldKey release];
+	
+	[super dealloc];
 }
 
 

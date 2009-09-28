@@ -17,7 +17,6 @@
 		615CC7F4101D924D00BD6BB2 /* MatrixViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 615CC7F3101D924D00BD6BB2 /* MatrixViewController.m */; };
 		615CC7F7101D927300BD6BB2 /* MatrixButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 615CC7F6101D927300BD6BB2 /* MatrixButton.m */; };
 		615CC81E101D9F0900BD6BB2 /* GraphViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 615CC81D101D9F0900BD6BB2 /* GraphViewController.m */; };
-		615CC823101D9F9100BD6BB2 /* DetailedCountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 615CC822101D9F9100BD6BB2 /* DetailedCountViewController.m */; };
 		615CC83C101EE74100BD6BB2 /* MatrixView.m in Sources */ = {isa = PBXBuildFile; fileRef = 615CC83B101EE74100BD6BB2 /* MatrixView.m */; };
 		615CC854101FD17800BD6BB2 /* UIColor-Expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = 615CC853101FD17800BD6BB2 /* UIColor-Expanded.m */; };
 		615CC8E5101FF24C00BD6BB2 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 615CC8E0101FF24C00BD6BB2 /* FMDatabase.m */; };
@@ -86,8 +85,6 @@
 		615CC7F6101D927300BD6BB2 /* MatrixButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MatrixButton.m; sourceTree = "<group>"; };
 		615CC81C101D9F0900BD6BB2 /* GraphViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphViewController.h; sourceTree = "<group>"; };
 		615CC81D101D9F0900BD6BB2 /* GraphViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphViewController.m; sourceTree = "<group>"; };
-		615CC821101D9F9100BD6BB2 /* DetailedCountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailedCountViewController.h; sourceTree = "<group>"; };
-		615CC822101D9F9100BD6BB2 /* DetailedCountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailedCountViewController.m; sourceTree = "<group>"; };
 		615CC83A101EE74100BD6BB2 /* MatrixView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatrixView.h; sourceTree = "<group>"; };
 		615CC83B101EE74100BD6BB2 /* MatrixView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MatrixView.m; sourceTree = "<group>"; };
 		615CC852101FD17800BD6BB2 /* UIColor-Expanded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor-Expanded.h"; sourceTree = "<group>"; };
@@ -201,8 +198,6 @@
 				615E52E11056DC6A007DF031 /* AccountBackgroundView.m */,
 				617AB4F4106852AC0036610C /* CountsViewController.h */,
 				617AB4F5106852AC0036610C /* CountsViewController.m */,
-				615CC821101D9F9100BD6BB2 /* DetailedCountViewController.h */,
-				615CC822101D9F9100BD6BB2 /* DetailedCountViewController.m */,
 				617AB654106B04EC0036610C /* EditCountViewController.h */,
 				617AB655106B04EC0036610C /* EditCountViewController.m */,
 				615CCA341022E97600BD6BB2 /* EditActivityViewController.h */,
@@ -438,7 +433,6 @@
 				615CC7F4101D924D00BD6BB2 /* MatrixViewController.m in Sources */,
 				615CC7F7101D927300BD6BB2 /* MatrixButton.m in Sources */,
 				615CC81E101D9F0900BD6BB2 /* GraphViewController.m in Sources */,
-				615CC823101D9F9100BD6BB2 /* DetailedCountViewController.m in Sources */,
 				615CC83C101EE74100BD6BB2 /* MatrixView.m in Sources */,
 				615CC854101FD17800BD6BB2 /* UIColor-Expanded.m in Sources */,
 				615CC8E5101FF24C00BD6BB2 /* FMDatabase.m in Sources */,
@@ -539,6 +533,7 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_VERSION = 4.2;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;

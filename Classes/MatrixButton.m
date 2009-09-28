@@ -242,13 +242,14 @@
 }
 
 - (void)dealloc {
-    [super dealloc];
 	[activity release];
 	
 	AudioServicesDisposeSystemSoundID(clickDownID);
 	CFRelease(clickDownURL);
 //	AudioServicesDisposeSystemSoundID(clickUpID);
 //	CFRelease(clickUpURL);	
+
+    [super dealloc];
 }
 
 - (id)delegate {

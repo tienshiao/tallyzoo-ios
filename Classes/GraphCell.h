@@ -35,7 +35,7 @@
 @property(assign, nonatomic) int index;
 @property(assign, nonatomic) BOOL first;
 @property(assign, nonatomic) BOOL last;
-@property(assign, nonatomic) TZActivity *activity;
+@property(nonatomic, retain) TZActivity *activity;
 @property(assign, nonatomic) id<GraphCellDelegate> delegate;
 
 - (id)initWithReuseIdentifier:(NSString *)reuseIdentifier;

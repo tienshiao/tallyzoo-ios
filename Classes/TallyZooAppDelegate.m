@@ -119,11 +119,13 @@
 
 - (void)dealloc {
     [window release];
-    [super dealloc];
 
 	[tbController release];
 	[locationManager release];
 	[location release];
+	
+	[super dealloc];
+
 }
 
 

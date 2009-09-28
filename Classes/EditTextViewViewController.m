@@ -188,11 +188,12 @@
 }
 
 - (void)dealloc {
-    [super dealloc];
 	[textView release];
 	
 	[textValue release];
 	[editedFieldKey release];
+
+    [super dealloc];
 }
 
 

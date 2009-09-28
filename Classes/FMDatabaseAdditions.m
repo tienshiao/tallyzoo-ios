@@ -59,7 +59,15 @@ return ret;
 //http://cocoawithlove.com/2009/05/variable-argument-lists-in-cocoa.html
 
 - (id)executeQuery:(NSString *)sql withArgumentsInArray:(NSArray *)arguments {
-
+    
+#ifdef __LP64__
+    
+    NSLog(@"executeQuery:withArgumentsInArray: does not work when compiled as 64 bit");
+    // got a patch?  send it gus@flyingmeat.com
+    
+    return 0x00;
+    
+#else
 	id returnObject;
 	
 	//also need make sure that everything in arguments is an Obj-C object
@@ -73,9 +81,19 @@ return ret;
 	free(argList);
 	
 	return returnObject;
+#endif
 }
 
 - (BOOL) executeUpdate:(NSString*)sql withArgumentsInArray:(NSArray *)arguments {
+    
+#ifdef __LP64__
+    
+    NSLog(@"executeUpdate:withArgumentsInArray: does not work when compiled as 64 bit");
+    // got a patch?  send it gus@flyingmeat.com
+    
+    return 0x00;
+    
+#else
     
     BOOL returnBool;
 	
@@ -90,10 +108,36 @@ return ret;
 	free(argList);
 	
 	return returnBool;
-    
+#endif
 }
 
 
+//check if table exist in database (patch from OZLB)
+- (BOOL) tableExists:(NSString*)tableName {
+    
+    BOOL returnBool;
+    //lower case table name
+    tableName = [tableName lowercaseString];
+    //search in sqlite_master table if table exists
+    FMResultSet *rs = [self executeQuery:@"select [sql] from sqlite_master where [type] = 'table' and lower(name) = ?", tableName];
+    //if at least one next exists, table exists
+    returnBool = [rs next];
+    //close and free object
+    [rs close];
+    
+    return returnBool;
+}
 
+//get table with list of tables: result colums: type[STRING], name[STRING],tbl_name[STRING],rootpage[INTEGER],sql[STRING]
+//check if table exist in database  (patch from OZLB)
+- (FMResultSet*) getDataBaseSchema:(NSString*)tableName {
+    
+    //lower case table name
+    tableName = [tableName lowercaseString];
+    //result colums: type[STRING], name[STRING],tbl_name[STRING],rootpage[INTEGER],sql[STRING]
+    FMResultSet *rs = [self executeQuery:@"SELECT type, name, tbl_name, rootpage, sql FROM (SELECT * FROM sqlite_master UNION ALL SELECT * FROM sqlite_temp_master) WHERE type != 'meta' AND name NOT LIKE 'sqlite_%' ORDER BY tbl_name, type DESC, name"];
+    
+    return rs;
+}
 
 @end

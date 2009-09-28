@@ -229,13 +229,15 @@
 }
 
 - (void)dealloc {
-    [super dealloc];
-	
 	[colorValue release];
 	
 	[redSlider release];
 	[greenSlider release];
 	[blueSlider release];
+
+	[editedFieldKey release];
+	
+    [super dealloc];
 }
 
 

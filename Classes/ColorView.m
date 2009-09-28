@@ -48,9 +48,9 @@
 
 
 - (void)dealloc {
-    [super dealloc];
-	
 	[color release];
+
+    [super dealloc];
 }
 
 

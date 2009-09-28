@@ -105,6 +105,7 @@
 		
 		currentPosition++;
 	}
+	[rs close];
 	
 }
 
@@ -175,7 +176,7 @@
 		[self loadMatrixViewWithPage:i];
 	}
 
-	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:animated];	
+//	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:animated];	
 }
 
 - (void)viewDidAppear:(BOOL)animater {
@@ -352,6 +353,7 @@
 		[a release];
 		[c release];
 	}
+	[rs close];
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
@@ -407,8 +409,6 @@
 
 
 - (void)dealloc {
-    [super dealloc];
-	
 	[_pageControl release];
 	[_scrollView release];
 	[matrixView release];
@@ -417,6 +417,9 @@
 	[doneBarButtonItem release];
 	
 	[locationSheet release];
+	[locationBusyView release];
+	
+	[super dealloc];
 }
 
 

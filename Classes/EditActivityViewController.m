@@ -459,12 +459,13 @@
 
 
 - (void)dealloc {
-    [super dealloc];
-	
 	[activity release];
 	[colorView release];
 	
 	[deleteButton release];
+	[showPublicSwitch release];
+	
+	[super dealloc];
 }
 
 

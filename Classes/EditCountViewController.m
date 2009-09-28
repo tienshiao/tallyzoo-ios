@@ -373,13 +373,16 @@
 
 
 - (void)dealloc {
-    [super dealloc];
-
 	[tableView release];
 	[datePicker release];
 	[deleteButton release];
 	
 	[dateFormatter release];
+	
+	[count release];
+	[created release];
+
+	[super dealloc];
 }
 
 

@@ -16,23 +16,21 @@ Activity
   - move acitivity to title
   - move amount to top
 - add timezone support
+- name collisions
 Preferences
 - click for advanced
 - hold length
 Graph
 - fix graph with no activities
+Sync
+- name collisions
 
 TODO
 Activity
-- name collisions
 - count
   - inline edit amount
 Button Screen
 - graphical title
 - better feedback (glow/fade off)
 Count Details Screen
-Graph
-- graph when no activities
-Sync
-- name collisions
 Configuration

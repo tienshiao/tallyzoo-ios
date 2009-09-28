@@ -50,7 +50,7 @@
 		accessoryButton.frame = r;
 		[accessoryButton addTarget:self action:@selector(accessoryClicked:) forControlEvents:UIControlEventTouchUpInside];
 		[containerView addSubview:accessoryButton];
-		accessoryButton.hidden = YES;
+//		accessoryButton.hidden = YES;
 		
 		UpperLeftView *ulView = [[UpperLeftView alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
 		ulView.tag = 1;
@@ -136,9 +136,11 @@
 }
 
 - (void)setActivity:(TZActivity *)a {
+	[a retain];
+	[activity release];
 	activity = a;
 	
-	alabel.text = activity.name;
+	alabel.text = a.name;
 	if (a) {
 		accessoryButton.hidden = NO;
 	} else {
@@ -147,12 +149,13 @@
 }
 
 - (void)dealloc {
-    [super dealloc];
-	
 	[shading release];
 	[selectLayer release];
 	[alabel release];
 	[accessoryButton release];
+	[activity release];
+
+    [super dealloc];
 }
 
 

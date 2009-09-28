@@ -15,7 +15,7 @@
 - (id)initWithFrame:(CGRect)frame activities:(NSMutableArray *)a {
     if (self = [super initWithFrame:frame]) {
         // Initialization code
-		activities = a;
+		self.activities = a;
 		
 		int screens = [activities count];
 		
@@ -132,6 +132,8 @@
 }
 
 - (void)setActivities:(NSMutableArray *) a{
+	[a retain];
+	[activities release];
 	activities = a;
 	
 	_scrollView.contentSize = CGSizeMake(480 * [a count], _scrollView.frame.size.height);
@@ -148,9 +150,9 @@
 	// reload them
 	self.currentPage = currentPage;
 
-	[self loadScrollViewWithPage:currentPage - 1];
-    [self loadScrollViewWithPage:currentPage];
-    [self loadScrollViewWithPage:currentPage + 1];
+//	[self loadScrollViewWithPage:currentPage - 1];
+//    [self loadScrollViewWithPage:currentPage];
+//    [self loadScrollViewWithPage:currentPage + 1];
 }
 
 - (int)currentPage {
@@ -167,9 +169,13 @@
 }
 
 - (void)dealloc {
-    [super dealloc];
+	[_pageControl release];
+	[_scrollView release];
 	
+	[activities release];
 	[graphs release];
+
+    [super dealloc];
 }
 
 

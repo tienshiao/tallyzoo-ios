@@ -96,17 +96,24 @@
 }
 
 - (void)dealloc {
-	[super dealloc];
-
 	[note release];
+	note = nil;
 	[tags release];
+	tags = nil;
 	
 	[guid release];
+	guid = nil;
 	
 	[created_on release];
+	created_on = nil;
 	[created_on_UTC release];
+	created_on_UTC = nil;
 	[modified_on release];
+	modified_on = nil;
 	[modified_on_UTC release];
+	modified_on_UTC = nil;
+
+	[super dealloc];
 }
 
 - (BOOL)save {

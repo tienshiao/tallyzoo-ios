@@ -217,12 +217,13 @@
 }
 
 - (void)dealloc {
-    [super dealloc];
 	[textField release];
 	
 	[textValue release];
 	[editedFieldKey release];
 	[sigFieldKey release];
+
+    [super dealloc];
 }
 
 

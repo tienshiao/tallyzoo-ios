@@ -35,11 +35,11 @@
 	NSNumberFormatter *formatter;
 }
 
-@property(copy, nonatomic) NSString *guid;
+@property(retain, nonatomic) NSString *guid;
 @property(assign, nonatomic) NSInteger key;
-@property(copy, nonatomic) NSString *name;
-@property(copy, nonatomic) NSString *default_note;
-@property(copy, nonatomic) NSString *default_tags;
+@property(retain, nonatomic) NSString *name;
+@property(retain, nonatomic) NSString *default_note;
+@property(retain, nonatomic) NSString *default_tags;
 @property(assign, nonatomic) double initial_value;
 @property(assign, nonatomic) int init_sig;
 @property(assign, nonatomic) double default_step;
@@ -51,11 +51,11 @@
 @property(assign, nonatomic) int screen;
 @property(assign, nonatomic) int position;
 @property(assign, nonatomic) BOOL deleted;
-@property(copy, nonatomic) NSString *created_on;
-@property(copy, nonatomic) NSString *created_on_UTC;
-@property(copy, nonatomic) NSString *modified_on;
-@property(copy, nonatomic) NSString *modified_on_UTC;
-@property(nonatomic, readonly) NSMutableArray *counts;
+@property(retain, nonatomic) NSString *created_on;
+@property(retain, nonatomic) NSString *created_on_UTC;
+@property(retain, nonatomic) NSString *modified_on;
+@property(retain, nonatomic) NSString *modified_on_UTC;
+@property(nonatomic, retain) NSMutableArray *counts;
 
 + (BOOL)nameExists:(NSString *)n;
 - (id)initWithKey:(NSInteger)k;

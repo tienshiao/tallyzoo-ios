@@ -19,7 +19,7 @@
     if (self = [super init]) {
 		self.activity = a;
 		
-		self.title = a.name;
+		self.title = activity.name;
 		
 		formatter = [[NSNumberFormatter alloc] init];
 		[formatter setRoundingMode: NSNumberFormatterRoundHalfEven];
@@ -48,6 +48,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+	[activity.counts removeAllObjects];
 	[activity loadCounts];
 	[self.tableView reloadData];
 }
@@ -182,10 +183,12 @@
 
 
 - (void)dealloc {
-    [super dealloc];
-	
 	[activity release];
+	activity = nil;
 	[formatter release];
+	formatter = nil;
+
+    [super dealloc];
 }
 
 

@@ -556,8 +556,6 @@
 
 
 - (void)dealloc {
-    [super dealloc];
-
 	[original_username release];
 	[usernameField release];
 	[passwordField release];
@@ -568,6 +566,8 @@
 	[lastSync release];
 	[now release];
 	[xmlParser release];
+	
+	[super dealloc];
 }
 
 

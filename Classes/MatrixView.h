@@ -27,11 +27,11 @@
 	UIScrollView *scrollView;
 }
 
-@property (assign,nonatomic) NSMutableArray *pages;
+@property (retain,nonatomic) NSMutableArray *pages;
 @property (assign,nonatomic) int currentPage;
 @property (assign,nonatomic) BOOL editting;
 @property (assign,nonatomic) id delegate;
-@property (assign,nonatomic) UIScrollView *scrollView;
+@property (retain,nonatomic) UIScrollView *scrollView;
 
 - (id)initWithFrame:(CGRect)frame;
 - (void)clearButtons:(int)page;
