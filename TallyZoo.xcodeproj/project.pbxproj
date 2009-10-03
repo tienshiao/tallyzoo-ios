@@ -41,6 +41,8 @@
 		617AB656106B04EC0036610C /* EditCountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 617AB655106B04EC0036610C /* EditCountViewController.m */; };
 		6180A1841076BB1D00918261 /* ShoutOutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6180A1831076BB1D00918261 /* ShoutOutViewController.m */; };
 		6180A1F11076CB2000918261 /* GTMNSString+XML.m in Sources */ = {isa = PBXBuildFile; fileRef = 6180A1F01076CB2000918261 /* GTMNSString+XML.m */; };
+		6180A20E10774DD100918261 /* AddTipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6180A20D10774DD100918261 /* AddTipView.m */; };
+		6180A26310775C9900918261 /* CountTipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6180A26210775C9900918261 /* CountTipView.m */; };
 		61B1D113106D4F0A00EA1FE7 /* Final_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 61B1D112106D4F0A00EA1FE7 /* Final_logo.png */; };
 		61D0F272103B56D1002B78C5 /* click_down.wav in Resources */ = {isa = PBXBuildFile; fileRef = 61D0F270103B56D1002B78C5 /* click_down.wav */; };
 		61D0F289103B5965002B78C5 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61D0F288103B5965002B78C5 /* AudioToolbox.framework */; };
@@ -133,6 +135,10 @@
 		6180A1F01076CB2000918261 /* GTMNSString+XML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GTMNSString+XML.m"; sourceTree = "<group>"; };
 		6180A1FF1076CBD600918261 /* GTMGarbageCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMGarbageCollection.h; sourceTree = "<group>"; };
 		6180A2001076CC1B00918261 /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
+		6180A20C10774DD100918261 /* AddTipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddTipView.h; sourceTree = "<group>"; };
+		6180A20D10774DD100918261 /* AddTipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddTipView.m; sourceTree = "<group>"; };
+		6180A26110775C9900918261 /* CountTipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountTipView.h; sourceTree = "<group>"; };
+		6180A26210775C9900918261 /* CountTipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountTipView.m; sourceTree = "<group>"; };
 		61B1D112106D4F0A00EA1FE7 /* Final_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Final_logo.png; sourceTree = "<group>"; };
 		61D0F270103B56D1002B78C5 /* click_down.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = click_down.wav; sourceTree = "<group>"; };
 		61D0F288103B5965002B78C5 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -207,6 +213,10 @@
 				61D0F6C1103E6A97002B78C5 /* Masks */,
 				615E52E01056DC6A007DF031 /* AccountBackgroundView.h */,
 				615E52E11056DC6A007DF031 /* AccountBackgroundView.m */,
+				6180A20C10774DD100918261 /* AddTipView.h */,
+				6180A20D10774DD100918261 /* AddTipView.m */,
+				6180A26110775C9900918261 /* CountTipView.h */,
+				6180A26210775C9900918261 /* CountTipView.m */,
 				617AB4F4106852AC0036610C /* CountsViewController.h */,
 				617AB4F5106852AC0036610C /* CountsViewController.m */,
 				617AB654106B04EC0036610C /* EditCountViewController.h */,
@@ -488,6 +498,8 @@
 				61455E231073C9F700D1FFB4 /* HelpWebViewController.m in Sources */,
 				6180A1841076BB1D00918261 /* ShoutOutViewController.m in Sources */,
 				6180A1F11076CB2000918261 /* GTMNSString+XML.m in Sources */,
+				6180A20E10774DD100918261 /* AddTipView.m in Sources */,
+				6180A26310775C9900918261 /* CountTipView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

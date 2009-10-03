@@ -9,12 +9,14 @@
 #import "MatrixViewController.h"
 #import "TallyZooAppDelegate.h"
 #import "FMDatabase.h"
+#import "FMDatabaseAdditions.h"
 #import "EditActivityViewController.h"
 #import "EditCountViewController.h"
 #import "TZActivity.h"
 #import "TZCount.h"
 #import "MatrixButton.h"
 #import "ShakeView.h"
+#import "AddTipView.h"
 
 @implementation MatrixViewController
 
@@ -70,6 +72,16 @@
 	FMResultSet *rs = [dbh executeQuery:@"SELECT max(screen) AS max_screen FROM activities WHERE deleted = 0"];
 	[rs next];
 	return [rs intForColumn:@"max_screen"] + 1;
+}
+
+- (int)getNumberOfActivities {
+	FMDatabase *dbh = UIAppDelegate.database;
+	return [dbh intForQuery:@"SELECT count(*) FROM activities"];
+}
+
+- (int)getNumberOfCounts {
+	FMDatabase *dbh = UIAppDelegate.database;
+	return [dbh intForQuery:@"SELECT count(*) FROM counts"];
 }
 
 - (void)loadMatrixViewWithPage:(int)page {
@@ -151,6 +163,17 @@
 	[containerView addSubview:locationBusyView];
 	
 	[self setView:containerView];
+	
+	if ([self getNumberOfActivities] == 0) {
+		// user has not added an activity yet
+		AddTipView *atv = [[AddTipView alloc] initWithFrame:UIAppDelegate.window.bounds];
+		[UIAppDelegate.window addSubview:atv];
+		[atv release];
+	}
+	if ([self getNumberOfCounts] == 0) {
+		countTipView = [[CountTipView alloc] initWithFrame:CGRectMake(110, 0, 200, 300)];
+		[self.view addSubview:countTipView];
+	}
 }
 
 
@@ -174,6 +197,12 @@
 	
 	for (int i = 0; i < screens; i++) {
 		[self loadMatrixViewWithPage:i];
+	}
+	
+	if ([self getNumberOfCounts] == 0 && [self getNumberOfActivities] == 1) {
+		countTipView.hidden = NO;
+	} else {
+		countTipView.hidden = YES;
 	}
 
 //	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:animated];	
@@ -284,6 +313,7 @@
 				[self waitForLocation];
 			} else {
 				[mb.activity simpleCount];
+				countTipView.hidden = YES;
 /*				UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Location" 
 																message:[NSString stringWithFormat:@"%@", UIAppDelegate.location] 
 															   delegate:nil
@@ -326,6 +356,7 @@
 				[self waitForLocation];
 			} else {
 				[mb.activity simpleCount];
+				countTipView.hidden = YES;
 			}
 		}
 	}
@@ -383,6 +414,7 @@
 	[tmp_button setNeedsDisplay];
 	tmp_button = nil;
 	locationBusyView.hidden = YES;
+	countTipView.hidden = YES;
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
@@ -418,6 +450,8 @@
 	
 	[locationSheet release];
 	[locationBusyView release];
+	
+	[countTipView release];
 	
 	[super dealloc];
 }
