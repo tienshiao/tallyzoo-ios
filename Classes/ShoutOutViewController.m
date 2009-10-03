@@ -1,22 +1,36 @@
 //
-//  MoreTableViewController.m
+//  ShoutOutViewController.m
 //  TallyZoo
 //
-//  Created by Tienshiao Ma on 9/10/09.
+//  Created by Tienshiao Ma on 10/2/09.
 //  Copyright 2009 __MyCompanyName__. All rights reserved.
 //
 
-#import "MoreTableViewController.h"
-#import "HelpWebViewController.h"
 #import "ShoutOutViewController.h"
 
-@implementation MoreTableViewController
+
+@implementation ShoutOutViewController
 
 - (id)init {
 	if (self = [super initWithStyle:UITableViewStyleGrouped]) {
-		self.title = @"More";
+		self.title = @"Shout Outs";
+		
+		text = @"The TallyZoo iPhone app makes use of the following:\n\
+• Glyphish icons\n\
+• mouse click by THE_bizniss from freesound.org";
+		
+		textLabel = [[UILabel alloc] init];
+		CGRect r = CGRectMake(10, 0, 300, 1000);
+		r.size = [text sizeWithFont:[UIFont systemFontOfSize:16]
+				  constrainedToSize:CGSizeMake(300, 1000)
+					  lineBreakMode:UILineBreakModeWordWrap];
+		r.size.height += 21;   // WTF?
+		textLabel.frame = r;
+		textLabel.text = text;
+		textLabel.lineBreakMode = UILineBreakModeWordWrap;
+		textLabel.numberOfLines = 0;
 	}
-	return self;	
+	return self;
 }
 
 /*
@@ -88,84 +102,25 @@
 
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 4;
-}
-
-- (void)configureTopCell:(UITableViewCell *)cell {
-	CGRect rect = cell.frame;
-	rect.size.height = 53;
-	cell.frame = rect;
-	
-	UILabel *label;
-	
-	NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
-	
-	rect = CGRectMake(10, 3, 280, 25);
-	label = [[UILabel alloc] initWithFrame:rect];
-	label.font = [UIFont boldSystemFontOfSize:20];
-	label.adjustsFontSizeToFitWidth = YES;
-	label.textAlignment = UITextAlignmentCenter;
-	label.text = [NSString stringWithFormat:@"TallyZoo v%@", version];
-	[cell.contentView addSubview:label];
-	label.highlightedTextColor = [UIColor whiteColor];
-	[label release];
-	
-	rect = CGRectMake(10, 28, 280, 25);
-	label = [[UILabel alloc] initWithFrame:rect];
-	label.font = [UIFont systemFontOfSize:12];
-	label.textAlignment = UITextAlignmentCenter;
-	label.text = @"Copyright © 2009 XXXXX";
-	[cell.contentView addSubview:label];
-	label.highlightedTextColor = [UIColor whiteColor];
-	[label release];
-	
-	cell.selectionStyle = UITableViewCellSelectionStyleNone;
-	cell.accessoryType = UITableViewCellAccessoryNone;
+    return 1;
 }
 
 - (CGFloat)tableView:(UITableView *)tv heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-	if (indexPath.row == 0) {
-		return 54;
-	} else {
-		return 40;
-	}
+	return textLabel.frame.size.height + 5;
 }
 
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    static NSString *RegCellIdentifier = @"Cell";
-	static NSString *TopCellIdentifier = @"Top Cell";
+    static NSString *CellIdentifier = @"Cell";
     
-	NSString *cellIdentifier;
-	
-	if (indexPath.row == 0) {
-		cellIdentifier = TopCellIdentifier;
-	} else {
-		cellIdentifier = RegCellIdentifier;
-	}
-	
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier] autorelease];
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+		[cell.contentView addSubview:textLabel];
     }
-
+    
     // Set up the cell...
-	if (indexPath.row == 0) {
-		[self configureTopCell:cell];
-	} else if (indexPath.row == 1) {
-		cell.textLabel.text = @"Tips";
-		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-		cell.selectionStyle = UITableViewCellSelectionStyleBlue;
-	} else if (indexPath.row == 2) {
-		cell.textLabel.text = @"FAQs";
-		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-		cell.selectionStyle = UITableViewCellSelectionStyleBlue;
-	} else if (indexPath.row == 3) {
-		cell.textLabel.text = @"Shout Outs";
-		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-		cell.selectionStyle = UITableViewCellSelectionStyleBlue;
-	}
 	
     return cell;
 }
@@ -176,22 +131,6 @@
 	// AnotherViewController *anotherViewController = [[AnotherViewController alloc] initWithNibName:@"AnotherView" bundle:nil];
 	// [self.navigationController pushViewController:anotherViewController];
 	// [anotherViewController release];
-	
-	if (indexPath.row == 1) {
-		HelpWebViewController *hwvc = [[HelpWebViewController alloc] initWithURL:[NSURL URLWithString:@"http://www.tallyzoo.com/tips.php"]];
-		hwvc.title = @"Tips";
-		[[self navigationController] pushViewController:hwvc animated:YES];
-		[hwvc release];
-	} else if (indexPath.row == 2) {
-		HelpWebViewController *hwvc = [[HelpWebViewController alloc] initWithURL:[NSURL URLWithString:@"http://www.tallyzoo.com/faqs.php"]];
-		hwvc.title = @"FAQs";
-		[[self navigationController] pushViewController:hwvc animated:YES];
-		[hwvc release];
-	} else if (indexPath.row == 3) {
-		ShoutOutViewController *sovc = [[ShoutOutViewController alloc] init];
-		[[self navigationController] pushViewController:sovc animated:YES];
-		[sovc release];		
-	}
 }
 
 
@@ -236,6 +175,8 @@
 
 
 - (void)dealloc {
+	[textLabel release];
+	
     [super dealloc];
 }
 
