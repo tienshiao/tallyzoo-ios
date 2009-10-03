@@ -14,6 +14,7 @@
 #import "AccountBackgroundView.h"
 #import "SFHFKeychainUtils.h"
 #import "TZCount.h"
+#import "GTMNSString+XML.h"
 
 @implementation SyncViewController
 
@@ -22,6 +23,7 @@
 		self.title = @"Sync";
 
 		apiURL = @"test.tallyzoo.com/api.php";
+		//apiURL = @"home.tienshiao.org/~tsm/tallyzoo/api.php";
 		
 		NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 		[lastSync release];
@@ -103,10 +105,10 @@
 	[syncButton addTarget:self action:@selector(sync:) forControlEvents:UIControlEventTouchUpInside];
 
 	[containerView addSubview:syncButton];
-
-	
 	
 	self.view = containerView;
+	
+	[containerView release];
 }
 
 
@@ -240,8 +242,8 @@
 	}
 	return [NSString stringWithFormat:@"<request><activity guid=\"%@\" name=\"%@\" default_note=\"%@\" initial_value=\"%f\" init_sig=\"%d\" default_step=\"%f\" step_sig=\"%d\" color=\"%@\" count_updown=\"%d\" display_total=\"%d\" screen=\"%d\" position=\"%d\" deleted=\"%d\" created_on=\"%@\" created_on_UTC=\"%@\" modified_on=\"%@\" modified_on_UTC=\"%@\">%@</activity></request>",
 			a.guid,
-			a.name,
-			a.default_note,
+			[a.name gtm_stringBySanitizingAndEscapingForXML],
+			[a.default_note gtm_stringBySanitizingAndEscapingForXML],
 			a.initial_value,
 			a.init_sig,
 			a.default_step,
@@ -266,7 +268,7 @@
 	NSString *count = [NSString stringWithFormat:@"<request><count guid=\"%@\" activity_guid=\"%@\" note=\"%@\" amount=\"%f\" amount_sig=\"%d\" latitude=\"%f\" longitude=\"%f\" deleted=\"%d\" created_on=\"%@\" created_on_UTC=\"%@\" modified_on=\"%@\" modified_on_UTC=\"%@\" /></request>",
 					   c.guid,
 					   a.guid,
-					   c.note,
+					   [c.note gtm_stringBySanitizingAndEscapingForXML],
 					   c.amount,
 					   c.amount_sig,
 					   c.latitude,
@@ -346,7 +348,11 @@
 	FMDatabase *dbh = UIAppDelegate.database;
 	FMResultSet *rs;
 	// get activities to sync
-	rs = [dbh executeQuery:@"SELECT id FROM activities WHERE deleted = 0 AND modified_on_UTC > ?", lastSync];
+	if (lastSync) {
+		rs = [dbh executeQuery:@"SELECT id FROM activities WHERE deleted = 0 AND modified_on_UTC > ?", lastSync];
+	} else {
+		rs = [dbh executeQuery:@"SELECT id FROM activities WHERE deleted = 0"];
+	}
 	while ([rs next]) {
 		TZActivity *a = [[TZActivity alloc] initWithKey:[rs intForColumn:@"id"]];
 		[syncQueue addObject:a];
@@ -355,7 +361,11 @@
 	[rs close];
 	
 	// get counts to sync
-	rs = [dbh executeQuery:@"SELECT id FROM counts WHERE deleted = 0 AND modified_on_UTC > ?", lastSync];
+	if (lastSync) {
+		rs = [dbh executeQuery:@"SELECT id FROM counts WHERE deleted = 0 AND modified_on_UTC > ?", lastSync];
+	} else {
+		rs = [dbh executeQuery:@"SELECT id FROM counts WHERE deleted = 0"];		
+	}
 	while ([rs next]) {
 		TZCount *c = [[TZCount alloc] initWithKey:[rs intForColumn:@"id"] andActivity:nil];
 		[syncQueue addObject:c];
