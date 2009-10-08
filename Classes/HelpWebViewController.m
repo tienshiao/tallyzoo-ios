@@ -81,6 +81,8 @@
 
 
 - (void)dealloc {
+	webview.delegate = nil;
+	[webview release];
 	[file release];
     [super dealloc];
 }

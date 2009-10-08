@@ -178,12 +178,12 @@
 	// [anotherViewController release];
 	
 	if (indexPath.row == 1) {
-		HelpWebViewController *hwvc = [[HelpWebViewController alloc] initWithURL:[NSURL URLWithString:@"http://www.tallyzoo.com/tips.php"]];
+		HelpWebViewController *hwvc = [[HelpWebViewController alloc] initWithURL:[NSURL URLWithString:@"http://www.tallyzoo.com/iphonetips.php"]];
 		hwvc.title = @"Tips";
 		[[self navigationController] pushViewController:hwvc animated:YES];
 		[hwvc release];
 	} else if (indexPath.row == 2) {
-		HelpWebViewController *hwvc = [[HelpWebViewController alloc] initWithURL:[NSURL URLWithString:@"http://www.tallyzoo.com/faqs.php"]];
+		HelpWebViewController *hwvc = [[HelpWebViewController alloc] initWithURL:[NSURL URLWithString:@"http://www.tallyzoo.com/iphonefaqs.php"]];
 		hwvc.title = @"FAQs";
 		[[self navigationController] pushViewController:hwvc animated:YES];
 		[hwvc release];
