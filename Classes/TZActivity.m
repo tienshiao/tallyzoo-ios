@@ -357,11 +357,11 @@
 		 [NSNumber numberWithInt:screen],
 		 [NSNumber numberWithInt:position],
 		 [NSNumber numberWithBool:deleted],
-		 [NSNumber numberWithInt:key],
 		 created_on,
 		 created_on_UTC,
 		 modified_on,
-		 modified_on_UTC
+		 modified_on_UTC,
+		 [NSNumber numberWithInt:key]
 		 ];
 		
 		if ([dbh hadError]) {
