@@ -109,7 +109,10 @@
     // replace the placeholder if necessary
     GraphView *graph = [graphs objectAtIndex:page];
     if ((NSNull *)graph == [NSNull null]) {
-        graph = [[GraphView alloc] initWithFrame:CGRectZero];
+        graph = [[GraphView alloc] initWithFrame:CGRectMake(_scrollView.frame.size.width * page + 5, 
+															0,
+															_scrollView.frame.size.width - 10, 
+															_scrollView.frame.size.height)];
         [graphs replaceObjectAtIndex:page withObject:graph];
         [graph release];
     }
@@ -117,12 +120,6 @@
 
     // add the controller's view to the scroll view
     if (nil == graph.superview) {
-        CGRect frame = _scrollView.frame;
-        frame.origin.x = frame.size.width * page;
-        frame.origin.y = 0;
-		frame.origin.x += 5;
-		frame.size.width -= 10;
-		graph.frame = frame;
         [_scrollView addSubview:graph];
     }
 }

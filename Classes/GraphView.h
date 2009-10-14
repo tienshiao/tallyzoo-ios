@@ -30,6 +30,8 @@
 	TZActivity *activity;
 	
 	NSArray *timespans;
+	
+	UIButton *infoButton;
 }
 
 @property (nonatomic, retain) TZActivity *activity;

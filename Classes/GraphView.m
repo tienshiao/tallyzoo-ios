@@ -42,6 +42,13 @@
 		timespans = [[NSArray alloc] initWithObjects:@"1d", @"1w", @"1m", @"3m", @"6m", @"1y", @"all", nil];
 		
 		[self findMinMax];	
+		
+		infoButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
+		CGRect r = infoButton.frame;
+		r.origin.x = self.bounds.size.width - r.size.width - 2;
+		r.origin.y = self.bounds.size.height - r.size.height - 2;
+		infoButton.frame = r;
+		[self addSubview:infoButton];
     }
     return self;
 }
@@ -96,8 +103,6 @@
 		x_start_sec = [NSDate timeIntervalSinceReferenceDate] - 365 * 24 * 60 * 60;
 		x_end_sec = [NSDate timeIntervalSinceReferenceDate];				
 	}
-
-	
 	
 	[formatter setMaximumFractionDigits:ysig];
 	[formatter setMinimumFractionDigits:ysig];
@@ -191,8 +196,8 @@
 	CGContextSetLineWidth(context, 1);
 
 	// draw x axis
-	CGContextMoveToPoint(context, 0, s.height - 20);
-	CGContextAddLineToPoint(context, s.width, s.height - 20);
+	CGContextMoveToPoint(context, 0, s.height - 22);
+	CGContextAddLineToPoint(context, s.width, s.height - 22);
 	CGContextSetRGBStrokeColor(context, 1, 1, 1, .6);
 	CGContextStrokePath(context);
 	
@@ -206,13 +211,13 @@
 	CGContextSetRGBFillColor(context, 1, 1, 1, 1); 
 	NSString *numString = [formatter stringFromNumber:[NSNumber numberWithDouble:ymin]];
 	CGSize ns = [numString sizeWithFont:[UIFont boldSystemFontOfSize:FONT_SIZE]];
-	[numString drawAtPoint:CGPointMake(s.width - ywidth - 3, top_padding + s.height - top_padding - 20 - ns.height) withFont:[UIFont boldSystemFontOfSize:FONT_SIZE]];
+	[numString drawAtPoint:CGPointMake(s.width - ywidth - 3, top_padding + s.height - top_padding - 22 - ns.height) withFont:[UIFont boldSystemFontOfSize:FONT_SIZE]];
 
 	numString = [formatter stringFromNumber:[NSNumber numberWithDouble:ymin + (ymax - ymin) / 3]];
-	[numString drawAtPoint:CGPointMake(s.width - ywidth - 3, top_padding + (s.height - top_padding - 20 - ns.height) * 2 / 3) withFont:[UIFont boldSystemFontOfSize:FONT_SIZE]];
+	[numString drawAtPoint:CGPointMake(s.width - ywidth - 3, top_padding + (s.height - top_padding - 22 - ns.height) * 2 / 3) withFont:[UIFont boldSystemFontOfSize:FONT_SIZE]];
 
 	numString = [formatter stringFromNumber:[NSNumber numberWithDouble:ymin + (ymax - ymin) * 2 / 3]];
-	[numString drawAtPoint:CGPointMake(s.width - ywidth - 3, top_padding + (s.height - top_padding - 20 - ns.height) / 3) withFont:[UIFont boldSystemFontOfSize:FONT_SIZE]];	
+	[numString drawAtPoint:CGPointMake(s.width - ywidth - 3, top_padding + (s.height - top_padding - 22 - ns.height) / 3) withFont:[UIFont boldSystemFontOfSize:FONT_SIZE]];	
 	
 	numString = [formatter stringFromNumber:[NSNumber numberWithDouble:ymax]];
 	[numString drawAtPoint:CGPointMake(s.width - ywidth - 3, top_padding) withFont:[UIFont boldSystemFontOfSize:FONT_SIZE]];
@@ -241,7 +246,7 @@
 	CGContextSetRGBStrokeColor(context, 1, 1, 1, .6);
 	for (int i = 0; i < x_lines; i++) {
 		double x_pos = (i + 1) * xwidth / x_lines;
-		CGContextMoveToPoint(context, x_pos, s.height - 21);
+		CGContextMoveToPoint(context, x_pos, s.height - 23);
 		CGContextAddLineToPoint(context, x_pos, top_padding);
 		CGContextStrokePath(context);			
 	}
@@ -279,13 +284,13 @@
 		[xformatter setDateFormat:@"MMM"];
 	}
 	CGContextSetRGBFillColor(context, 1, 1, 1, 1); 
-	for (int i = 0; i <= x_lines; i++) {
+	for (int i = 0; i < x_lines; i++) {
 		double x_pos = i * xwidth / x_lines;
 		NSDate *d = [NSDate dateWithTimeIntervalSinceReferenceDate:xwidth_secs * i / x_lines + x_start_sec];
 		NSString *ds = [xformatter stringFromDate:d];
 		CGSize xs = [ds sizeWithFont:[UIFont boldSystemFontOfSize:FONT_SIZE]];
 		if (i > 0) {
-			[ds drawAtPoint:CGPointMake(x_pos - xs.width / 2 , s.height - 19) withFont:[UIFont boldSystemFontOfSize:FONT_SIZE]];
+			[ds drawAtPoint:CGPointMake(x_pos - xs.width / 2 , s.height - 20) withFont:[UIFont boldSystemFontOfSize:FONT_SIZE]];
 		}
 	}
 	[xformatter release];
@@ -305,11 +310,11 @@
 			current += c.amount;
 			c_secs = [cdate timeIntervalSinceReferenceDate];
 			x_pos = (c_secs - x_start_sec) / (xwidth_secs) * xwidth;
-			y_pos = (current - activity.initial_value) / (ymax - ymin) * (s.height - 21 - top_padding);
+			y_pos = (current - activity.initial_value) / (ymax - ymin) * (s.height - 23 - top_padding);
 			if (i == 0) {
-				CGContextMoveToPoint(context, x_pos, s.height - 21 - y_pos);
+				CGContextMoveToPoint(context, x_pos, s.height - 23 - y_pos);
 			} else {
-				CGContextAddLineToPoint(context, x_pos, s.height - 21 - y_pos);
+				CGContextAddLineToPoint(context, x_pos, s.height - 23 - y_pos);
 			}
 			i++;
 		}
@@ -328,17 +333,17 @@
 			current += c.amount;
 			c_secs = [cdate timeIntervalSinceReferenceDate];
 			x_pos = (c_secs - x_start_sec) / (xwidth_secs) * xwidth;
-			y_pos = (current - activity.initial_value) / (ymax - ymin) * (s.height - 21 - top_padding);
+			y_pos = (current - activity.initial_value) / (ymax - ymin) * (s.height - 23 - top_padding);
 			if (i == 0) {
-				CGContextMoveToPoint(context, x_pos, s.height - 21 - y_pos);
+				CGContextMoveToPoint(context, x_pos, s.height - 23 - y_pos);
 				first_x_pos = x_pos;
 			} else {
-				CGContextAddLineToPoint(context, x_pos, s.height - 21 - y_pos);
+				CGContextAddLineToPoint(context, x_pos, s.height - 23 - y_pos);
 			}
 			i++;
 		}
-		CGContextAddLineToPoint(context, x_pos, s.height - 21);
-		CGContextAddLineToPoint(context, first_x_pos, s.height - 21);
+		CGContextAddLineToPoint(context, x_pos, s.height - 23);
+		CGContextAddLineToPoint(context, first_x_pos, s.height - 23);
 		CGContextSetRGBFillColor(context, 1, 1, 1, 0.15);
 		CGContextFillPath(context);
 	}
@@ -400,6 +405,9 @@
 	[activity release];
 	activity = nil;
 
+	[infoButton release];
+	infoButton = nil;
+	
     [super dealloc];
 }
 
