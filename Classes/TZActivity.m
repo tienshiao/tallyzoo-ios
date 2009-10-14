@@ -409,14 +409,18 @@
 	FMDatabase *dbh = UIAppDelegate.database;
 	FMResultSet *rs = nil;
 	
+	double init_val = 0.0;
+
 	if (display_total == 1) {
 		// all
 		rs = [dbh executeQuery:@"SELECT SUM(amount) AS total, MAX(amount_sig) AS amount_sig FROM counts WHERE activity_id = ? AND deleted = 0",
 				[NSNumber numberWithInt:key]];
+		init_val = initial_value;
 	} else if (display_total == 2) {
 		// daily
 		rs = [dbh executeQuery:@"SELECT SUM(amount) AS total, MAX(amount_sig) AS amount_sig FROM counts WHERE activity_id = ? AND deleted = 0 AND created_on >= date('now', 'localtime')",
-			  [NSNumber numberWithInt:key]];		
+			  [NSNumber numberWithInt:key]];
+		init_val = [dbh doubleForQuery:@"SELECT SUM(initial_value) FROM activities WHERE key = ? AND created_on >= date('now', 'localtime')", key];
 	} else if (display_total == 3) {
 		// weekly
 		NSCalendar *calendar = [NSCalendar currentCalendar];
@@ -428,11 +432,13 @@
 		[dateFormatter setDateFormat:@"yyyy-MM-dd 00:00:00"];
 		rs = [dbh executeQuery:@"SELECT SUM(amount) AS total, MAX(amount_sig) AS amount_sig FROM counts WHERE activity_id = ? AND deleted = 0 AND created_on >= ?",
 			  [NSNumber numberWithInt:key], [dateFormatter stringFromDate:beginningOfWeek]];
+		init_val = [dbh doubleForQuery:@"SELECT SUM(initial_value) FROM activities WHERE key = ? AND created_on >= ?", key, [dateFormatter stringFromDate:beginningOfWeek]];
 		[today release];
 	} else if (display_total == 4) {
 		// monthly
 		rs = [dbh executeQuery:@"SELECT SUM(amount) AS total, MAX(amount_sig) AS amount_sig FROM counts WHERE activity_id = ? AND deleted = 0 AND created_on >= date('now', 'localtime', 'start of month')",
-			  [NSNumber numberWithInt:key]];		
+			  [NSNumber numberWithInt:key]];
+		init_val = [dbh doubleForQuery:@"SELECT SUM(initial_value) FROM activities WHERE key = ? AND created_on >= date('now', 'localtime', 'start of month')", key];
 	}
 	[rs next];
 	
@@ -447,14 +453,11 @@
 	if (sig < init_sig) {
 		sig = init_sig;
 	}
-	if (sig < step_sig) {
-		sig = step_sig;
-	}
 
 	[formatter setMaximumFractionDigits:sig];
 	[formatter setMinimumFractionDigits:sig];
 	
-	NSString *numberString = [formatter stringFromNumber:[NSNumber numberWithDouble:initial_value + total]];
+	NSString *numberString = [formatter stringFromNumber:[NSNumber numberWithDouble:init_val + total]];
 
 	return numberString;
 }
