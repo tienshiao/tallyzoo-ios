@@ -99,7 +99,7 @@
 
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [activity.counts count];
+    return [activity.counts count] + 1;
 }
 
 
@@ -111,21 +111,35 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier] autorelease];
-		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     
     // Set up the cell...
-	TZCount *c = [activity.counts objectAtIndex:indexPath.row];
-	cell.textLabel.text = c.created_on;
-	
-	[formatter setMaximumFractionDigits:c.amount_sig];
-	[formatter setMinimumFractionDigits:c.amount_sig];
-	
-	NSString *numberString = [formatter stringFromNumber:[NSNumber numberWithDouble:c.amount]];
-	
-	
-	cell.detailTextLabel.text = numberString;
-	
+	if (indexPath.row == 0 ) {
+		cell.textLabel.text = @"Initial Value";
+		[formatter setMaximumFractionDigits:activity.init_sig];
+		[formatter setMinimumFractionDigits:activity.init_sig];
+		
+		NSString *numberString = [formatter stringFromNumber:[NSNumber numberWithDouble:activity.initial_value]];
+		
+		
+		cell.detailTextLabel.text = numberString;		
+		cell.accessoryType = UITableViewCellAccessoryNone;
+		cell.selectionStyle = UITableViewCellSelectionStyleNone;
+	} else {
+		TZCount *c = [activity.counts objectAtIndex:indexPath.row - 1];
+		cell.textLabel.text = c.created_on;
+		
+		[formatter setMaximumFractionDigits:c.amount_sig];
+		[formatter setMinimumFractionDigits:c.amount_sig];
+		
+		NSString *numberString = [formatter stringFromNumber:[NSNumber numberWithDouble:c.amount]];
+		
+		
+		cell.detailTextLabel.text = numberString;
+		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+		cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+	}
+		
     return cell;
 }
 
@@ -135,7 +149,10 @@
 	// AnotherViewController *anotherViewController = [[AnotherViewController alloc] initWithNibName:@"AnotherView" bundle:nil];
 	// [self.navigationController pushViewController:anotherViewController];
 	// [anotherViewController release];
-	TZCount *c = [activity.counts objectAtIndex:indexPath.row];
+	if (indexPath.row == 0) {
+		return;
+	}
+	TZCount *c = [activity.counts objectAtIndex:indexPath.row - 1];
 	EditCountViewController *ecvc = [[EditCountViewController alloc] initNonModalWithCount:c];
 	[self.navigationController pushViewController:ecvc animated:YES];
 	[ecvc release];					
