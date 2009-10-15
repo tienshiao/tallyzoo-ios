@@ -114,7 +114,7 @@
     }
     
     // Set up the cell...
-	if (indexPath.row == 0 ) {
+	if (indexPath.row == [activity.counts count]) {
 		cell.textLabel.text = @"Initial Value";
 		[formatter setMaximumFractionDigits:activity.init_sig];
 		[formatter setMinimumFractionDigits:activity.init_sig];
@@ -126,7 +126,7 @@
 		cell.accessoryType = UITableViewCellAccessoryNone;
 		cell.selectionStyle = UITableViewCellSelectionStyleNone;
 	} else {
-		TZCount *c = [activity.counts objectAtIndex:indexPath.row - 1];
+		TZCount *c = [activity.counts objectAtIndex:[activity.counts count] - indexPath.row - 1];
 		cell.textLabel.text = c.created_on;
 		
 		[formatter setMaximumFractionDigits:c.amount_sig];
@@ -149,10 +149,10 @@
 	// AnotherViewController *anotherViewController = [[AnotherViewController alloc] initWithNibName:@"AnotherView" bundle:nil];
 	// [self.navigationController pushViewController:anotherViewController];
 	// [anotherViewController release];
-	if (indexPath.row == 0) {
+	if (indexPath.row == [activity.counts count]) {
 		return;
 	}
-	TZCount *c = [activity.counts objectAtIndex:indexPath.row - 1];
+	TZCount *c = [activity.counts objectAtIndex:[activity.counts count] - indexPath.row - 1];
 	EditCountViewController *ecvc = [[EditCountViewController alloc] initNonModalWithCount:c];
 	[self.navigationController pushViewController:ecvc animated:YES];
 	[ecvc release];					
