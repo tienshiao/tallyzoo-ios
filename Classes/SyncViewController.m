@@ -240,7 +240,7 @@
 	} else {
 		group = @"";
 	}
-	return [NSString stringWithFormat:@"<request><activity guid=\"%@\" name=\"%@\" default_note=\"%@\" initial_value=\"%f\" init_sig=\"%d\" default_step=\"%f\" step_sig=\"%d\" color=\"%@\" count_updown=\"%d\" display_total=\"%d\" screen=\"%d\" position=\"%d\" deleted=\"%d\" created_on=\"%@\" created_on_UTC=\"%@\" modified_on=\"%@\" modified_on_UTC=\"%@\">%@</activity></request>",
+	return [NSString stringWithFormat:@"<request><activity guid=\"%@\" name=\"%@\" default_note=\"%@\" initial_value=\"%f\" init_sig=\"%d\" default_step=\"%f\" step_sig=\"%d\" color=\"%@\" count_updown=\"%d\" display_total=\"%d\" screen=\"%d\" position=\"%d\" graph_type=\"%d\" deleted=\"%d\" created_on=\"%@\" created_on_UTC=\"%@\" modified_on=\"%@\" modified_on_UTC=\"%@\">%@</activity></request>",
 			a.guid,
 			[a.name gtm_stringBySanitizingAndEscapingForXML],
 			[a.default_note gtm_stringBySanitizingAndEscapingForXML],
@@ -253,6 +253,7 @@
 			a.display_total,
 			a.screen,
 			a.position,
+			a.graph_type,
 			a.deleted,
 			a.created_on,
 			a.created_on_UTC,

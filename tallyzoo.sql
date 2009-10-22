@@ -14,6 +14,7 @@ id INTEGER PRIMARY KEY AUTOINCREMENT,
     display_total INTEGER,  -- display number badge on button
     screen INTEGER,  -- which screen, -1 for never been assigned
     position INTEGER,  -- position in matrix (0-8),
+    graph_type INTEGER, -- graph type on iPhone
     deleted INTEGER, -- 1 = deleted
     created_on TEXT,  -- datetime stored in localtime
     created_on_UTC TEXT,

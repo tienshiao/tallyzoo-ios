@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "TZActivity.h"
+#import "GraphOptionsView.h"
 
 @interface GraphView : UIView {
 	double ymax;
@@ -32,6 +33,7 @@
 	NSArray *timespans;
 	
 	UIButton *infoButton;
+	GraphOptionsView *graphOptionsView;
 }
 
 @property (nonatomic, retain) TZActivity *activity;

@@ -25,6 +25,7 @@
 	int display_total;
 	int screen;
 	int position;
+	int graph_type;
 	BOOL deleted;
 	NSString *created_on;
 	NSString *created_on_UTC;
@@ -50,6 +51,7 @@
 @property(assign, nonatomic) int display_total;
 @property(assign, nonatomic) int screen;
 @property(assign, nonatomic) int position;
+@property(assign, nonatomic) int graph_type;
 @property(assign, nonatomic) BOOL deleted;
 @property(retain, nonatomic) NSString *created_on;
 @property(retain, nonatomic) NSString *created_on_UTC;
@@ -64,6 +66,7 @@
 - (BOOL)save;
 - (BOOL)saveRaw;
 - (void)loadCounts;
+- (NSMutableArray *)getDayCounts;
 - (void)simpleCount;
 - (NSString *)sum;
 
@@ -73,5 +76,17 @@
 #define BADGE_DAY 2
 #define BADGE_WEEK 3
 #define BADGE_MONTH 4
+
+
+/*
+	Graph Types
+ */
+#define TZACTIVITY_SLIDING_SUMMED 1
+#define TZACTIVITY_SLIDING_SUMMED_DAILY 2
+#define TZACTIVITY_SLIDING_NOTSUMMED 3
+#define TZACTIVITY_CALENDAR_SUMMED 4
+#define TZACTIVITY_CALENDAR_SUMMED_DAILY 5
+#define TZACTIVITY_CALENDAR_NOTSUMMED 6
+
 
 @end

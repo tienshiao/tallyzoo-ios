@@ -30,6 +30,7 @@
 @synthesize display_total;
 @synthesize screen;
 @synthesize position;
+@synthesize graph_type;
 @synthesize deleted;
 @synthesize created_on;
 @synthesize created_on_UTC;
@@ -62,6 +63,7 @@
 				self.display_total = [rs intForColumn:@"display_total"];
 				self.screen = [rs intForColumn:@"screen"];
 				self.position = [rs intForColumn:@"position"];
+				self.graph_type = [rs intForColumn:@"graph_type"];
 				self.deleted = [rs boolForColumn:@"deleted"];
 				self.created_on = [rs stringForColumn:@"created_on"];
 				self.created_on_UTC = [rs stringForColumn:@"created_on_UTC"];
@@ -88,6 +90,7 @@
 			self.color = [UIColor blueColor];
 			self.screen = -1;
 			self.position = 0;
+			self.graph_type = 1;
 		}
 		
 		counts = [[NSMutableArray alloc] init];
@@ -186,9 +189,9 @@
 		
 		[dbh executeUpdate:@"INSERT into activities (guid, name, default_note, default_tags, initial_value, init_sig,\
 												default_step, step_sig, color, count_updown, display_total, \
-											    screen, position, deleted, created_on, created_on_UTC, \
+											    screen, position, graph_type, deleted, created_on, created_on_UTC, \
 												modified_on, modified_on_UTC) VALUES \
-												(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0, \
+												(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0, \
 												datetime('now', 'localtime'), datetime('now'), datetime('now', 'localtime'), datetime('now'))",
 			(NSString *)guidstr,
 		    name,
@@ -202,7 +205,8 @@
 			[NSNumber numberWithInt:count_updown],
 		    [NSNumber numberWithInt:display_total],
 			[NSNumber numberWithInt:screen],
-			[NSNumber numberWithInt:position]
+			[NSNumber numberWithInt:position],
+			[NSNumber numberWithInt:graph_type]
 		   ];
 		CFRelease(guidstr);
 		if ([dbh hadError]) {
@@ -235,6 +239,7 @@
 									display_total = ?, \
 									screen = ?, \
 									position = ?, \
+									graph_type = ?, \
 									deleted = ?, \
 									modified_on = datetime('now', 'localtime'),\
 									modified_on_UTC = datetime('now')\
@@ -251,6 +256,7 @@
 		 [NSNumber numberWithInt:display_total],
 		 [NSNumber numberWithInt:screen],
 		 [NSNumber numberWithInt:position],
+		 [NSNumber numberWithInt:graph_type],
 		 [NSNumber numberWithBool:deleted],
 		 [NSNumber numberWithInt:key]
 		];
@@ -285,9 +291,9 @@
 		// INSERT
 		[dbh executeUpdate:@"INSERT into activities (guid, name, default_note, default_tags, initial_value, init_sig,\
 		 default_step, step_sig, color, count_updown, display_total, \
-		 screen, position, deleted, created_on, created_on_UTC, \
+		 screen, position, graph_type, deleted, created_on, created_on_UTC, \
 		 modified_on, modified_on_UTC) VALUES \
-		 (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0, \
+		 (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, \
 		 ?, ?, ?, ?)",
 		 guid,
 		 name,
@@ -302,6 +308,8 @@
 		 [NSNumber numberWithInt:display_total],
 		 [NSNumber numberWithInt:screen],
 		 [NSNumber numberWithInt:position],
+		 [NSNumber numberWithInt:graph_type],
+		 [NSNumber numberWithInt:deleted],
 		 created_on,
 		 created_on_UTC,
 		 modified_on,
@@ -338,6 +346,7 @@
 		 display_total = ?, \
 		 screen = ?, \
 		 position = ?, \
+		 graph_type = ?, \
 		 deleted = ?, \
 		 created_on = ?,\
 		 created_on_UTC = ?,\
@@ -356,6 +365,7 @@
 		 [NSNumber numberWithInt:display_total],
 		 [NSNumber numberWithInt:screen],
 		 [NSNumber numberWithInt:position],
+		 [NSNumber numberWithInt:graph_type],
 		 [NSNumber numberWithBool:deleted],
 		 created_on,
 		 created_on_UTC,
@@ -396,6 +406,26 @@
 		[c release];
 	}
 	[rs close];
+}
+
+- (NSMutableArray *)getDayCounts {
+	NSMutableArray *counts = [[[NSMutableArray alloc] init] autorelease];
+	
+	FMDatabase *dbh = UIAppDelegate.database;
+	FMResultSet *rs = [dbh executeQuery:@"SELECT SUM(amount) AS amount, MAX(amount_sig) AS amount_sig, DATETIME(DATE(created_on)) AS created_on FROM counts WHERE activity_id = ? AND deleted = 0 GROUP BY DATE(created_on);",
+					   [NSNumber numberWithInt:key]];
+					   
+	while ([rs next]) {
+		TZCount *c = [[TZCount alloc] initWithKey:0 andActivity:self];
+		c.amount = [rs doubleForColumn:@"amount"];
+		c.amount_sig = [rs intForColumn:@"amount_sig"];
+		c.created_on = [rs stringForColumn:@"created_on"];
+		[counts addObject:c];
+		[c release];
+	}
+	[rs close];
+	
+	return counts;
 }
 
 - (void)simpleCount {

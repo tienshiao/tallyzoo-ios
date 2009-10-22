@@ -24,7 +24,6 @@
 
 @implementation GraphView
 
-
 - (id)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
         // Initialization code
@@ -49,6 +48,13 @@
 		r.origin.y = self.bounds.size.height - r.size.height - 2;
 		infoButton.frame = r;
 		[self addSubview:infoButton];
+		
+		[infoButton addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
+
+		graphOptionsView = [[GraphOptionsView alloc] initWithFrame:self.bounds];
+		graphOptionsView.delegate = self;
+		graphOptionsView.hidden = YES;
+		[self addSubview:graphOptionsView];
     }
     return self;
 }
@@ -60,19 +66,43 @@
 	ysig = activity.init_sig;
 	
 	// TODO adjust ymin/ymax based on visible x timespan
-//	NSEnumerator *e = [activity.counts objectEnumerator];
-//	TZCount *c;
-//	while (c = (TZCount *)[e nextObject]) {
-	for (TZCount *c in activity.counts) {
-		current += c.amount;
-		if (current < ymin) {
-			ymin = current;
-		} else if (current > ymax) {
-			ymax = current;
+	if (activity.graph_type == TZACTIVITY_SLIDING_SUMMED) {
+		for (TZCount *c in activity.counts) {
+			current += c.amount;
+			if (current < ymin) {
+				ymin = current;
+			} else if (current > ymax) {
+				ymax = current;
+			}
+			if (c.amount_sig > ysig) {
+				ysig = c.amount_sig;
+			}
 		}
-		if (c.amount_sig > ysig) {
-			ysig = c.amount_sig;
-		}
+	} else if (activity.graph_type == TZACTIVITY_SLIDING_SUMMED_DAILY) {
+		NSMutableArray *counts = [activity getDayCounts];
+		for (TZCount *c in counts) {
+			current = c.amount;
+			if (current < ymin) {
+				ymin = current;
+			} else if (current > ymax) {
+				ymax = current;
+			}
+			if (c.amount_sig > ysig) {
+				ysig = c.amount_sig;
+			}
+		}		
+	} else if (activity.graph_type == TZACTIVITY_SLIDING_NOTSUMMED) {
+		for (TZCount *c in activity.counts) {
+			current = c.amount;
+			if (current < ymin) {
+				ymin = current;
+			} else if (current > ymax) {
+				ymax = current;
+			}
+			if (c.amount_sig > ysig) {
+				ysig = c.amount_sig;
+			}
+		}		
 	}
 	
 	// all data
@@ -302,50 +332,131 @@
 		double x_pos;
 		double y_pos;
 		
-//		for (int i = 0; i < [activity.counts count]; i++) {
-//			TZCount *c = [activity.counts objectAtIndex:i];
-		int i = 0;
-		for (TZCount *c in activity.counts) {
-			NSDate *cdate = [dateFormatter dateFromString:c.created_on];
-			current += c.amount;
-			c_secs = [cdate timeIntervalSinceReferenceDate];
-			x_pos = (c_secs - x_start_sec) / (xwidth_secs) * xwidth;
-			y_pos = (current - activity.initial_value) / (ymax - ymin) * (s.height - 23 - top_padding);
-			if (i == 0) {
-				CGContextMoveToPoint(context, x_pos, s.height - 23 - y_pos);
-			} else {
-				CGContextAddLineToPoint(context, x_pos, s.height - 23 - y_pos);
+		if (activity.graph_type == TZACTIVITY_SLIDING_SUMMED) {
+			int i = 0;
+			for (TZCount *c in activity.counts) {
+				NSDate *cdate = [dateFormatter dateFromString:c.created_on];
+				current += c.amount;
+				c_secs = [cdate timeIntervalSinceReferenceDate];
+				x_pos = (c_secs - x_start_sec) / (xwidth_secs) * xwidth;
+				y_pos = (current - activity.initial_value) / (ymax - ymin) * (s.height - 23 - top_padding);
+				if (i == 0) {
+					CGContextMoveToPoint(context, x_pos, s.height - 23 - y_pos);
+				} else {
+					CGContextAddLineToPoint(context, x_pos, s.height - 23 - y_pos);
+				}
+				i++;
 			}
-			i++;
-		}
-		CGContextSetRGBStrokeColor(context, 1, 1, 1, 1);
-		CGContextSetLineWidth(context, 2);
-		CGContextStrokePath(context);
-		
-		// fill graph
-		current = activity.initial_value;
-		double first_x_pos;
-//		for (int i = 0; i < [activity.counts count]; i++) {
-//			TZCount *c = [activity.counts objectAtIndex:i];
-		i = 0;
-		for (TZCount *c in activity.counts) {			
-			NSDate *cdate = [dateFormatter dateFromString:c.created_on];
-			current += c.amount;
-			c_secs = [cdate timeIntervalSinceReferenceDate];
-			x_pos = (c_secs - x_start_sec) / (xwidth_secs) * xwidth;
-			y_pos = (current - activity.initial_value) / (ymax - ymin) * (s.height - 23 - top_padding);
-			if (i == 0) {
-				CGContextMoveToPoint(context, x_pos, s.height - 23 - y_pos);
-				first_x_pos = x_pos;
-			} else {
-				CGContextAddLineToPoint(context, x_pos, s.height - 23 - y_pos);
+			CGContextSetRGBStrokeColor(context, 1, 1, 1, 1);
+			CGContextSetLineWidth(context, 2);
+			CGContextStrokePath(context);
+			
+			// fill graph
+			current = activity.initial_value;
+			double first_x_pos;
+			i = 0;
+			for (TZCount *c in activity.counts) {			
+				NSDate *cdate = [dateFormatter dateFromString:c.created_on];
+				current += c.amount;
+				c_secs = [cdate timeIntervalSinceReferenceDate];
+				x_pos = (c_secs - x_start_sec) / (xwidth_secs) * xwidth;
+				y_pos = (current - activity.initial_value) / (ymax - ymin) * (s.height - 23 - top_padding);
+				if (i == 0) {
+					CGContextMoveToPoint(context, x_pos, s.height - 23 - y_pos);
+					first_x_pos = x_pos;
+				} else {
+					CGContextAddLineToPoint(context, x_pos, s.height - 23 - y_pos);
+				}
+				i++;
 			}
-			i++;
+			CGContextAddLineToPoint(context, x_pos, s.height - 23);
+			CGContextAddLineToPoint(context, first_x_pos, s.height - 23);
+			CGContextSetRGBFillColor(context, 1, 1, 1, 0.15);
+			CGContextFillPath(context);
+		} else if (activity.graph_type == TZACTIVITY_SLIDING_SUMMED_DAILY) {
+			NSMutableArray *counts = [activity getDayCounts];
+			int i = 0;
+			for (TZCount *c in counts) {
+				NSDate *cdate = [dateFormatter dateFromString:c.created_on];
+				current = c.amount;
+				c_secs = [cdate timeIntervalSinceReferenceDate];
+				x_pos = (c_secs - x_start_sec) / (xwidth_secs) * xwidth;
+				y_pos = (current - activity.initial_value) / (ymax - ymin) * (s.height - 23 - top_padding);
+				if (i == 0) {
+					CGContextMoveToPoint(context, x_pos, s.height - 23 - y_pos);
+				} else {
+					CGContextAddLineToPoint(context, x_pos, s.height - 23 - y_pos);
+				}
+				i++;
+			}
+			CGContextSetRGBStrokeColor(context, 1, 1, 1, 1);
+			CGContextSetLineWidth(context, 2);
+			CGContextStrokePath(context);
+			
+			// fill graph
+			current = activity.initial_value;
+			double first_x_pos;
+			i = 0;
+			for (TZCount *c in counts) {			
+				NSDate *cdate = [dateFormatter dateFromString:c.created_on];
+				current = c.amount;
+				c_secs = [cdate timeIntervalSinceReferenceDate];
+				x_pos = (c_secs - x_start_sec) / (xwidth_secs) * xwidth;
+				y_pos = (current - activity.initial_value) / (ymax - ymin) * (s.height - 23 - top_padding);
+				if (i == 0) {
+					CGContextMoveToPoint(context, x_pos, s.height - 23 - y_pos);
+					first_x_pos = x_pos;
+				} else {
+					CGContextAddLineToPoint(context, x_pos, s.height - 23 - y_pos);
+				}
+				i++;
+			}
+			CGContextAddLineToPoint(context, x_pos, s.height - 23);
+			CGContextAddLineToPoint(context, first_x_pos, s.height - 23);
+			CGContextSetRGBFillColor(context, 1, 1, 1, 0.15);
+			CGContextFillPath(context);						
+		} else if (activity.graph_type == TZACTIVITY_SLIDING_NOTSUMMED) {
+			int i = 0;
+			for (TZCount *c in activity.counts) {
+				NSDate *cdate = [dateFormatter dateFromString:c.created_on];
+				current = c.amount;
+				c_secs = [cdate timeIntervalSinceReferenceDate];
+				x_pos = (c_secs - x_start_sec) / (xwidth_secs) * xwidth;
+				y_pos = (current - activity.initial_value) / (ymax - ymin) * (s.height - 23 - top_padding);
+				if (i == 0) {
+					CGContextMoveToPoint(context, x_pos, s.height - 23 - y_pos);
+				} else {
+					CGContextAddLineToPoint(context, x_pos, s.height - 23 - y_pos);
+				}
+				i++;
+			}
+			CGContextSetRGBStrokeColor(context, 1, 1, 1, 1);
+			CGContextSetLineWidth(context, 2);
+			CGContextStrokePath(context);
+			
+			// fill graph
+			current = activity.initial_value;
+			double first_x_pos;
+			i = 0;
+			for (TZCount *c in activity.counts) {			
+				NSDate *cdate = [dateFormatter dateFromString:c.created_on];
+				current = c.amount;
+				c_secs = [cdate timeIntervalSinceReferenceDate];
+				x_pos = (c_secs - x_start_sec) / (xwidth_secs) * xwidth;
+				y_pos = (current - activity.initial_value) / (ymax - ymin) * (s.height - 23 - top_padding);
+				if (i == 0) {
+					CGContextMoveToPoint(context, x_pos, s.height - 23 - y_pos);
+					first_x_pos = x_pos;
+				} else {
+					CGContextAddLineToPoint(context, x_pos, s.height - 23 - y_pos);
+				}
+				i++;
+			}
+			CGContextAddLineToPoint(context, x_pos, s.height - 23);
+			CGContextAddLineToPoint(context, first_x_pos, s.height - 23);
+			CGContextSetRGBFillColor(context, 1, 1, 1, 0.15);
+			CGContextFillPath(context);			
 		}
-		CGContextAddLineToPoint(context, x_pos, s.height - 23);
-		CGContextAddLineToPoint(context, first_x_pos, s.height - 23);
-		CGContextSetRGBFillColor(context, 1, 1, 1, 0.15);
-		CGContextFillPath(context);
 	}
 }
 
@@ -369,6 +480,37 @@
 	}
 }
 
+- (void)buttonPressed:(id)sender {
+	
+	// disable user interaction during the flip
+	self.userInteractionEnabled = NO;
+	
+	// setup the animation group
+	[UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:0.75];
+    [UIView setAnimationDelegate:self];
+    [UIView setAnimationDidStopSelector:@selector(transitionDidStop:finished:context:)];
+	
+	// swap the views and transition
+    if (graphOptionsView.hidden) {
+        [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:self cache:YES];
+		graphOptionsView.hidden = NO;
+    } else {
+        [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:self cache:YES];
+		graphOptionsView.hidden = YES;
+    }
+	[UIView commitAnimations];
+}
+
+- (void)transitionDidStop:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context {
+	// re-enable user interaction when the flip is completed.
+	self.userInteractionEnabled = YES;
+	if (graphOptionsView.hidden == YES) {
+		[self findMinMax];
+		[self setNeedsDisplay];
+	}
+}
+
 - (TZActivity *)activity {
 	return activity;
 }
@@ -385,6 +527,8 @@
 	
 	[self findMinMax];	
 	[self setNeedsDisplay];
+	
+	graphOptionsView.activity = activity;
 }
 
 
@@ -407,6 +551,9 @@
 
 	[infoButton release];
 	infoButton = nil;
+	
+	[graphOptionsView release];
+	graphOptionsView = nil;
 	
     [super dealloc];
 }

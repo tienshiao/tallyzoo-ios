@@ -68,7 +68,7 @@
 	[lrView release];
 	
 	graphView = [[GraphView alloc] initWithFrame:CGRectMake(10, 227, 300, 180)];
-	[portraitView addSubview:graphView];	
+	[portraitView addSubview:graphView];
 	
 	[self setView:portraitView];
 
