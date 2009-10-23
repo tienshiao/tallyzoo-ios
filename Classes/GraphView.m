@@ -60,6 +60,7 @@
 }
 
 - (void)findMinMax {
+	NSMutableArray *counts = nil;
 	double current = activity.initial_value;
 	ymin = activity.initial_value;
 	ymax = activity.initial_value;
@@ -79,7 +80,7 @@
 			}
 		}
 	} else if (activity.graph_type == TZACTIVITY_SLIDING_SUMMED_DAILY) {
-		NSMutableArray *counts = [activity getDayCounts];
+		counts = [activity getDayCounts];
 		for (TZCount *c in counts) {
 			current = c.amount;
 			if (current < ymin) {
@@ -107,9 +108,16 @@
 	
 	// all data
 	if (timespan == TIMESPAN_ALL) {
-		if ([activity.counts count]) {
-			xmin = [[dateFormatter dateFromString:[[activity.counts objectAtIndex:0] created_on]] retain];
-			xmax = [[dateFormatter dateFromString:[[activity.counts objectAtIndex:[activity.counts count] - 1] created_on]] retain];
+		if (activity.graph_type == TZACTIVITY_SLIDING_SUMMED_DAILY) {
+			if ([counts count]) {
+				xmin = [[dateFormatter dateFromString:[[counts objectAtIndex:0] created_on]] retain];
+				xmax = [[dateFormatter dateFromString:[[counts objectAtIndex:[counts count] - 1] created_on]] retain];
+			}
+		} else {
+			if ([activity.counts count]) {
+				xmin = [[dateFormatter dateFromString:[[activity.counts objectAtIndex:0] created_on]] retain];
+				xmax = [[dateFormatter dateFromString:[[activity.counts objectAtIndex:[activity.counts count] - 1] created_on]] retain];
+			}
 		}
 				
 		x_start_sec = [xmin timeIntervalSinceReferenceDate];
@@ -347,7 +355,7 @@
 				}
 				i++;
 			}
-			CGContextSetRGBStrokeColor(context, 1, 1, 1, 1);
+			CGContextSetRGBStrokeColor(context, 1, 1, 1, .6);
 			CGContextSetLineWidth(context, 2);
 			CGContextStrokePath(context);
 			
@@ -373,6 +381,19 @@
 			CGContextAddLineToPoint(context, first_x_pos, s.height - 23);
 			CGContextSetRGBFillColor(context, 1, 1, 1, 0.15);
 			CGContextFillPath(context);
+			
+			// draw points
+			current = activity.initial_value;
+			CGContextSetRGBFillColor(context, 1, 1, 1, 1);
+			for (TZCount *c in activity.counts) {
+				NSDate *cdate = [dateFormatter dateFromString:c.created_on];
+				current += c.amount;
+				c_secs = [cdate timeIntervalSinceReferenceDate];
+				x_pos = (c_secs - x_start_sec) / (xwidth_secs) * xwidth;
+				y_pos = (current - activity.initial_value) / (ymax - ymin) * (s.height - 23 - top_padding);
+				CGContextAddEllipseInRect(context, CGRectMake(x_pos - 2, s.height - 23 - y_pos - 2, 4, 4));
+				CGContextFillPath(context);						
+			}						
 		} else if (activity.graph_type == TZACTIVITY_SLIDING_SUMMED_DAILY) {
 			NSMutableArray *counts = [activity getDayCounts];
 			int i = 0;
@@ -389,7 +410,7 @@
 				}
 				i++;
 			}
-			CGContextSetRGBStrokeColor(context, 1, 1, 1, 1);
+			CGContextSetRGBStrokeColor(context, 1, 1, 1, .6);
 			CGContextSetLineWidth(context, 2);
 			CGContextStrokePath(context);
 			
@@ -415,6 +436,19 @@
 			CGContextAddLineToPoint(context, first_x_pos, s.height - 23);
 			CGContextSetRGBFillColor(context, 1, 1, 1, 0.15);
 			CGContextFillPath(context);						
+
+			// draw points
+			current = activity.initial_value;
+			CGContextSetRGBFillColor(context, 1, 1, 1, 1);
+			for (TZCount *c in counts) {
+				NSDate *cdate = [dateFormatter dateFromString:c.created_on];
+				current = c.amount;
+				c_secs = [cdate timeIntervalSinceReferenceDate];
+				x_pos = (c_secs - x_start_sec) / (xwidth_secs) * xwidth;
+				y_pos = (current - activity.initial_value) / (ymax - ymin) * (s.height - 23 - top_padding);
+				CGContextAddEllipseInRect(context, CGRectMake(x_pos - 2, s.height - 23 - y_pos - 2, 4, 4));
+				CGContextFillPath(context);						
+			}				
 		} else if (activity.graph_type == TZACTIVITY_SLIDING_NOTSUMMED) {
 			int i = 0;
 			for (TZCount *c in activity.counts) {
@@ -430,7 +464,7 @@
 				}
 				i++;
 			}
-			CGContextSetRGBStrokeColor(context, 1, 1, 1, 1);
+			CGContextSetRGBStrokeColor(context, 1, 1, 1, .6);
 			CGContextSetLineWidth(context, 2);
 			CGContextStrokePath(context);
 			
@@ -455,7 +489,19 @@
 			CGContextAddLineToPoint(context, x_pos, s.height - 23);
 			CGContextAddLineToPoint(context, first_x_pos, s.height - 23);
 			CGContextSetRGBFillColor(context, 1, 1, 1, 0.15);
-			CGContextFillPath(context);			
+			CGContextFillPath(context);		
+			
+			// draw points
+			CGContextSetRGBFillColor(context, 1, 1, 1, 1);
+			for (TZCount *c in activity.counts) {
+				NSDate *cdate = [dateFormatter dateFromString:c.created_on];
+				current = c.amount;
+				c_secs = [cdate timeIntervalSinceReferenceDate];
+				x_pos = (c_secs - x_start_sec) / (xwidth_secs) * xwidth;
+				y_pos = (current - activity.initial_value) / (ymax - ymin) * (s.height - 23 - top_padding);
+				CGContextAddEllipseInRect(context, CGRectMake(x_pos - 2, s.height - 23 - y_pos - 2, 4, 4));
+				CGContextFillPath(context);						
+			}			
 		}
 	}
 }
