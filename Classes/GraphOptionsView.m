@@ -31,21 +31,21 @@
 		[label release];
 		
 		summedCheck = [[CheckboxView alloc] initWithFrame:CGRectMake(10, 30, 200, 20)];
-		summedCheck.label.text = @"Summed over time";
+		summedCheck.label.text = @"Adding up over time";
 		summedCheck.label.font = f;
 		summedCheck.label.textColor = [UIColor whiteColor];
 		summedCheck.delegate = self;
 		[self addSubview:summedCheck];
 
 		summedDailyCheck = [[CheckboxView alloc] initWithFrame:CGRectMake(10, 55, 200, 20)];
-		summedDailyCheck.label.text = @"Summed daily";
+		summedDailyCheck.label.text = @"Daily Totals over time";
 		summedDailyCheck.label.font = f;
 		summedDailyCheck.label.textColor = [UIColor whiteColor];
 		summedDailyCheck.delegate = self;
 		[self addSubview:summedDailyCheck];
 		
 		notSummedCheck = [[CheckboxView alloc] initWithFrame:CGRectMake(10, 80, 200, 20)];
-		notSummedCheck.label.text = @"Not summed";
+		notSummedCheck.label.text = @"Values over time";
 		notSummedCheck.label.font = f;
 		notSummedCheck.label.textColor = [UIColor whiteColor];
 		notSummedCheck.delegate = self;

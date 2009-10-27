@@ -206,6 +206,24 @@
 		NSString *name = activity.name;
 		CGContextSetRGBFillColor(context, 1, 1, 1, 1);
 		[name drawAtPoint:CGPointMake(10, 2) withFont:[UIFont boldSystemFontOfSize:FONT_SIZE]];
+		
+		NSString *type = nil;
+		if (activity.graph_type == TZACTIVITY_SLIDING_SUMMED ||
+			activity.graph_type == TZACTIVITY_CALENDAR_SUMMED) {
+			type = @"Adding up over time";
+		} else if (activity.graph_type == TZACTIVITY_SLIDING_SUMMED_DAILY ||
+				   activity.graph_type == TZACTIVITY_CALENDAR_SUMMED_DAILY) {
+			type = @"Daily Totals over time";
+		} else if (activity.graph_type == TZACTIVITY_SLIDING_NOTSUMMED ||
+				   activity.graph_type == TZACTIVITY_CALENDAR_NOTSUMMED) {
+			type = @"Values over time";
+		}
+		
+		if (type) {
+			CGSize ts = [type sizeWithFont:[UIFont boldSystemFontOfSize:FONT_SIZE]];
+			CGContextSetRGBFillColor(context, 1, 1, 1, .6);
+			[type drawAtPoint:CGPointMake(s.width - 10 - ts.width, 2) withFont:[UIFont boldSystemFontOfSize:FONT_SIZE]];
+		}
 	}
 
 	// draw timespans
