@@ -350,9 +350,9 @@
 	FMResultSet *rs;
 	// get activities to sync
 	if (lastSync) {
-		rs = [dbh executeQuery:@"SELECT id FROM activities WHERE deleted = 0 AND modified_on_UTC > ?", lastSync];
+		rs = [dbh executeQuery:@"SELECT id FROM activities WHERE modified_on_UTC > ?", lastSync];
 	} else {
-		rs = [dbh executeQuery:@"SELECT id FROM activities WHERE deleted = 0"];
+		rs = [dbh executeQuery:@"SELECT id FROM activities"];
 	}
 	while ([rs next]) {
 		TZActivity *a = [[TZActivity alloc] initWithKey:[rs intForColumn:@"id"]];
@@ -363,9 +363,9 @@
 	
 	// get counts to sync
 	if (lastSync) {
-		rs = [dbh executeQuery:@"SELECT id FROM counts WHERE deleted = 0 AND modified_on_UTC > ?", lastSync];
+		rs = [dbh executeQuery:@"SELECT id FROM counts WHERE modified_on_UTC > ?", lastSync];
 	} else {
-		rs = [dbh executeQuery:@"SELECT id FROM counts WHERE deleted = 0"];		
+		rs = [dbh executeQuery:@"SELECT id FROM counts"];		
 	}
 	while ([rs next]) {
 		TZCount *c = [[TZCount alloc] initWithKey:[rs intForColumn:@"id"] andActivity:nil];
