@@ -6,6 +6,7 @@
 //  Copyright 2009 __MyCompanyName__. All rights reserved.
 //
 
+#import <float.h>
 #import "GraphView.h"
 #import "TZCount.h"
 #import "UIColor-Expanded.h"
@@ -62,17 +63,18 @@
 - (void)findMinMax {
 	NSMutableArray *counts = nil;
 	double current = activity.initial_value;
-	ymin = activity.initial_value;
-	ymax = activity.initial_value;
 	ysig = activity.init_sig;
 	
 	// TODO adjust ymin/ymax based on visible x timespan
 	if (activity.graph_type == TZACTIVITY_SLIDING_SUMMED) {
+		ymin = current;
+		ymax = current;
 		for (TZCount *c in activity.counts) {
 			current += c.amount;
 			if (current < ymin) {
 				ymin = current;
-			} else if (current > ymax) {
+			}
+			if (current > ymax) {
 				ymax = current;
 			}
 			if (c.amount_sig > ysig) {
@@ -80,12 +82,15 @@
 			}
 		}
 	} else if (activity.graph_type == TZACTIVITY_SLIDING_SUMMED_DAILY) {
+		ymin = DBL_MAX;
+		ymax = -DBL_MAX;
 		counts = [activity getDayCounts];
 		for (TZCount *c in counts) {
 			current = c.amount;
 			if (current < ymin) {
 				ymin = current;
-			} else if (current > ymax) {
+			} 
+			if (current > ymax) {
 				ymax = current;
 			}
 			if (c.amount_sig > ysig) {
@@ -93,11 +98,14 @@
 			}
 		}		
 	} else if (activity.graph_type == TZACTIVITY_SLIDING_NOTSUMMED) {
+		ymin = DBL_MAX;
+		ymax = -DBL_MAX;
 		for (TZCount *c in activity.counts) {
 			current = c.amount;
 			if (current < ymin) {
 				ymin = current;
-			} else if (current > ymax) {
+			}
+			if (current > ymax) {
 				ymax = current;
 			}
 			if (c.amount_sig > ysig) {
