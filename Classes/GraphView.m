@@ -420,7 +420,7 @@
 				current = c.amount;
 				c_secs = [cdate timeIntervalSinceReferenceDate];
 				x_pos = (c_secs - x_start_sec) / (xwidth_secs) * xwidth;
-				y_pos = (current - activity.initial_value) / (ymax - ymin) * (s.height - 23 - top_padding);
+				y_pos = current / (ymax - ymin) * (s.height - 23 - top_padding);
 				if (i == 0) {
 					CGContextMoveToPoint(context, x_pos, s.height - 23 - y_pos);
 				} else {
@@ -441,7 +441,7 @@
 				current = c.amount;
 				c_secs = [cdate timeIntervalSinceReferenceDate];
 				x_pos = (c_secs - x_start_sec) / (xwidth_secs) * xwidth;
-				y_pos = (current - activity.initial_value) / (ymax - ymin) * (s.height - 23 - top_padding);
+				y_pos = current / (ymax - ymin) * (s.height - 23 - top_padding);
 				if (i == 0) {
 					CGContextMoveToPoint(context, x_pos, s.height - 23 - y_pos);
 					first_x_pos = x_pos;
@@ -463,7 +463,7 @@
 				current = c.amount;
 				c_secs = [cdate timeIntervalSinceReferenceDate];
 				x_pos = (c_secs - x_start_sec) / (xwidth_secs) * xwidth;
-				y_pos = (current - activity.initial_value) / (ymax - ymin) * (s.height - 23 - top_padding);
+				y_pos = current / (ymax - ymin) * (s.height - 23 - top_padding);
 				CGContextAddEllipseInRect(context, CGRectMake(x_pos - 2, s.height - 23 - y_pos - 2, 4, 4));
 				CGContextFillPath(context);						
 			}				
@@ -474,7 +474,7 @@
 				current = c.amount;
 				c_secs = [cdate timeIntervalSinceReferenceDate];
 				x_pos = (c_secs - x_start_sec) / (xwidth_secs) * xwidth;
-				y_pos = (current - activity.initial_value) / (ymax - ymin) * (s.height - 23 - top_padding);
+				y_pos = current / (ymax - ymin) * (s.height - 23 - top_padding);
 				if (i == 0) {
 					CGContextMoveToPoint(context, x_pos, s.height - 23 - y_pos);
 				} else {
@@ -495,7 +495,7 @@
 				current = c.amount;
 				c_secs = [cdate timeIntervalSinceReferenceDate];
 				x_pos = (c_secs - x_start_sec) / (xwidth_secs) * xwidth;
-				y_pos = (current - activity.initial_value) / (ymax - ymin) * (s.height - 23 - top_padding);
+				y_pos = current / (ymax - ymin) * (s.height - 23 - top_padding);
 				if (i == 0) {
 					CGContextMoveToPoint(context, x_pos, s.height - 23 - y_pos);
 					first_x_pos = x_pos;
@@ -516,7 +516,7 @@
 				current = c.amount;
 				c_secs = [cdate timeIntervalSinceReferenceDate];
 				x_pos = (c_secs - x_start_sec) / (xwidth_secs) * xwidth;
-				y_pos = (current - activity.initial_value) / (ymax - ymin) * (s.height - 23 - top_padding);
+				y_pos = current / (ymax - ymin) * (s.height - 23 - top_padding);
 				CGContextAddEllipseInRect(context, CGRectMake(x_pos - 2, s.height - 23 - y_pos - 2, 4, 4));
 				CGContextFillPath(context);						
 			}			
