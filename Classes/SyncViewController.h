@@ -17,6 +17,7 @@
 	UIProgressView *progressView;
 	
 	UIButton *syncButton;
+	UIButton *signupButton;
 	
 	UILabel *lastLabel;
 	NSString *lastSync;

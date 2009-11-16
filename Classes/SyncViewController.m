@@ -105,6 +105,16 @@
 	[syncButton addTarget:self action:@selector(sync:) forControlEvents:UIControlEventTouchUpInside];
 
 	[containerView addSubview:syncButton];
+
+	signupButton = [[UIButton buttonWithType:UIButtonTypeRoundedRect] retain];
+	signupButton.titleLabel.font = [UIFont boldSystemFontOfSize:[UIFont buttonFontSize]];
+	[signupButton setTitleShadowColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.5] forState:UIControlStateNormal];
+	signupButton.titleLabel.shadowOffset = CGSizeMake(0, -1);
+	[signupButton setTitle:@"Sign Up for an Account" forState:UIControlStateNormal];	
+	signupButton.frame = CGRectMake(10, 190, 300, 40);
+	[signupButton addTarget:self action:@selector(signup:) forControlEvents:UIControlEventTouchUpInside];
+	[containerView addSubview:signupButton];
+	
 	
 	self.view = containerView;
 	
@@ -149,6 +159,10 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 */
+
+- (void)signup:(id)sender {
+	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.tallyzoo.com/register"]];
+}
 
 - (void)sync:(id)sender {
 	// TODO set up UI
@@ -214,6 +228,7 @@
 	
 	connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
 	if (connection) {
+		progressView.progress = 0.02;
 		return YES;
 	} else {
 		return NO;
@@ -409,6 +424,8 @@
 	}
 	receivedData = [[NSMutableData alloc] init];
 	[receivedData setLength:0];
+	progressView.progress = progressView.progress + 0.05;
+
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
@@ -572,6 +589,7 @@
 	[passwordField release];
 	[progressView release];
 	[syncButton release];
+	[signupButton release];
 	
 	[lastLabel release];
 	[lastSync release];
