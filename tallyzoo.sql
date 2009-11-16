@@ -33,6 +33,7 @@ create table counts (
     latitude REAL,
     longitude REAL,
     deleted INTEGER,
+    local INTEGER,
     created_on TEXT, -- datetime stored in localtime
     created_on_UTC TEXT,
     modified_on TEXT, -- datetime stored in localtime

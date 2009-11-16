@@ -364,7 +364,7 @@
 
 -(void)shakeHappened:(ShakeView*)view {
 	FMDatabase *dbh = UIAppDelegate.database;
-	FMResultSet *rs = [dbh executeQuery:@"SELECT id FROM counts WHERE deleted = 0 ORDER BY created_on DESC LIMIT 1"];
+	FMResultSet *rs = [dbh executeQuery:@"SELECT id FROM counts WHERE deleted = 0 AND local = 1 ORDER BY created_on DESC LIMIT 1"];
 
 	if ([rs next]) {
 	
