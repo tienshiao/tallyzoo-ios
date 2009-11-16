@@ -29,6 +29,8 @@
 		textLabel.text = text;
 		textLabel.lineBreakMode = UILineBreakModeWordWrap;
 		textLabel.numberOfLines = 0;
+		
+		self.tableView.allowsSelection = NO;
 	}
 	return self;
 }
@@ -118,6 +120,7 @@
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
 		[cell.contentView addSubview:textLabel];
+		cell.selectionStyle == UITableViewCellSelectionStyleNone;
     }
     
     // Set up the cell...

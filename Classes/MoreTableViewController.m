@@ -82,13 +82,17 @@
 #pragma mark Table view methods
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return 2;
 }
 
 
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 4;
+	if (section == 0) {
+		return 3;
+	} else {
+		return 1;
+	}
 }
 
 - (void)configureTopCell:(UITableViewCell *)cell {
@@ -124,7 +128,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tv heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-	if (indexPath.row == 0) {
+	if (indexPath.section == 0 && indexPath.row == 0) {
 		return 54;
 	} else {
 		return 40;
@@ -139,7 +143,7 @@
     
 	NSString *cellIdentifier;
 	
-	if (indexPath.row == 0) {
+	if (indexPath.section == 0 && indexPath.row == 0) {
 		cellIdentifier = TopCellIdentifier;
 	} else {
 		cellIdentifier = RegCellIdentifier;
@@ -151,17 +155,19 @@
     }
 
     // Set up the cell...
-	if (indexPath.row == 0) {
-		[self configureTopCell:cell];
-	} else if (indexPath.row == 1) {
-		cell.textLabel.text = @"Tips";
-		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-		cell.selectionStyle = UITableViewCellSelectionStyleBlue;
-	} else if (indexPath.row == 2) {
-		cell.textLabel.text = @"FAQs";
-		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-		cell.selectionStyle = UITableViewCellSelectionStyleBlue;
-	} else if (indexPath.row == 3) {
+	if (indexPath.section == 0) {
+		if (indexPath.row == 0) {
+			[self configureTopCell:cell];
+		} else if (indexPath.row == 1) {
+			cell.textLabel.text = @"Tips";
+			cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+			cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+		} else if (indexPath.row == 2) {
+			cell.textLabel.text = @"FAQs";
+			cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+			cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+		}
+	} else {
 		cell.textLabel.text = @"Shout Outs";
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 		cell.selectionStyle = UITableViewCellSelectionStyleBlue;
@@ -177,17 +183,19 @@
 	// [self.navigationController pushViewController:anotherViewController];
 	// [anotherViewController release];
 	
-	if (indexPath.row == 1) {
-		HelpWebViewController *hwvc = [[HelpWebViewController alloc] initWithURL:[NSURL URLWithString:@"http://www.tallyzoo.com/iphonetips.php"]];
-		hwvc.title = @"Tips";
-		[[self navigationController] pushViewController:hwvc animated:YES];
-		[hwvc release];
-	} else if (indexPath.row == 2) {
-		HelpWebViewController *hwvc = [[HelpWebViewController alloc] initWithURL:[NSURL URLWithString:@"http://www.tallyzoo.com/iphonefaqs.php"]];
-		hwvc.title = @"FAQs";
-		[[self navigationController] pushViewController:hwvc animated:YES];
-		[hwvc release];
-	} else if (indexPath.row == 3) {
+	if (indexPath.section == 0) {
+		if (indexPath.row == 1) {
+			HelpWebViewController *hwvc = [[HelpWebViewController alloc] initWithURL:[NSURL URLWithString:@"http://www.tallyzoo.com/iphonetips.php"]];
+			hwvc.title = @"Tips";
+			[[self navigationController] pushViewController:hwvc animated:YES];
+			[hwvc release];
+		} else if (indexPath.row == 2) {
+			HelpWebViewController *hwvc = [[HelpWebViewController alloc] initWithURL:[NSURL URLWithString:@"http://www.tallyzoo.com/iphonefaqs.php"]];
+			hwvc.title = @"FAQs";
+			[[self navigationController] pushViewController:hwvc animated:YES];
+			[hwvc release];
+		}
+	} else if (indexPath.row == 0) {
 		ShoutOutViewController *sovc = [[ShoutOutViewController alloc] init];
 		[[self navigationController] pushViewController:sovc animated:YES];
 		[sovc release];		
