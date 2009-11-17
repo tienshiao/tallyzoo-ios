@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "TZActivity.h"
+#import "TextFieldAlert.h"
 
-@interface SyncViewController : UIViewController<UITextFieldDelegate> {
+@interface SyncViewController : UIViewController<UITextFieldDelegate, TextFieldAlertDelegate> {
 	NSString *original_username;
 	UITextField *usernameField;
 	UITextField *passwordField;
@@ -18,6 +19,8 @@
 	
 	UIButton *syncButton;
 	UIButton *signupButton;
+	UIButton *clearButton;
+	TextFieldAlert *tfAlert;
 	
 	UILabel *lastLabel;
 	NSString *lastSync;

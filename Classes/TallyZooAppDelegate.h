@@ -30,5 +30,7 @@
 @property (nonatomic, retain) CLLocation *location;
 @property (nonatomic, assign) id locationDelegate;
 
+- (void)initializeDatabase;
+
 @end
 
