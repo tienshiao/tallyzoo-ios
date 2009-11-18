@@ -14,7 +14,7 @@
 
 - (id)init {
 	if (self = [super init]) {
-		NSString *blank = @"          ";
+		NSString *blank = @"Only data on this iPhone will be cleared. The data synced to the website will not be affected.\n          ";
 		alertView = [[UIAlertView alloc] initWithTitle:@"Clear Data?" 
 											   message:blank
 											  delegate:self 
@@ -57,6 +57,7 @@
 	[alertView setTransform:myTransform];
 	[alertView show];
 	CGRect frame = messageLabel.frame;
+	frame.origin.y = frame.origin.y + frame.size.height - 19;
 	frame.size.height = 30.0;
 	textField.frame = frame;	
 	[textField becomeFirstResponder];
