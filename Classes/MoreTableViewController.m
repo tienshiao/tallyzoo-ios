@@ -6,6 +6,7 @@
 //  Copyright 2009 __MyCompanyName__. All rights reserved.
 //
 
+#import "TallyZooAppDelegate.h"
 #import "MoreTableViewController.h"
 #import "HelpWebViewController.h"
 #import "ShoutOutViewController.h"
@@ -15,6 +16,26 @@
 - (id)init {
 	if (self = [super initWithStyle:UITableViewStyleGrouped]) {
 		self.title = @"More";
+		
+		clearButton = [[UIButton buttonWithType:UIButtonTypeCustom] retain];
+		clearButton.titleLabel.font = [UIFont boldSystemFontOfSize:[UIFont buttonFontSize]];
+		[clearButton setTitleShadowColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.5] forState:UIControlStateNormal];
+		clearButton.titleLabel.shadowOffset = CGSizeMake(0, -1);
+		[clearButton setTitle:@"Clear Data on iPhone" forState:UIControlStateNormal];
+		
+		UIImage *image = [UIImage imageNamed:@"red_up.png"];
+		UIImage *newImage = [image stretchableImageWithLeftCapWidth:12.0 topCapHeight:0.0];
+		[clearButton setBackgroundImage:newImage forState:UIControlStateNormal];
+		
+		UIImage *imagePressed = [UIImage imageNamed:@"red_down.png"];
+		UIImage *newPressedImage = [imagePressed stretchableImageWithLeftCapWidth:12.0 topCapHeight:0.0];
+		[clearButton setBackgroundImage:newPressedImage forState:UIControlStateHighlighted];
+		
+		clearButton.frame = CGRectMake(10, 20, 300, 40);
+		[clearButton addTarget:self action:@selector(clear:) forControlEvents:UIControlEventTouchUpInside];
+		
+		self.tableView.tableFooterView = clearButton;			
+		
 	}
 	return self;	
 }
@@ -243,7 +264,42 @@
 */
 
 
+- (void)clear:(id)sender {
+	tfAlert = [[TextFieldAlert alloc] init];
+	tfAlert.delegate = self;
+	[tfAlert show];
+}
+
+
+- (void)alertReturnedString:(NSString *)string {
+	if ([[string uppercaseString] isEqualToString:@"CLEAR"]) {
+		[[UIAppDelegate database] close];
+		NSFileManager *fileManager = [NSFileManager defaultManager];
+		NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+		NSString *documentsDirectory = [paths objectAtIndex:0];
+		NSString *writableDBPath = [documentsDirectory stringByAppendingPathComponent:@"tallyzoo.db"];
+		[fileManager removeItemAtPath:writableDBPath error:nil];
+		[UIAppDelegate initializeDatabase];
+		
+		NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+		[defaults removeObjectForKey:@"lastSync"];
+		
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Data Cleared" message:nil
+													   delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+		[alert show];	
+		[alert autorelease];		
+	} else {
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Clear Cancelled" message:@"Unable to confirm clear."
+													   delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+		[alert show];	
+		[alert autorelease];
+	}
+}
+
 - (void)dealloc {
+	[clearButton release];
+	[tfAlert release];
+	
     [super dealloc];
 }
 

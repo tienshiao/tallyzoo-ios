@@ -24,10 +24,6 @@
 
 		apiURL = @"test.tallyzoo.com/api.php";
 		//apiURL = @"home.tienshiao.org/~tsm/tallyzoo/api.php";
-		
-		NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-		[lastSync release];
-		lastSync = [[defaults stringForKey:@"lastSync"] copy];		
 	}
 	return self;
 }
@@ -69,16 +65,6 @@
 	lastLabel.textColor = [UIColor whiteColor];
 	lastLabel.backgroundColor = [UIColor blackColor];
 	lastLabel.font = [UIFont systemFontOfSize:14];
-	if (lastSync) {
-		NSDateFormatter *df = [[NSDateFormatter alloc] init];
-		[df setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-		[df setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
-		NSDate *temp = [df dateFromString:lastSync];
-		lastLabel.text = [NSString stringWithFormat:@"Last Synced: %@", temp];
-		[df release];
-	} else {
-		lastLabel.text = @"Last Synced: never";
-	}
 	[containerView addSubview:lastLabel];
 	
 	progressView = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleDefault];
@@ -115,16 +101,6 @@
 	[signupButton addTarget:self action:@selector(signup:) forControlEvents:UIControlEventTouchUpInside];
 	[containerView addSubview:signupButton];
 	
-	clearButton = [[UIButton buttonWithType:UIButtonTypeRoundedRect] retain];
-	clearButton.titleLabel.font = [UIFont boldSystemFontOfSize:[UIFont buttonFontSize]];
-	[clearButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-	//[clearButton setTitleShadowColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.5] forState:UIControlStateNormal];
-	clearButton.titleLabel.shadowOffset = CGSizeMake(0, -1);
-	[clearButton setTitle:@"Clear Data on iPhone" forState:UIControlStateNormal];	
-	clearButton.frame = CGRectMake(10, 300, 300, 40);
-	[clearButton addTarget:self action:@selector(clear:) forControlEvents:UIControlEventTouchUpInside];
-	[containerView addSubview:clearButton];
-	
 	self.view = containerView;
 	
 	[containerView release];
@@ -145,6 +121,20 @@
 	
 	NSError *error;
 	passwordField.text = [SFHFKeychainUtils getPasswordForUsername:usernameField.text andServiceName:@"TallyZoo" error:&error];
+
+	[lastSync release];
+	lastSync = [[defaults stringForKey:@"lastSync"] copy];
+	
+	if (lastSync) {
+		NSDateFormatter *df = [[NSDateFormatter alloc] init];
+		[df setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+		[df setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+		NSDate *temp = [df dateFromString:lastSync];
+		lastLabel.text = [NSString stringWithFormat:@"Last Synced: %@", temp];
+		[df release];
+	} else {
+		lastLabel.text = @"Last Synced: never";
+	}	
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -168,32 +158,6 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 */
-
-- (void)clear:(id)sender {
-	tfAlert = [[TextFieldAlert alloc] init];
-	tfAlert.delegate = self;
-	[tfAlert show];
-}
-
-- (void)alertReturnedString:(NSString *)string {
-	if ([[string uppercaseString] isEqualToString:@"CLEAR"]) {
-		NSFileManager *fileManager = [NSFileManager defaultManager];
-		NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-		NSString *documentsDirectory = [paths objectAtIndex:0];
-		NSString *writableDBPath = [documentsDirectory stringByAppendingPathComponent:@"tallyzoo.db"];
-		[fileManager removeItemAtPath:writableDBPath error:nil];
-		[UIAppDelegate initializeDatabase];
-		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Data Cleared" message:nil
-													   delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-		[alert show];	
-		[alert autorelease];		
-	} else {
-		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Clear Cancelled" message:@"Unable to confirm clear."
-													   delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-		[alert show];	
-		[alert autorelease];
-	}
-}
 
 - (void)signup:(id)sender {
 	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.tallyzoo.com/register"]];
@@ -625,8 +589,6 @@
 	[progressView release];
 	[syncButton release];
 	[signupButton release];
-	[clearButton release];
-	[tfAlert release];
 	
 	[lastLabel release];
 	[lastSync release];

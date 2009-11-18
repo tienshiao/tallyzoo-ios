@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TextFieldAlert.h"
 
 
-@interface MoreTableViewController : UITableViewController {
-
+@interface MoreTableViewController : UITableViewController<TextFieldAlertDelegate> {
+	UIButton *clearButton;
+	TextFieldAlert *tfAlert;
 }
 
 @end
