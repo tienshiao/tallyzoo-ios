@@ -9,6 +9,7 @@
 #import "EditCountViewController.h"
 #import "EditTextFieldViewController.h"
 #import "EditTextViewViewController.h"
+#import "TallyZooAppDelegate.h"
 
 @implementation EditCountViewController
 @synthesize count;
@@ -46,6 +47,13 @@
 		dateFormatter = [[NSDateFormatter alloc] init];
 		[dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
 		self.created = [dateFormatter dateFromString:c.created_on];
+		
+		locationSheet = [[UIActionSheet alloc] initWithTitle:@"Retrieving Location ...\nPlease wait or make a selection."
+													delegate:self 
+										   cancelButtonTitle:@"Cancel" 
+									  destructiveButtonTitle:nil
+										   otherButtonTitles:@"Save Without Location", @"Indoors (Disable For Now)", @"Disable Use Of Location", nil];
+		locationSheet.actionSheetStyle = UIActionSheetStyleAutomatic;		
 	}
 	return self;
 }
@@ -89,8 +97,11 @@
 		[deleteButton addTarget:self action:@selector(deleteCount:) forControlEvents:UIControlEventTouchUpInside];
 		
 		tableView.tableFooterView = deleteButton;
+	} else {
+		locationBusyView = [[LocationBusyView alloc] initWithFrame:CGRectMake(110, 5, 100, 100)];
+		locationBusyView.hidden = YES;
+		[containerView addSubview:locationBusyView];
 	}
-	
 }
 
 
@@ -336,14 +347,42 @@
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-	// the user clicked one of the OK/Cancel buttons
-	if (buttonIndex == 0) {
-		count.deleted = YES;
-		[count save];
+	if (actionSheet == locationSheet) {
+		// the user clicked one of the OK/Cancel buttons
+		if (buttonIndex == 0) {
+		} else if (buttonIndex == 1) {
+			UIAppDelegate.use_gps = NO;
+		} else if (buttonIndex == 2) {
+			NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+			[defaults setObject:[NSNumber numberWithBool:NO] forKey:@"gps_preference"];
+			[defaults synchronize];
+			
+			UIAppDelegate.use_gps = NO;
+		} else {
+			locationBusyView.hidden = YES;
+			return;
+		}
+
+		locationBusyView.hidden = YES;
+				
+		if (![count save]) {
+		}
 		if (nonmodal) {
 			[self.navigationController popViewControllerAnimated:YES];
 		} else {
-			[self.navigationController dismissModalViewControllerAnimated:YES];		
+			[self.navigationController dismissModalViewControllerAnimated:YES];
+		}
+		
+	} else {
+		// the user clicked one of the OK/Cancel buttons
+		if (buttonIndex == 0) {
+			count.deleted = YES;
+			[count save];
+			if (nonmodal) {
+				[self.navigationController popViewControllerAnimated:YES];
+			} else {
+				[self.navigationController dismissModalViewControllerAnimated:YES];		
+			}
 		}
 	}
 }
@@ -356,11 +395,24 @@
 	}
 }
 
+- (void)waitForLocation {
+	locationBusyView.hidden = NO;
+	UIAppDelegate.locationDelegate = self;
+	[locationSheet showInView:self.view];
+}
+
 - (void)save:(id)sender {
 	count.created_on = [dateFormatter stringFromDate:created];
 	NSTimeZone *timeZone = [NSTimeZone timeZoneWithName:@"UTC"];
 	[dateFormatter setTimeZone:timeZone];
 	count.created_on_UTC = [dateFormatter stringFromDate:created];
+	
+	if (count.key == 0 &&
+		UIAppDelegate.location.horizontalAccuracy <= 0 &&
+		UIAppDelegate.use_gps) {
+		[self waitForLocation];
+		return;
+	}
 	
 	if (![count save]) {
 	}
@@ -382,6 +434,9 @@
 	[count release];
 	[created release];
 
+	[locationSheet release];
+	[locationBusyView release];
+	
 	[super dealloc];
 }
 

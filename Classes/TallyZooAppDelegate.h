@@ -23,12 +23,14 @@
 	CLLocationManager *locationManager;
 	CLLocation *location;
 	id locationDelegate;
+	BOOL use_gps;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) FMDatabase *database;
 @property (nonatomic, retain) CLLocation *location;
 @property (nonatomic, assign) id locationDelegate;
+@property (nonatomic, assign) BOOL use_gps;
 
 - (void)initializeDatabase;
 

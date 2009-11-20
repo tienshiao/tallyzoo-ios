@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "TZCount.h"
+#import "LocationBusyView.h"
 
 @interface EditCountViewController : UIViewController<UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate> {
 	TZCount *count;
@@ -21,6 +22,9 @@
 	BOOL datePickerShown;
 	
 	BOOL nonmodal;
+	
+	UIActionSheet *locationSheet;
+	LocationBusyView *locationBusyView;
 }
 
 @property (nonatomic, retain) TZCount *count;

@@ -13,6 +13,7 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
+		6111BA5B10AC3C0700772237 /* icon_latriclub.png in Resources */ = {isa = PBXBuildFile; fileRef = 6111BA5A10AC3C0700772237 /* icon_latriclub.png */; };
 		612E25A6108B8D9400BD421D /* GraphOptionsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 612E25A5108B8D9400BD421D /* GraphOptionsView.m */; };
 		612E2612108E370A00BD421D /* CheckboxView.m in Sources */ = {isa = PBXBuildFile; fileRef = 612E2611108E370A00BD421D /* CheckboxView.m */; };
 		61455E231073C9F700D1FFB4 /* HelpWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61455E221073C9F700D1FFB4 /* HelpWebViewController.m */; };
@@ -46,6 +47,8 @@
 		6180A20E10774DD100918261 /* AddTipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6180A20D10774DD100918261 /* AddTipView.m */; };
 		6180A26310775C9900918261 /* CountTipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6180A26210775C9900918261 /* CountTipView.m */; };
 		61B1D113106D4F0A00EA1FE7 /* Final_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 61B1D112106D4F0A00EA1FE7 /* Final_logo.png */; };
+		61BD205310B2429000C955AF /* TextFieldAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 61BD205210B2429000C955AF /* TextFieldAlert.m */; };
+		61BD20A010B3713F00C955AF /* icon_wcmc.png in Resources */ = {isa = PBXBuildFile; fileRef = 61BD209F10B3713F00C955AF /* icon_wcmc.png */; };
 		61D0F272103B56D1002B78C5 /* click_down.wav in Resources */ = {isa = PBXBuildFile; fileRef = 61D0F270103B56D1002B78C5 /* click_down.wav */; };
 		61D0F289103B5965002B78C5 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61D0F288103B5965002B78C5 /* AudioToolbox.framework */; };
 		61D0F35A103BE1B7002B78C5 /* red_down.png in Resources */ = {isa = PBXBuildFile; fileRef = 61D0F358103BE1B7002B78C5 /* red_down.png */; };
@@ -84,6 +87,7 @@
 		28AD733E0D9D9553002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* TallyZoo_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TallyZoo_Prefix.pch; sourceTree = "<group>"; };
+		6111BA5A10AC3C0700772237 /* icon_latriclub.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_latriclub.png; sourceTree = "<group>"; };
 		612E25A4108B8D9400BD421D /* GraphOptionsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphOptionsView.h; sourceTree = "<group>"; };
 		612E25A5108B8D9400BD421D /* GraphOptionsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphOptionsView.m; sourceTree = "<group>"; };
 		612E2610108E370A00BD421D /* CheckboxView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckboxView.h; sourceTree = "<group>"; };
@@ -146,6 +150,9 @@
 		6180A26110775C9900918261 /* CountTipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountTipView.h; sourceTree = "<group>"; };
 		6180A26210775C9900918261 /* CountTipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountTipView.m; sourceTree = "<group>"; };
 		61B1D112106D4F0A00EA1FE7 /* Final_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Final_logo.png; sourceTree = "<group>"; };
+		61BD205110B2429000C955AF /* TextFieldAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextFieldAlert.h; sourceTree = "<group>"; };
+		61BD205210B2429000C955AF /* TextFieldAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextFieldAlert.m; sourceTree = "<group>"; };
+		61BD209F10B3713F00C955AF /* icon_wcmc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_wcmc.png; sourceTree = "<group>"; };
 		61D0F270103B56D1002B78C5 /* click_down.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = click_down.wav; sourceTree = "<group>"; };
 		61D0F288103B5965002B78C5 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		61D0F358103BE1B7002B78C5 /* red_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red_down.png; sourceTree = "<group>"; };
@@ -263,6 +270,8 @@
 				615E4EF0104E6263007DF031 /* SyncViewController.m */,
 				1D3623240D0F684500981E51 /* TallyZooAppDelegate.h */,
 				1D3623250D0F684500981E51 /* TallyZooAppDelegate.m */,
+				61BD205110B2429000C955AF /* TextFieldAlert.h */,
+				61BD205210B2429000C955AF /* TextFieldAlert.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -299,6 +308,8 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				61BD209F10B3713F00C955AF /* icon_wcmc.png */,
+				6111BA5A10AC3C0700772237 /* icon_latriclub.png */,
 				61B1D112106D4F0A00EA1FE7 /* Final_logo.png */,
 				617AB2A1105E0D520036610C /* Default.png */,
 				615E4EF8104E639B007DF031 /* 02-redo.png */,
@@ -457,6 +468,8 @@
 				615E4EF9104E639B007DF031 /* 02-redo.png in Resources */,
 				617AB2A2105E0D520036610C /* Default.png in Resources */,
 				61B1D113106D4F0A00EA1FE7 /* Final_logo.png in Resources */,
+				6111BA5B10AC3C0700772237 /* icon_latriclub.png in Resources */,
+				61BD20A010B3713F00C955AF /* icon_wcmc.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -512,6 +525,7 @@
 				6180A26310775C9900918261 /* CountTipView.m in Sources */,
 				612E25A6108B8D9400BD421D /* GraphOptionsView.m in Sources */,
 				612E2612108E370A00BD421D /* CheckboxView.m in Sources */,
+				61BD205310B2429000C955AF /* TextFieldAlert.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -555,8 +569,8 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
-				PROVISIONING_PROFILE = "F1FD32C9-840E-40FF-A26D-19F8E7AE7674";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F1FD32C9-840E-40FF-A26D-19F8E7AE7674";
+				PROVISIONING_PROFILE = "E2151F32-13F1-45DB-889D-C6653745A532";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E2151F32-13F1-45DB-889D-C6653745A532";
 				SDKROOT = iphoneos3.0;
 			};
 			name = "Release Ad Hoc";
@@ -577,12 +591,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Tienshiao Ma (Z922MYU48E)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Tienshiao Ma (Z922MYU48E)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_VERSION = 4.2;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
+				PROVISIONING_PROFILE = "927C916A-AE9F-471C-89D3-70232D415E40";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "927C916A-AE9F-471C-89D3-70232D415E40";
 				SDKROOT = iphoneos3.0;
 			};
 			name = Debug;

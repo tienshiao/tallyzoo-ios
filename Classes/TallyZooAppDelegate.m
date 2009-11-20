@@ -17,6 +17,7 @@
 @synthesize database;
 @synthesize location;
 @synthesize locationDelegate;
+@synthesize use_gps;
 
 - (void)initializeDefaults {
 	float testValue = [[NSUserDefaults standardUserDefaults] floatForKey:@"delay_preference"];
@@ -25,6 +26,7 @@
 		NSDictionary *appDefaults =  [NSDictionary dictionaryWithObjectsAndKeys:
 									  [NSNumber numberWithInt:0], @"behavior_preference",
 									  [NSNumber numberWithFloat:1.5], @"delay_preference",
+									  [NSNumber numberWithBool:YES], @"gps_preference",
 									  nil];
 		
 		[[NSUserDefaults standardUserDefaults] registerDefaults:appDefaults];
@@ -68,11 +70,15 @@
 	[self initializeDefaults];
 	[self initializeDatabase];
 
-	locationManager = [[CLLocationManager alloc] init];
-	locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
-	locationManager.distanceFilter = 20;
-	locationManager.delegate = self;
-	[locationManager startUpdatingLocation];
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	use_gps = [defaults boolForKey:@"gps_preference"];
+	if (use_gps) {
+		locationManager = [[CLLocationManager alloc] init];
+		locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
+		locationManager.distanceFilter = 20;
+		locationManager.delegate = self;
+		[locationManager startUpdatingLocation];
+	}
 	
 	mvc = [[MatrixViewController alloc] init];
 	UINavigationController *mnc = [[UINavigationController alloc] initWithRootViewController:mvc];

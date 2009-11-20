@@ -140,7 +140,6 @@
 			x_start_sec -= 12 * 60 * 60;
 			x_end_sec += 12 * 60 * 60;
 		}
-		
 	} else if (timespan == TIMESPAN_1D) {
 		x_start_sec = [NSDate timeIntervalSinceReferenceDate] - 24 * 60 * 60;
 		x_end_sec = [NSDate timeIntervalSinceReferenceDate];

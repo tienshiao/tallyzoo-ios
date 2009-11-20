@@ -46,11 +46,11 @@
 		NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 		button_behavior = [defaults integerForKey:@"behavior_preference"];
 		
-		locationSheet = [[UIActionSheet alloc] initWithTitle:@"Retrieving Location ..."
+		locationSheet = [[UIActionSheet alloc] initWithTitle:@"Retrieving Location ...\nPlease wait or make a selection."
 													delegate:self 
 										   cancelButtonTitle:@"Cancel" 
-									  destructiveButtonTitle:@"Save Without Location" 
-										   otherButtonTitles:nil];
+									  destructiveButtonTitle:nil
+										   otherButtonTitles:@"Save Without Location", @"Indoors (Disable For Now)", @"Disable Use Of Location", nil];
 		locationSheet.actionSheetStyle = UIActionSheetStyleAutomatic;		
 	}
 	return self;
@@ -158,7 +158,7 @@
 	_pageControl.frame = frame;
 	[_pageControl addTarget:self action:@selector(pageChanged:) forControlEvents:UIControlEventValueChanged];
 	
-	locationBusyView = [[LocationBusyView alloc] initWithFrame:CGRectMake(110, 100, 100, 100)];
+	locationBusyView = [[LocationBusyView alloc] initWithFrame:CGRectMake(110, 5, 100, 100)];
 	locationBusyView.hidden = YES;
 	[containerView addSubview:locationBusyView];
 	
@@ -308,7 +308,8 @@
 	} else {
 		if (button_behavior == 0) {
 			NSLog(@"accuracy %f", UIAppDelegate.location.horizontalAccuracy);
-			if (UIAppDelegate.location.horizontalAccuracy <= 0) {
+			if (UIAppDelegate.location.horizontalAccuracy <= 0 &&
+				UIAppDelegate.use_gps) {
 				tmp_button = mb;
 				[self waitForLocation];
 			} else {
@@ -351,7 +352,8 @@
 			[ecvc release];	
 			[newCount release];
 		} else {
-			if (UIAppDelegate.location.horizontalAccuracy <= 0) {
+			if (UIAppDelegate.location.horizontalAccuracy <= 0 &&
+				UIAppDelegate.use_gps) {
 				tmp_button = mb;
 				[self waitForLocation];
 			} else {
@@ -422,6 +424,18 @@
 	if (buttonIndex == 0) {
 		[tmp_button.activity simpleCount];
 		[tmp_button setNeedsDisplay];
+	} else if (buttonIndex == 1) {
+		UIAppDelegate.use_gps = NO;
+		[tmp_button.activity simpleCount];
+		[tmp_button setNeedsDisplay];
+	} else if (buttonIndex == 2) {
+		NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+		[defaults setObject:[NSNumber numberWithBool:NO] forKey:@"gps_preference"];
+		[defaults synchronize];
+		
+		UIAppDelegate.use_gps = NO;
+		[tmp_button.activity simpleCount];
+		[tmp_button setNeedsDisplay];		
 	}
 	tmp_button = nil;
 	locationBusyView.hidden = YES;
