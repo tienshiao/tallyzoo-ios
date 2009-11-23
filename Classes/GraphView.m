@@ -85,33 +85,43 @@
 		ymin = DBL_MAX;
 		ymax = -DBL_MAX;
 		counts = [activity getDayCounts];
-		for (TZCount *c in counts) {
-			current = c.amount;
-			if (current < ymin) {
-				ymin = current;
-			} 
-			if (current > ymax) {
-				ymax = current;
-			}
-			if (c.amount_sig > ysig) {
-				ysig = c.amount_sig;
-			}
-		}		
+		if ([counts count]) {
+			for (TZCount *c in counts) {
+				current = c.amount;
+				if (current < ymin) {
+					ymin = current;
+				} 
+				if (current > ymax) {
+					ymax = current;
+				}
+				if (c.amount_sig > ysig) {
+					ysig = c.amount_sig;
+				}
+			}		
+		} else {
+			ymin = 0;
+			ymax = 0;
+		}
 	} else if (activity.graph_type == TZACTIVITY_SLIDING_NOTSUMMED) {
 		ymin = DBL_MAX;
 		ymax = -DBL_MAX;
-		for (TZCount *c in activity.counts) {
-			current = c.amount;
-			if (current < ymin) {
-				ymin = current;
-			}
-			if (current > ymax) {
-				ymax = current;
-			}
-			if (c.amount_sig > ysig) {
-				ysig = c.amount_sig;
-			}
-		}		
+		if ([counts count]) {
+			for (TZCount *c in activity.counts) {
+				current = c.amount;
+				if (current < ymin) {
+					ymin = current;
+				}
+				if (current > ymax) {
+					ymax = current;
+				}
+				if (c.amount_sig > ysig) {
+					ysig = c.amount_sig;
+				}
+			}		
+		} else {
+			ymin = 0;
+			ymax = 0;
+		}
 	}
 	
 	if (ymin == ymax) {

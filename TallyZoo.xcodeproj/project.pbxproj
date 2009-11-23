@@ -49,6 +49,7 @@
 		61B1D113106D4F0A00EA1FE7 /* Final_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 61B1D112106D4F0A00EA1FE7 /* Final_logo.png */; };
 		61BD205310B2429000C955AF /* TextFieldAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 61BD205210B2429000C955AF /* TextFieldAlert.m */; };
 		61BD20A010B3713F00C955AF /* icon_wcmc.png in Resources */ = {isa = PBXBuildFile; fileRef = 61BD209F10B3713F00C955AF /* icon_wcmc.png */; };
+		61C8C02010B73163008ADE59 /* icon_yas.png in Resources */ = {isa = PBXBuildFile; fileRef = 61C8C01F10B73163008ADE59 /* icon_yas.png */; };
 		61D0F272103B56D1002B78C5 /* click_down.wav in Resources */ = {isa = PBXBuildFile; fileRef = 61D0F270103B56D1002B78C5 /* click_down.wav */; };
 		61D0F289103B5965002B78C5 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61D0F288103B5965002B78C5 /* AudioToolbox.framework */; };
 		61D0F35A103BE1B7002B78C5 /* red_down.png in Resources */ = {isa = PBXBuildFile; fileRef = 61D0F358103BE1B7002B78C5 /* red_down.png */; };
@@ -153,6 +154,7 @@
 		61BD205110B2429000C955AF /* TextFieldAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextFieldAlert.h; sourceTree = "<group>"; };
 		61BD205210B2429000C955AF /* TextFieldAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextFieldAlert.m; sourceTree = "<group>"; };
 		61BD209F10B3713F00C955AF /* icon_wcmc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_wcmc.png; sourceTree = "<group>"; };
+		61C8C01F10B73163008ADE59 /* icon_yas.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_yas.png; sourceTree = "<group>"; };
 		61D0F270103B56D1002B78C5 /* click_down.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = click_down.wav; sourceTree = "<group>"; };
 		61D0F288103B5965002B78C5 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		61D0F358103BE1B7002B78C5 /* red_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red_down.png; sourceTree = "<group>"; };
@@ -310,6 +312,7 @@
 			children = (
 				61BD209F10B3713F00C955AF /* icon_wcmc.png */,
 				6111BA5A10AC3C0700772237 /* icon_latriclub.png */,
+				61C8C01F10B73163008ADE59 /* icon_yas.png */,
 				61B1D112106D4F0A00EA1FE7 /* Final_logo.png */,
 				617AB2A1105E0D520036610C /* Default.png */,
 				615E4EF8104E639B007DF031 /* 02-redo.png */,
@@ -470,6 +473,7 @@
 				61B1D113106D4F0A00EA1FE7 /* Final_logo.png in Resources */,
 				6111BA5B10AC3C0700772237 /* icon_latriclub.png in Resources */,
 				61BD20A010B3713F00C955AF /* icon_wcmc.png in Resources */,
+				61C8C02010B73163008ADE59 /* icon_yas.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
