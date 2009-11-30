@@ -34,7 +34,7 @@
 		FMDatabase *dbh = UIAppDelegate.database;
 		key = k;
 		if (key) {
-			FMResultSet *rs = [dbh executeQuery:@"SELECT * FROM counts WHERE id = ? AND deleted = 0", [NSNumber numberWithInt:key]];
+			FMResultSet *rs = [dbh executeQuery:@"SELECT * FROM counts WHERE id = ?", [NSNumber numberWithInt:key]];
 			if ([rs next]) {
 				self.guid = [rs stringForColumn:@"guid"];
 				self.note = [rs stringForColumn:@"note"];
