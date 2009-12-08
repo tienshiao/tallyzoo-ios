@@ -56,7 +56,7 @@
 		label.font = f;
 		label.textColor = [UIColor whiteColor];
 		label.backgroundColor = [UIColor clearColor];
-		[self addSubview:label];
+		//[self addSubview:label];
 		[label release];
 		
 		slidingCheck = [[CheckboxView alloc] initWithFrame:CGRectMake(10, 130, 100, 20)];
@@ -64,14 +64,14 @@
 		slidingCheck.label.font = f;
 		slidingCheck.label.textColor = [UIColor whiteColor];
 		slidingCheck.delegate = self;
-		[self addSubview:slidingCheck];
+		//[self addSubview:slidingCheck];
 
 		calendarCheck = [[CheckboxView alloc] initWithFrame:CGRectMake(10, 155, 100, 20)];
 		calendarCheck.label.text = @"Calendar";
 		calendarCheck.label.font = f;
 		calendarCheck.label.textColor = [UIColor whiteColor];
 		calendarCheck.delegate = self;
-		[self addSubview:calendarCheck];
+		//[self addSubview:calendarCheck];
 		
 		
 		doneButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
