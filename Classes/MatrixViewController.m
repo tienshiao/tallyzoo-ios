@@ -188,7 +188,7 @@
     [super viewWillAppear:animated];
 
 	int screens = [self getNumberOfScreens];
-
+	
 	_scrollView.contentSize = CGSizeMake(320 * screens, _scrollView.frame.size.height);
 	_pageControl.numberOfPages = screens;
 	CGRect frame = matrixView.frame;
@@ -289,6 +289,7 @@
 	self.navigationItem.leftBarButtonItem = editBarButtonItem;
 	matrixView.editting = NO;
 
+//	[self viewWillAppear:NO];
 	_scrollView.contentSize = CGSizeMake(320 * [matrixView.pages count], _scrollView.frame.size.height);
 	_pageControl.numberOfPages = [matrixView.pages count];
 	CGRect frame = matrixView.frame;

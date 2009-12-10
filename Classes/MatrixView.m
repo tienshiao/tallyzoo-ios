@@ -360,7 +360,16 @@
 		
 		for (int i = [pages count] - 1; i >= 0; i--) {
 			// remove page if nothing there
-			if ([[pages objectAtIndex:i] count] == 0) {
+			NSMutableArray *p = [pages objectAtIndex:i];
+			int c = 0;
+			for (MatrixButton *b in p) {
+				if (b.activity.deleted == NO) {
+					c++;
+					break;
+				}
+			}
+			if (c == 0) {
+				[self clearButtons:i];
 				[pages removeObjectAtIndex:i];
 			}
 		}
