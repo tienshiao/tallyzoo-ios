@@ -221,7 +221,7 @@
 		body = @"<request></request>";
 	}
 	
-	NSLog(body);
+	//NSLog(body);
 	
 	[request setHTTPBody:[NSData dataWithBytes:[body UTF8String] length:strlen([body UTF8String])]];
 	
@@ -335,7 +335,7 @@
 		body = [self buildCountXML:(TZCount *)o];
 	}
 	
-	NSLog(body);
+	//NSLog(body);
 	
 	NSURL *url = [NSURL URLWithString:urlString];
 	NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
@@ -460,6 +460,21 @@
 		
 		progressView.progress = .3 + ((float) (syncTotal - [syncQueue count])) / syncTotal * .7;
 	}	
+}
+
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+	syncButton.enabled = YES;
+	progressView.progress = 1.0;
+	progressView.hidden = YES;
+	lastLabel.hidden = NO;
+	
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sync Failed" 
+													message:[NSString stringWithFormat:@"Unable to connect to server (%@). Please try again later.", [error localizedDescription]] 
+												   delegate:nil
+										  cancelButtonTitle:@"OK" 
+										  otherButtonTitles:nil];
+	[alert show];
+	[alert autorelease];	
 }
 
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict{
