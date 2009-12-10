@@ -40,8 +40,14 @@
 
 + (BOOL)nameExists:(NSString *)n {
 	FMDatabase *dbh = UIAppDelegate.database;
-	return [dbh intForQuery:@"SELECT count(*) FROM activities WHERE deleted = 0 and name = ?", n];
+	return [dbh intForQuery:@"SELECT count(*) FROM activities WHERE deleted = 0 AND name = ?", n];
 }
+
++ (BOOL)otherExists:(NSString *)n not:(NSInteger)key {
+	FMDatabase *dbh = UIAppDelegate.database;
+	return [dbh intForQuery:@"SELECT count(*) FROM activities WHERE deleted = 0 AND name = ? AND id <> ?", n, [NSNumber numberWithInt:key]];
+}
+
 
 - (id)initWithKey:(NSInteger)k {
 	if (self = [super init]) {

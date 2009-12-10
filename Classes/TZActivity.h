@@ -60,6 +60,7 @@
 @property(nonatomic, retain) NSMutableArray *counts;
 
 + (BOOL)nameExists:(NSString *)n;
++ (BOOL)otherExists:(NSString *)n not:(NSInteger)key;
 - (id)initWithKey:(NSInteger)k;
 - (id)initWithGUID:(NSString *)guid;
 - (id)initWithName:(NSString *)name;

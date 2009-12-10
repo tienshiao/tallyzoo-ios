@@ -412,10 +412,7 @@
 }
 
 - (void)save:(id)sender {
-	TZActivity *a = [[TZActivity alloc] initWithName:activity.name];
-
-	if (a.key != 0 &&
-		a.key != activity.key) {
+	if ([TZActivity otherExists:activity.name not:activity.key]) {
 		// there is a dupe
 		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error Saving" 
 														message:@"Unable to save activity. Activity name already in use.\n\nPlease use a different name." 
@@ -425,10 +422,8 @@
 		[alert show];
 		[alert autorelease];		
 		
-		[a release];
 		return;
 	}
-	[a release];
 	
 	activity.public = showPublicSwitch.on;
 	if (![activity save]) {
