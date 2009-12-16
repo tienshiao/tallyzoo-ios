@@ -266,15 +266,14 @@
 								<string>29B97314FDCFA39411CA2CEA</string>
 								<string>080E96DDFE201D6D7F000001</string>
 								<string>29B97317FDCFA39411CA2CEA</string>
-								<string>61D0FBC310446507002B78C5</string>
 								<string>1C37FAAC04509CD000000102</string>
 								<string>1C37FABC05509CD000000102</string>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>51</integer>
-									<integer>1</integer>
+									<integer>67</integer>
+									<integer>55</integer>
 									<integer>0</integer>
 								</array>
 							</array>
@@ -309,14 +308,12 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>SyncViewController.m</string>
+								<string>TallyZoo-Info.plist</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -324,11 +321,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>SyncViewController.m</string>
+										<string>TallyZoo-Info.plist</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>61FAD2C910D99E59006430F9</string>
+										<string>61FAD2D210D99ED3006430F9</string>
 										<key>history</key>
 										<array>
 											<string>61E64CF910393E2C00E78174</string>
@@ -420,13 +417,13 @@
 											<string>61FAD22510D1A195006430F9</string>
 											<string>61FAD22610D1A195006430F9</string>
 											<string>61FAD25F10D86B03006430F9</string>
-											<string>61FAD27510D8E868006430F9</string>
 											<string>61FAD2A510D97D4C006430F9</string>
 											<string>61FAD2A610D97D4C006430F9</string>
 											<string>61FAD2B410D97E5E006430F9</string>
 											<string>61FAD2B610D97E5E006430F9</string>
-											<string>61FAD2C710D99E59006430F9</string>
-											<string>61FAD2C810D99E59006430F9</string>
+											<string>61FAD2D010D99ED3006430F9</string>
+											<string>61FAD2D110D99ED3006430F9</string>
+											<string>61FAD27510D8E868006430F9</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>

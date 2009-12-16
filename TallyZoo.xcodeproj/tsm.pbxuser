@@ -10,9 +10,9 @@
 	};
 	1D3623250D0F684500981E51 /* TallyZooAppDelegate.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {845, 1807}}";
+			sepNavIntBoundsRect = "{{0, 0}, {845, 1794}}";
 			sepNavSelRange = "{949, 0}";
-			sepNavVisRange = "{180, 1781}";
+			sepNavVisRange = "{148, 1923}";
 		};
 	};
 	1D6058900D05DD3D006BFB54 /* TallyZoo */ = {
@@ -353,6 +353,9 @@
 			61FAD2C710D99E59006430F9 /* PBXTextBookmark */ = 61FAD2C710D99E59006430F9 /* PBXTextBookmark */;
 			61FAD2C810D99E59006430F9 /* PBXTextBookmark */ = 61FAD2C810D99E59006430F9 /* PBXTextBookmark */;
 			61FAD2C910D99E59006430F9 /* PBXTextBookmark */ = 61FAD2C910D99E59006430F9 /* PBXTextBookmark */;
+			61FAD2D010D99ED3006430F9 /* PBXTextBookmark */ = 61FAD2D010D99ED3006430F9 /* PBXTextBookmark */;
+			61FAD2D110D99ED3006430F9 /* PBXTextBookmark */ = 61FAD2D110D99ED3006430F9 /* PBXTextBookmark */;
+			61FAD2D210D99ED3006430F9 /* PlistBookmark */ = 61FAD2D210D99ED3006430F9 /* PlistBookmark */;
 			61FCDEDB104B6ED400F16BF1 = 61FCDEDB104B6ED400F16BF1 /* PBXTextBookmark */;
 		};
 		sourceControlManager = 615CC7C91018CF7000BD6BB2 /* Source Control */;
@@ -3662,6 +3665,38 @@
 		rType = 0;
 		vrLen = 1505;
 		vrLoc = 468;
+	};
+	61FAD2D010D99ED3006430F9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 615E4EF0104E6263007DF031 /* SyncViewController.m */;
+		name = "SyncViewController.m: 27";
+		rLen = 0;
+		rLoc = 521;
+		rType = 0;
+		vrLen = 1505;
+		vrLoc = 468;
+	};
+	61FAD2D110D99ED3006430F9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* TallyZooAppDelegate.m */;
+		name = "TallyZooAppDelegate.m: 30";
+		rLen = 0;
+		rLoc = 949;
+		rType = 0;
+		vrLen = 1923;
+		vrLoc = 148;
+	};
+	61FAD2D210D99ED3006430F9 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 8D1107310486CEB800E47090 /* TallyZoo-Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+			LSRequiresIPhoneOS,
+		);
+		name = "/Users/tsm/ari/TallyZoo/TallyZoo-Info.plist";
+		rLen = 0;
+		rLoc = 9223372036854775807;
 	};
 	61FCDE85104B552000F16BF1 /* TZTabBarController.h */ = {
 		uiCtxt = {
