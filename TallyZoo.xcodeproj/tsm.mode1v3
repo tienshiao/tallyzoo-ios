@@ -265,22 +265,19 @@
 							<array>
 								<string>29B97314FDCFA39411CA2CEA</string>
 								<string>080E96DDFE201D6D7F000001</string>
-								<string>615CC84C101FCB3C00BD6BB2</string>
-								<string>29B97317FDCFA39411CA2CEA</string>
-								<string>61D0FBC310446507002B78C5</string>
 								<string>1C37FAAC04509CD000000102</string>
 								<string>1C37FABC05509CD000000102</string>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>41</integer>
+									<integer>51</integer>
 									<integer>1</integer>
 									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 170}, {240, 588}}</string>
+							<string>{{0, 551}, {240, 588}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -299,7 +296,7 @@
 							<real>240</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>145 131 1059 647 0 0 1280 778 </string>
+						<string>182 131 1059 647 0 0 1280 778 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -317,7 +314,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>MatrixView.m</string>
+								<string>TallyZooAppDelegate.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -325,11 +322,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>MatrixView.m</string>
+										<string>TallyZooAppDelegate.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>61FAD21C10D1083D006430F9</string>
+										<string>61FAD27710D8E868006430F9</string>
 										<key>history</key>
 										<array>
 											<string>61E64CF910393E2C00E78174</string>
@@ -377,7 +374,6 @@
 											<string>6180A27710775FAF00918261</string>
 											<string>6180A27810775FAF00918261</string>
 											<string>612F6DBF107E6E2000AEF4AB</string>
-											<string>612E24F61085065000BD421D</string>
 											<string>612E25C2108C0B4400BD421D</string>
 											<string>612E25C3108C0B4400BD421D</string>
 											<string>612E25CA108C0B4400BD421D</string>
@@ -390,24 +386,17 @@
 											<string>61BD202110B1621800C955AF</string>
 											<string>61BD20AF10B3FEB900C955AF</string>
 											<string>61BD20CA10B400DD00C955AF</string>
-											<string>61BD20DE10B401C100C955AF</string>
 											<string>61BD20E710B4023300C955AF</string>
 											<string>61C8BFB010B5673B008ADE59</string>
 											<string>61C8BFB210B5673B008ADE59</string>
 											<string>61C8BFB410B5673B008ADE59</string>
 											<string>61C8BFB510B5673B008ADE59</string>
-											<string>61C8BFC810B56AAC008ADE59</string>
-											<string>61C8BFCD10B6A6BA008ADE59</string>
-											<string>61C8C1BD10BB1525008ADE59</string>
 											<string>61DFFB7910C280C300115A0A</string>
 											<string>61DFFD2D10C455EC00115A0A</string>
 											<string>61DFFD2E10C455EC00115A0A</string>
 											<string>61C2569C10CDA00200ED0107</string>
 											<string>61C256E810CDD1BC00ED0107</string>
 											<string>61C2571A10CDE1B800ED0107</string>
-											<string>61C2572C10CE60C200ED0107</string>
-											<string>61FAD17910D0FB04006430F9</string>
-											<string>61FAD17C10D0FB04006430F9</string>
 											<string>61FAD17D10D0FB04006430F9</string>
 											<string>61FAD19210D0FCEF006430F9</string>
 											<string>61FAD19310D0FCEF006430F9</string>
@@ -425,9 +414,17 @@
 											<string>61FAD20010D10682006430F9</string>
 											<string>61FAD20310D10682006430F9</string>
 											<string>61FAD20410D10682006430F9</string>
-											<string>61FAD21910D1083D006430F9</string>
 											<string>61FAD21A10D1083D006430F9</string>
-											<string>61FAD21B10D1083D006430F9</string>
+											<string>61FAD22210D1A195006430F9</string>
+											<string>61FAD22310D1A195006430F9</string>
+											<string>61FAD22510D1A195006430F9</string>
+											<string>61FAD22610D1A195006430F9</string>
+											<string>61FAD25F10D86B03006430F9</string>
+											<string>61FAD26010D86B03006430F9</string>
+											<string>61FAD26410D8E40A006430F9</string>
+											<string>61FAD26B10D8E454006430F9</string>
+											<string>61FAD27510D8E868006430F9</string>
+											<string>61FAD27610D8E868006430F9</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -441,7 +438,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {797, 601}}</string>
 								<key>RubberWindowFrame</key>
-								<string>145 131 1059 647 0 0 1280 778 </string>
+								<string>182 131 1059 647 0 0 1280 778 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
@@ -461,7 +458,7 @@
 								<key>Frame</key>
 								<string>{{0, 606}, {797, 0}}</string>
 								<key>RubberWindowFrame</key>
-								<string>145 131 1059 647 0 0 1280 778 </string>
+								<string>182 131 1059 647 0 0 1280 778 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
@@ -623,7 +620,6 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>61FAD21D10D1083D006430F9</string>
 		<string>61FAD19C10D0FCEF006430F9</string>
 		<string>61FAD18B10D0FB04006430F9</string>
 		<string>1C78EAAD065D492600B07095</string>
@@ -632,7 +628,7 @@
 		<string>/Users/tsm/ari/TallyZoo/TallyZoo.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>145 131 1059 647 0 0 1280 778 </string>
+	<string>182 131 1059 647 0 0 1280 778 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>

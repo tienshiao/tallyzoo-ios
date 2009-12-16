@@ -555,14 +555,14 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_ENTITLEMENTS = dist.plist;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Tienshiao Ma";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Tienshiao Ma";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: TallyZoo";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: TallyZoo";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
-				PROVISIONING_PROFILE = "CDFE40AF-56F9-4F73-96DF-543C065D3D76";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "CDFE40AF-56F9-4F73-96DF-543C065D3D76";
+				PROVISIONING_PROFILE = "198C54C2-8499-4ABE-9D72-75DA78A644D4";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "198C54C2-8499-4ABE-9D72-75DA78A644D4";
 				SDKROOT = iphoneos3.0;
 			};
 			name = "Release Ad Hoc";
@@ -583,15 +583,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Tienshiao Ma (Z922MYU48E)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Tienshiao Ma (Z922MYU48E)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Tienshiao Ma (4FDKH48359)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Tienshiao Ma (4FDKH48359)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_VERSION = 4.2;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
-				PROVISIONING_PROFILE = "927C916A-AE9F-471C-89D3-70232D415E40";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "927C916A-AE9F-471C-89D3-70232D415E40";
+				PROVISIONING_PROFILE = "D8EAD7CF-D31B-45AE-A179-A45DB6E2E126";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D8EAD7CF-D31B-45AE-A179-A45DB6E2E126";
 				SDKROOT = iphoneos3.0;
 			};
 			name = Debug;

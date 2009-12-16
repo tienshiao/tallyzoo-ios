@@ -66,7 +66,7 @@
 	}	
 }
 
-- (void)applicationDidFinishLaunching:(UIApplication *)application {
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	[self initializeDefaults];
 	[self initializeDatabase];
 
@@ -112,6 +112,8 @@
 	[window addSubview:tbController.view];
     [window makeKeyAndVisible];
 	window.backgroundColor = [UIColor blackColor];
+	
+	return YES;
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
