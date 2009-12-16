@@ -38,4 +38,6 @@
 #define STATE_RECEIVING 1
 #define STATE_UPDATING 2
 
+@property (nonatomic, retain) NSString *apiURL;
+
 @end

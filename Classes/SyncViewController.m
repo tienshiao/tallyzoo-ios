@@ -18,12 +18,16 @@
 
 @implementation SyncViewController
 
+@synthesize apiURL;
+
 - (id)init {
 	if (self = [super init]) {
 		self.title = @"Sync";
 
-		apiURL = @"test.tallyzoo.com/api.php";
-		//apiURL = @"home.tienshiao.org/~tsm/tallyzoo/api.php";
+		self.apiURL = [[NSUserDefaults standardUserDefaults] stringForKey:@"api_url"];
+		if ([apiURL length] == 0) {
+			self.apiURL = @"www.tallyzoo.com/api.php";
+		}
 	}
 	return self;
 }
@@ -402,7 +406,7 @@
 		
 		if ([r statusCode] == 401) {
 			UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Authentication Failed" 
-															message:@"Unable to login. Please double check your username and password." 
+															message:@"Unable to login. Please double check your username and password, and that your account has been activated via the email confirmation." 
 														   delegate:nil
 												  cancelButtonTitle:@"OK" 
 												  otherButtonTitles:nil];
@@ -609,6 +613,8 @@
 	[lastSync release];
 	[now release];
 	[xmlParser release];
+	
+	[apiURL release];
 	
 	[super dealloc];
 }

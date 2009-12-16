@@ -27,6 +27,7 @@
 									  [NSNumber numberWithInt:0], @"behavior_preference",
 									  [NSNumber numberWithFloat:1.5], @"delay_preference",
 									  [NSNumber numberWithBool:YES], @"gps_preference",
+									  @"www.tallyzoo.com/api.php", @"api_url",
 									  nil];
 		
 		[[NSUserDefaults standardUserDefaults] registerDefaults:appDefaults];

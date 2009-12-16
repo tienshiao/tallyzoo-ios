@@ -70,6 +70,24 @@
 			<key>DefaultValue</key>
 			<true/>
 		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+			<key>Title</key>
+			<string>API URL</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+			<key>Title</key>
+			<string>URL</string>
+			<key>Key</key>
+			<string>api_url</string>
+			<key>AutocapitalizationType</key>
+			<string>None</string>
+			<key>DefaultValue</key>
+			<string>www.tallyzoo.com/api.php</string>
+		</dict>
 	</array>
 </dict>
 </plist>
