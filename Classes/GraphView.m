@@ -105,7 +105,7 @@
 	} else if (activity.graph_type == TZACTIVITY_SLIDING_NOTSUMMED) {
 		ymin = DBL_MAX;
 		ymax = -DBL_MAX;
-		if ([counts count]) {
+		if ([activity.counts count]) {
 			for (TZCount *c in activity.counts) {
 				current = c.amount;
 				if (current < ymin) {
