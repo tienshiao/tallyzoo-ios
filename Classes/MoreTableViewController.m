@@ -139,7 +139,7 @@
 	label = [[UILabel alloc] initWithFrame:rect];
 	label.font = [UIFont systemFontOfSize:12];
 	label.textAlignment = UITextAlignmentCenter;
-	label.text = @"Copyright © 2009 XXXXX";
+	label.text = @"Copyright © 2009 TallyZoo";
 	[cell.contentView addSubview:label];
 	label.highlightedTextColor = [UIColor whiteColor];
 	[label release];
