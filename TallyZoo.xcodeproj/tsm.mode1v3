@@ -274,13 +274,11 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>53</integer>
-									<integer>1</integer>
 									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 426}, {240, 588}}</string>
+							<string>{{0, 0}, {240, 588}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -310,14 +308,12 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>SyncViewController.m</string>
+								<string>TallyZoo-Info.plist</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -325,11 +321,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>SyncViewController.m</string>
+										<string>TallyZoo-Info.plist</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>61D69232111D5615000A4156</string>
+										<string>61D693391123FDF6000A4156</string>
 										<key>history</key>
 										<array>
 											<string>61E64CF910393E2C00E78174</string>
@@ -402,7 +398,6 @@
 											<string>61FAD25F10D86B03006430F9</string>
 											<string>61FAD2B410D97E5E006430F9</string>
 											<string>61FAD2B610D97E5E006430F9</string>
-											<string>61FAD2DD10D9A1F6006430F9</string>
 											<string>61FAD2ED10DA166C006430F9</string>
 											<string>61FAD31710DB4072006430F9</string>
 											<string>61FAD31810DB4072006430F9</string>
@@ -427,7 +422,8 @@
 											<string>61D691C0111D4320000A4156</string>
 											<string>61D691C1111D4320000A4156</string>
 											<string>61D69230111D5615000A4156</string>
-											<string>61D69231111D5615000A4156</string>
+											<string>61D693371123FDF6000A4156</string>
+											<string>61D693381123FDF6000A4156</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -485,9 +481,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>61D69233111D5615000A4156</string>
+				<string>61D6933A1123FDF6000A4156</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>61D69234111D5615000A4156</string>
+				<string>61D6933B1123FDF6000A4156</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -624,7 +620,7 @@
 	<key>WindowOrderList</key>
 	<array>
 		<string>615CC8D4101FF17600BD6BB2</string>
-		<string>/Users/tsm/ari/TallyZoo/TallyZoo.xcodeproj</string>
+		<string>/Users/tsm/ari/tallyzoo-free/TallyZoo.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
 	<string>142 131 1059 647 0 0 1280 778 </string>
@@ -704,7 +700,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>615CC8D4101FF17600BD6BB2</string>
-				<string>61D69235111D5615000A4156</string>
+				<string>61D6933C1123FDF6000A4156</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
