@@ -9,6 +9,7 @@
 #import "SyncViewController.h"
 #import "TallyZooAppDelegate.h"
 #import "FMDatabase.h"
+#import "FMDatabaseAdditions.h"
 #import "FMResultSet.h"
 #import "UIColor-Expanded.h"
 #import "AccountBackgroundView.h"
@@ -211,6 +212,11 @@
 	}
 }
 
+- (NSString *)getCurrentDBTime {
+	FMDatabase *dbh = UIAppDelegate.database;
+	return [dbh stringForQuery:@"SELECT datetime('now')"];
+}
+
 - (BOOL)getServerUpdates {
 	NSString *urlString = [NSString stringWithFormat:@"http://%@:%@@%@/activities.list", usernameField.text, passwordField.text, apiURL];
 	NSURL *url = [NSURL URLWithString:urlString];
@@ -220,9 +226,9 @@
 	[request setHTTPMethod:@"POST"];
 	NSString *body;
 	if (lastSync) {
-		body = [NSString stringWithFormat:@"<request><since datetime=\"%@\" /></request>", lastSync];
+		body = [NSString stringWithFormat:@"<request currenttime=\"%@\"><since datetime=\"%@\" /></request>", [self getCurrentDBTime], lastSync];
 	} else {
-		body = @"<request></request>";
+		body = [NSString stringWithFormat:@"<request currenttime=\"%@\"></request>", [self getCurrentDBTime]];
 	}
 	
 	//NSLog(body);
@@ -258,7 +264,8 @@
 	} else {
 		group = @"";
 	}
-	return [NSString stringWithFormat:@"<request><activity guid=\"%@\" name=\"%@\" default_note=\"%@\" initial_value=\"%f\" init_sig=\"%d\" default_step=\"%f\" step_sig=\"%d\" color=\"%@\" count_updown=\"%d\" display_total=\"%d\" screen=\"%d\" position=\"%d\" graph_type=\"%d\" deleted=\"%d\" created_on=\"%@\" created_on_UTC=\"%@\" modified_on=\"%@\" modified_on_UTC=\"%@\">%@</activity></request>",
+	return [NSString stringWithFormat:@"<request currenttime=\"%@\"><activity guid=\"%@\" name=\"%@\" default_note=\"%@\" initial_value=\"%f\" init_sig=\"%d\" default_step=\"%f\" step_sig=\"%d\" color=\"%@\" count_updown=\"%d\" display_total=\"%d\" screen=\"%d\" position=\"%d\" graph_type=\"%d\" deleted=\"%d\" created_on=\"%@\" created_on_UTC=\"%@\" modified_on=\"%@\" modified_on_UTC=\"%@\">%@</activity></request>",
+			[self getCurrentDBTime],
 			a.guid,
 			[a.name gtm_stringBySanitizingAndEscapingForXML],
 			[a.default_note gtm_stringBySanitizingAndEscapingForXML],
@@ -284,7 +291,8 @@
 - (NSString *)buildCountXML:(TZCount *)c {
 	TZActivity *a = [[TZActivity alloc] initWithKey:c.activity_id];
 	
-	NSString *count = [NSString stringWithFormat:@"<request><count guid=\"%@\" activity_guid=\"%@\" note=\"%@\" amount=\"%f\" amount_sig=\"%d\" latitude=\"%f\" longitude=\"%f\" deleted=\"%d\" created_on=\"%@\" created_on_UTC=\"%@\" modified_on=\"%@\" modified_on_UTC=\"%@\" /></request>",
+	NSString *count = [NSString stringWithFormat:@"<request currenttime=\"%@\"><count guid=\"%@\" activity_guid=\"%@\" note=\"%@\" amount=\"%f\" amount_sig=\"%d\" latitude=\"%f\" longitude=\"%f\" deleted=\"%d\" created_on=\"%@\" created_on_UTC=\"%@\" modified_on=\"%@\" modified_on_UTC=\"%@\" /></request>",
+					   [self getCurrentDBTime],
 					   c.guid,
 					   a.guid,
 					   [c.note gtm_stringBySanitizingAndEscapingForXML],
@@ -437,11 +445,11 @@
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
-/*	NSString *body = [[NSString alloc] initWithBytes:[receivedData bytes] 
+	NSString *body = [[NSString alloc] initWithBytes:[receivedData bytes] 
 											  length:[receivedData length] 
 											encoding:NSUTF8StringEncoding];
-	NSLog(body);
-*/	
+	//NSLog(body);
+	
 	if (state == STATE_RECEIVING) {
 		progressView.progress = .15;
 		// parse activities
