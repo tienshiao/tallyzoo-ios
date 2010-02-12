@@ -11,14 +11,13 @@
 #import "MatrixView.h"
 #import "LocationBusyView.h"
 #import "CountTipView.h"
+#import "AdWhirlDelegateProtocol.h"
 
 
-@interface MatrixViewController : UIViewController<UIScrollViewDelegate, UIAlertViewDelegate, UIActionSheetDelegate> {
+@interface MatrixViewController : UIViewController<UIScrollViewDelegate, UIAlertViewDelegate, UIActionSheetDelegate, AdWhirlDelegate> {
 	MatrixView *matrixView;
 	
-	UIPageControl *_pageControl;
 	UIScrollView *_scrollView;
-	BOOL _pageControlUsed;
 	
 	UIBarButtonItem *editBarButtonItem;
 	UIBarButtonItem *doneBarButtonItem;

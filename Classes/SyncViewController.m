@@ -101,7 +101,7 @@
 	signupButton.titleLabel.font = [UIFont boldSystemFontOfSize:[UIFont buttonFontSize]];
 	[signupButton setTitleShadowColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.5] forState:UIControlStateNormal];
 	signupButton.titleLabel.shadowOffset = CGSizeMake(0, -1);
-	[signupButton setTitle:@"Sign Up for an Account" forState:UIControlStateNormal];	
+	[signupButton setTitle:@"Sign Up for a Free Account" forState:UIControlStateNormal];	
 	signupButton.frame = CGRectMake(10, 190, 300, 40);
 	[signupButton addTarget:self action:@selector(signup:) forControlEvents:UIControlEventTouchUpInside];
 	[containerView addSubview:signupButton];

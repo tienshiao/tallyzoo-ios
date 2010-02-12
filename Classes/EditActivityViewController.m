@@ -225,6 +225,7 @@
 				// group - private/public
 				cell.textLabel.text = @"Public";
 				cell.accessoryView = showPublicSwitch;
+				showPublicSwitch.enabled = NO;
 				cell.selectionStyle = UITableViewCellSelectionStyleNone;
 				break;
 			case 3:

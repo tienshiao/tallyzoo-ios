@@ -17,10 +17,15 @@
 #import "MatrixButton.h"
 #import "ShakeView.h"
 #import "AddTipView.h"
+#import "AdWhirlView.h"
 
 @implementation MatrixViewController
 
 @synthesize editting;
+
+- (NSString *)adWhirlApplicationKey {
+	return @"0469832f2b854894b40aa5f31f2f5edc";
+}
 
 -(id)init {
 	if (self = [super init]) {
@@ -129,7 +134,7 @@
 	
 	int screens = [self getNumberOfScreens];
 	
-	_scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, 342)];
+	_scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, 317)];
 	_scrollView.pagingEnabled = YES;
 	_scrollView.contentSize = CGSizeMake(320 * screens, _scrollView.frame.size.height);
 	_scrollView.showsHorizontalScrollIndicator = NO;
@@ -146,17 +151,12 @@
 	matrixView.scrollView = _scrollView;
 	[_scrollView addSubview:matrixView];
 	
-	_pageControl = [[UIPageControl alloc] init];
-	_pageControl.numberOfPages = screens;
-	_pageControl.backgroundColor = [UIColor blackColor];
-	_pageControl.frame = CGRectMake(0, 300, 0, 20);
-	[containerView addSubview:_pageControl];
-	[_pageControl sizeToFit];
-	frame = _pageControl.frame;
-	frame.size.height = 20;
-	frame.origin.y = 365 - frame.size.height;
-	_pageControl.frame = frame;
-	[_pageControl addTarget:self action:@selector(pageChanged:) forControlEvents:UIControlEventValueChanged];
+	
+	AdWhirlView *awView = [AdWhirlView requestAdWhirlViewWithDelegate:self];
+	frame = awView.frame;
+	frame.origin.y = 318;
+	awView.frame = frame;
+	[containerView addSubview:awView];
 	
 	locationBusyView = [[LocationBusyView alloc] initWithFrame:CGRectMake(110, 5, 100, 100)];
 	locationBusyView.hidden = YES;
@@ -190,7 +190,6 @@
 	int screens = [self getNumberOfScreens];
 	
 	_scrollView.contentSize = CGSizeMake(320 * screens, _scrollView.frame.size.height);
-	_pageControl.numberOfPages = screens;
 	CGRect frame = matrixView.frame;
 	frame.size = _scrollView.contentSize;
 	matrixView.frame = frame;
@@ -221,39 +220,10 @@
 */
 
 - (void)scrollViewDidScroll:(UIScrollView *)sender {
-    // We don't want a "feedback loop" between the UIPageControl and the scroll delegate in
-    // which a scroll event generated from the user hitting the page control triggers updates from
-    // the delegate method. We use a boolean to disable the delegate logic when the page control is used.
-    if (_pageControlUsed) {
-        // do nothing - the scroll was initiated from the page control, not the user dragging
-        return;
-    }
     // Switch the indicator when more than 50% of the previous/next page is visible
     CGFloat pageWidth = _scrollView.frame.size.width;
     int page = floor((_scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
-    _pageControl.currentPage = page;
 	matrixView.currentPage = page;
-}
-
-// At the end of scroll animation, reset the boolean used when scrolls originate from the UIPageControl
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    _pageControlUsed = NO;
-}
-
-- (void)pageChanged:(id)sender {
-	int page = _pageControl.currentPage;
-	matrixView.currentPage = page;
-    // load the visible page and the page on either side of it (to avoid flashes when the user starts scrolling)
-    //[self loadScrollViewWithPage:page - 1];
-    //[self loadScrollViewWithPage:page];
-    //[self loadScrollViewWithPage:page + 1];
-    // update the scroll view to the appropriate page
-    CGRect frame = _scrollView.frame;
-    frame.origin.x = frame.size.width * page;
-    frame.origin.y = 0;
-    [_scrollView scrollRectToVisible:frame animated:YES];
-    // Set the boolean used when scrolls originate from the UIPageControl. See scrollViewDidScroll: above.
-    _pageControlUsed = YES;	
 }
 
 - (void)addItem:(id)sender {
@@ -272,16 +242,6 @@
 	editting = YES;
 	self.navigationItem.leftBarButtonItem = doneBarButtonItem;
 	matrixView.editting = YES;
-	
-	[matrixView.pages addObject:[[[NSMutableArray alloc] init] autorelease]];
-	// adjust scrollview/matrix view frame/page controller
-	
-	_scrollView.contentSize = CGSizeMake(320 * [matrixView.pages count], _scrollView.frame.size.height);
-	_pageControl.numberOfPages = [matrixView.pages count];
-	CGRect frame = matrixView.frame;
-	frame.size = _scrollView.contentSize;
-	matrixView.frame = frame;
-	
 }
 
 - (void)doneButtons:(id)sender {
@@ -291,7 +251,6 @@
 
 //	[self viewWillAppear:NO];
 	_scrollView.contentSize = CGSizeMake(320 * [matrixView.pages count], _scrollView.frame.size.height);
-	_pageControl.numberOfPages = [matrixView.pages count];
 	CGRect frame = matrixView.frame;
 	frame.size = _scrollView.contentSize;
 	matrixView.frame = frame;
@@ -456,7 +415,6 @@
 
 
 - (void)dealloc {
-	[_pageControl release];
 	[_scrollView release];
 	[matrixView release];
 	
