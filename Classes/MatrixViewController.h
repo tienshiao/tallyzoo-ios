@@ -11,10 +11,8 @@
 #import "MatrixView.h"
 #import "LocationBusyView.h"
 #import "CountTipView.h"
-#import "AdWhirlDelegateProtocol.h"
 
-
-@interface MatrixViewController : UIViewController<UIScrollViewDelegate, UIAlertViewDelegate, UIActionSheetDelegate, AdWhirlDelegate> {
+@interface MatrixViewController : UIViewController<UIScrollViewDelegate, UIAlertViewDelegate, UIActionSheetDelegate> {
 	MatrixView *matrixView;
 	
 	UIScrollView *_scrollView;

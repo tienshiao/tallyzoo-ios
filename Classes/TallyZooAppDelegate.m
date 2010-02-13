@@ -10,6 +10,7 @@
 #import "GraphViewController.h"
 #import "SyncViewController.h"
 #import "MoreTableViewController.h"
+#import "FlurryAPI.h"
 
 @implementation TallyZooAppDelegate
 
@@ -18,6 +19,10 @@
 @synthesize location;
 @synthesize locationDelegate;
 @synthesize use_gps;
+
+- (NSString *)adWhirlApplicationKey {
+	return @"0469832f2b854894b40aa5f31f2f5edc";
+}
 
 - (void)initializeDefaults {
 	float testValue = [[NSUserDefaults standardUserDefaults] floatForKey:@"delay_preference"];
@@ -61,6 +66,7 @@
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation{
 	self.location = newLocation;
+	[FlurryAPI setLocation:newLocation];
 	
 	if (locationDelegate && [locationDelegate respondsToSelector:@selector(locationFound)]) { 
 		[locationDelegate locationFound];
@@ -73,6 +79,7 @@
 
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 	use_gps = [defaults boolForKey:@"gps_preference"];
+	use_gps = NO;
 	if (use_gps) {
 		locationManager = [[CLLocationManager alloc] init];
 		locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
@@ -113,6 +120,8 @@
 	[window addSubview:tbController.view];
     [window makeKeyAndVisible];
 	window.backgroundColor = [UIColor blackColor];
+	
+    [FlurryAPI startSession:@"N1IXS72XBJQZKENFJLFC"];
 	
 	return YES;
 }

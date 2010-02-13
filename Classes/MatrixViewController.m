@@ -23,10 +23,6 @@
 
 @synthesize editting;
 
-- (NSString *)adWhirlApplicationKey {
-	return @"0469832f2b854894b40aa5f31f2f5edc";
-}
-
 -(id)init {
 	if (self = [super init]) {
 		self.title = @"TallyZoo";
@@ -152,12 +148,12 @@
 	[_scrollView addSubview:matrixView];
 	
 	
-	AdWhirlView *awView = [AdWhirlView requestAdWhirlViewWithDelegate:self];
+	AdWhirlView *awView = [AdWhirlView requestAdWhirlViewWithDelegate:UIAppDelegate];
 	frame = awView.frame;
 	frame.origin.y = 318;
 	awView.frame = frame;
 	[containerView addSubview:awView];
-	
+
 	locationBusyView = [[LocationBusyView alloc] initWithFrame:CGRectMake(110, 5, 100, 100)];
 	locationBusyView.hidden = YES;
 	[containerView addSubview:locationBusyView];

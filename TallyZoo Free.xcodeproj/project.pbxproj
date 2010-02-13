@@ -58,6 +58,7 @@
 		6161768D1125EB1D00252700 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6161768C1125EB1D00252700 /* libsqlite3.dylib */; };
 		616176971125EBA600252700 /* libAdMobDevice3_0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 616176951125EBA600252700 /* libAdMobDevice3_0.a */; };
 		616176981125EBA600252700 /* libAdMobSimulator3_0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 616176961125EBA600252700 /* libAdMobSimulator3_0.a */; };
+		6161772211262FCD00252700 /* libFlurryWithLocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6161772111262FCD00252700 /* libFlurryWithLocation.a */; };
 		617AB181105BA7470036610C /* ChooseBadgeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 617AB180105BA7470036610C /* ChooseBadgeViewController.m */; };
 		617AB211105DC9870036610C /* SFHFKeychainUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 617AB210105DC9870036610C /* SFHFKeychainUtils.m */; };
 		617AB225105DD1060036610C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 617AB224105DD1060036610C /* Security.framework */; };
@@ -199,6 +200,8 @@
 		616176901125EB6200252700 /* AdMobView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdMobView.h; sourceTree = "<group>"; };
 		616176951125EBA600252700 /* libAdMobDevice3_0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libAdMobDevice3_0.a; sourceTree = "<group>"; };
 		616176961125EBA600252700 /* libAdMobSimulator3_0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libAdMobSimulator3_0.a; sourceTree = "<group>"; };
+		6161772011262FCD00252700 /* FlurryAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAPI.h; sourceTree = "<group>"; };
+		6161772111262FCD00252700 /* libFlurryWithLocation.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurryWithLocation.a; sourceTree = "<group>"; };
 		617AB17F105BA7470036610C /* ChooseBadgeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseBadgeViewController.h; sourceTree = "<group>"; };
 		617AB180105BA7470036610C /* ChooseBadgeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseBadgeViewController.m; sourceTree = "<group>"; };
 		617AB20F105DC9870036610C /* SFHFKeychainUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFHFKeychainUtils.h; sourceTree = "<group>"; };
@@ -288,6 +291,7 @@
 				6161768D1125EB1D00252700 /* libsqlite3.dylib in Frameworks */,
 				616176971125EBA600252700 /* libAdMobDevice3_0.a in Frameworks */,
 				616176981125EBA600252700 /* libAdMobSimulator3_0.a in Frameworks */,
+				6161772211262FCD00252700 /* libFlurryWithLocation.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,6 +303,7 @@
 			children = (
 				616175D01125EA6900252700 /* AdWhirl */,
 				6161768E1125EB6200252700 /* AdMob */,
+				6161771F11262FCD00252700 /* FlurryLibWithLocation */,
 				616176151125EA9800252700 /* TouchJSON_headers */,
 				615CC865101FF15B00BD6BB2 /* Utilities */,
 				615CCAEA10283E4700BD6BB2 /* Editors */,
@@ -589,6 +594,15 @@
 			path = AdMob;
 			sourceTree = "<group>";
 		};
+		6161771F11262FCD00252700 /* FlurryLibWithLocation */ = {
+			isa = PBXGroup;
+			children = (
+				6161772011262FCD00252700 /* FlurryAPI.h */,
+				6161772111262FCD00252700 /* libFlurryWithLocation.a */,
+			);
+			path = FlurryLibWithLocation;
+			sourceTree = "<group>";
+		};
 		61D0F6C1103E6A97002B78C5 /* Masks */ = {
 			isa = PBXGroup;
 			children = (
@@ -748,6 +762,8 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Classes/AdMob\"",
+					"\"$(SRCROOT)/Classes/FlurryLibWithLocation\"",
+					"\"$(SRCROOT)/Classes/FlurryLib\"",
 				);
 				PRODUCT_NAME = "TallyZoo Free";
 			};
@@ -764,6 +780,8 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Classes/AdMob\"",
+					"\"$(SRCROOT)/Classes/FlurryLibWithLocation\"",
+					"\"$(SRCROOT)/Classes/FlurryLib\"",
 				);
 				PRODUCT_NAME = "TallyZoo Free";
 			};
@@ -797,6 +815,8 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Classes/AdMob\"",
+					"\"$(SRCROOT)/Classes/FlurryLibWithLocation\"",
+					"\"$(SRCROOT)/Classes/FlurryLib\"",
 				);
 				PRODUCT_NAME = "TallyZoo Free";
 			};

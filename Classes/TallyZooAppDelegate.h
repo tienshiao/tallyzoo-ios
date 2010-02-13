@@ -11,10 +11,12 @@
 #import "TZTabBarController.h"
 #import "FMDatabase.h"
 #import "MatrixViewController.h"
+#import "AdWhirlDelegateProtocol.h"
+
 
 #define UIAppDelegate ((TallyZooAppDelegate *)[UIApplication sharedApplication].delegate)
 
-@interface TallyZooAppDelegate : NSObject <UIApplicationDelegate, CLLocationManagerDelegate> {
+@interface TallyZooAppDelegate : NSObject <UIApplicationDelegate, CLLocationManagerDelegate, AdWhirlDelegate> {
     UIWindow *window;
 	TZTabBarController *tbController;
 	MatrixViewController *mvc;
