@@ -16,6 +16,7 @@
 #import "SFHFKeychainUtils.h"
 #import "TZCount.h"
 #import "GTMNSString+XML.h"
+#import "FlurryAPI.h"
 
 @implementation SyncViewController
 
@@ -142,6 +143,10 @@
 	}	
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+	[FlurryAPI logEvent:@"Sync Appeared"];
+}
+
 - (void)viewWillDisappear:(BOOL)animated {
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 	[defaults setObject:usernameField.text forKey:@"username"];
@@ -165,10 +170,14 @@
 */
 
 - (void)signup:(id)sender {
+	[FlurryAPI logEvent:@"Signup Clicked"];
+
 	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.tallyzoo.com/register"]];
 }
 
 - (void)sync:(id)sender {
+	[FlurryAPI logEvent:@"Sync Started"];
+
 	// TODO set up UI
 	[usernameField resignFirstResponder];
 	[passwordField resignFirstResponder];
@@ -313,6 +322,7 @@
 - (void)sendNextUpdate {
 	if ([syncQueue count] == 0) {
 		// All done
+		[FlurryAPI logEvent:@"Sync Completed"];
 		
 		// TODO update last sync date/time
 		NSDateFormatter *df = [[NSDateFormatter alloc] init];

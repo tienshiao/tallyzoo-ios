@@ -15,6 +15,7 @@
 #import "UpperRightView.h"
 #import "LowerLeftView.h"
 #import "LowerRightView.h"
+#import "FlurryAPI.h"
 
 @implementation GraphViewController
 
@@ -103,6 +104,10 @@
 	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque animated:animated];
 	
 	[self.navigationController setNavigationBarHidden:YES animated:animated];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+	[FlurryAPI logEvent:@"Graphs Appeared"];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -255,6 +260,8 @@
 }
 
 - (void)graphCellAccessoryClicked:(GraphCell *)gc {
+	[FlurryAPI logEvent:@"List Counts"];
+	
 	CountsViewController *cvc = [[CountsViewController alloc] initWithActivity:gc.activity];
 	
 	[self.navigationController pushViewController:cvc animated:YES];

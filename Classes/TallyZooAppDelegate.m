@@ -73,7 +73,14 @@
 	}	
 }
 
+void uncaughtExceptionHandler(NSException *exception) {
+    [FlurryAPI logError:@"Uncaught" message:@"Crash!" exception:exception];
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+	NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
+    [FlurryAPI startSession:@"N1IXS72XBJQZKENFJLFC"];
+	
 	[self initializeDefaults];
 	[self initializeDatabase];
 
@@ -120,8 +127,6 @@
 	[window addSubview:tbController.view];
     [window makeKeyAndVisible];
 	window.backgroundColor = [UIColor blackColor];
-	
-    [FlurryAPI startSession:@"N1IXS72XBJQZKENFJLFC"];
 	
 	return YES;
 }

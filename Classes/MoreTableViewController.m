@@ -10,6 +10,7 @@
 #import "MoreTableViewController.h"
 #import "HelpWebViewController.h"
 #import "ShoutOutViewController.h"
+#import "FlurryAPI.h"
 
 @implementation MoreTableViewController
 
@@ -63,11 +64,9 @@
     [super viewWillAppear:animated];
 }
 */
-/*
 - (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
+	[FlurryAPI logEvent:@"More Appeared"];
 }
-*/
 /*
 - (void)viewWillDisappear:(BOOL)animated {
 	[super viewWillDisappear:animated];
@@ -130,7 +129,7 @@
 	label.font = [UIFont boldSystemFontOfSize:20];
 	label.adjustsFontSizeToFitWidth = YES;
 	label.textAlignment = UITextAlignmentCenter;
-	label.text = [NSString stringWithFormat:@"TallyZoo v%@", version];
+	label.text = [NSString stringWithFormat:@"TallyZoo Free v%@", version];
 	[cell.contentView addSubview:label];
 	label.highlightedTextColor = [UIColor whiteColor];
 	[label release];
@@ -139,7 +138,7 @@
 	label = [[UILabel alloc] initWithFrame:rect];
 	label.font = [UIFont systemFontOfSize:12];
 	label.textAlignment = UITextAlignmentCenter;
-	label.text = @"Copyright © 2009 TallyZoo";
+	label.text = @"Copyright © 2010 TallyZoo";
 	[cell.contentView addSubview:label];
 	label.highlightedTextColor = [UIColor whiteColor];
 	[label release];

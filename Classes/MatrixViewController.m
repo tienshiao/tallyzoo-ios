@@ -18,6 +18,7 @@
 #import "ShakeView.h"
 #import "AddTipView.h"
 #import "AdWhirlView.h"
+#import "FlurryAPI.h"
 
 @implementation MatrixViewController
 
@@ -203,7 +204,9 @@
 //	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:animated];	
 }
 
-- (void)viewDidAppear:(BOOL)animater {
+- (void)viewDidAppear:(BOOL)animated {
+	[FlurryAPI logEvent:@"Dashboard Appeared"];
+
 	[self.view becomeFirstResponder];
 }
 
@@ -223,6 +226,8 @@
 }
 
 - (void)addItem:(id)sender {
+	[FlurryAPI logEvent:@"Add Activity"];
+	
 	TZActivity *newActivity = [[TZActivity alloc] initWithKey:0];
 	EditActivityViewController *eavc = [[EditActivityViewController alloc] initWithActivity:newActivity];
 	UINavigationController *addNavigationController =[[UINavigationController alloc] initWithRootViewController:eavc];
@@ -254,6 +259,8 @@
 
 - (void)matrixButtonClicked:(MatrixButton *)mb {
 	if (editting) {
+		[FlurryAPI logEvent:@"Edit Activity"];
+
 		EditActivityViewController *eavc = [[EditActivityViewController alloc] initWithActivity:mb.activity];
 		UINavigationController *addNavigationController =[[UINavigationController alloc] initWithRootViewController:eavc];
 		
@@ -263,6 +270,7 @@
 		[eavc release];			
 	} else {
 		if (button_behavior == 0) {
+			[FlurryAPI logEvent:@"Simple Count"];
 			NSLog(@"accuracy %f", UIAppDelegate.location.horizontalAccuracy);
 			if (UIAppDelegate.location.horizontalAccuracy <= 0 &&
 				UIAppDelegate.use_gps) {
@@ -281,6 +289,7 @@
 				
 			}
 		} else {
+			[FlurryAPI logEvent:@"Advanced Count"];
 			TZCount *newCount = [[TZCount alloc] initWithKey:0 andActivity:mb.activity];
 			EditCountViewController *ecvc = [[EditCountViewController alloc] initWithCount:newCount];
 			UINavigationController *addNavigationController =[[UINavigationController alloc] initWithRootViewController:ecvc];
@@ -295,9 +304,12 @@
 }
 
 - (void)matrixButtonHeld:(MatrixButton *)mb {
+	[FlurryAPI logEvent:@"Button Held"];
+
 	if (editting) {
 	} else {
 		if (button_behavior == 0) {
+			[FlurryAPI logEvent:@"Advanced Count"];
 			TZCount *newCount = [[TZCount alloc] initWithKey:0 andActivity:mb.activity];
 			EditCountViewController *ecvc = [[EditCountViewController alloc] initWithCount:newCount];
 			UINavigationController *addNavigationController =[[UINavigationController alloc] initWithRootViewController:ecvc];
@@ -308,6 +320,7 @@
 			[ecvc release];	
 			[newCount release];
 		} else {
+			[FlurryAPI logEvent:@"Simple Count"];
 			if (UIAppDelegate.location.horizontalAccuracy <= 0 &&
 				UIAppDelegate.use_gps) {
 				tmp_button = mb;
@@ -321,6 +334,8 @@
 }
 
 -(void)shakeHappened:(ShakeView*)view {
+	[FlurryAPI logEvent:@"Shake Happened"];
+
 	FMDatabase *dbh = UIAppDelegate.database;
 	FMResultSet *rs = [dbh executeQuery:@"SELECT id FROM counts WHERE deleted = 0 AND local = 1 ORDER BY created_on DESC LIMIT 1"];
 

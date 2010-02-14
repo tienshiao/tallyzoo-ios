@@ -9,6 +9,7 @@
 #import "CountsViewController.h"
 #import "EditCountViewController.h"
 #import "TZCount.h"
+#import "FlurryAPI.h"
 
 
 @implementation CountsViewController
@@ -152,6 +153,10 @@
 	if (indexPath.row == [activity.counts count]) {
 		return;
 	}
+
+	[FlurryAPI logEvent:@"Edit Count"];
+
+	
 	TZCount *c = [activity.counts objectAtIndex:[activity.counts count] - indexPath.row - 1];
 	EditCountViewController *ecvc = [[EditCountViewController alloc] initNonModalWithCount:c];
 	[self.navigationController pushViewController:ecvc animated:YES];
