@@ -109,7 +109,7 @@
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	if (section == 0) {
-		return 3;
+		return 4;
 	} else {
 		return 1;
 	}
@@ -179,10 +179,14 @@
 		if (indexPath.row == 0) {
 			[self configureTopCell:cell];
 		} else if (indexPath.row == 1) {
+			cell.textLabel.text = @"Upgrade to Full Version";
+			cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+			cell.selectionStyle = UITableViewCellSelectionStyleBlue;			
+		} else if (indexPath.row == 2) {
 			cell.textLabel.text = @"Tips";
 			cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 			cell.selectionStyle = UITableViewCellSelectionStyleBlue;
-		} else if (indexPath.row == 2) {
+		} else if (indexPath.row == 3) {
 			cell.textLabel.text = @"FAQs";
 			cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 			cell.selectionStyle = UITableViewCellSelectionStyleBlue;
@@ -205,11 +209,13 @@
 	
 	if (indexPath.section == 0) {
 		if (indexPath.row == 1) {
+			[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://itunes.apple.com/us/app/tallyzoo/id347546352?mt=8"]];
+		} else if (indexPath.row == 2) {
 			HelpWebViewController *hwvc = [[HelpWebViewController alloc] initWithURL:[NSURL URLWithString:@"http://www.tallyzoo.com/iphonetips.php"]];
 			hwvc.title = @"Tips";
 			[[self navigationController] pushViewController:hwvc animated:YES];
 			[hwvc release];
-		} else if (indexPath.row == 2) {
+		} else if (indexPath.row == 3) {
 			HelpWebViewController *hwvc = [[HelpWebViewController alloc] initWithURL:[NSURL URLWithString:@"http://www.tallyzoo.com/iphonefaqs.php"]];
 			hwvc.title = @"FAQs";
 			[[self navigationController] pushViewController:hwvc animated:YES];
