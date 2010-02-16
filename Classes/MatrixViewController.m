@@ -26,7 +26,7 @@
 
 -(id)init {
 	if (self = [super init]) {
-		self.title = @"TallyZoo";
+		self.title = @"TallyZoo Free";
 		
 		UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] 
 										  initWithBarButtonSystemItem:UIBarButtonSystemItemAdd 
@@ -70,10 +70,7 @@
 
 
 - (int)getNumberOfScreens {
-	FMDatabase *dbh = UIAppDelegate.database;
-	FMResultSet *rs = [dbh executeQuery:@"SELECT max(screen) AS max_screen FROM activities WHERE deleted = 0"];
-	[rs next];
-	return [rs intForColumn:@"max_screen"] + 1;
+	return 1;
 }
 
 - (int)getNumberOfActivities {
@@ -93,7 +90,7 @@
 	[matrixView clearButtons:page];
 	NSMutableArray *buttons = [matrixView.pages objectAtIndex:page];
 	FMDatabase *dbh = UIAppDelegate.database;
-	FMResultSet *rs = [dbh executeQuery:@"SELECT id FROM activities WHERE deleted = 0 AND screen = ? ORDER BY position",
+	FMResultSet *rs = [dbh executeQuery:@"SELECT id FROM activities WHERE deleted = 0 ORDER BY screen, position LIMIT 9",
 					   [NSNumber numberWithInt:page]];
 	int currentPosition = 0;
 	while ([rs next]) {		
@@ -199,6 +196,12 @@
 		countTipView.hidden = NO;
 	} else {
 		countTipView.hidden = YES;
+	}
+	
+	if ([TZActivity activeCount] < 9) {
+		self.navigationItem.rightBarButtonItem.enabled = YES;
+	} else {
+		self.navigationItem.rightBarButtonItem.enabled = NO;
 	}
 
 //	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:animated];	
