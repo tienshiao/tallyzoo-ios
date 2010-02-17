@@ -37,6 +37,8 @@
 		
 		self.tableView.tableFooterView = clearButton;			
 		
+		tfAlert = [[TextFieldAlert alloc] init];
+		tfAlert.delegate = self;
 	}
 	return self;	
 }
@@ -270,8 +272,6 @@
 
 
 - (void)clear:(id)sender {
-	tfAlert = [[TextFieldAlert alloc] init];
-	tfAlert.delegate = self;
 	[tfAlert show];
 }
 
