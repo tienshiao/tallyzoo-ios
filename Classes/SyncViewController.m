@@ -227,7 +227,10 @@
 }
 
 - (BOOL)getServerUpdates {
-	NSString *urlString = [NSString stringWithFormat:@"http://%@:%@@%@/activities.list", usernameField.text, passwordField.text, apiURL];
+	NSString *urlString = [NSString stringWithFormat:@"http://%@:%@@%@/activities.list", 
+						   [usernameField.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],
+						   [passwordField.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding], 
+						   apiURL];
 	NSURL *url = [NSURL URLWithString:urlString];
 	NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
 														   cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData 
@@ -350,10 +353,17 @@
 	NSString *urlString;
 	NSString *body;
 	if ([o isKindOfClass:[TZActivity class]]) {
-		urlString = [NSString stringWithFormat:@"http://%@:%@@%@/activities.update", usernameField.text, passwordField.text, apiURL];
+		urlString = [NSString stringWithFormat:@"http://%@:%@@%@/activities.update", 
+					 [usernameField.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],
+					 [passwordField.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],
+					 apiURL];
 		body = [self buildActivityXML:(TZActivity *)o];
 	} else {
-		urlString = [NSString stringWithFormat:@"http://%@:%@@%@/counts.update", usernameField.text, passwordField.text, apiURL];
+		urlString = [NSString stringWithFormat:@"http://%@:%@@%@/counts.update", 
+					 [usernameField.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],
+					 [passwordField.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],
+					 apiURL];
+		
 		body = [self buildCountXML:(TZCount *)o];
 	}
 	
