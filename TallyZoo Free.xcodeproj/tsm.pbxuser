@@ -199,6 +199,7 @@
 			61F54759112D4C610053905B /* PBXTextBookmark */ = 61F54759112D4C610053905B /* PBXTextBookmark */;
 			61F5475A112D4C610053905B /* PBXTextBookmark */ = 61F5475A112D4C610053905B /* PBXTextBookmark */;
 			61F5475B112D4C610053905B /* PBXTextBookmark */ = 61F5475B112D4C610053905B /* PBXTextBookmark */;
+			61F54769112DCFA60053905B /* PBXTextBookmark */ = 61F54769112DCFA60053905B /* PBXTextBookmark */;
 			61FAD17D10D0FB04006430F9 = 61FAD17D10D0FB04006430F9 /* PBXTextBookmark */;
 			61FAD19210D0FCEF006430F9 = 61FAD19210D0FCEF006430F9 /* PBXTextBookmark */;
 			61FAD19410D0FCEF006430F9 = 61FAD19410D0FCEF006430F9 /* PBXTextBookmark */;
@@ -801,9 +802,9 @@
 	};
 	615E4EF0104E6263007DF031 /* SyncViewController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1146, 8645}}";
-			sepNavSelRange = "{145, 0}";
-			sepNavVisRange = "{145, 1107}";
+			sepNavIntBoundsRect = "{{0, 0}, {1041, 8697}}";
+			sepNavSelRange = "{6886, 0}";
+			sepNavVisRange = "{6717, 1245}";
 			sepNavWindowFrame = "{{1295, 122}, {733, 673}}";
 		};
 	};
@@ -1249,7 +1250,7 @@
 		ignoreCount = 0;
 		lineNumber = 169;
 		location = "TallyZoo Free";
-		modificationTime = 288084659.807969;
+		modificationTime = 288181530.192585;
 		originalNumberOfMultipleMatches = 1;
 		state = 1;
 	};
@@ -1264,7 +1265,7 @@
 		hitCount = 0;
 		ignoreCount = 0;
 		location = "";
-		modificationTime = 288084659.808237;
+		modificationTime = 288181530.192976;
 		originalNumberOfMultipleMatches = 1;
 		state = 0;
 		symbolName = "-[_NSZombie methodSignatureForSelector:]";
@@ -1280,7 +1281,7 @@
 		hitCount = 0;
 		ignoreCount = 0;
 		location = libSystem.B.dylib;
-		modificationTime = 288084659.808251;
+		modificationTime = 288181530.192995;
 		originalNumberOfMultipleMatches = 1;
 		state = 1;
 		symbolName = malloc_error_break;
@@ -1309,7 +1310,7 @@
 		ignoreCount = 0;
 		lineNumber = 151;
 		location = "TallyZoo Free";
-		modificationTime = 288084659.808018;
+		modificationTime = 288181530.192766;
 		originalNumberOfMultipleMatches = 1;
 		state = 1;
 	};
@@ -1324,7 +1325,7 @@
 		hitCount = 0;
 		ignoreCount = 0;
 		location = libobjc.A.dylib;
-		modificationTime = 288084659.8082811;
+		modificationTime = 288181530.193028;
 		originalNumberOfMultipleMatches = 1;
 		state = 1;
 		symbolName = objc_exception_throw;
@@ -1895,7 +1896,7 @@
 		fRef = 615E4EF0104E6263007DF031 /* SyncViewController.m */;
 		name = "SyncViewController.m: 426";
 		rLen = 5;
-		rLoc = 14270;
+		rLoc = 14320;
 		rType = 0;
 		vrLen = 1440;
 		vrLoc = 13262;
@@ -1905,7 +1906,7 @@
 		fRef = 615E4EF0104E6263007DF031 /* SyncViewController.m */;
 		name = "SyncViewController.m: 426";
 		rLen = 5;
-		rLoc = 14270;
+		rLoc = 14320;
 		rType = 0;
 		vrLen = 1443;
 		vrLoc = 13259;
@@ -1915,7 +1916,7 @@
 		fRef = 615E4EF0104E6263007DF031 /* SyncViewController.m */;
 		name = "SyncViewController.m: 426";
 		rLen = 5;
-		rLoc = 14270;
+		rLoc = 14320;
 		rType = 0;
 		vrLen = 1442;
 		vrLoc = 13259;
@@ -1925,7 +1926,7 @@
 		fRef = 615E4EF0104E6263007DF031 /* SyncViewController.m */;
 		name = "SyncViewController.m: 441";
 		rLen = 0;
-		rLoc = 14985;
+		rLoc = 15035;
 		rType = 0;
 		vrLen = 1442;
 		vrLoc = 13259;
@@ -1955,7 +1956,7 @@
 		fRef = 615E4EF0104E6263007DF031 /* SyncViewController.m */;
 		name = "SyncViewController.m: 441";
 		rLen = 0;
-		rLoc = 14985;
+		rLoc = 15035;
 		rType = 0;
 		vrLen = 1442;
 		vrLoc = 13259;
@@ -1969,6 +1970,16 @@
 		rType = 0;
 		vrLen = 1107;
 		vrLoc = 145;
+	};
+	61F54769112DCFA60053905B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 615E4EF0104E6263007DF031 /* SyncViewController.m */;
+		name = "SyncViewController.m: 197";
+		rLen = 0;
+		rLoc = 6886;
+		rType = 0;
+		vrLen = 1245;
+		vrLoc = 6717;
 	};
 	61FAD17D10D0FB04006430F9 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;

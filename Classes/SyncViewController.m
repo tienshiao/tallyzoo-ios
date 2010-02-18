@@ -194,6 +194,8 @@
 	[lastSync release];
 	lastSync = [[defaults stringForKey:@"lastSync"] copy];
 
+	[self initSyncQueue];
+	
 	if ([self getServerUpdates]) {
 		state = STATE_RECEIVING;
 	} else {
@@ -387,7 +389,7 @@
 	}		
 }
 
-- (void)updateServer {
+- (void)initSyncQueue {
 	[syncQueue release];
 	syncQueue = [[NSMutableArray alloc] init];
 	
@@ -421,7 +423,9 @@
 	[rs close];
 	
 	syncTotal = [syncQueue count];
-	
+}
+
+- (void)updateServer {
 	[self sendNextUpdate];
 }
 
