@@ -153,13 +153,13 @@
 	if (indexPath.section == 0 && indexPath.row == 0) {
 		return 54;
 	} else {
-		return 40;
+		return 42;
 	}
 }
 
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    static NSString *TopRegCellIdentifier = @"Top Reg Cell";
     static NSString *RegCellIdentifier = @"Cell";
 	static NSString *TopCellIdentifier = @"Top Cell";
     
@@ -167,13 +167,19 @@
 	
 	if (indexPath.section == 0 && indexPath.row == 0) {
 		cellIdentifier = TopCellIdentifier;
+	} else if (indexPath.row == 1) {
+		cellIdentifier = TopRegCellIdentifier;
 	} else {
 		cellIdentifier = RegCellIdentifier;
 	}
 	
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier] autorelease];
+		if (cellIdentifier == TopRegCellIdentifier) {
+			cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier] autorelease];
+		} else {
+			cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier] autorelease];
+		}
     }
 
     // Set up the cell...
@@ -182,6 +188,7 @@
 			[self configureTopCell:cell];
 		} else if (indexPath.row == 1) {
 			cell.textLabel.text = @"Upgrade to Full Version";
+			cell.detailTextLabel.text = @"No Ads! More Activities!";
 			cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 			cell.selectionStyle = UITableViewCellSelectionStyleBlue;			
 		} else if (indexPath.row == 2) {
