@@ -95,6 +95,7 @@
 		61E645DB1031DF3800E78174 /* ColorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 61E645DA1031DF3800E78174 /* ColorView.m */; };
 		61E646301031E78500E78174 /* ColorCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 61E6462F1031E78500E78174 /* ColorCellView.m */; };
 		61E6490A1032C29600E78174 /* dist.plist in Resources */ = {isa = PBXBuildFile; fileRef = 61E649091032C29600E78174 /* dist.plist */; };
+		61F547D01133BDF00053905B /* Syncer.m in Sources */ = {isa = PBXBuildFile; fileRef = 61F547CF1133BDF00053905B /* Syncer.m */; };
 		61FCDE87104B552000F16BF1 /* TZTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61FCDE86104B552000F16BF1 /* TZTabBarController.m */; };
 		61FCDF9E104BA5CD00F16BF1 /* LandscapeGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = 61FCDF9D104BA5CD00F16BF1 /* LandscapeGraphView.m */; };
 /* End PBXBuildFile section */
@@ -263,6 +264,8 @@
 		61E6462E1031E78500E78174 /* ColorCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorCellView.h; sourceTree = "<group>"; };
 		61E6462F1031E78500E78174 /* ColorCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorCellView.m; sourceTree = "<group>"; };
 		61E649091032C29600E78174 /* dist.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = dist.plist; sourceTree = "<group>"; };
+		61F547CE1133BDF00053905B /* Syncer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Syncer.h; sourceTree = "<group>"; };
+		61F547CF1133BDF00053905B /* Syncer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Syncer.m; sourceTree = "<group>"; };
 		61FCDE85104B552000F16BF1 /* TZTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TZTabBarController.h; sourceTree = "<group>"; };
 		61FCDE86104B552000F16BF1 /* TZTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TZTabBarController.m; sourceTree = "<group>"; };
 		61FCDF9C104BA5CD00F16BF1 /* LandscapeGraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LandscapeGraphView.h; sourceTree = "<group>"; };
@@ -351,6 +354,8 @@
 				61D0FC381045166C002B78C5 /* ShakeView.m */,
 				6180A1821076BB1D00918261 /* ShoutOutViewController.h */,
 				6180A1831076BB1D00918261 /* ShoutOutViewController.m */,
+				61F547CE1133BDF00053905B /* Syncer.h */,
+				61F547CF1133BDF00053905B /* Syncer.m */,
 				615E4EEF104E6263007DF031 /* SyncViewController.h */,
 				615E4EF0104E6263007DF031 /* SyncViewController.m */,
 				1D3623240D0F684500981E51 /* TallyZooAppDelegate.h */,
@@ -743,6 +748,7 @@
 				616176111125EA6900252700 /* AdWhirlView.m in Sources */,
 				616176131125EA6900252700 /* AdWhirlWebBrowserController.m in Sources */,
 				616176141125EA6900252700 /* ARRollerView.m in Sources */,
+				61F547D01133BDF00053905B /* Syncer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -19,6 +19,7 @@
 @synthesize location;
 @synthesize locationDelegate;
 @synthesize use_gps;
+@synthesize syncer;
 
 - (NSString *)adWhirlApplicationKey {
 	return @"0469832f2b854894b40aa5f31f2f5edc";
@@ -128,6 +129,8 @@ void uncaughtExceptionHandler(NSException *exception) {
     [window makeKeyAndVisible];
 	window.backgroundColor = [UIColor blackColor];
 	
+	self.syncer = [[[Syncer alloc] init] autorelease];
+	
 	return YES;
 }
 
@@ -146,6 +149,7 @@ void uncaughtExceptionHandler(NSException *exception) {
 	[tbController release];
 	[locationManager release];
 	[location release];
+	[syncer release];
 	
 	[super dealloc];
 
