@@ -25,10 +25,12 @@
 @synthesize message;
 @synthesize username;
 @synthesize password;
+@synthesize synced;
 
 - (id)init {
 	if (self = [super init]) {		
 		state = 0;
+		synced = NO;
 		
 		NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 		self.lastSync = [defaults stringForKey:@"lastSync"];
@@ -70,6 +72,7 @@
 	
 	connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
 	if (connection) {
+		self.message = @"Downloading Updates ...";
 		self.progress = 0.02;
 		return YES;
 	} else {
@@ -160,6 +163,7 @@
 		[syncQueue release];
 		syncQueue = nil;
 		
+		synced = YES;
 		[delegate syncerCompleted:self];
 		
 		return;
@@ -278,6 +282,7 @@
 		self.progress = .15;
 		// parse activities
 		[self parseActivities];
+		self.message = @"Updating Server ...";
 		self.progress = .3;
 		
 		// now to update

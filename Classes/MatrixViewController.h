@@ -10,9 +10,11 @@
 #import "MatrixButton.h"
 #import "MatrixView.h"
 #import "LocationBusyView.h"
+#import "AddTipView.h"
 #import "CountTipView.h"
+#import "Syncer.h"
 
-@interface MatrixViewController : UIViewController<UIScrollViewDelegate, UIAlertViewDelegate, UIActionSheetDelegate> {
+@interface MatrixViewController : UIViewController<UIScrollViewDelegate, UIAlertViewDelegate, UIActionSheetDelegate, SyncerDelegate> {
 	MatrixView *matrixView;
 	
 	UIScrollView *_scrollView;
@@ -28,7 +30,10 @@
 	MatrixButton *tmp_button;
 	LocationBusyView *locationBusyView;
 	
+	AddTipView *addTipView;
 	CountTipView *countTipView;
+	
+	UILabel *syncStatus;
 }
 
 @property(assign, nonatomic) BOOL editting;

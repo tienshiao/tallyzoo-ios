@@ -116,8 +116,7 @@
 	NSError *error;
 	passwordField.text = [SFHFKeychainUtils getPasswordForUsername:usernameField.text andServiceName:@"TallyZoo" error:&error];
 
-	Syncer *syncer = UIAppDelegate.syncer;
-	NSString *lastSync = syncer.lastSync;
+	NSString *lastSync = [defaults stringForKey:@"lastSync"];
 	
 	if (lastSync) {
 		NSDateFormatter *df = [[NSDateFormatter alloc] init];
@@ -206,7 +205,7 @@
 
 - (void)syncerUpdated:(Syncer *)s {
 	if (s.state) {
-		lastLabel.highlighted = YES;
+		lastLabel.hidden = YES;
 		progressView.hidden = NO;
 		syncButton.enabled = NO;
 		

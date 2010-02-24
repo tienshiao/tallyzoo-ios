@@ -19,6 +19,8 @@
 #import "AddTipView.h"
 #import "AdWhirlView.h"
 #import "FlurryAPI.h"
+#import "SFHFKeychainUtils.h"
+
 
 @implementation MatrixViewController
 
@@ -160,14 +162,22 @@
 	
 	if ([self getNumberOfActivities] == 0) {
 		// user has not added an activity yet
-		AddTipView *atv = [[AddTipView alloc] initWithFrame:UIAppDelegate.window.bounds];
-		[UIAppDelegate.window addSubview:atv];
-		[atv release];
+		addTipView = [[AddTipView alloc] initWithFrame:UIAppDelegate.window.bounds];
+		[UIAppDelegate.window addSubview:addTipView];
 	}
 	if ([self getNumberOfCounts] == 0) {
 		countTipView = [[CountTipView alloc] initWithFrame:CGRectMake(110, 0, 200, 300)];
 		[self.view addSubview:countTipView];
 	}
+	
+	syncStatus = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 19)];
+	syncStatus.textAlignment = UITextAlignmentCenter;
+	syncStatus.textColor = [UIColor whiteColor];
+	syncStatus.font = [UIFont boldSystemFontOfSize:12];
+	syncStatus.backgroundColor = [UIColor blackColor];
+	syncStatus.alpha = .7;
+	[containerView addSubview:syncStatus];
+	syncStatus.hidden = YES;
 }
 
 
@@ -177,6 +187,8 @@
     [super viewDidLoad];
 }
 */
+
+static BOOL firstTime = YES;
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -204,6 +216,35 @@
 		self.navigationItem.rightBarButtonItem.enabled = NO;
 	}
 
+	Syncer *syncer = UIAppDelegate.syncer;
+	if (firstTime && !syncer.synced) {
+		// only run at first launch
+		NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+		BOOL startupsync_preference = [defaults boolForKey:@"startupsync_preference"];		
+
+		if (startupsync_preference) {
+			NSString *username = [defaults stringForKey:@"username"];
+			
+			NSError *error;
+			NSString *password = [SFHFKeychainUtils getPasswordForUsername:username andServiceName:@"TallyZoo" error:&error];
+			
+			if ([self getNumberOfActivities] > 0 ||
+				([username length] && [password length])) {
+				// hide the tips
+				addTipView.hidden = YES;
+				countTipView.hidden = YES;
+				
+				syncer.delegate = self;
+				[syncer start];
+				
+				syncStatus.text = @"Syncing ...";
+				syncStatus.hidden = NO;
+			}
+		}
+			
+		firstTime = NO;
+	}
+	
 //	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:animated];	
 }
 
@@ -211,6 +252,11 @@
 	[FlurryAPI logEvent:@"Dashboard Appeared"];
 
 	[self.view becomeFirstResponder];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+	Syncer *syncer = UIAppDelegate.syncer;
+	syncer.delegate = self;		
 }
 
 /*
@@ -415,6 +461,42 @@
 	locationBusyView.hidden = YES;
 }
 
+- (void)syncerUpdated:(Syncer *)s {
+	syncStatus.text = s.message;
+}
+
+- (void)syncerCompleted:(Syncer *)s {
+	int screens = [self getNumberOfScreens];
+	
+	_scrollView.contentSize = CGSizeMake(320 * screens, _scrollView.frame.size.height);
+	CGRect frame = matrixView.frame;
+	frame.size = _scrollView.contentSize;
+	matrixView.frame = frame;
+	
+	for (int i = 0; i < screens; i++) {
+		[self loadMatrixViewWithPage:i];
+	}
+	
+	[self.view setNeedsDisplay];
+	
+	syncStatus.hidden = YES;
+	
+	[FlurryAPI logEvent:@"Sync Completed"];
+}
+
+- (void)syncerFailed:(Syncer *)s {
+	syncStatus.hidden = YES;
+	
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error Syncing" 
+													message:s.message 
+												   delegate:nil
+										  cancelButtonTitle:@"OK" 
+										  otherButtonTitles:nil];
+	[alert show];
+	[alert autorelease];
+}
+
+
 - (void)didReceiveMemoryWarning {
 	// Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
@@ -438,7 +520,9 @@
 	[locationSheet release];
 	[locationBusyView release];
 	
+	[addTipView release];
 	[countTipView release];
+	[syncStatus release];
 	
 	[super dealloc];
 }

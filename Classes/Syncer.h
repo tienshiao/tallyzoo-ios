@@ -39,6 +39,8 @@
 	
 	NSString *username;
 	NSString *password;
+	
+	BOOL synced;
 }
 
 #define STATE_RECEIVING 1
@@ -48,10 +50,11 @@
 @property (nonatomic, retain) NSString *lastSync;
 @property (assign, nonatomic) float progress;
 @property (assign, nonatomic) int state;
-@property (assign, nonatomic) id delegate;
+@property (assign, nonatomic) id<SyncerDelegate> delegate;
 @property (nonatomic, retain) NSString *message;
 @property (nonatomic, retain) NSString *username;
 @property (nonatomic, retain) NSString *password;
+@property (nonatomic, assign) BOOL synced;
 
 - (void)start;
 
