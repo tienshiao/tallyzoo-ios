@@ -65,6 +65,11 @@
 	double current = activity.initial_value;
 	ysig = activity.init_sig;
 	
+	[xmin release];
+	xmin = nil;
+	[xmax release];
+	xmax = nil;
+	
 	// TODO adjust ymin/ymax based on visible x timespan
 	if (activity.graph_type == TZACTIVITY_SLIDING_SUMMED) {
 		ymin = current;

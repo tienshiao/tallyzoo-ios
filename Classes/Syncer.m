@@ -273,9 +273,9 @@
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
-	NSString *body = [[NSString alloc] initWithBytes:[receivedData bytes] 
-											  length:[receivedData length] 
-											encoding:NSUTF8StringEncoding];
+	//NSString *body = [[NSString alloc] initWithBytes:[receivedData bytes] 
+	//										  length:[receivedData length] 
+	//										encoding:NSUTF8StringEncoding];
 	//NSLog(body);
 	
 	if (state == STATE_RECEIVING) {

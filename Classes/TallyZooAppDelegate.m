@@ -152,6 +152,8 @@ void uncaughtExceptionHandler(NSException *exception) {
 	[location release];
 	[syncer release];
 	
+	[database release];
+	
 	[super dealloc];
 
 }
