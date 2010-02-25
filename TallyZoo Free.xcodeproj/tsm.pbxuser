@@ -22,9 +22,9 @@
 		);
 	};
 	29B97313FDCFA39411CA2CEA /* Project object */ = {
-		activeBuildConfigurationName = Debug;
+		activeBuildConfigurationName = "Release Ad Hoc";
 		activeExecutable = 615CC7C31018CF5E00BD6BB2 /* TallyZoo Free */;
-		activeSDKPreference = iphonesimulator3.0;
+		activeSDKPreference = iphoneos3.0;
 		activeTarget = 1D6058900D05DD3D006BFB54 /* TallyZoo Free */;
 		addToTargets = (
 			1D6058900D05DD3D006BFB54 /* TallyZoo Free */,
@@ -200,6 +200,14 @@
 			612213D51135EEF500E6941E /* PBXTextBookmark */ = 612213D51135EEF500E6941E /* PBXTextBookmark */;
 			612213D91135EF8500E6941E /* PBXTextBookmark */ = 612213D91135EF8500E6941E /* PBXTextBookmark */;
 			612213DD1135EFA200E6941E /* PBXTextBookmark */ = 612213DD1135EFA200E6941E /* PBXTextBookmark */;
+			612213E711364A8F00E6941E /* PBXTextBookmark */ = 612213E711364A8F00E6941E /* PBXTextBookmark */;
+			612213EA113650A100E6941E /* PBXTextBookmark */ = 612213EA113650A100E6941E /* PBXTextBookmark */;
+			612213EB113650A100E6941E /* PBXTextBookmark */ = 612213EB113650A100E6941E /* PBXTextBookmark */;
+			612213EC113650A100E6941E /* PBXTextBookmark */ = 612213EC113650A100E6941E /* PBXTextBookmark */;
+			612213ED113650A100E6941E /* PBXTextBookmark */ = 612213ED113650A100E6941E /* PBXTextBookmark */;
+			612213EE113650A100E6941E /* PBXTextBookmark */ = 612213EE113650A100E6941E /* PBXTextBookmark */;
+			612213EF113650A100E6941E /* PBXTextBookmark */ = 612213EF113650A100E6941E /* PBXTextBookmark */;
+			612213FB1136513300E6941E /* PBXTextBookmark */ = 612213FB1136513300E6941E /* PBXTextBookmark */;
 			61455D111070A36300D1FFB4 = 61455D111070A36300D1FFB4 /* PBXTextBookmark */;
 			61455D3C1070A9F500D1FFB4 = 61455D3C1070A9F500D1FFB4 /* PBXTextBookmark */;
 			61455D3F1070A9F500D1FFB4 = 61455D3F1070A9F500D1FFB4 /* PBXTextBookmark */;
@@ -1268,6 +1276,86 @@
 		vrLen = 1459;
 		vrLoc = 3746;
 	};
+	612213E711364A8F00E6941E /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6151C7841059639900D253CA /* MoreTableViewController.m */;
+		name = "MoreTableViewController.m: 156";
+		rLen = 0;
+		rLoc = 4681;
+		rType = 0;
+		vrLen = 1422;
+		vrLoc = 3834;
+	};
+	612213EA113650A100E6941E /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6151C7841059639900D253CA /* MoreTableViewController.m */;
+		name = "MoreTableViewController.m: 156";
+		rLen = 0;
+		rLoc = 4681;
+		rType = 0;
+		vrLen = 1376;
+		vrLoc = 3880;
+	};
+	612213EB113650A100E6941E /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 615CC8FE1020412600BD6BB2 /* TZActivity.h */;
+		name = "TZActivity.h: 64";
+		rLen = 25;
+		rLoc = 1811;
+		rType = 0;
+		vrLen = 1376;
+		vrLoc = 381;
+	};
+	612213EC113650A100E6941E /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 615CC9011020413600BD6BB2 /* TZCount.h */;
+		name = "TZCount.h: 45";
+		rLen = 0;
+		rLoc = 1175;
+		rType = 0;
+		vrLen = 1267;
+		vrLoc = 136;
+	};
+	612213ED113650A100E6941E /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 615CC9021020413600BD6BB2 /* TZCount.m */;
+		name = "TZCount.m: 33";
+		rLen = 0;
+		rLoc = 628;
+		rType = 0;
+		vrLen = 1394;
+		vrLoc = 944;
+	};
+	612213EE113650A100E6941E /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 615CC8FF1020412600BD6BB2 /* TZActivity.m */;
+		name = "TZActivity.m: 92";
+		rLen = 0;
+		rLoc = 3041;
+		rType = 0;
+		vrLen = 1341;
+		vrLoc = 2211;
+	};
+	612213EF113650A100E6941E /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 615CC8FF1020412600BD6BB2 /* TZActivity.m */;
+		name = "TZActivity.m: 92";
+		rLen = 0;
+		rLoc = 3041;
+		rType = 0;
+		vrLen = 1341;
+		vrLoc = 2211;
+	};
+	612213FB1136513300E6941E /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 615CC8FF1020412600BD6BB2 /* TZActivity.m */;
+		name = "TZActivity.m: 92";
+		rLen = 0;
+		rLoc = 3041;
+		rType = 0;
+		vrLen = 1344;
+		vrLoc = 2211;
+	};
 	612E25A4108B8D9400BD421D /* GraphOptionsView.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {740, 569}}";
@@ -1563,7 +1651,7 @@
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {943, 4407}}";
 			sepNavSelRange = "{4681, 0}";
-			sepNavVisRange = "{3746, 1459}";
+			sepNavVisRange = "{3880, 1376}";
 		};
 	};
 	6157AE6F11064C2B0083BC83 /* PBXTextBookmark */ = {
@@ -1764,15 +1852,15 @@
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {740, 1235}}";
 			sepNavSelRange = "{1811, 25}";
-			sepNavVisRange = "{1058, 1334}";
+			sepNavVisRange = "{381, 1376}";
 			sepNavWindowFrame = "{{2075, 58}, {929, 669}}";
 		};
 	};
 	615CC8FF1020412600BD6BB2 /* TZActivity.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1566, 6864}}";
-			sepNavSelRange = "{1345, 0}";
-			sepNavVisRange = "{11537, 1657}";
+			sepNavIntBoundsRect = "{{0, 0}, {1090, 6851}}";
+			sepNavSelRange = "{3041, 0}";
+			sepNavVisRange = "{2211, 1344}";
 			sepNavWindowFrame = "{{1289, 85}, {733, 673}}";
 		};
 	};
@@ -1780,15 +1868,15 @@
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {740, 702}}";
 			sepNavSelRange = "{1175, 0}";
-			sepNavVisRange = "{170, 1270}";
+			sepNavVisRange = "{136, 1267}";
 			sepNavWindowFrame = "{{1293, 98}, {733, 673}}";
 		};
 	};
 	615CC9021020413600BD6BB2 /* TZCount.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {824, 3198}}";
+			sepNavIntBoundsRect = "{{0, 0}, {824, 3172}}";
 			sepNavSelRange = "{628, 0}";
-			sepNavVisRange = "{188, 1427}";
+			sepNavVisRange = "{944, 1394}";
 		};
 	};
 	615CCA341022E97600BD6BB2 /* EditActivityViewController.h */ = {
@@ -2244,7 +2332,7 @@
 		ignoreCount = 0;
 		lineNumber = 169;
 		location = "TallyZoo Free";
-		modificationTime = 288747398.339216;
+		modificationTime = 288772232.298386;
 		originalNumberOfMultipleMatches = 1;
 		state = 1;
 	};
@@ -2259,9 +2347,9 @@
 		hitCount = 0;
 		ignoreCount = 0;
 		location = "";
-		modificationTime = 288747422.938828;
+		modificationTime = 288772230.948603;
 		originalNumberOfMultipleMatches = 1;
-		state = 1;
+		state = 0;
 		symbolName = "-[_NSZombie methodSignatureForSelector:]";
 	};
 	61B1D5D9107040BF00EA1FE7 /* malloc_error_break */ = {
@@ -2275,7 +2363,7 @@
 		hitCount = 0;
 		ignoreCount = 0;
 		location = libSystem.B.dylib;
-		modificationTime = 288747398.339493;
+		modificationTime = 288772232.4056;
 		originalNumberOfMultipleMatches = 1;
 		state = 1;
 		symbolName = malloc_error_break;
@@ -2304,7 +2392,7 @@
 		ignoreCount = 0;
 		lineNumber = 151;
 		location = "TallyZoo Free";
-		modificationTime = 288747398.339257;
+		modificationTime = 288772232.349174;
 		originalNumberOfMultipleMatches = 1;
 		state = 1;
 	};
@@ -2319,7 +2407,7 @@
 		hitCount = 0;
 		ignoreCount = 0;
 		location = libobjc.A.dylib;
-		modificationTime = 288747398.339524;
+		modificationTime = 288772232.433944;
 		originalNumberOfMultipleMatches = 1;
 		state = 1;
 		symbolName = objc_exception_throw;
