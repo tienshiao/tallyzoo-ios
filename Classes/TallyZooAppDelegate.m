@@ -19,6 +19,7 @@
 @synthesize location;
 @synthesize locationDelegate;
 @synthesize use_gps;
+@synthesize syncer;
 
 - (void)initializeDefaults {
 	float testValue = [[NSUserDefaults standardUserDefaults] floatForKey:@"delay_preference"];
@@ -29,6 +30,7 @@
 									  [NSNumber numberWithFloat:1.5], @"delay_preference",
 									  [NSNumber numberWithBool:YES], @"gps_preference",
 									  @"www.tallyzoo.com/api.php", @"api_url",
+									  [NSNumber numberWithBool:YES], @"startupsync_preference",
 									  nil];
 		
 		[[NSUserDefaults standardUserDefaults] registerDefaults:appDefaults];
@@ -125,6 +127,8 @@ void uncaughtExceptionHandler(NSException *exception) {
     [window makeKeyAndVisible];
 	window.backgroundColor = [UIColor blackColor];
 	
+	self.syncer = [[[Syncer alloc] init] autorelease];
+	
 	return YES;
 }
 
@@ -143,6 +147,7 @@ void uncaughtExceptionHandler(NSException *exception) {
 	[tbController release];
 	[locationManager release];
 	[location release];
+	[syncer release];
 	
 	[database release];
 	

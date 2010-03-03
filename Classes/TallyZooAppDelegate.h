@@ -11,6 +11,7 @@
 #import "TZTabBarController.h"
 #import "FMDatabase.h"
 #import "MatrixViewController.h"
+#import "Syncer.h"
 
 #define UIAppDelegate ((TallyZooAppDelegate *)[UIApplication sharedApplication].delegate)
 
@@ -24,6 +25,8 @@
 	CLLocation *location;
 	id locationDelegate;
 	BOOL use_gps;
+	
+	Syncer *syncer;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
@@ -31,6 +34,7 @@
 @property (nonatomic, retain) CLLocation *location;
 @property (nonatomic, assign) id locationDelegate;
 @property (nonatomic, assign) BOOL use_gps;
+@property (nonatomic, retain) Syncer *syncer;
 
 - (void)initializeDatabase;
 

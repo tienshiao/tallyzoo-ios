@@ -74,7 +74,17 @@
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
 			<key>Title</key>
-			<string>API URL</string>
+			<string>Sync Options</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>Sync at Startup</string>
+			<key>Key</key>
+			<string>startupsync_preference</string>
+			<key>DefaultValue</key>
+			<true/>
 		</dict>
 		<dict>
 			<key>Type</key>
