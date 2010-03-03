@@ -35,7 +35,9 @@
 		[clearButton addTarget:self action:@selector(clear:) forControlEvents:UIControlEventTouchUpInside];
 		
 		self.tableView.tableFooterView = clearButton;			
-		
+
+		tfAlert = [[TextFieldAlert alloc] init];
+		tfAlert.delegate = self;	
 	}
 	return self;	
 }
@@ -139,7 +141,7 @@
 	label = [[UILabel alloc] initWithFrame:rect];
 	label.font = [UIFont systemFontOfSize:12];
 	label.textAlignment = UITextAlignmentCenter;
-	label.text = @"Copyright © 2009 TallyZoo";
+	label.text = @"Copyright © 2010 TallyZoo";
 	[cell.contentView addSubview:label];
 	label.highlightedTextColor = [UIColor whiteColor];
 	[label release];
@@ -265,8 +267,6 @@
 
 
 - (void)clear:(id)sender {
-	tfAlert = [[TextFieldAlert alloc] init];
-	tfAlert.delegate = self;
 	[tfAlert show];
 }
 
