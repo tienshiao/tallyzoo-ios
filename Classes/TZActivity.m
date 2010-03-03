@@ -48,6 +48,11 @@
 	return [dbh intForQuery:@"SELECT count(*) FROM activities WHERE deleted = 0 AND upper(name) = upper(?) AND id <> ?", n, [NSNumber numberWithInt:key]];
 }
 
++ (NSInteger)activeCount {
+	FMDatabase *dbh = UIAppDelegate.database;
+	return [dbh intForQuery:@"SELECT count(*) FROM activities WHERE deleted = 0"];
+}
+
 
 - (id)initWithKey:(NSInteger)k {
 	if (self = [super init]) {

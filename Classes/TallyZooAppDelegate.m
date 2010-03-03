@@ -10,6 +10,7 @@
 #import "GraphViewController.h"
 #import "SyncViewController.h"
 #import "MoreTableViewController.h"
+#import "FlurryAPI.h"
 
 @implementation TallyZooAppDelegate
 
@@ -60,14 +61,24 @@
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation{
-	self.location = newLocation;
+	[FlurryAPI setLocation:newLocation];
 	
+	self.location = newLocation;
+
 	if (locationDelegate && [locationDelegate respondsToSelector:@selector(locationFound)]) { 
 		[locationDelegate locationFound];
 	}	
 }
 
+void uncaughtExceptionHandler(NSException *exception) {
+	[FlurryAPI logError:@"Uncaught" message:@"Crash!" exception:exception];
+}
+
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+	NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
+	[FlurryAPI startSession:@"L8JZI8SJQZKB8I79IQMK"];
+
 	[self initializeDefaults];
 	[self initializeDatabase];
 

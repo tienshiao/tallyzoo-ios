@@ -265,7 +265,6 @@
 							<array>
 								<string>29B97314FDCFA39411CA2CEA</string>
 								<string>080E96DDFE201D6D7F000001</string>
-								<string>615CC84C101FCB3C00BD6BB2</string>
 								<string>29B97317FDCFA39411CA2CEA</string>
 								<string>29B97323FDCFA39411CA2CEA</string>
 								<string>1C37FAAC04509CD000000102</string>
@@ -274,13 +273,13 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>53</integer>
-									<integer>1</integer>
+									<integer>54</integer>
+									<integer>2</integer>
 									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 426}, {240, 588}}</string>
+							<string>{{0, 431}, {240, 588}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -317,7 +316,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>SyncViewController.m</string>
+								<string>TallyZooAppDelegate.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -325,11 +324,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>SyncViewController.m</string>
+										<string>TallyZooAppDelegate.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>6165C4EC113D299E001B78B4</string>
+										<string>6165C561113E40E8001B78B4</string>
 										<key>history</key>
 										<array>
 											<string>61E64CF910393E2C00E78174</string>
@@ -378,9 +377,7 @@
 											<string>612E282A1090632400BD421D</string>
 											<string>612E282B1090632400BD421D</string>
 											<string>612E2945109BB3BA00BD421D</string>
-											<string>61BD202110B1621800C955AF</string>
 											<string>61BD20AF10B3FEB900C955AF</string>
-											<string>61BD20CA10B400DD00C955AF</string>
 											<string>61BD20E710B4023300C955AF</string>
 											<string>61C8BFB010B5673B008ADE59</string>
 											<string>61C8BFB410B5673B008ADE59</string>
@@ -393,7 +390,6 @@
 											<string>61C2571A10CDE1B800ED0107</string>
 											<string>61FAD17D10D0FB04006430F9</string>
 											<string>61FAD19210D0FCEF006430F9</string>
-											<string>61FAD19310D0FCEF006430F9</string>
 											<string>61FAD19410D0FCEF006430F9</string>
 											<string>61FAD1BD10D0FF92006430F9</string>
 											<string>61FAD1FC10D10682006430F9</string>
@@ -403,10 +399,8 @@
 											<string>61FAD2B410D97E5E006430F9</string>
 											<string>61FAD2B610D97E5E006430F9</string>
 											<string>61FAD2DD10D9A1F6006430F9</string>
-											<string>61FAD2ED10DA166C006430F9</string>
 											<string>61FAD31710DB4072006430F9</string>
 											<string>61FAD31810DB4072006430F9</string>
-											<string>61FAD31910DB4072006430F9</string>
 											<string>61FAD31A10DB4072006430F9</string>
 											<string>61FAD31B10DB4072006430F9</string>
 											<string>61FAD31C10DB4072006430F9</string>
@@ -415,19 +409,26 @@
 											<string>61FAD31F10DB4072006430F9</string>
 											<string>61FAD32010DB4072006430F9</string>
 											<string>61FAD32210DB4072006430F9</string>
-											<string>61FAD32410DB4072006430F9</string>
 											<string>61FAD32910DB40D7006430F9</string>
-											<string>61FAD32F10DB40F6006430F9</string>
 											<string>612029C610E9FFF100761F38</string>
 											<string>6157AE6F11064C2B0083BC83</string>
 											<string>6157AE7011064C2B0083BC83</string>
-											<string>6157AE7311064C2B0083BC83</string>
-											<string>61D69194111BF478000A4156</string>
 											<string>61D69195111BF478000A4156</string>
-											<string>61D691C0111D4320000A4156</string>
 											<string>61D691C1111D4320000A4156</string>
 											<string>61D69230111D5615000A4156</string>
-											<string>61D69232111D5615000A4156</string>
+											<string>6165C503113E0EA0001B78B4</string>
+											<string>6165C504113E0EA0001B78B4</string>
+											<string>6165C507113E0EA0001B78B4</string>
+											<string>6165C508113E0EA0001B78B4</string>
+											<string>6165C54F113E3C5C001B78B4</string>
+											<string>6165C552113E3C5C001B78B4</string>
+											<string>6165C55A113E40E8001B78B4</string>
+											<string>6165C55B113E40E8001B78B4</string>
+											<string>6165C55C113E40E8001B78B4</string>
+											<string>6165C55D113E40E8001B78B4</string>
+											<string>6165C55E113E40E8001B78B4</string>
+											<string>6165C55F113E40E8001B78B4</string>
+											<string>6165C560113E40E8001B78B4</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -623,6 +624,7 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>1CD10A99069EF8BA00B06720</string>
 		<string>615CC8D4101FF17600BD6BB2</string>
 		<string>/Users/tsm/ari/TallyZoo/TallyZoo.xcodeproj</string>
 	</array>
@@ -824,13 +826,13 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1CD10A99069EF8BA00B06720</string>
-				<string>6157AE7911064C2B0083BC83</string>
+				<string>6165C50B113E0EA0001B78B4</string>
 				<string>1C162984064C10D400B95A72</string>
-				<string>6157AE7A11064C2B0083BC83</string>
-				<string>6157AE7B11064C2B0083BC83</string>
-				<string>6157AE7C11064C2B0083BC83</string>
-				<string>6157AE7D11064C2B0083BC83</string>
-				<string>6157AE7E11064C2B0083BC83</string>
+				<string>6165C50C113E0EA0001B78B4</string>
+				<string>6165C50D113E0EA0001B78B4</string>
+				<string>6165C50E113E0EA0001B78B4</string>
+				<string>6165C50F113E0EA0001B78B4</string>
+				<string>6165C510113E0EA0001B78B4</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>

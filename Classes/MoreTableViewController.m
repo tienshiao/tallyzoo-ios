@@ -10,6 +10,7 @@
 #import "MoreTableViewController.h"
 #import "HelpWebViewController.h"
 #import "ShoutOutViewController.h"
+#import "FlurryAPI.h"
 
 @implementation MoreTableViewController
 
@@ -65,11 +66,12 @@
     [super viewWillAppear:animated];
 }
 */
-/*
+
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+	[FlurryAPI logEvent:@"More Appeared"];
 }
-*/
+
 /*
 - (void)viewWillDisappear:(BOOL)animated {
 	[super viewWillDisappear:animated];
