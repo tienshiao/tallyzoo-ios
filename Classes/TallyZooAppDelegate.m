@@ -133,6 +133,8 @@
 	[locationManager release];
 	[location release];
 	
+	[database release];
+	
 	[super dealloc];
 
 }
