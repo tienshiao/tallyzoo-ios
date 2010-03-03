@@ -84,6 +84,7 @@
 				self.public = NO;
 			}
 		} else {
+			self.name = @"";
 			self.default_note = @"";
 			self.default_tags = @"";
 			self.public = YES;
