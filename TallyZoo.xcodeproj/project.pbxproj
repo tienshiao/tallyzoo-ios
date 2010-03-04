@@ -37,6 +37,8 @@
 		615E52E21056DC6A007DF031 /* AccountBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 615E52E11056DC6A007DF031 /* AccountBackgroundView.m */; };
 		6165C502113E0E97001B78B4 /* Syncer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6165C501113E0E97001B78B4 /* Syncer.m */; };
 		6165C54C113E3C3F001B78B4 /* libFlurryWithLocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6165C54B113E3C3F001B78B4 /* libFlurryWithLocation.a */; };
+		6165C720113FC64C001B78B4 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 6165C71F113FC64C001B78B4 /* Reachability.m */; };
+		6165C72C113FC89B001B78B4 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6165C72B113FC89B001B78B4 /* SystemConfiguration.framework */; };
 		617AB181105BA7470036610C /* ChooseBadgeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 617AB180105BA7470036610C /* ChooseBadgeViewController.m */; };
 		617AB211105DC9870036610C /* SFHFKeychainUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 617AB210105DC9870036610C /* SFHFKeychainUtils.m */; };
 		617AB225105DD1060036610C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 617AB224105DD1060036610C /* Security.framework */; };
@@ -132,6 +134,9 @@
 		6165C501113E0E97001B78B4 /* Syncer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Syncer.m; sourceTree = "<group>"; };
 		6165C54A113E3C3F001B78B4 /* FlurryAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAPI.h; sourceTree = "<group>"; };
 		6165C54B113E3C3F001B78B4 /* libFlurryWithLocation.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurryWithLocation.a; sourceTree = "<group>"; };
+		6165C71E113FC64C001B78B4 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		6165C71F113FC64C001B78B4 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		6165C72B113FC89B001B78B4 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		617AB17F105BA7470036610C /* ChooseBadgeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseBadgeViewController.h; sourceTree = "<group>"; };
 		617AB180105BA7470036610C /* ChooseBadgeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseBadgeViewController.m; sourceTree = "<group>"; };
 		617AB20F105DC9870036610C /* SFHFKeychainUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFHFKeychainUtils.h; sourceTree = "<group>"; };
@@ -214,6 +219,7 @@
 				61D0FCA810461DE8002B78C5 /* QuartzCore.framework in Frameworks */,
 				617AB225105DD1060036610C /* Security.framework in Frameworks */,
 				6165C54C113E3C3F001B78B4 /* libFlurryWithLocation.a in Frameworks */,
+				6165C72C113FC89B001B78B4 /* SystemConfiguration.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,6 +348,7 @@
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
+				6165C72B113FC89B001B78B4 /* SystemConfiguration.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -360,6 +367,8 @@
 		615CC865101FF15B00BD6BB2 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				6165C71E113FC64C001B78B4 /* Reachability.h */,
+				6165C71F113FC64C001B78B4 /* Reachability.m */,
 				6180A2001076CC1B00918261 /* GTMDefines.h */,
 				6180A1FF1076CBD600918261 /* GTMGarbageCollection.h */,
 				615CC8DF101FF24C00BD6BB2 /* FMDatabase.h */,
@@ -538,6 +547,7 @@
 				612E2612108E370A00BD421D /* CheckboxView.m in Sources */,
 				61BD205310B2429000C955AF /* TextFieldAlert.m in Sources */,
 				6165C502113E0E97001B78B4 /* Syncer.m in Sources */,
+				6165C720113FC64C001B78B4 /* Reachability.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
