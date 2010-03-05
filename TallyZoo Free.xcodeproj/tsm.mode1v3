@@ -276,7 +276,7 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>52</integer>
+									<integer>62</integer>
 									<integer>1</integer>
 									<integer>0</integer>
 								</array>
@@ -319,7 +319,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>MatrixViewController.m</string>
+								<string>Syncer.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -327,11 +327,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>MatrixViewController.m</string>
+										<string>Syncer.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>6165C7D51141AB39001B78B4</string>
+										<string>6165C7F31141AC72001B78B4</string>
 										<key>history</key>
 										<array>
 											<string>61E64CF910393E2C00E78174</string>
@@ -434,9 +434,9 @@
 											<string>612213FE11365DE200E6941E</string>
 											<string>612213FF11365DE200E6941E</string>
 											<string>6122140011365DE200E6941E</string>
-											<string>6122140111365DE200E6941E</string>
 											<string>61DB8EBC113691B100DAB6C3</string>
-											<string>6165C57C113E6E16001B78B4</string>
+											<string>6165C7F21141AC72001B78B4</string>
+											<string>6165C7E91141AC3E001B78B4</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -632,6 +632,7 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>1CD10A99069EF8BA00B06720</string>
 		<string>615CC8D4101FF17600BD6BB2</string>
 		<string>/Users/tsm/ari/tallyzoo-free/TallyZoo Free.xcodeproj</string>
 	</array>
@@ -833,13 +834,13 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1CD10A99069EF8BA00B06720</string>
-				<string>612212D71135414800E6941E</string>
+				<string>6165C7EC1141AC3E001B78B4</string>
 				<string>1C162984064C10D400B95A72</string>
-				<string>612212D81135414800E6941E</string>
-				<string>612212D91135414800E6941E</string>
-				<string>612212DA1135414800E6941E</string>
-				<string>612212DB1135414800E6941E</string>
-				<string>612212DC1135414800E6941E</string>
+				<string>6165C7ED1141AC3E001B78B4</string>
+				<string>6165C7EE1141AC3E001B78B4</string>
+				<string>6165C7EF1141AC3E001B78B4</string>
+				<string>6165C7F01141AC3E001B78B4</string>
+				<string>6165C7F11141AC3E001B78B4</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>
