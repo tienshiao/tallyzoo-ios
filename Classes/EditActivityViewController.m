@@ -201,7 +201,7 @@
 				break;
 			case 1:
 				// display_total
-				cell.textLabel.text = @"Badge";
+				cell.textLabel.text = @"Button Number";
 				switch (activity.display_total) {
 					case BADGE_OFF:
 						cell.detailTextLabel.text = @"off"; 						
@@ -317,7 +317,7 @@
 				cbvc.editedObject = activity;
 				cbvc.display_total = activity.display_total;
 				cbvc.editedFieldKey = @"display_total";
-				cbvc.title = @"Badge";
+				cbvc.title = @"Button Number";
 				[self.navigationController pushViewController:cbvc animated:YES];
 				[cbvc release];					
 				break;
