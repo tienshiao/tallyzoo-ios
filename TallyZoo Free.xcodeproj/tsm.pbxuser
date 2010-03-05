@@ -177,6 +177,9 @@
 			6165C7F91141AD2F001B78B4 /* PBXTextBookmark */ = 6165C7F91141AD2F001B78B4 /* PBXTextBookmark */;
 			6165C7FA1141AD2F001B78B4 /* PBXTextBookmark */ = 6165C7FA1141AD2F001B78B4 /* PBXTextBookmark */;
 			6165C7FB1141AD2F001B78B4 /* PBXTextBookmark */ = 6165C7FB1141AD2F001B78B4 /* PBXTextBookmark */;
+			6165C8011141ADDE001B78B4 /* PBXTextBookmark */ = 6165C8011141ADDE001B78B4 /* PBXTextBookmark */;
+			6165C8021141ADDE001B78B4 /* PBXTextBookmark */ = 6165C8021141ADDE001B78B4 /* PBXTextBookmark */;
+			6165C8031141ADDE001B78B4 /* PBXTextBookmark */ = 6165C8031141ADDE001B78B4 /* PBXTextBookmark */;
 			617AB289105DD1150036610C = 617AB289105DD1150036610C /* PBXTextBookmark */;
 			6180A2071076E21C00918261 = 6180A2071076E21C00918261 /* PBXTextBookmark */;
 			61B1D163106DFAB600EA1FE7 = 61B1D163106DFAB600EA1FE7 /* PBXTextBookmark */;
@@ -860,9 +863,9 @@
 	};
 	615CC7F3101D924D00BD6BB2 /* MatrixViewController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {887, 7137}}";
-			sepNavSelRange = "{7655, 0}";
-			sepNavVisRange = "{6566, 1198}";
+			sepNavIntBoundsRect = "{{0, 0}, {887, 7072}}";
+			sepNavSelRange = "{6958, 0}";
+			sepNavVisRange = "{6409, 1328}";
 			sepNavWindowFrame = "{{1424, 28}, {929, 669}}";
 		};
 	};
@@ -1229,7 +1232,7 @@
 		fRef = 615CC7F3101D924D00BD6BB2 /* MatrixViewController.m */;
 		name = "MatrixViewController.m: 261";
 		rLen = 0;
-		rLoc = 7993;
+		rLoc = 8146;
 		rType = 0;
 		vrLen = 1479;
 		vrLoc = 7580;
@@ -1239,7 +1242,7 @@
 		fRef = 615CC7F3101D924D00BD6BB2 /* MatrixViewController.m */;
 		name = "MatrixViewController.m: 261";
 		rLen = 0;
-		rLoc = 7993;
+		rLoc = 8146;
 		rType = 0;
 		vrLen = 1479;
 		vrLoc = 7580;
@@ -1259,7 +1262,7 @@
 		fRef = 615CC7F3101D924D00BD6BB2 /* MatrixViewController.m */;
 		name = "MatrixViewController.m: 407";
 		rLen = 0;
-		rLoc = 13098;
+		rLoc = 13251;
 		rType = 0;
 		vrLen = 1298;
 		vrLoc = 12247;
@@ -1269,7 +1272,7 @@
 		fRef = 615CC7F3101D924D00BD6BB2 /* MatrixViewController.m */;
 		name = "MatrixViewController.m: 407";
 		rLen = 0;
-		rLoc = 13098;
+		rLoc = 13251;
 		rType = 0;
 		vrLen = 1298;
 		vrLoc = 12247;
@@ -1279,7 +1282,7 @@
 		fRef = 615CC7F3101D924D00BD6BB2 /* MatrixViewController.m */;
 		name = "MatrixViewController.m: 407";
 		rLen = 0;
-		rLoc = 13098;
+		rLoc = 13251;
 		rType = 0;
 		vrLen = 1534;
 		vrLoc = 11399;
@@ -1299,7 +1302,7 @@
 		fRef = 615CC7F3101D924D00BD6BB2 /* MatrixViewController.m */;
 		name = "MatrixViewController.m: 251";
 		rLen = 0;
-		rLoc = 7655;
+		rLoc = 7808;
 		rType = 0;
 		vrLen = 1198;
 		vrLoc = 6566;
@@ -1333,6 +1336,36 @@
 		rType = 0;
 		vrLen = 1402;
 		vrLoc = 8292;
+	};
+	6165C8011141ADDE001B78B4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 61F547CF1133BDF00053905B /* Syncer.m */;
+		name = "Syncer.m: 314";
+		rLen = 0;
+		rLoc = 9247;
+		rType = 0;
+		vrLen = 1402;
+		vrLoc = 8292;
+	};
+	6165C8021141ADDE001B78B4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 615CC7F3101D924D00BD6BB2 /* MatrixViewController.m */;
+		name = "MatrixViewController.m: 251";
+		rLen = 0;
+		rLoc = 7808;
+		rType = 0;
+		vrLen = 1195;
+		vrLoc = 6569;
+	};
+	6165C8031141ADDE001B78B4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 615CC7F3101D924D00BD6BB2 /* MatrixViewController.m */;
+		name = "MatrixViewController.m: 223";
+		rLen = 0;
+		rLoc = 6958;
+		rType = 0;
+		vrLen = 1328;
+		vrLoc = 6409;
 	};
 	617AB17F105BA7470036610C /* ChooseBadgeViewController.h */ = {
 		uiCtxt = {
@@ -1873,7 +1906,7 @@
 		fRef = 615CC7F3101D924D00BD6BB2 /* MatrixViewController.m */;
 		name = "MatrixViewController.m: 29";
 		rLen = 1383;
-		rLoc = 596;
+		rLoc = 621;
 		rType = 0;
 		vrLen = 1827;
 		vrLoc = 535;

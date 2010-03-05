@@ -59,6 +59,7 @@
 		616176971125EBA600252700 /* libAdMobDevice3_0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 616176951125EBA600252700 /* libAdMobDevice3_0.a */; };
 		616176981125EBA600252700 /* libAdMobSimulator3_0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 616176961125EBA600252700 /* libAdMobSimulator3_0.a */; };
 		6161772211262FCD00252700 /* libFlurryWithLocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6161772111262FCD00252700 /* libFlurryWithLocation.a */; };
+		6165C7FE1141AD6D001B78B4 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 6165C7FD1141AD6D001B78B4 /* Reachability.m */; };
 		617AB181105BA7470036610C /* ChooseBadgeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 617AB180105BA7470036610C /* ChooseBadgeViewController.m */; };
 		617AB211105DC9870036610C /* SFHFKeychainUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 617AB210105DC9870036610C /* SFHFKeychainUtils.m */; };
 		617AB225105DD1060036610C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 617AB224105DD1060036610C /* Security.framework */; };
@@ -203,6 +204,8 @@
 		616176961125EBA600252700 /* libAdMobSimulator3_0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libAdMobSimulator3_0.a; sourceTree = "<group>"; };
 		6161772011262FCD00252700 /* FlurryAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAPI.h; sourceTree = "<group>"; };
 		6161772111262FCD00252700 /* libFlurryWithLocation.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurryWithLocation.a; sourceTree = "<group>"; };
+		6165C7FC1141AD6D001B78B4 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		6165C7FD1141AD6D001B78B4 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		617AB17F105BA7470036610C /* ChooseBadgeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseBadgeViewController.h; sourceTree = "<group>"; };
 		617AB180105BA7470036610C /* ChooseBadgeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseBadgeViewController.m; sourceTree = "<group>"; };
 		617AB20F105DC9870036610C /* SFHFKeychainUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFHFKeychainUtils.h; sourceTree = "<group>"; };
@@ -450,6 +453,8 @@
 		615CC865101FF15B00BD6BB2 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				6165C7FC1141AD6D001B78B4 /* Reachability.h */,
+				6165C7FD1141AD6D001B78B4 /* Reachability.m */,
 				6180A2001076CC1B00918261 /* GTMDefines.h */,
 				6180A1FF1076CBD600918261 /* GTMGarbageCollection.h */,
 				615CC8DF101FF24C00BD6BB2 /* FMDatabase.h */,
@@ -749,6 +754,7 @@
 				616176131125EA6900252700 /* AdWhirlWebBrowserController.m in Sources */,
 				616176141125EA6900252700 /* ARRollerView.m in Sources */,
 				61F547D01133BDF00053905B /* Syncer.m in Sources */,
+				6165C7FE1141AD6D001B78B4 /* Reachability.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

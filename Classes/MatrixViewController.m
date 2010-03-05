@@ -20,6 +20,7 @@
 #import "AdWhirlView.h"
 #import "FlurryAPI.h"
 #import "SFHFKeychainUtils.h"
+#import "Reachability.h"
 
 
 @implementation MatrixViewController
@@ -216,8 +217,10 @@ static BOOL firstTime = YES;
 		self.navigationItem.rightBarButtonItem.enabled = NO;
 	}
 
+	Reachability *reach = [Reachability reachabilityForInternetConnection];
 	Syncer *syncer = UIAppDelegate.syncer;
-	if (firstTime && !syncer.synced) {
+	if (firstTime && !syncer.synced &&
+		[reach currentReachabilityStatus] != NotReachable) {
 		// only run at first launch
 		NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 		BOOL startupsync_preference = [defaults boolForKey:@"startupsync_preference"];		
