@@ -273,7 +273,7 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>40</integer>
+									<integer>50</integer>
 									<integer>2</integer>
 									<integer>0</integer>
 								</array>
@@ -316,7 +316,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>MatrixViewController.m</string>
+								<string>Syncer.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -324,11 +324,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>MatrixViewController.m</string>
+										<string>Syncer.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>6165C79111419A81001B78B4</string>
+										<string>6165C7BC1141A37B001B78B4</string>
 										<key>history</key>
 										<array>
 											<string>61E64CF910393E2C00E78174</string>
@@ -426,10 +426,10 @@
 											<string>6165C780114199B3001B78B4</string>
 											<string>6165C781114199B3001B78B4</string>
 											<string>6165C783114199B3001B78B4</string>
-											<string>6165C784114199B3001B78B4</string>
 											<string>6165C785114199B3001B78B4</string>
-											<string>6165C78B11419A5D001B78B4</string>
-											<string>6165C78C11419A5D001B78B4</string>
+											<string>6165C7A81141A1DA001B78B4</string>
+											<string>6165C7A91141A1DA001B78B4</string>
+											<string>6165C7AA1141A1DA001B78B4</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -625,7 +625,6 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>6165C79211419A81001B78B4</string>
 		<string>6165C746113FC8D5001B78B4</string>
 		<string>6165C747113FC8D5001B78B4</string>
 		<string>1C78EAAD065D492600B07095</string>
@@ -655,7 +654,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>Syncer.m</string>
+								<string>SFHFKeychainUtils.m</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -664,7 +663,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {899, 263}}</string>
 								<key>RubberWindowFrame</key>
-								<string>381 111 899 545 0 0 1280 778 </string>
+								<string>1315 151 899 545 1280 -250 1680 1050 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
@@ -690,7 +689,7 @@
 								<key>Frame</key>
 								<string>{{0, 268}, {899, 236}}</string>
 								<key>RubberWindowFrame</key>
-								<string>381 111 899 545 0 0 1280 778 </string>
+								<string>1315 151 899 545 1280 -250 1680 1050 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXBuildResultsModule</string>
@@ -720,7 +719,7 @@
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.buildV3</string>
 			<key>WindowString</key>
-			<string>381 111 899 545 0 0 1280 778 </string>
+			<string>1315 151 899 545 1280 -250 1680 1050 </string>
 			<key>WindowToolGUID</key>
 			<string>615CC8D4101FF17600BD6BB2</string>
 			<key>WindowToolIsVisible</key>

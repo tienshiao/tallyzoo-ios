@@ -453,6 +453,7 @@ static BOOL firstTime = YES;
 											  otherButtonTitles:@"Undo Count", nil];
 		alert.delegate = self;
 		[alert show];
+		[alert release];
 
 		[a release];
 		[c release];

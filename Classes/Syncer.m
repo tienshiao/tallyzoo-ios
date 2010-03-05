@@ -263,6 +263,10 @@
 		}
 		
 		[delegate syncerFailed:self];
+		
+		[connection release];
+		
+		return;
 	}
 	receivedData = [[NSMutableData alloc] init];
 	[receivedData setLength:0];
@@ -310,6 +314,8 @@
 	state = 0;
 	
 	[delegate syncerFailed:self];
+	
+	[connection release];
 }
 
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict{
