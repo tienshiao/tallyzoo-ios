@@ -245,8 +245,12 @@ static BOOL firstTime = YES;
 				syncStatus.hidden = NO;
 			}
 		}
-					
+		
 		firstTime = NO;
+	}
+
+	if (!syncer.state) {
+		syncStatus.hidden = YES;
 	}
 		
 //	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:animated];	
