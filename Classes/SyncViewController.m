@@ -128,6 +128,16 @@
 	} else {
 		lastLabel.text = @"Last Synced: never";
 	}	
+	
+	Syncer *syncer = UIAppDelegate.syncer;
+	syncer.delegate = self;
+	
+	if (syncer.state) {
+		syncButton.enabled = NO; 
+		lastLabel.hidden = YES;
+		progressView.hidden = NO;
+		progressView.progress = syncer.progress;		
+	}	
 }
 
 - (void)viewDidAppear:(BOOL)animated {

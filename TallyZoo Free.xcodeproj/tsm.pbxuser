@@ -22,9 +22,9 @@
 		);
 	};
 	29B97313FDCFA39411CA2CEA /* Project object */ = {
-		activeBuildConfigurationName = Release;
+		activeBuildConfigurationName = Debug;
 		activeExecutable = 615CC7C31018CF5E00BD6BB2 /* TallyZoo Free */;
-		activeSDKPreference = iphoneos3.0;
+		activeSDKPreference = iphonesimulator3.0;
 		activeTarget = 1D6058900D05DD3D006BFB54 /* TallyZoo Free */;
 		addToTargets = (
 			1D6058900D05DD3D006BFB54 /* TallyZoo Free */,
@@ -173,6 +173,10 @@
 			6165C7EB1141AC3E001B78B4 /* PBXTextBookmark */ = 6165C7EB1141AC3E001B78B4 /* PBXTextBookmark */;
 			6165C7F21141AC72001B78B4 /* PBXTextBookmark */ = 6165C7F21141AC72001B78B4 /* PBXTextBookmark */;
 			6165C7F31141AC72001B78B4 /* PBXTextBookmark */ = 6165C7F31141AC72001B78B4 /* PBXTextBookmark */;
+			6165C7F81141AD2F001B78B4 /* PBXTextBookmark */ = 6165C7F81141AD2F001B78B4 /* PBXTextBookmark */;
+			6165C7F91141AD2F001B78B4 /* PBXTextBookmark */ = 6165C7F91141AD2F001B78B4 /* PBXTextBookmark */;
+			6165C7FA1141AD2F001B78B4 /* PBXTextBookmark */ = 6165C7FA1141AD2F001B78B4 /* PBXTextBookmark */;
+			6165C7FB1141AD2F001B78B4 /* PBXTextBookmark */ = 6165C7FB1141AD2F001B78B4 /* PBXTextBookmark */;
 			617AB289105DD1150036610C = 617AB289105DD1150036610C /* PBXTextBookmark */;
 			6180A2071076E21C00918261 = 6180A2071076E21C00918261 /* PBXTextBookmark */;
 			61B1D163106DFAB600EA1FE7 = 61B1D163106DFAB600EA1FE7 /* PBXTextBookmark */;
@@ -448,7 +452,7 @@
 		fRef = 615E4EF0104E6263007DF031 /* SyncViewController.m */;
 		name = "SyncViewController.m: 178";
 		rLen = 39;
-		rLoc = 6528;
+		rLoc = 6749;
 		rType = 0;
 		vrLen = 1494;
 		vrLoc = 5198;
@@ -468,7 +472,7 @@
 		fRef = 61F547CF1133BDF00053905B /* Syncer.m */;
 		name = "Syncer.m: 278";
 		rLen = 0;
-		rLoc = 8398;
+		rLoc = 8414;
 		rType = 0;
 		vrLen = 927;
 		vrLoc = 0;
@@ -856,9 +860,9 @@
 	};
 	615CC7F3101D924D00BD6BB2 /* MatrixViewController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {929, 6851}}";
-			sepNavSelRange = "{13044, 0}";
-			sepNavVisRange = "{11399, 1534}";
+			sepNavIntBoundsRect = "{{0, 0}, {887, 7137}}";
+			sepNavSelRange = "{7655, 0}";
+			sepNavVisRange = "{6566, 1198}";
 			sepNavWindowFrame = "{{1424, 28}, {929, 669}}";
 		};
 	};
@@ -1050,9 +1054,9 @@
 	};
 	615E4EF0104E6263007DF031 /* SyncViewController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1146, 3588}}";
-			sepNavSelRange = "{6528, 39}";
-			sepNavVisRange = "{5198, 1494}";
+			sepNavIntBoundsRect = "{{0, 0}, {1146, 3510}}";
+			sepNavSelRange = "{5134, 0}";
+			sepNavVisRange = "{3944, 1274}";
 			sepNavWindowFrame = "{{1295, 122}, {733, 673}}";
 		};
 	};
@@ -1225,7 +1229,7 @@
 		fRef = 615CC7F3101D924D00BD6BB2 /* MatrixViewController.m */;
 		name = "MatrixViewController.m: 261";
 		rLen = 0;
-		rLoc = 7939;
+		rLoc = 7993;
 		rType = 0;
 		vrLen = 1479;
 		vrLoc = 7580;
@@ -1235,7 +1239,7 @@
 		fRef = 615CC7F3101D924D00BD6BB2 /* MatrixViewController.m */;
 		name = "MatrixViewController.m: 261";
 		rLen = 0;
-		rLoc = 7939;
+		rLoc = 7993;
 		rType = 0;
 		vrLen = 1479;
 		vrLoc = 7580;
@@ -1245,7 +1249,7 @@
 		fRef = 61F547CF1133BDF00053905B /* Syncer.m */;
 		name = "Syncer.m: 313";
 		rLen = 0;
-		rLoc = 9277;
+		rLoc = 9305;
 		rType = 0;
 		vrLen = 1475;
 		vrLoc = 8445;
@@ -1255,7 +1259,7 @@
 		fRef = 615CC7F3101D924D00BD6BB2 /* MatrixViewController.m */;
 		name = "MatrixViewController.m: 407";
 		rLen = 0;
-		rLoc = 13044;
+		rLoc = 13098;
 		rType = 0;
 		vrLen = 1298;
 		vrLoc = 12247;
@@ -1265,7 +1269,7 @@
 		fRef = 615CC7F3101D924D00BD6BB2 /* MatrixViewController.m */;
 		name = "MatrixViewController.m: 407";
 		rLen = 0;
-		rLoc = 13044;
+		rLoc = 13098;
 		rType = 0;
 		vrLen = 1298;
 		vrLoc = 12247;
@@ -1275,7 +1279,7 @@
 		fRef = 615CC7F3101D924D00BD6BB2 /* MatrixViewController.m */;
 		name = "MatrixViewController.m: 407";
 		rLen = 0;
-		rLoc = 13044;
+		rLoc = 13098;
 		rType = 0;
 		vrLen = 1534;
 		vrLoc = 11399;
@@ -1285,10 +1289,50 @@
 		fRef = 61F547CF1133BDF00053905B /* Syncer.m */;
 		name = "Syncer.m: 267";
 		rLen = 0;
-		rLoc = 7973;
+		rLoc = 7989;
 		rType = 0;
 		vrLen = 1322;
 		vrLoc = 7281;
+	};
+	6165C7F81141AD2F001B78B4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 615CC7F3101D924D00BD6BB2 /* MatrixViewController.m */;
+		name = "MatrixViewController.m: 251";
+		rLen = 0;
+		rLoc = 7655;
+		rType = 0;
+		vrLen = 1198;
+		vrLoc = 6566;
+	};
+	6165C7F91141AD2F001B78B4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 615E4EF0104E6263007DF031 /* SyncViewController.m */;
+		name = "SyncViewController.m: 140";
+		rLen = 0;
+		rLoc = 5134;
+		rType = 0;
+		vrLen = 1274;
+		vrLoc = 3944;
+	};
+	6165C7FA1141AD2F001B78B4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 61F547CF1133BDF00053905B /* Syncer.m */;
+		name = "Syncer.m: 267";
+		rLen = 0;
+		rLoc = 7989;
+		rType = 0;
+		vrLen = 1322;
+		vrLoc = 7281;
+	};
+	6165C7FB1141AD2F001B78B4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 61F547CF1133BDF00053905B /* Syncer.m */;
+		name = "Syncer.m: 314";
+		rLen = 0;
+		rLoc = 9247;
+		rType = 0;
+		vrLen = 1402;
+		vrLoc = 8292;
 	};
 	617AB17F105BA7470036610C /* ChooseBadgeViewController.h */ = {
 		uiCtxt = {
@@ -2005,9 +2049,9 @@
 	};
 	61F547CF1133BDF00053905B /* Syncer.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1328, 6188}}";
-			sepNavSelRange = "{7973, 0}";
-			sepNavVisRange = "{7281, 1322}";
+			sepNavIntBoundsRect = "{{0, 0}, {1328, 6123}}";
+			sepNavSelRange = "{9247, 0}";
+			sepNavVisRange = "{8292, 1402}";
 		};
 	};
 	61F548181133E1F10053905B /* PBXTextBookmark */ = {

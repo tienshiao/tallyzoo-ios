@@ -163,6 +163,8 @@
 		[syncQueue release];
 		syncQueue = nil;
 		
+		state = 0;
+		
 		synced = YES;
 		[delegate syncerCompleted:self];
 		
@@ -309,6 +311,7 @@
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
 	self.message = [NSString stringWithFormat:@"Unable to connect to server (%@). Please try again later.", [error localizedDescription]];
+	state = 0;
 	
 	[delegate syncerFailed:self];
 	
