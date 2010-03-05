@@ -234,6 +234,8 @@ static BOOL firstTime = YES;
 				addTipView.hidden = YES;
 				countTipView.hidden = YES;
 				
+				[FlurryAPI logEvent:@"Sync Started"];
+				
 				syncer.delegate = self;
 				[syncer start];
 				
@@ -256,7 +258,7 @@ static BOOL firstTime = YES;
 
 - (void)viewWillDisappear:(BOOL)animated {
 	Syncer *syncer = UIAppDelegate.syncer;
-	syncer.delegate = self;		
+	syncer.delegate = nil;		
 }
 
 /*

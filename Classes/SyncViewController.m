@@ -163,6 +163,18 @@
 }
 
 - (void)sync:(id)sender {
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	[defaults setObject:usernameField.text forKey:@"username"];
+	
+	[defaults synchronize];
+	
+	NSError *error;
+	if (![original_username isEqualToString:usernameField.text]) {
+		[SFHFKeychainUtils deleteItemForUsername:original_username andServiceName:@"TallyZoo" error:&error];
+	}
+	
+	[SFHFKeychainUtils storeUsername:usernameField.text andPassword:passwordField.text forServiceName:@"TallyZoo" updateExisting:YES error:&error];
+	
 	[FlurryAPI logEvent:@"Sync Started"];
 
 	// TODO set up UI

@@ -229,8 +229,6 @@
 			<key>Layout</key>
 			<array>
 				<dict>
-					<key>BecomeActive</key>
-					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -278,14 +276,13 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>17</integer>
-									<integer>13</integer>
+									<integer>52</integer>
 									<integer>1</integer>
 									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 0}, {236, 588}}</string>
+							<string>{{0, 640}, {236, 588}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -315,12 +312,14 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>TZActivity.m</string>
+								<string>MatrixViewController.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -328,11 +327,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>TZActivity.m</string>
+										<string>MatrixViewController.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>612213FB1136513300E6941E</string>
+										<string>6165C7D51141AB39001B78B4</string>
 										<key>history</key>
 										<array>
 											<string>61E64CF910393E2C00E78174</string>
@@ -424,20 +423,20 @@
 											<string>612213AC1135BE8000E6941E</string>
 											<string>612213AD1135BE8000E6941E</string>
 											<string>612213BF1135ECA300E6941E</string>
-											<string>612213C01135ECA300E6941E</string>
 											<string>612213C11135ECA300E6941E</string>
 											<string>612213C21135ECA300E6941E</string>
 											<string>612213C31135ECA300E6941E</string>
 											<string>612213C91135ED4000E6941E</string>
-											<string>612213D11135EEF500E6941E</string>
 											<string>612213D21135EEF500E6941E</string>
-											<string>612213D31135EEF500E6941E</string>
-											<string>612213D41135EEF500E6941E</string>
-											<string>612213EA113650A100E6941E</string>
 											<string>612213EB113650A100E6941E</string>
 											<string>612213EC113650A100E6941E</string>
 											<string>612213ED113650A100E6941E</string>
-											<string>612213EE113650A100E6941E</string>
+											<string>612213FE11365DE200E6941E</string>
+											<string>612213FF11365DE200E6941E</string>
+											<string>6122140011365DE200E6941E</string>
+											<string>6122140111365DE200E6941E</string>
+											<string>61DB8EBC113691B100DAB6C3</string>
+											<string>6165C57C113E6E16001B78B4</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -495,9 +494,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>612212C21135345300E6941E</string>
+				<string>6165C7D61141AB39001B78B4</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>612212C31135345300E6941E</string>
+				<string>6165C7D71141AB39001B78B4</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -633,10 +632,6 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>612212EB1135426C00E6941E</string>
-		<string>612212DF1135414800E6941E</string>
-		<string>1C78EAAD065D492600B07095</string>
-		<string>1CD10A99069EF8BA00B06720</string>
 		<string>615CC8D4101FF17600BD6BB2</string>
 		<string>/Users/tsm/ari/tallyzoo-free/TallyZoo Free.xcodeproj</string>
 	</array>
@@ -718,7 +713,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>615CC8D4101FF17600BD6BB2</string>
-				<string>612212C41135345300E6941E</string>
+				<string>6165C7D81141AB39001B78B4</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
