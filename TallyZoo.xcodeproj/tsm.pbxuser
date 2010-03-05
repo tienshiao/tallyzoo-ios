@@ -35,7 +35,6 @@
 			61B1D5D9107040BF00EA1FE7 /* malloc_error_break */,
 			61B1D7AF1070722700EA1FE7 /* GraphCell.m:151 */,
 			61B1D8C510709E4200EA1FE7 /* objc_exception_throw */,
-			6165C733113FC8D3001B78B4 /* MatrixViewController.m:221 */,
 		);
 		codeSenseManager = 615CC7CA1018CF7000BD6BB2 /* Code sense */;
 		executables = (
@@ -166,6 +165,12 @@
 			6165C73C113FC8D5001B78B4 /* PBXTextBookmark */ = 6165C73C113FC8D5001B78B4 /* PBXTextBookmark */;
 			6165C73D113FC8D5001B78B4 /* PBXTextBookmark */ = 6165C73D113FC8D5001B78B4 /* PBXTextBookmark */;
 			6165C74A113FC8E6001B78B4 /* PBXTextBookmark */ = 6165C74A113FC8E6001B78B4 /* PBXTextBookmark */;
+			6165C75211404EBD001B78B4 /* PBXTextBookmark */ = 6165C75211404EBD001B78B4 /* PBXTextBookmark */;
+			6165C76A114054AD001B78B4 /* PBXTextBookmark */ = 6165C76A114054AD001B78B4 /* PBXTextBookmark */;
+			6165C76B114054AD001B78B4 /* PlistBookmark */ = 6165C76B114054AD001B78B4 /* PlistBookmark */;
+			6165C76D114054C2001B78B4 /* PlistBookmark */ = 6165C76D114054C2001B78B4 /* PlistBookmark */;
+			6165C76E114054C2001B78B4 /* PBXTextBookmark */ = 6165C76E114054C2001B78B4 /* PBXTextBookmark */;
+			6165C76F114054C2001B78B4 /* PBXTextBookmark */ = 6165C76F114054C2001B78B4 /* PBXTextBookmark */;
 			617AB289105DD1150036610C = 617AB289105DD1150036610C /* PBXTextBookmark */;
 			6180A1F51076CB5500918261 = 6180A1F51076CB5500918261 /* PBXTextBookmark */;
 			6180A2071076E21C00918261 = 6180A2071076E21C00918261 /* PBXTextBookmark */;
@@ -681,9 +686,9 @@
 	};
 	615CC7F3101D924D00BD6BB2 /* MatrixViewController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1146, 7436}}";
-			sepNavSelRange = "{533, 0}";
-			sepNavVisRange = "{7589, 1119}";
+			sepNavIntBoundsRect = "{{0, 0}, {887, 7501}}";
+			sepNavSelRange = "{7102, 0}";
+			sepNavVisRange = "{6500, 1404}";
 			sepNavWindowFrame = "{{1424, 28}, {929, 669}}";
 		};
 	};
@@ -1122,24 +1127,6 @@
 		rLen = 0;
 		rLoc = 9223372036854775807;
 	};
-	6165C733113FC8D3001B78B4 /* MatrixViewController.m:221 */ = {
-		isa = PBXFileBreakpoint;
-		actions = (
-		);
-		breakpointStyle = 0;
-		continueAfterActions = 0;
-		countType = 0;
-		delayBeforeContinue = 0;
-		fileReference = 615CC7F3101D924D00BD6BB2 /* MatrixViewController.m */;
-		functionName = "-viewWillAppear:";
-		hitCount = 1;
-		ignoreCount = 0;
-		lineNumber = 221;
-		location = TallyZoo;
-		modificationTime = 289392855.198878;
-		originalNumberOfMultipleMatches = 1;
-		state = 1;
-	};
 	6165C737113FC8D5001B78B4 /* PlistBookmark */ = {
 		isa = PlistBookmark;
 		fRef = 6165C595113EE65F001B78B4 /* Root.plist */;
@@ -1220,6 +1207,67 @@
 		rType = 0;
 		vrLen = 1119;
 		vrLoc = 7589;
+	};
+	6165C75211404EBD001B78B4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 615CC7F3101D924D00BD6BB2 /* MatrixViewController.m */;
+		name = "MatrixViewController.m: 22";
+		rLen = 0;
+		rLoc = 533;
+		rType = 0;
+		vrLen = 1475;
+		vrLoc = 6531;
+	};
+	6165C76A114054AD001B78B4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 615CC7F3101D924D00BD6BB2 /* MatrixViewController.m */;
+		name = "MatrixViewController.m: 22";
+		rLen = 0;
+		rLoc = 533;
+		rType = 0;
+		vrLen = 1298;
+		vrLoc = 0;
+	};
+	6165C76B114054AD001B78B4 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 8D1107310486CEB800E47090 /* TallyZoo-Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+			LSRequiresIPhoneOS,
+		);
+		name = "/Users/tsm/ari/TallyZoo/TallyZoo-Info.plist";
+		rLen = 0;
+		rLoc = 9223372036854775807;
+	};
+	6165C76D114054C2001B78B4 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 8D1107310486CEB800E47090 /* TallyZoo-Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+			LSRequiresIPhoneOS,
+		);
+		name = "/Users/tsm/ari/TallyZoo/TallyZoo-Info.plist";
+		rLen = 0;
+		rLoc = 9223372036854775807;
+	};
+	6165C76E114054C2001B78B4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 615CC7F3101D924D00BD6BB2 /* MatrixViewController.m */;
+		rLen = 0;
+		rLoc = 220;
+		rType = 1;
+	};
+	6165C76F114054C2001B78B4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 615CC7F3101D924D00BD6BB2 /* MatrixViewController.m */;
+		name = "MatrixViewController.m: 221";
+		rLen = 0;
+		rLoc = 7102;
+		rType = 0;
+		vrLen = 1404;
+		vrLoc = 6500;
 	};
 	617AB17F105BA7470036610C /* ChooseBadgeViewController.h */ = {
 		uiCtxt = {
@@ -1406,7 +1454,7 @@
 		ignoreCount = 0;
 		lineNumber = 169;
 		location = TallyZoo;
-		modificationTime = 289392854.460192;
+		modificationTime = 289428655.868825;
 		originalNumberOfMultipleMatches = 1;
 		state = 1;
 	};
@@ -1421,7 +1469,7 @@
 		hitCount = 0;
 		ignoreCount = 0;
 		location = "";
-		modificationTime = 289392863.934043;
+		modificationTime = 289428655.869498;
 		originalNumberOfMultipleMatches = 1;
 		state = 0;
 		symbolName = "-[_NSZombie methodSignatureForSelector:]";
@@ -1437,7 +1485,7 @@
 		hitCount = 0;
 		ignoreCount = 0;
 		location = libSystem.B.dylib;
-		modificationTime = 289392854.4614;
+		modificationTime = 289428655.869514;
 		originalNumberOfMultipleMatches = 1;
 		state = 1;
 		symbolName = malloc_error_break;
@@ -1466,7 +1514,7 @@
 		ignoreCount = 0;
 		lineNumber = 151;
 		location = TallyZoo;
-		modificationTime = 289392854.460246;
+		modificationTime = 289428655.868885;
 		originalNumberOfMultipleMatches = 1;
 		state = 1;
 	};
@@ -1481,7 +1529,7 @@
 		hitCount = 0;
 		ignoreCount = 0;
 		location = libobjc.A.dylib;
-		modificationTime = 289392854.461427;
+		modificationTime = 289428655.8696;
 		originalNumberOfMultipleMatches = 1;
 		state = 1;
 		symbolName = objc_exception_throw;
