@@ -13,7 +13,6 @@
 
 @implementation TZCount
 
-@synthesize activity;
 @synthesize guid;
 @synthesize key;
 @synthesize note;
@@ -256,5 +255,13 @@
 	}	
 }
 
+- (TZActivity *)activity {
+	return activity;
+}
+
+- (void)setActivity:(TZActivity *)a {
+	activity = a;
+	activity_id = a.key;
+}
 
 @end
