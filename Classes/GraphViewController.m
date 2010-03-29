@@ -24,6 +24,7 @@
 		activities = [[NSMutableArray alloc] init];
 		
 		self.tabBarController.view.backgroundColor = [UIColor blackColor];
+		oldSelection = 0;
 	}
 	return self;
 }
@@ -94,10 +95,12 @@
 	[_tableView reloadData];
 
 	if ([activities count]) {
-		oldSelection = 0;
-		[_tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:YES scrollPosition:UITableViewScrollPositionNone];
-		graphView.activity = [activities objectAtIndex:0];
+		[_tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:oldSelection inSection:0] animated:YES scrollPosition:UITableViewScrollPositionNone];
+		graphView.activity = [activities objectAtIndex:oldSelection];
+	} else {
+		graphView.activity = nil;
 	}
+
 	
 	[_tableView flashScrollIndicators];
 	

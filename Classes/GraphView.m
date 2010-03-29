@@ -70,6 +70,9 @@
 	[xmax release];
 	xmax = nil;
 	
+	ymin = 0.0;
+	ymax = 0.0;
+	
 	// TODO adjust ymin/ymax based on visible x timespan
 	if (activity.graph_type == TZACTIVITY_SLIDING_SUMMED) {
 		ymin = current;
