@@ -195,7 +195,7 @@
 		[dbh executeUpdate:@"INSERT INTO counts (guid, activity_id, note, tags, amount, amount_sig,\
 		 latitude, longitude, deleted, created_on, created_on_UTC, \
 		 modified_on, modified_on_UTC) VALUES \
-		 (?, ?, ?, ?, ?, ?, ?, ?, 0, \
+		 (?, ?, ?, ?, ?, ?, ?, ?, ?, \
 		 ?, ?, ?, ?)",
 		 guid,
 		 [NSNumber numberWithInt:activity_id],
@@ -205,6 +205,7 @@
 		 [NSNumber numberWithInt:amount_sig],
 		 [NSNumber numberWithDouble:latitude],
  		 [NSNumber numberWithDouble:longitude],
+		 [NSNumber numberWithBool:deleted],
 		 created_on,
 		 created_on_UTC,
 		 modified_on,

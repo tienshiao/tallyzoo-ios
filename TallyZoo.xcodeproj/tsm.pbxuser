@@ -22,9 +22,9 @@
 		);
 	};
 	29B97313FDCFA39411CA2CEA /* Project object */ = {
-		activeBuildConfigurationName = "Release Ad Hoc";
+		activeBuildConfigurationName = Debug;
 		activeExecutable = 615CC7C31018CF5E00BD6BB2 /* TallyZoo */;
-		activeSDKPreference = iphoneos3.0;
+		activeSDKPreference = iphonesimulator3.0;
 		activeTarget = 1D6058900D05DD3D006BFB54 /* TallyZoo */;
 		addToTargets = (
 			1D6058900D05DD3D006BFB54 /* TallyZoo */,
@@ -35,6 +35,7 @@
 			61B1D5D9107040BF00EA1FE7 /* malloc_error_break */,
 			61B1D7AF1070722700EA1FE7 /* GraphCell.m:151 */,
 			61B1D8C510709E4200EA1FE7 /* objc_exception_throw */,
+			617E14651161FEB800099BE0 /* Syncer.m:373 */,
 		);
 		codeSenseManager = 615CC7CA1018CF7000BD6BB2 /* Code sense */;
 		executables = (
@@ -171,6 +172,7 @@
 			617E145A1161FA4C00099BE0 /* PBXTextBookmark */ = 617E145A1161FA4C00099BE0 /* PBXTextBookmark */;
 			617E145B1161FA4C00099BE0 /* PBXTextBookmark */ = 617E145B1161FA4C00099BE0 /* PBXTextBookmark */;
 			617E145C1161FA4C00099BE0 /* PlistBookmark */ = 617E145C1161FA4C00099BE0 /* PlistBookmark */;
+			617E14611161FC3D00099BE0 /* PlistBookmark */ = 617E14611161FC3D00099BE0 /* PlistBookmark */;
 			6180A1F51076CB5500918261 = 6180A1F51076CB5500918261 /* PBXTextBookmark */;
 			6180A2071076E21C00918261 = 6180A2071076E21C00918261 /* PBXTextBookmark */;
 			61B1D163106DFAB600EA1FE7 = 61B1D163106DFAB600EA1FE7 /* PBXTextBookmark */;
@@ -889,9 +891,9 @@
 	};
 	6165C501113E0E97001B78B4 /* Syncer.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1027, 6149}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1328, 6188}}";
 			sepNavSelRange = "{13488, 0}";
-			sepNavVisRange = "{12665, 1098}";
+			sepNavVisRange = "{12601, 1022}";
 		};
 	};
 	6165C507113E0EA0001B78B4 /* PBXTextBookmark */ = {
@@ -1312,6 +1314,35 @@
 		rLen = 0;
 		rLoc = 9223372036854775807;
 	};
+	617E14611161FC3D00099BE0 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 8D1107310486CEB800E47090 /* TallyZoo-Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+			LSRequiresIPhoneOS,
+		);
+		name = "/Users/tsm/ari/TallyZoo/TallyZoo-Info.plist";
+		rLen = 0;
+		rLoc = 9223372036854775807;
+	};
+	617E14651161FEB800099BE0 /* Syncer.m:373 */ = {
+		isa = PBXFileBreakpoint;
+		actions = (
+		);
+		breakpointStyle = 0;
+		continueAfterActions = 0;
+		countType = 0;
+		delayBeforeContinue = 0;
+		fileReference = 6165C501113E0E97001B78B4 /* Syncer.m */;
+		functionName = "-parser:didStartElement:namespaceURI:qualifiedName:attributes:";
+		hitCount = 0;
+		ignoreCount = 0;
+		lineNumber = 373;
+		modificationTime = 291634872.294061;
+		originalNumberOfMultipleMatches = 0;
+		state = 1;
+	};
 	6180A1821076BB1D00918261 /* ShoutOutViewController.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {736, 569}}";
@@ -1429,7 +1460,7 @@
 		ignoreCount = 0;
 		lineNumber = 169;
 		location = TallyZoo;
-		modificationTime = 291533213.307419;
+		modificationTime = 291634256.120381;
 		originalNumberOfMultipleMatches = 1;
 		state = 1;
 	};
@@ -1444,7 +1475,7 @@
 		hitCount = 0;
 		ignoreCount = 0;
 		location = "";
-		modificationTime = 291533213.307879;
+		modificationTime = 291634256.12148;
 		originalNumberOfMultipleMatches = 1;
 		state = 0;
 		symbolName = "-[_NSZombie methodSignatureForSelector:]";
@@ -1460,7 +1491,7 @@
 		hitCount = 0;
 		ignoreCount = 0;
 		location = libSystem.B.dylib;
-		modificationTime = 291533213.307933;
+		modificationTime = 291634256.121595;
 		originalNumberOfMultipleMatches = 1;
 		state = 1;
 		symbolName = malloc_error_break;
@@ -1489,7 +1520,7 @@
 		ignoreCount = 0;
 		lineNumber = 151;
 		location = TallyZoo;
-		modificationTime = 291533213.307531;
+		modificationTime = 291634256.120492;
 		originalNumberOfMultipleMatches = 1;
 		state = 1;
 	};
@@ -1504,7 +1535,7 @@
 		hitCount = 0;
 		ignoreCount = 0;
 		location = libobjc.A.dylib;
-		modificationTime = 291533213.307981;
+		modificationTime = 291634256.12163;
 		originalNumberOfMultipleMatches = 1;
 		state = 1;
 		symbolName = objc_exception_throw;

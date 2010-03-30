@@ -328,7 +328,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>617E145C1161FA4C00099BE0</string>
+										<string>617E14611161FC3D00099BE0</string>
 										<key>history</key>
 										<array>
 											<string>61E64CF910393E2C00E78174</string>
@@ -626,6 +626,9 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>617E14631161FC3D00099BE0</string>
+		<string>617E14641161FC3D00099BE0</string>
+		<string>1C78EAAD065D492600B07095</string>
 		<string>1CD10A99069EF8BA00B06720</string>
 		<string>615CC8D4101FF17600BD6BB2</string>
 		<string>/Users/tsm/ari/TallyZoo/TallyZoo.xcodeproj</string>
@@ -988,7 +991,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C78EAAD065D492600B07095</string>
-				<string>616731C8116056F400BFC0CB</string>
+				<string>617E14621161FC3D00099BE0</string>
 				<string>1C78EAAC065D492600B07095</string>
 			</array>
 			<key>ToolbarConfiguration</key>
