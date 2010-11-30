@@ -7,6 +7,7 @@
 //
 
 #import "TextFieldAlert.h"
+#import "TallyZooAppDelegate.h"
 
 
 @implementation TextFieldAlert
@@ -53,8 +54,10 @@
 - (void)show {
 	textField.text = @"";
 	alertView.title = title;
-	CGAffineTransform myTransform = CGAffineTransformMakeTranslation(0.0, 100.0);
-	[alertView setTransform:myTransform];
+    if (!UIAppDelegate.supportsMultitasking) {
+        CGAffineTransform myTransform = CGAffineTransformMakeTranslation(0.0, 100.0);
+        [alertView setTransform:myTransform];
+    }
 	[alertView show];
 	CGRect frame = messageLabel.frame;
 	frame.origin.y = frame.origin.y + frame.size.height - 19;

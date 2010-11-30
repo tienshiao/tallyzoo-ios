@@ -31,11 +31,14 @@
 		UIImage *imagePressed = [UIImage imageNamed:@"red_down.png"];
 		UIImage *newPressedImage = [imagePressed stretchableImageWithLeftCapWidth:12.0 topCapHeight:0.0];
 		[clearButton setBackgroundImage:newPressedImage forState:UIControlStateHighlighted];
-		
-		clearButton.frame = CGRectMake(10, 20, 300, 40);
+
+        clearButton.frame = CGRectMake(10, 20, 300, 40);
 		[clearButton addTarget:self action:@selector(clear:) forControlEvents:UIControlEventTouchUpInside];
 		
-		self.tableView.tableFooterView = clearButton;			
+        UIView *fview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 80)];
+        [fview addSubview:clearButton];
+		self.tableView.tableFooterView = fview;
+        [fview release];
 
 		tfAlert = [[TextFieldAlert alloc] init];
 		tfAlert.delegate = self;	

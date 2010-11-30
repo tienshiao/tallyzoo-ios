@@ -26,6 +26,9 @@
 	id locationDelegate;
 	BOOL use_gps;
 	
+    BOOL supportsMultitasking;
+    BOOL shouldSync;
+    
 	Syncer *syncer;
 }
 
@@ -34,6 +37,8 @@
 @property (nonatomic, retain) CLLocation *location;
 @property (nonatomic, assign) id locationDelegate;
 @property (nonatomic, assign) BOOL use_gps;
+@property (nonatomic, assign) BOOL supportsMultitasking;
+@property (nonatomic, assign) BOOL shouldSync;
 @property (nonatomic, retain) Syncer *syncer;
 
 - (void)initializeDatabase;

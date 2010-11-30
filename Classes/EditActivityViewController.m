@@ -64,7 +64,10 @@
 			deleteButton.frame = CGRectMake(10, 20, 300, 40);
 			[deleteButton addTarget:self action:@selector(deleteActivity:) forControlEvents:UIControlEventTouchUpInside];
 			
-			self.tableView.tableFooterView = deleteButton;			
+            UIView *fview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 80)];
+            [fview addSubview:deleteButton];
+            self.tableView.tableFooterView = fview;
+            [fview release];
 		}
 	}
 	return self;

@@ -95,8 +95,11 @@
 		
 		deleteButton.frame = CGRectMake(10, 20, 300, 40);
 		[deleteButton addTarget:self action:@selector(deleteCount:) forControlEvents:UIControlEventTouchUpInside];
-		
-		tableView.tableFooterView = deleteButton;
+		 
+        UIView *fview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 80)];
+        [fview addSubview:deleteButton];
+		tableView.tableFooterView = fview;
+        [fview release];
 	} else {
 		locationBusyView = [[LocationBusyView alloc] initWithFrame:CGRectMake(110, 5, 100, 100)];
 		locationBusyView.hidden = YES;

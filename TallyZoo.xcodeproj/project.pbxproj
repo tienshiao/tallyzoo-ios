@@ -49,6 +49,7 @@
 		6180A1F11076CB2000918261 /* GTMNSString+XML.m in Sources */ = {isa = PBXBuildFile; fileRef = 6180A1F01076CB2000918261 /* GTMNSString+XML.m */; };
 		6180A20E10774DD100918261 /* AddTipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6180A20D10774DD100918261 /* AddTipView.m */; };
 		6180A26310775C9900918261 /* CountTipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6180A26210775C9900918261 /* CountTipView.m */; };
+		61A3EF8212A3A50700794EA9 /* Final_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 61A3EF8112A3A50700794EA9 /* Final_logo@2x.png */; };
 		61B1D113106D4F0A00EA1FE7 /* Final_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 61B1D112106D4F0A00EA1FE7 /* Final_logo.png */; };
 		61BD205310B2429000C955AF /* TextFieldAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 61BD205210B2429000C955AF /* TextFieldAlert.m */; };
 		61D0F272103B56D1002B78C5 /* click_down.wav in Resources */ = {isa = PBXBuildFile; fileRef = 61D0F270103B56D1002B78C5 /* click_down.wav */; };
@@ -157,6 +158,7 @@
 		6180A20D10774DD100918261 /* AddTipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddTipView.m; sourceTree = "<group>"; };
 		6180A26110775C9900918261 /* CountTipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountTipView.h; sourceTree = "<group>"; };
 		6180A26210775C9900918261 /* CountTipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountTipView.m; sourceTree = "<group>"; };
+		61A3EF8112A3A50700794EA9 /* Final_logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Final_logo@2x.png"; sourceTree = "<group>"; };
 		61B1D112106D4F0A00EA1FE7 /* Final_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Final_logo.png; sourceTree = "<group>"; };
 		61BD205110B2429000C955AF /* TextFieldAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextFieldAlert.h; sourceTree = "<group>"; };
 		61BD205210B2429000C955AF /* TextFieldAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextFieldAlert.m; sourceTree = "<group>"; };
@@ -320,6 +322,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				61A3EF8112A3A50700794EA9 /* Final_logo@2x.png */,
 				61B1D112106D4F0A00EA1FE7 /* Final_logo.png */,
 				617AB2A1105E0D520036610C /* Default.png */,
 				615E4EF8104E639B007DF031 /* 02-redo.png */,
@@ -463,7 +466,14 @@
 			isa = PBXProject;
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "TallyZoo" */;
 			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
 			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -490,6 +500,7 @@
 				615E4EF9104E639B007DF031 /* 02-redo.png in Resources */,
 				617AB2A2105E0D520036610C /* Default.png in Resources */,
 				61B1D113106D4F0A00EA1FE7 /* Final_logo.png in Resources */,
+				61A3EF8212A3A50700794EA9 /* Final_logo@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -598,10 +609,11 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
 				PREBINDING = NO;
 				PROVISIONING_PROFILE = "198C54C2-8499-4ABE-9D72-75DA78A644D4";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "198C54C2-8499-4ABE-9D72-75DA78A644D4";
-				SDKROOT = iphoneos3.0;
+				SDKROOT = iphoneos4.2;
 			};
 			name = "Release Ad Hoc";
 		};
@@ -625,16 +637,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Tienshiao Ma (4FDKH48359)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Tienshiao Ma (4FDKH48359)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Tienshiao Ma (Z922MYU48E)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Tienshiao Ma (Z922MYU48E)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_VERSION = 4.2;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
 				PREBINDING = NO;
-				PROVISIONING_PROFILE = "D8EAD7CF-D31B-45AE-A179-A45DB6E2E126";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D8EAD7CF-D31B-45AE-A179-A45DB6E2E126";
-				SDKROOT = iphoneos3.0;
+				PROVISIONING_PROFILE = "48AE5252-BF1A-40CC-BCF6-860982E70342";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "48AE5252-BF1A-40CC-BCF6-860982E70342";
+				SDKROOT = iphoneos4.2;
 			};
 			name = Debug;
 		};
@@ -646,9 +659,10 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
 				PREBINDING = NO;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F23178AA-8F7F-403D-96CF-3DC00A35EA94";
-				SDKROOT = iphoneos3.0;
+				SDKROOT = iphoneos4.2;
 			};
 			name = Release;
 		};

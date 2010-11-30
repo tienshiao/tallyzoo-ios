@@ -41,6 +41,8 @@
 	NSString *password;
 	
 	BOOL synced;
+    
+    UIBackgroundTaskIdentifier backgroundTask;
 }
 
 #define STATE_RECEIVING 1

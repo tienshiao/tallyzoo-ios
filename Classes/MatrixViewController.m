@@ -24,6 +24,7 @@
 @implementation MatrixViewController
 
 @synthesize editting;
+@synthesize syncStatus;
 
 -(id)init {
 	if (self = [super init]) {
@@ -195,8 +196,6 @@
 }
 */
 
-static BOOL firstTime = YES;
-
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 
@@ -220,7 +219,9 @@ static BOOL firstTime = YES;
 
 	Reachability *reach = [Reachability reachabilityForInternetConnection];
 	Syncer *syncer = UIAppDelegate.syncer;
-	if (firstTime && !syncer.synced &&
+	syncer.delegate = self;
+    
+	if (UIAppDelegate.shouldSync &&
 		[reach currentReachabilityStatus] != NotReachable) {
 		// only run at first launch
 		NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -238,20 +239,21 @@ static BOOL firstTime = YES;
 				addTipView.hidden = YES;
 				countTipView.hidden = YES;
 							
-				syncer.delegate = self;
-				[syncer start];
-							
-				syncStatus.text = @"Syncing ...";
-				syncStatus.hidden = NO;
-			}
+                if (!syncer.state) {
+                    [syncer start];
+                }
+ 			}
 		}
 		
-		firstTime = NO;
+		UIAppDelegate.shouldSync = NO;
 	}
 
 	if (!syncer.state) {
 		syncStatus.hidden = YES;
-	}
+	} else {
+        syncStatus.text = @"Syncing ...";
+        syncStatus.hidden = NO;
+    }
 		
 //	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:animated];	
 }

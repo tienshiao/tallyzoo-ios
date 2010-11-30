@@ -166,6 +166,7 @@
 		state = 0;
 		
 		synced = YES;
+        [self endBackgroundTask];
 		[delegate syncerCompleted:self];
 		
 		return;
@@ -204,6 +205,7 @@
 		receivedData = [[NSMutableData alloc] init];
 	} else {
 		// TODO error
+        [self endBackgroundTask];
 		[delegate syncerFailed:self];
 	}		
 }
@@ -262,6 +264,7 @@
 			self.message = @"An error occurred while syncing. Please try again later.";
 		}
 		
+        [self endBackgroundTask];
 		[delegate syncerFailed:self];
 		
 		[connection release];
@@ -312,7 +315,7 @@
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
 	self.message = [NSString stringWithFormat:@"Unable to connect to server (%@). Please try again later.", [error localizedDescription]];
 	state = 0;
-	
+    [self endBackgroundTask];
 	[delegate syncerFailed:self];
 	
 	[connection release];
@@ -420,6 +423,15 @@
 	}
 }
 
+- (void)endBackgroundTask {
+    if (UIAppDelegate.supportsMultitasking &&
+        backgroundTask != UIBackgroundTaskInvalid) {
+        [[UIApplication sharedApplication] endBackgroundTask:backgroundTask];
+        backgroundTask = UIBackgroundTaskInvalid;
+    }
+    state = 0;
+}
+
 - (void)start {
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 	self.username = [defaults stringForKey:@"username"];
@@ -427,6 +439,13 @@
 	NSError *error;
 	self.password = [SFHFKeychainUtils getPasswordForUsername:username andServiceName:@"TallyZoo" error:&error];	
 	
+    if (UIAppDelegate.supportsMultitasking &&
+        backgroundTask == UIBackgroundTaskInvalid) {
+        backgroundTask = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{
+            [self endBackgroundTask];
+        }];
+    }
+    
 	// log current time for saving to last sync time
 	[now release];
 	now = [[NSDate alloc] init];
@@ -439,6 +458,7 @@
 		state = STATE_RECEIVING;
 	} else {
 		// Error
+        [self endBackgroundTask];
 		[delegate syncerFailed:self];
 	}
 }

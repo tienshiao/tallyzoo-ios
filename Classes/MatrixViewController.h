@@ -40,6 +40,7 @@
 }
 
 @property(assign, nonatomic) BOOL editting;
+@property(nonatomic, retain) UILabel *syncStatus;
 
 - (int)getNumberOfScreens;
 

@@ -49,13 +49,13 @@
 	[colorView setNeedsDisplay];
 }
 
-- (void)dealloc {
-    [super dealloc];
-	
+- (void)dealloc {	
 	[color release];
 	[label release];
 	
 	[colorView release];
+    
+    [super dealloc];
 }
 
 

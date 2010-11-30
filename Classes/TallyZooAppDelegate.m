@@ -11,6 +11,8 @@
 #import "SyncViewController.h"
 #import "MoreTableViewController.h"
 #import "FlurryAPI.h"
+#import "Reachability.h"
+#import "SFHFKeychainUtils.h"
 
 @implementation TallyZooAppDelegate
 
@@ -19,6 +21,8 @@
 @synthesize location;
 @synthesize locationDelegate;
 @synthesize use_gps;
+@synthesize supportsMultitasking;
+@synthesize shouldSync;
 @synthesize syncer;
 
 - (void)initializeDefaults {
@@ -78,6 +82,13 @@ void uncaughtExceptionHandler(NSException *exception) {
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    UIDevice* device = [UIDevice currentDevice];
+    if ([device respondsToSelector:@selector(isMultitaskingSupported)]) {
+        supportsMultitasking = [device isMultitaskingSupported];
+    } else {
+        supportsMultitasking = NO;
+    }
+    
 	NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
 	[FlurryAPI startSession:@"L8JZI8SJQZKB8I79IQMK"];
 
@@ -127,9 +138,39 @@ void uncaughtExceptionHandler(NSException *exception) {
     [window makeKeyAndVisible];
 	window.backgroundColor = [UIColor blackColor];
 	
+    shouldSync = YES;
 	self.syncer = [[[Syncer alloc] init] autorelease];
 	
 	return YES;
+}
+
+- (void)applicationDidBecomeActive:(UIApplication *)application {
+    Reachability *reach = [Reachability reachabilityForInternetConnection];
+   
+	if ([reach currentReachabilityStatus] != NotReachable) {
+		// only run at first launch
+		NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+		BOOL startupsync_preference = [defaults boolForKey:@"startupsync_preference"];		
+        
+		if (startupsync_preference) {
+			NSString *username = [defaults stringForKey:@"username"];
+            
+			NSError *error;
+			NSString *password = [SFHFKeychainUtils getPasswordForUsername:username andServiceName:@"TallyZoo" error:&error];
+            
+			if ([username length] && [password length]) {                
+                if (!syncer.state) {
+                    [syncer start];
+                    if (syncer.state) {
+                        mvc.syncStatus.text = @"Syncing ...";
+                        mvc.syncStatus.hidden = NO;
+                    }
+                }
+			}
+		}
+		
+		UIAppDelegate.shouldSync = NO;
+	}
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
